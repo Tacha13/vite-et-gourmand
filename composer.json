@@ -1,0 +1,16 @@
+{
+    "name": "tacha/vite-et-gourmand",
+    "description": "Application traiteur Vite et Gourmand",
+    "autoload": {
+        "psr-4": {
+            "Tacha\\ViteEtGourmand\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Natacha DENIEUL",
+            "email": "tachadnl@hotmail.com"
+        }
+    ],
+    "require": {}
+}

@@ -1,0 +1,15 @@
+USE vite_et_gourmand;
+
+CREATE TABLE comptes 
+(
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+email VARCHAR (250) UNIQUE NOT NULL,
+mot_de_passe_hash VARCHAR (250) NOT NULL,
+nom VARCHAR (250) NOT NULL,
+prenom VARCHAR (250) NOT NULL,
+telephone VARCHAR (20),
+adresse_postale VARCHAR (250),
+role VARCHAR (50) DEFAULT 'utilisateur',
+actif BOOLEAN DEFAULT 1,
+date_creation DATETIME DEFAULT CURRENT_TIMESTAMP
+);

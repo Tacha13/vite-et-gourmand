@@ -53,7 +53,7 @@
             </div><br>
             <div>
                 <label for="ValidatePasswordInput">Validez votre mot de passe</label>
-                <input id="ValidatePasswordInput" name="PasswordConfirm" type="password" required>
+                <input id="ValidatePasswordInput" name="passwordConfirm" type="password" required>
             </div><br>
             <div>
                 <button type="submit">Validez</button>

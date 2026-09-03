@@ -62,7 +62,11 @@ class AuthController
 
         if ($resultMail !== null) {
         if (password_verify($password, $resultMail['mot_de_passe_hash'])) {
-            echo "connexion réussie";
+            $_SESSION['user_id'] = $resultMail['id'];
+            $_SESSION['user_email'] = $resultMail['email'];
+            $_SESSION['user_role'] = $resultMail['role'];
+            header('location:http://localhost:8000/?page=login');
+            exit;
         }else {
             echo "mauvais mot de passe";
         }

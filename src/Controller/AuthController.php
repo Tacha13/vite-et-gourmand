@@ -75,6 +75,13 @@ class AuthController
         }
     }
 
+    public function logout(): void {
+        $_SESSION = [];
+        session_destroy();
+        header('location:http://localhost:8000/?page=login');
+        exit;
+    }
+
 }
 
 

@@ -32,3 +32,7 @@ if ($_GET ['page'] === 'login') {
         $controller->login();
     }
 }
+
+if ($_GET ['page'] === 'logout') {
+   $controller->logout();
+}

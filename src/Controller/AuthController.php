@@ -49,4 +49,28 @@ class AuthController
             echo "mot de passe différent";
         }
     }
+
+    public function showLogin(): void {
+        require __DIR__ . '/../../templates/auth/login.php';
+    }
+
+    public function login(): void
+    {
+        $email = htmlspecialchars($_POST['email']);
+        $password = $_POST['password'];
+        $resultMail = $this->compteRepository->findByEmail($email);
+
+        if ($resultMail !== null) {
+        if (password_verify($password, $resultMail['mot_de_passe_hash'])) {
+            echo "connexion réussie";
+        }else {
+            echo "mauvais mot de passe";
+        }
+    } else {
+        echo "l'email n'existe pas";
+        }
+    }
+
 }
+
+

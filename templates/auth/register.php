@@ -1,12 +1,12 @@
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
-</head>
+    <!--Contenu du head-->
+    <?php
+    require __DIR__ . '/../partials/head.php';
+    ?>
 <body>
+     <!--Contenu du header-->
+    <?php
+    require __DIR__ . '/../partials/header.php';
+    ?>
     <div>
         <form action="" method="POST">
             <fieldset class="inscription">
@@ -61,7 +61,10 @@
             </fieldset>
         </form>
     </div>
-    
+    <!--Contenu du footer-->
+    <?php
+    require __DIR__ . '/../partials/footer.php';
+    ?>  
 </body>
 </html>
 

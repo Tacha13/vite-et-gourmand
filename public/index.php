@@ -16,8 +16,18 @@ $controller = new AuthController($repo);
 
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $controller->register();
-}else {
-    $controller->showRegister();
+if ($_GET['page'] === 'register') {
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $controller->showRegister();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controller->Register();
+    }
+}
+
+if ($_GET ['page'] === 'login') {
+   if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $controller->showLogin();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controller->login();
+    }
 }

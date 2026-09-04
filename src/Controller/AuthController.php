@@ -82,6 +82,21 @@ class AuthController
         exit;
     }
 
+
+# Fonction qui redirige vers la page login si le role est non admin    
+    public function checkAdmin(): void {
+        if($_SESSION['user_role'] !== 'admin') {
+            header('location:http://localhost:8000/?page=login');
+            exit;
+        }
+    }
+
+
+
+public function showDashBoard(): void {
+    require __DIR__ . '/../../templates/admin/dashboard.php';
+}
+
 }
 
 

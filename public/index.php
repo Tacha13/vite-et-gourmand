@@ -36,3 +36,8 @@ if ($_GET ['page'] === 'login') {
 if ($_GET ['page'] === 'logout') {
    $controller->logout();
 }
+
+if ($_GET ['page'] === 'admin') {
+    $controller->checkAdmin();
+    $controller->showDashBoard();
+}

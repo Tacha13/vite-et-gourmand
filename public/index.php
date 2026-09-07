@@ -7,6 +7,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Tacha\ViteEtGourmand\Database;
 use Tacha\ViteEtGourmand\Controller\AuthController;
 use Tacha\ViteEtGourmand\Repository\CompteRepository;
+use Tacha\ViteEtGourmand\Controller\MenuController;
+use Tacha\ViteEtGourmand\Repository\MenuRepository;
+
+
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
@@ -14,6 +18,8 @@ $dotenv->load();
 $data = new Database();
 $repo = new CompteRepository($data);
 $controller = new AuthController($repo);
+$menuRepo = new MenuRepository($data);
+$menuController = new MenuController($menuRepo);
 
 
 
@@ -40,4 +46,8 @@ if ($_GET ['page'] === 'logout') {
 if ($_GET ['page'] === 'admin') {
     $controller->checkAdmin();
     $controller->showDashBoard();
+}
+
+if ($_GET ['page'] === 'menus') {
+    $menuController->showMenus();
 }

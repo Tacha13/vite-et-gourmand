@@ -19,4 +19,23 @@ class MenuController
         require __DIR__ . '/../../templates/admin/menus.php';
     }
 
+    public function createMenu(): void
+    {
+        $nameMenu = htmlspecialchars($_POST['nameMenu']);
+        $description = htmlspecialchars($_POST['description']);
+        $theme = htmlspecialchars($_POST['theme']);
+        $persMin = (int)($_POST['persMin']);
+        $price = (int)($_POST['price']);
+        $conditions = htmlspecialchars($_POST['conditions']);
+        $regime = htmlspecialchars($_POST['regime']);
+        $stock = (int)($_POST['stock']);
+
+        $this->menuRepository->create($nameMenu,  $description,  $theme,  $persMin,  $price,  $conditions,  $regime,  $stock);
+    }
+
+    public function showMenuCreate(): void 
+    {
+        require __DIR__ . '/../../templates/admin/menu_create.php';
+    }
+
 }

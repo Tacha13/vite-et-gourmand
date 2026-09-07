@@ -26,5 +26,26 @@ class MenuRepository
         return $result;
     }
 
+    public function create(string $nameMenu, string $description, string $theme, int $persMin, int $price, string $conditions, string $regime, int $stock): void
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("INSERT INTO menus (nomMenu, `description`, theme, nbPersonneMin, prix, conditions, regime, stock) VALUES (:nomMenu, :description, :theme, :nbPersonneMin, :prix, :conditions, :regime, :stock);
+        ");
+
+        $stmt->execute(
+            [
+            ':nomMenu' => $nameMenu,
+            ':description' => $description,
+            ':theme' => $theme,
+            ':nbPersonneMin' => $persMin,
+            ':prix' => $price,
+            ':conditions' => $conditions,
+            ':regime' => $regime,
+            ':stock' => $stock
+        ]
+        );
+    }
+
+    
 
 }    

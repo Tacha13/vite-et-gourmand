@@ -1,15 +1,31 @@
 <?php
-// $id est injecté via require dans MenuController::showDeleteConfirm() — isset() évite l'avertissement VSCode sur la variable non déclarée
+// $id est injecté via les require dans les controller — isset() évite l'avertissement VSCode sur la variable non déclarée
 if (!isset($id)) {
     $id = 0;
+}
+
+if (!isset($entity)) {
+    $entity = 0;
 }
 ?>
 
 <div>
     <p>Confirmer la suppression</p>
 </div>
-<form action="/?page=menu_delete" method="POST">
+<?php 
+if ($entity === 'plat') : ?>
+    <form action="/?page=plat_delete" method="POST">
+    <input name="id" type="hidden" value="<?=  $id ?>">
+    <input type="submit" value="Supprimer"> <br>
+    <a href="/?page=plats">Annuler</a>
+</form>
+<?php
+else : ?>
+    <form action="/?page=menu_delete" method="POST">
     <input name="id" type="hidden" value="<?=  $id ?>">
     <input type="submit" value="Supprimer"> <br>
     <a href="/?page=menus">Annuler</a>
-</form>
+    </form>
+<?php endif?>
+
+

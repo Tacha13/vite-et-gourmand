@@ -11,7 +11,7 @@
     require __DIR__ . '/../partials/header.php';
 ?>
 
-<form action="" method="POST">
+<form action="/?page=menu_create" method="POST">
     <fieldset>
         <div>
             <label for="nameMenu">Nom du menu</label>

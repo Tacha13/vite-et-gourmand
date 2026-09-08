@@ -31,6 +31,8 @@ class MenuController
         $stock = (int)($_POST['stock']);
 
         $this->menuRepository->create($nameMenu,  $description,  $theme,  $persMin,  $price,  $conditions,  $regime,  $stock);
+        header('location:http://localhost:8000/?page=menus');
+        exit;
     }
 
     public function showMenuCreate(): void 
@@ -40,6 +42,7 @@ class MenuController
 
     public function showDeleteConfirm(): void {
         $id = ($_POST['id']);
+        $entity = ($_POST['entity']);
         require __DIR__ . '/../../templates/partials/delete_confirm.php';
     }
 

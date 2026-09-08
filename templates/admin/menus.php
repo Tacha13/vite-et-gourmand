@@ -51,6 +51,7 @@ if (!isset($menus) || !is_array($menus)) {
             <td>
                 <form action="/?page=delete_confirm" method="POST">
                     <input name="id" type="hidden" value="<?=  $menu['id'] ?>">
+                    <input name="entity" type="hidden" value="menu">
                     <input type="submit" value="Supprimer">
                 </form>
             </td>

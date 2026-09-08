@@ -32,12 +32,33 @@
     </thead>
     <tbody>
 <!--Boucle permettant d'alimenter dynamiquement la page des menus enregistrés en BDD -->      
-<?php 
-foreach ($menus as $menu) {
-    echo ("<tr><td>" . $menu['nomMenu'] . "</td><td>" . $menu['theme'] . "</td><td>" .'<img src="" alt="Image du menu">' . "</td><td>" . $menu['prix'] . "</td><td>" . '<input type="button" value="Voir">' . '<input type="button" value="Modifier">' . '<input type="button" value="Supprimer">' . "</td></tr>");
+<?php
+// $menus est injecté via require dans MenuController::showMenus() — isset() évite l'avertissement VSCode sur la variable non déclarée
+if (!isset($menus) || !is_array($menus)) {
+    $menus = [];
 }
 ?>
-    </tbody>
+
+<?php foreach ($menus as $menu): ?>
+    <tr>
+        <td><?= htmlspecialchars($menu['nomMenu']) ?></td>
+        <td><?= htmlspecialchars($menu['theme']) ?></td>
+        <td><img src="" alt="Image du menu"></td>
+        <td><?= htmlspecialchars((string) $menu['prix']) ?></td>
+        <td><input type="button" value="Voir"></td>
+        <td><input type="button" value="Modifier"></td>
+
+            <td>
+                <form action="/?page=delete_confirm" method="POST">
+                    <input name="id" type="hidden" value="<?=  $menu['id'] ?>">
+                    <input type="submit" value="Supprimer">
+                </form>
+            </td>
+
+    </tr>
+<?php endforeach ?>
+    
+</tbody>
 </table>
 
 

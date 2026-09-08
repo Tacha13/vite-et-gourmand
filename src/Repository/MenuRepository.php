@@ -46,6 +46,22 @@ class MenuRepository
         );
     }
 
+    public function delete(int $id): void 
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("DELETE FROM menus WHERE id = :id");
+
+        $stmt->execute(
+            [
+            ':id' => $id
+            ]
+        );
+        
+    }
+
+       
+    
+
     
 
 }    

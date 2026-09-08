@@ -38,4 +38,17 @@ class MenuController
         require __DIR__ . '/../../templates/admin/menu_create.php';
     }
 
+    public function showDeleteConfirm(): void {
+        $id = ($_POST['id']);
+        require __DIR__ . '/../../templates/partials/delete_confirm.php';
+    }
+
+    public function deleteMenu(): void
+    {
+        $this->menuRepository->delete($_POST['id']);
+        header('location:http://localhost:8000/?page=menus');
+        exit;
+    }
+
+
 }

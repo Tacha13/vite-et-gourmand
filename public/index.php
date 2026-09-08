@@ -25,7 +25,7 @@ $menuController = new MenuController($menuRepo);
 
 
 
-if ($_GET['page'] === 'register') {
+if (isset($_GET['page']) && $_GET['page'] === 'register') {
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $controller->showRegister();
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,7 +33,7 @@ if ($_GET['page'] === 'register') {
     }
 }
 
-if ($_GET ['page'] === 'login') {
+if (isset($_GET['page']) && $_GET['page'] === 'login') {
    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $controller->showLogin();
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -41,23 +41,32 @@ if ($_GET ['page'] === 'login') {
     }
 }
 
-if ($_GET ['page'] === 'logout') {
+if (isset($_GET['page']) && $_GET['page'] === 'logout') {
    $controller->logout();
 }
 
-if ($_GET ['page'] === 'admin') {
+if (isset($_GET['page']) && $_GET['page'] === 'admin') {
     $controller->checkAdmin();
     $controller->showDashBoard();
 }
 
-if ($_GET ['page'] === 'menus') {
+if (isset($_GET['page']) && $_GET['page'] === 'menus') {
     $menuController->showMenus();
 }
 
-if ($_GET ['page'] === 'menu_create') {
+if (isset($_GET['page']) && $_GET['page'] === 'menu_create') {
    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $menuController->showMenuCreate();
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $menuController->createMenu();
     }
 }
+
+if (isset($_GET['page']) && $_GET['page'] === 'delete_confirm') {
+    $menuController->showDeleteConfirm();
+}
+
+if (isset($_GET['page']) && $_GET['page'] === 'menu_delete') {
+    $menuController->deleteMenu();
+}
+

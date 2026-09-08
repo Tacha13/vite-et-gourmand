@@ -13,6 +13,8 @@ use Tacha\ViteEtGourmand\Controller\MenuController;
 use Tacha\ViteEtGourmand\Repository\MenuRepository;
 use Tacha\ViteEtGourmand\Controller\PlatController;
 use Tacha\ViteEtGourmand\Repository\PlatRepository;
+use Tacha\ViteEtGourmand\Controller\AllergeneController;
+use Tacha\ViteEtGourmand\Repository\AllergeneRepository;
 
 
 
@@ -26,6 +28,8 @@ $menuRepo = new MenuRepository($data);
 $menuController = new MenuController($menuRepo);
 $platRepo = new PlatRepository($data);
 $platController = new PlatController($platRepo);
+$allergeneRepo = new AllergeneRepository($data);
+$allergeneController = new AllergeneController($allergeneRepo);
 
 
 
@@ -89,5 +93,21 @@ if (isset($_GET['page']) && $_GET['page'] === 'plat_create') {
 
 if (isset($_GET['page']) && $_GET['page'] === 'plat_delete') {
     $platController->deletePlat();
+}
+
+if (isset($_GET['page']) && $_GET['page'] === 'allergenes') {
+    $allergeneController->showAllergene();
+}
+
+if (isset($_GET['page']) && $_GET['page'] === 'allergene_create') {
+   if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $allergeneController->showAllergeneCreate();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $allergeneController->createAllergene();
+    }
+}
+
+if (isset($_GET['page']) && $_GET['page'] === 'allergene_delete') {
+    $allergeneController->deleteAllergene();
 }
 

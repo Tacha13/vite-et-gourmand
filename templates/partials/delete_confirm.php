@@ -20,12 +20,22 @@ if ($entity === 'plat') : ?>
     <a href="/?page=plats">Annuler</a>
 </form>
 <?php
-else : ?>
+elseif  ($entity === 'menu') : ?>
     <form action="/?page=menu_delete" method="POST">
     <input name="id" type="hidden" value="<?=  $id ?>">
     <input type="submit" value="Supprimer"> <br>
     <a href="/?page=menus">Annuler</a>
     </form>
+
+<?php 
+elseif ($entity === 'allergene'): ?>
+    <form action="/?page=allergene_delete" method="POST">
+    <input name="id" type="hidden" value="<?=  $id ?>">
+    <input type="submit" value="Supprimer"> <br>
+    <a href="/?page=allergenes">Annuler</a>
+    </form>
+
+
 <?php endif?>
 
 

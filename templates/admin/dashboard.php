@@ -13,22 +13,27 @@
 
 <!-- Lien vers la page des menus -->
 <div>
-    <a href="">les Menus</a>
+    <a href="/?page=menus">les Menus</a>
 </div>
 
 <!-- Lien vers la page des plats -->
 <div>
-    <a href="">Les plats</a>
+    <a href="/?page=plats">Les plats</a>
 </div>
 
 <!-- Lien vers la page des allergènes -->
 <div>
-    <a href="">Les allergènes</a>
+    <a href="/?page=allergenes">Les allergènes</a>
+</div>
+
+<!-- Lien vers la page listing employé -->
+<div>
+    <a href="/?page=employes">Employés</a>
 </div>
 
 <!-- Lien vers la page de création de compte employé -->
 <div>
-    <a href="">Compte employé</a>
+    <a href="/?page=employe_create">Comptes employés</a>
 </div>
 
  <!--Contenu du footer-->

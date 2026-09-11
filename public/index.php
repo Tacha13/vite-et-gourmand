@@ -124,3 +124,10 @@ if (isset($_GET['page']) && $_GET['page'] === 'employe_create') {
     }
 }
 
+if (isset($_GET['page']) && $_GET['page'] === 'employes') {
+    $controller->showEmploye();
+}
+
+if (isset($_GET['page']) && $_GET['page'] === 'toggle_actif') {
+    $controller->toggleActif();
+}

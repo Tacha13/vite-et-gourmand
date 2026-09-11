@@ -35,6 +35,7 @@ class AuthController
         $city = htmlspecialchars($_POST['city']);
         $password = $_POST['password'];
         $passwordConfirm = $_POST['passwordConfirm'];
+        $role = $_POST['role'];
 
         if ($password === $passwordConfirm) {
             if (
@@ -45,7 +46,7 @@ class AuthController
                 && strlen($password) >= 10
             ) {
                 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-                $this->compteRepository->create($email, $hashedPassword, $name, $firstname, $phone, $adress, $adressAptInput, $postalCode, $city);
+                $this->compteRepository->create($email, $hashedPassword, $name, $firstname, $phone, $adress, $adressAptInput, $postalCode, $city, $role);
                 
                 $body = "Bonjour $firstname, Merci d'avoir créé votre compte chez Vite & Gourmand ! Nous sommes ravis de vous accompagner dans la préparation de vos futurs événements. Des pièces cocktails raffinées aux buffets conviviaux, notre équipe met tout son savoir-faire en cuisine pour régaler vos convives et faire de vos moments de partage une réussite. Vous pouvez dès à présent composer votre menu et estimer votre budget en ligne.[Découvrir notre carte et nos formules] À très bientôt, L'équipe de Vite & Gourmand";
                 $this->mailService->sendMail($email, "Bienvenue chez Vite et Gourmand", $body);
@@ -72,7 +73,7 @@ class AuthController
             $_SESSION['user_id'] = $resultMail['id'];
             $_SESSION['user_email'] = $resultMail['email'];
             $_SESSION['user_role'] = $resultMail['role'];
-            header('location:http://localhost:8000/?page=login');
+            header('location:http://localhost:8000/?page=admin');
             exit;
         }else {
             echo "mauvais mot de passe";
@@ -119,9 +120,10 @@ class AuthController
         $emailEmploye = htmlspecialchars($_POST['emailEmploye']);
         $telEmploye = htmlspecialchars($_POST['telEmploye']);
         $passwordEmploye = $_POST['passwordEmploye'];
+        $roleEmploye = $_POST['roleEmploye'];
 
         $hashedPassword = password_hash($passwordEmploye, PASSWORD_BCRYPT);
-        $this->compteRepository->create($emailEmploye, $hashedPassword, $nameEmploye, $prenomEmploye, $telEmploye, $adressEmploye, $complAdressEmploye, $postalEmploye, $communeEmploye);
+        $this->compteRepository->create($emailEmploye, $hashedPassword, $nameEmploye, $prenomEmploye, $telEmploye, $adressEmploye, $complAdressEmploye, $postalEmploye, $communeEmploye, $roleEmploye);
         
         $body = "Bonjour $prenomEmploye $nameEmploye, Votre compte Employé a été créé, Vous trouverez ci-dessous votre identifiant de connexion";
         $this->mailService->sendMail($emailEmploye, "Bienvenue chez Vite et Gourmand - Création de compte", $body);
@@ -129,6 +131,20 @@ class AuthController
         header('location:http://localhost:8000/?page=admin');
         exit;
     }
+
+    public function showEmploye(): void {
+        $employes = $this->compteRepository->findAllEmploye();
+        require __DIR__ . '/../../templates/admin/employes.php';
+    }
+
+    public function toggleActif(): void
+    {
+        $this->compteRepository->toggleActif($_POST['id']);
+        header('location:http://localhost:8000/?page=employes');
+        exit;
+    }
+
+
 
 }
 

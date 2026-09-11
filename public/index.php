@@ -20,6 +20,7 @@ use Tacha\ViteEtGourmand\Service\MailService;
 
 
 
+
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 
@@ -113,5 +114,13 @@ if (isset($_GET['page']) && $_GET['page'] === 'allergene_create') {
 
 if (isset($_GET['page']) && $_GET['page'] === 'allergene_delete') {
     $allergeneController->deleteAllergene();
+}
+
+if (isset($_GET['page']) && $_GET['page'] === 'employe_create') {
+   if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $controller->showEmployeCreate();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controller->createEmploye();
+    }
 }
 

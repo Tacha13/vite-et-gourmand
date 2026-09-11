@@ -26,9 +26,9 @@
     <a href="">Les allergènes</a>
 </div>
 
-<!-- Lien vers la page des horaires -->
+<!-- Lien vers la page de création de compte employé -->
 <div>
-    <a href="">Les horaires</a>
+    <a href="">Compte employé</a>
 </div>
 
  <!--Contenu du footer-->

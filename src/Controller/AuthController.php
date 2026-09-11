@@ -46,6 +46,7 @@ class AuthController
             ) {
                 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
                 $this->compteRepository->create($email, $hashedPassword, $name, $firstname, $phone, $adress, $adressAptInput, $postalCode, $city);
+                
                 $body = "Bonjour $firstname, Merci d'avoir créé votre compte chez Vite & Gourmand ! Nous sommes ravis de vous accompagner dans la préparation de vos futurs événements. Des pièces cocktails raffinées aux buffets conviviaux, notre équipe met tout son savoir-faire en cuisine pour régaler vos convives et faire de vos moments de partage une réussite. Vous pouvez dès à présent composer votre menu et estimer votre budget en ligne.[Découvrir notre carte et nos formules] À très bientôt, L'équipe de Vite & Gourmand";
                 $this->mailService->sendMail($email, "Bienvenue chez Vite et Gourmand", $body);
             } else {
@@ -99,9 +100,35 @@ class AuthController
 
 
 
-public function showDashBoard(): void {
+    public function showDashBoard(): void {
     require __DIR__ . '/../../templates/admin/dashboard.php';
-}
+    }
+
+    public function showEmployeCreate(): void
+    {
+        require __DIR__ . '/../../templates/admin/employe_create.php';
+    }
+
+    public function createEmploye () {
+        $nameEmploye = htmlspecialchars($_POST['nameEmploye']);
+        $prenomEmploye = htmlspecialchars($_POST['prenomEmploye']);
+        $adressEmploye = htmlspecialchars($_POST['adressEmploye']);
+        $complAdressEmploye = htmlspecialchars($_POST['complAdressEmploye']);
+        $postalEmploye = htmlspecialchars($_POST['postalEmploye']);
+        $communeEmploye = htmlspecialchars($_POST['communeEmploye']);
+        $emailEmploye = htmlspecialchars($_POST['emailEmploye']);
+        $telEmploye = htmlspecialchars($_POST['telEmploye']);
+        $passwordEmploye = $_POST['passwordEmploye'];
+
+        $hashedPassword = password_hash($passwordEmploye, PASSWORD_BCRYPT);
+        $this->compteRepository->create($emailEmploye, $hashedPassword, $nameEmploye, $prenomEmploye, $telEmploye, $adressEmploye, $complAdressEmploye, $postalEmploye, $communeEmploye);
+        
+        $body = "Bonjour $prenomEmploye $nameEmploye, Votre compte Employé a été créé, Vous trouverez ci-dessous votre identifiant de connexion";
+        $this->mailService->sendMail($emailEmploye, "Bienvenue chez Vite et Gourmand - Création de compte", $body);
+
+        header('location:http://localhost:8000/?page=admin');
+        exit;
+    }
 
 }
 

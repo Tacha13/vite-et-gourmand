@@ -3,14 +3,18 @@
 namespace Tacha\ViteEtGourmand\Controller;
 
 use Tacha\ViteEtGourmand\Repository\CompteRepository;
+use Tacha\ViteEtGourmand\Service\MailService;
 
 class AuthController
 {
     private CompteRepository $compteRepository;
+    private MailService $mailService;
 
-    public function __construct(CompteRepository $compteRepository)
+
+    public function __construct(CompteRepository $compteRepository, MailService $mailService)
     {
         $this->compteRepository = $compteRepository;
+        $this->mailService = $mailService;
     }
 
 
@@ -42,6 +46,8 @@ class AuthController
             ) {
                 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
                 $this->compteRepository->create($email, $hashedPassword, $name, $firstname, $phone, $adress, $adressAptInput, $postalCode, $city);
+                $body = "Bonjour $firstname, Merci d'avoir créé votre compte chez Vite & Gourmand ! Nous sommes ravis de vous accompagner dans la préparation de vos futurs événements. Des pièces cocktails raffinées aux buffets conviviaux, notre équipe met tout son savoir-faire en cuisine pour régaler vos convives et faire de vos moments de partage une réussite. Vous pouvez dès à présent composer votre menu et estimer votre budget en ligne.[Découvrir notre carte et nos formules] À très bientôt, L'équipe de Vite & Gourmand";
+                $this->mailService->sendMail($email, "Bienvenue chez Vite et Gourmand", $body);
             } else {
                 echo "Format invalide";
             }

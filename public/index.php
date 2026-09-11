@@ -15,6 +15,8 @@ use Tacha\ViteEtGourmand\Controller\PlatController;
 use Tacha\ViteEtGourmand\Repository\PlatRepository;
 use Tacha\ViteEtGourmand\Controller\AllergeneController;
 use Tacha\ViteEtGourmand\Repository\AllergeneRepository;
+use Tacha\ViteEtGourmand\Service\MailService;
+
 
 
 
@@ -23,13 +25,15 @@ $dotenv->load();
 
 $data = new Database();
 $repo = new CompteRepository($data);
-$controller = new AuthController($repo);
+$mailService = new MailService();
+$controller = new AuthController($repo, $mailService);
 $menuRepo = new MenuRepository($data);
 $menuController = new MenuController($menuRepo);
 $platRepo = new PlatRepository($data);
 $platController = new PlatController($platRepo);
 $allergeneRepo = new AllergeneRepository($data);
 $allergeneController = new AllergeneController($allergeneRepo);
+
 
 
 

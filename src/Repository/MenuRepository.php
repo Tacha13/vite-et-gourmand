@@ -17,7 +17,7 @@ class MenuRepository
 #Fonction récupérant les informations de chaque menu même vide    
     public function findAll(): array {
         $pdo = $this->database->getConnection();
-        $menus = $pdo->prepare("SELECT id, nomMenu, theme, prix FROM menus ;
+        $menus = $pdo->prepare("SELECT id, nomMenu, theme, prix, `description`, nbPersonneMin, `image` FROM menus ;
         ");
 
         $menus->execute();
@@ -26,10 +26,10 @@ class MenuRepository
         return $result;
     }
 
-    public function create(string $nameMenu, string $description, string $theme, int $persMin, int $price, string $conditions, string $regime, int $stock): void
+    public function create(string $nameMenu, string $description, string $theme, int $persMin, int $price, string $conditions, string $regime, int $stock, string $image): void
     {
         $pdo = $this->database->getConnection();
-        $stmt = $pdo->prepare("INSERT INTO menus (nomMenu, `description`, theme, nbPersonneMin, prix, conditions, regime, stock) VALUES (:nomMenu, :description, :theme, :nbPersonneMin, :prix, :conditions, :regime, :stock);
+        $stmt = $pdo->prepare("INSERT INTO menus (nomMenu, `description`, theme, nbPersonneMin, prix, conditions, regime, stock, `image`) VALUES (:nomMenu, :description, :theme, :nbPersonneMin, :prix, :conditions, :regime, :stock, :image);
         ");
 
         $stmt->execute(
@@ -41,7 +41,8 @@ class MenuRepository
             ':prix' => $price,
             ':conditions' => $conditions,
             ':regime' => $regime,
-            ':stock' => $stock
+            ':stock' => $stock,
+            ':image' => $image
         ]
         );
     }

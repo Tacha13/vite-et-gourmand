@@ -1,4 +1,4 @@
-<!-- Page tableau de bord administrateur -->
+<!-- Page Menu -->
 
 <!--Contenu du head-->
 <?php

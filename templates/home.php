@@ -22,8 +22,8 @@
         </div>
 
         <div class="btns">
-            <button class="btn-menus">Voir nos menus</button>
-            <button class="btn-contact">Nous contacter</button>
+            <a href="/?page=menus" class="btn-menus">Voir nos menus</a>
+            <a href="#" class="btn-contact">Nous contacter</a>
         </div>
         </div>
     </section>

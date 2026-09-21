@@ -63,8 +63,12 @@ if (isset($_GET['page']) && $_GET['page'] === 'admin') {
     $controller->showDashBoard();
 }
 
-if (isset($_GET['page']) && $_GET['page'] === 'menus') {
+if (isset($_GET['page']) && $_GET['page'] === 'admin_menus') {
     $menuController->showMenus();
+}
+
+if (isset($_GET['page']) && $_GET['page'] === 'menus') {
+    $menuController->showPublicMenus();
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'menu_create') {

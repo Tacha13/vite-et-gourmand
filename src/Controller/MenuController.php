@@ -13,10 +13,18 @@ class MenuController
         $this->menuRepository = $menuRepository;
     }
 
+ //Route qui récupère les finfos des menus avec findAll et renvoie à la page menus admin   
     public function showMenus(): void
     {
         $menus = $this->menuRepository->findAll();
-        require __DIR__ . '/../../templates/admin/menus.php';
+        require __DIR__ . '/../../templates/admin/admin_menus.php';
+    }
+ 
+    //Route qui récupère les finfos des menus avec findAll et renvoie à la page menus public   
+    public function showPublicMenus(): void 
+    {
+        $menus = $this->menuRepository->findAll();
+        require __DIR__ . '/../../templates/menus.php';
     }
 
     public function createMenu(): void
@@ -29,8 +37,9 @@ class MenuController
         $conditions = htmlspecialchars($_POST['conditions']);
         $regime = htmlspecialchars($_POST['regime']);
         $stock = (int)($_POST['stock']);
+        $image = htmlspecialchars($_POST['image']);
 
-        $this->menuRepository->create($nameMenu,  $description,  $theme,  $persMin,  $price,  $conditions,  $regime,  $stock);
+        $this->menuRepository->create($nameMenu,  $description,  $theme,  $persMin,  $price,  $conditions,  $regime,  $stock, $image);
         header('location:http://localhost:8000/?page=menus');
         exit;
     }

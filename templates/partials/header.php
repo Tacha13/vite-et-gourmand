@@ -15,7 +15,7 @@
                         <a class="nav-link" href="/?page=menus">Menus</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="/?page=contact">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/?page=login">Connexion</a>

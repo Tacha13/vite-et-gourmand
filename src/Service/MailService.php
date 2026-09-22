@@ -40,11 +40,12 @@ class MailService {
 
 //Sender et body configuration
 
-        $email->setFrom('noreply@vitetgourmand.fr', 'From name');
+        $email->setFrom('noreply@vitegourmand.fr', 'From name');
         $email->addAddress($to);
         $email->Subject = $subject;
         $email->Body = $body;
         $email->send();
+        $email->smtpClose();
 
         echo "Message envoyé";
 
@@ -52,5 +53,7 @@ class MailService {
         echo "Erreur de mail : " . $e->getMessage();
     }
     }
+
+
 
 }

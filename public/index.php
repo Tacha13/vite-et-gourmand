@@ -14,8 +14,10 @@ use Tacha\ViteEtGourmand\Repository\MenuRepository;
 use Tacha\ViteEtGourmand\Controller\PlatController;
 use Tacha\ViteEtGourmand\Repository\PlatRepository;
 use Tacha\ViteEtGourmand\Controller\AllergeneController;
+use Tacha\ViteEtGourmand\Controller\ContactController;
 use Tacha\ViteEtGourmand\Repository\AllergeneRepository;
 use Tacha\ViteEtGourmand\Service\MailService;
+
 
 
 
@@ -34,6 +36,7 @@ $platRepo = new PlatRepository($data);
 $platController = new PlatController($platRepo);
 $allergeneRepo = new AllergeneRepository($data);
 $allergeneController = new AllergeneController($allergeneRepo);
+$contactController = new ContactController($mailService);
 
 
 
@@ -146,6 +149,14 @@ if (isset($_GET['page']) && $_GET['page'] === 'menu_details') {
     $menuController->showDetailMenu();
 }
 
+//Route pour accéder à la page des contacts
+if (isset($_GET['page']) && $_GET['page'] === 'contact') {
+   if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $contactController->showContact();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $contactController->sendContact();
+    }
+}
 
 
 

@@ -20,7 +20,7 @@ class MenuController
         require __DIR__ . '/../../templates/admin/admin_menus.php';
     }
  
-    //Route qui récupère les finfos des menus avec findAll et renvoie à la page menus public   
+    //Route qui récupère les infos des menus avec findAll et renvoie à la page menus public   
     public function showPublicMenus(): void 
     {
         $menus = $this->menuRepository->findAll();
@@ -60,6 +60,19 @@ class MenuController
         $this->menuRepository->delete($_POST['id']);
         header('location:http://localhost:8000/?page=menus');
         exit;
+    }
+
+    //Route qui récupère les infos d'un menu avec findById et renvoie à la page menus détail   
+    public function showDetailMenu(): void 
+    {
+        if (isset($_GET['id'])) {
+            $idMenu = $this->menuRepository->findById((int)$_GET['id']);
+            require __DIR__ . '/../../templates/menu_details.php';
+        } else {
+            header('location:http://localhost:8000/?page=menus');
+            exit;
+        }
+        
     }
 
 

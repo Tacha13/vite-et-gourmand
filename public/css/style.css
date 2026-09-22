@@ -30,6 +30,13 @@ body {
 
 p {
     font-family: lato, sans-serif;
+    font-size: 20px;
+}
+
+[class*="price"] {
+    font-weight: bold;
+    font-size: 20px;
+    
 }
 
 /*DEBUT HEADER*/
@@ -206,7 +213,7 @@ body {
 }
 
 .review-inner {
-    background-color: var(--accent);
+    background-color: var(--avis);
     padding: 20px;
 }
 
@@ -308,11 +315,143 @@ section.menu {
     background-color: var(--primary);
 }
 
-
 /*Fin menus*/
 
-
 /*FIN MENUS */
+
+/*DEBUT DETAILS MENU*/
+
+.detail-title {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+/*Début détails menus*/
+
+
+.main-detail {
+    margin: 40px;
+    background-color: var(--avis);
+
+}
+
+.detail-inner {
+    color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+
+}
+
+
+.detail-inner p {
+    padding: 20px;
+}
+
+.detail-description {
+    width: 50%;
+}
+
+.detail-min {
+    color: var(--text);
+    font-size: 16px;
+}
+
+
+.detail-condition {
+    padding: 10px;
+    width: 50%;
+    font-size: 16px;
+    background-color: var(--bg);
+    color: var(--text);
+    border: 1px solid;
+    border-radius: 15px;
+    border-color: var(--secondary);
+}
+
+
+.detail-theme {
+    font-size: 24px;
+}
+
+
+.detail-plat {
+    color: var(--text);
+    font-size: 18px;
+}
+
+.detail-allergene {
+    color: var(--text);
+    font-size: 14px;
+}
+
+.boutons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 40%;
+}
+
+.btn-command {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    background: var(--primary);
+    padding:12px 70px;
+    border: none;
+    border-radius: 2px;
+}
+
+.btn-menu {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    background: var(--secondary);
+    padding:12px 70px;
+    border: none;
+    border-radius: 2px;
+}
+/*Fin détails menus*/
+
+/*Début Bloc images*/
+
+
+.main-img {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.detail-img {
+    width: 100%;
+    padding: 40px;
+
+}
+
+.main-img img{
+    width: 70%;
+    padding: 40px;
+}
+
+.detail-img img {
+    max-width: 100%;
+    padding: 20px;
+}
+
+.detail-img .col {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/*Fin Bloc images*/
+
+
+/*FIN DETAILS MENU*/
+
 
 
 

@@ -90,7 +90,7 @@ if (!isset($menus) || !is_array($menus)) {
                 <p><?= htmlspecialchars($menu['description']) ?></p>
                 <p class="card-price">A partir de <?= htmlspecialchars((string) $menu['prix']) ?> € / personne</p>
                 <p class="card-min">Minimum <?= htmlspecialchars((string) $menu['nbPersonneMin']) ?> personnes</p>
-                <a href="#" class="detail">Voir le détail</a>
+                <a href="/?page=menu_details&id=<?= ($menu['id'])?>" class="detail">Voir le détail</a>
             </div>
         </div>
     </div>

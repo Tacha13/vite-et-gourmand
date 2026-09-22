@@ -60,6 +60,22 @@ class MenuRepository
         
     }
 
+    public function findById(int $id) : array 
+    {
+        $pdo = $this->database->getConnection();
+        $idMenu = $pdo->prepare("SELECT id, nomMenu, theme, prix, conditions, `description`, nbPersonneMin, `image`, allergenes FROM menus WHERE id = :id;");
+
+        $idMenu->execute(
+            [
+            ':id' => $id
+            ]
+        );
+
+        $result = $idMenu->fetch(PDO::FETCH_ASSOC);
+        return $result;
+        
+    }
+
        
     
 

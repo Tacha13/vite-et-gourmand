@@ -1,4 +1,4 @@
-<!-- Page d'accueil -->
+<!-- Page de contact -->
 
 <!--Contenu du head-->
 <?php
@@ -13,48 +13,49 @@
 
 <main>
 <div class="title-contact">
-    <h3>Contactez-nous</h3>
+    <h1>Contactez-nous</h1>
 </div>
-<div>
+<div class="contact-text">
     <p>Une question, une demande de devis ou besoin d’un renseignement ?</p>
     <p>L’équipe Vite & Gourmand est à votre écoute et vous répondra dans les meilleurs délais.</p>
 </div>
 
 <section class="container-fluid">
-<div class="row row-cols-2 row-cols-md-2">
-    <div class="col">
+<div class="row row-cols-1 row-cols-md-2">
+    
+    <div class="col contact-form">
         <form action="" method="POST">
             <div>
                 <label for="nomContact">Nom</label>
                 <input id="nomContact" name="nomContact" type="text" required>
-            </div><br> 
+            </div>
             <div>
                 <label for="prenomContact">Prénom</label>
                 <input id="prenomContact" name="prenomContact" type="text" required>
-            </div><br>
+            </div>
              <div>
                 <label for="emailContact">Adresse E-mail</label>
                 <input id="emailContact" name="emailContact" type="email" required>
-            </div><br>
+            </div>
              <div>
                 <label for="phoneContact">Téléphone</label>
                 <input id="phoneContact" name="phoneContact" type="tel" required>
-            </div><br>
-            <div class="col">
+            </div>
+            <div>
                 <label for="subjectContact">Objet</label>
                 <input id="subjectContact" name="subjectContact" type="text" required>
-            </div><br>
+            </div>
             <div>
                 <label for="messageContact">Message</label>
-                <textarea id="messageContact" name="messageContact" type="text"></textarea>
-            </div><br>
+                <textarea id="messageContact" name="messageContact" required></textarea>
+            </div>
             
             <div>
-                <button type="submit">Envoyer</button>
-            </div><br>
+                <button class="btn-contact" type="submit">Envoyer</button>
+            </div>
         </form>
     </div>
-        <div class="col">
+        <div class="col contact-main">
             <div>
             <h3 class="contact-title">Contact</h3>
             <div class="contact-inner">
@@ -79,10 +80,8 @@
                 <p>Mentions légales</p>
                 <p>Politique de confidentialité</p>
                 <p>Conditions Générales de Vente</p>
-                    <div class="contact">
-                        <a class="contact-link" href="#">Nous contacter</a>
-                    </div>
             </div>
+            
         </div>
         </div>
     </div>

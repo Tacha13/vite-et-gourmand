@@ -23,7 +23,7 @@
 
         <div class="btns">
             <a href="/?page=menus" class="btn-menus">Voir nos menus</a>
-            <a href="#" class="btn-contact">Nous contacter</a>
+            <a href="/?page=contact" class="btn-contact">Nous contacter</a>
         </div>
         </div>
     </section>

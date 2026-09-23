@@ -30,7 +30,6 @@ body {
 
 p {
     font-family: lato, sans-serif;
-    font-size: 20px;
 }
 
 [class*="price"] {
@@ -110,6 +109,7 @@ body {
 .contact-link {
     color: white;
     text-decoration: none;
+    font-size: 16px;
 }
 
 .copyright {
@@ -393,6 +393,7 @@ section.menu {
     display: flex;
     justify-content: flex-end;
     gap: 40%;
+    padding: 40px;
 }
 
 .btn-command {
@@ -448,9 +449,102 @@ section.menu {
 }
 
 /*Fin Bloc images*/
-
-
 /*FIN DETAILS MENU*/
+
+/*DEBUT CONTACT*/
+
+.title-contact {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+.contact-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 40px;
+    font-size: 24px;
+}
+
+
+.contact-form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-form div {
+    padding: 10px;
+    width: 200%;
+}
+
+.contact-form div label {
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.contact-form div input {
+    display: block;
+    width: 100%;
+    padding: 20px;
+}
+
+.contact-form div textarea {
+    display: block;
+    width: 100%;
+    height: 250px;
+}
+
+.btn-contact {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    background: var(--primary);
+    padding:12px 70px;
+    border: none;
+    border-radius: 2px;
+    margin: auto;
+    display: block;
+}
+
+.contact-main {
+    padding: 20px;
+    font-size: 20px;
+}
+
+.contact-title {
+    padding: 20px;
+
+}
+
+.contact-inner {
+    padding: 20px;
+}
+
+.link-contact {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.link-cct {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    background: var(--secondary);
+    padding:12px 70px;
+    border: none;
+    border-radius: 2px;
+}
+
+/*FIN CONTACT*/
 
 
 

@@ -62,3 +62,24 @@ PRIMARY KEY (plat_id, allergene_id),
 Foreign Key (plat_id) REFERENCES plats(id),
 Foreign Key (allergene_id) REFERENCES allergenes(id)
 );
+
+
+CREATE TABLE IF NOT EXISTS commandes
+(
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+numero VARCHAR (20) UNIQUE NOT NULL,
+statut VARCHAR (50) NOT NULL DEFAULT 'en attente de validation',
+adresseLivraison VARCHAR (250) NOT NULL,
+datePrestation DATE NOT NULL,
+heurePrestation TIME NOT NULL,
+nbPersonneCommande INTEGER NOT NULL,
+prixTotal DECIMAL (10, 2) NOT NULL,
+fraisLivraison DECIMAL (10, 2) NOT NULL,
+montantRemise DECIMAL (10, 2) NOT NULL DEFAULT 0.00,
+motifAnnulation VARCHAR (250),
+dateCreation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+menu_id INTEGER NOT NULL,
+compte_id INTEGER NOT NULL,
+Foreign Key (compte_id) REFERENCES comptes(id),
+Foreign Key (menu_id) REFERENCES menus(id)
+);

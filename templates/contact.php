@@ -90,14 +90,6 @@
 
 </main>
 
-
-
-
-
-
-
-
-
  <!--Contenu du footer-->
 <?php
     require __DIR__ . '/partials/footer.php';

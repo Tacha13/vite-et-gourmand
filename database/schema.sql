@@ -83,3 +83,13 @@ compte_id INTEGER NOT NULL,
 Foreign Key (compte_id) REFERENCES comptes(id),
 Foreign Key (menu_id) REFERENCES menus(id)
 );
+
+CREATE TABLE IF NOT EXISTS histostatut
+(
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+statut VARCHAR (50) NOT NULL,
+dateChangement DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+commande_id INTEGER NOT NULL,
+Foreign Key (commande_id) REFERENCES commandes(id)
+
+);

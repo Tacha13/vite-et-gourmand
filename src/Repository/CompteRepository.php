@@ -52,7 +52,7 @@ class CompteRepository
     public function findAllEmploye(): array
     {
         $pdo = $this->database->getConnection();
-        $stmt = $pdo->prepare("SELECT id, email, mot_de_passe_hash, nom, prenom, adresse, complement_adresse, code_postal, commune, telephone, actif, `role` FROM comptes WHERE `role` = 'employe';
+        $stmt = $pdo->prepare("SELECT id, email, nom, prenom, adresse, complement_adresse, code_postal, commune, telephone, actif, `role` FROM comptes WHERE `role` = 'employe';
         ");
 
         $stmt->execute([]);      
@@ -69,5 +69,21 @@ class CompteRepository
         $stmt->execute([
             ':id' => $id
         ]); 
+    }
+
+        public function findById(int $id) : ?array 
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("SELECT id, nom, prenom, email, telephone FROM comptes WHERE id = :id;");
+
+        $stmt->execute(
+            [
+            ':id' => $id
+            ]
+        );
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ?: null;
+        
     }
 }

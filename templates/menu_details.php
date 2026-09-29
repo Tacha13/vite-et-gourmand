@@ -57,7 +57,7 @@ if (!isset($idMenu) || !is_array($idMenu)) {
     
     </div>
     <div class="col boutons">
-        <a class="btn-command" href="#">Commander</a>
+        <a class="btn-command commande_create" href="/?page=commande_create&id=<?=  $idMenu['id'] ?>">Commander</a>
         <a class="btn-menu" href="#">Retour aux menus</a>
     </div>
     </div>

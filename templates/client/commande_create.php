@@ -1,14 +1,12 @@
 <!-- Page de création de la commande -->
-
 <!--Contenu du head-->
 <?php
-    require __DIR__ . '/partials/head.php';
+require __DIR__ . '/../partials/head.php';
 ?>
 <body>
-    
-<!--Contenu du header-->
+    <!--Contenu du header-->
 <?php
-    require __DIR__ . '/partials/header.php';
+require __DIR__ . '/../partials/header.php';
 ?>
 
 <div>
@@ -20,7 +18,7 @@
 
  <!--Contenu du footer-->
 <?php
-    require __DIR__ . '/partials/footer.php';
+    require __DIR__ . '/../partials/footer.php';
 ?>
 </body>
 </html>

@@ -73,8 +73,11 @@ class AuthController
             $_SESSION['user_id'] = $resultMail['id'];
             $_SESSION['user_email'] = $resultMail['email'];
             $_SESSION['user_role'] = $resultMail['role'];
-            header('location:http://localhost:8000/?page=admin');
-            exit;
+            if ($_SESSION['user_role'] === 'admin' || $_SESSION['user_role'] === 'employe') {
+                header('location:http://localhost:8000/?page=admin');
+                exit;
+            } header('location:http://localhost:8000/?page=home');
+                exit;
         }else {
             echo "mauvais mot de passe";
         }
@@ -94,6 +97,14 @@ class AuthController
 # Fonction qui redirige vers la page login si le role est non admin    
     public function checkAdmin(): void {
         if($_SESSION['user_role'] !== 'admin') {
+            header('location:http://localhost:8000/?page=login');
+            exit;
+        }
+    }
+
+    # Fonction qui redirige vers la page login si l'utilisateur n'est pas encore connecté    
+    public function checkLogin(): void {
+        if(!isset($_SESSION['user_id'])) {
             header('location:http://localhost:8000/?page=login');
             exit;
         }
@@ -143,6 +154,8 @@ class AuthController
         header('location:http://localhost:8000/?page=employes');
         exit;
     }
+
+
 
 
 

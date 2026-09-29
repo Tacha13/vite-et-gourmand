@@ -546,6 +546,96 @@ section.menu {
 
 /*FIN CONTACT*/
 
+/*DEBUT COMMANDE 1*/
+
+.title-recap {
+    text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+.title-commande {
+    padding: 20px;
+}
+
+.recap-commande {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+.recap-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: solid 5px;
+    border-color: var(--accent);
+}
+
+.img-commande {
+    max-width: 30%;
+    margin: 20px;
+}
+
+.nombreCommande {
+    margin: 50px;
+    padding: 20px;
+    border: solid 4px;
+    border-color: var(--accent);
+}
+
+.nombreCommande p {
+    text-align: center;
+    margin: 10px;
+}
+
+.commande-form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.commande-inner {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.commande-inner label {
+    width: 250px;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.commande-inner input {
+    width: 400px;
+}
+
+.commande-next {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bouton-next {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    background: var(--primary);
+    padding:12px 70px;
+    border: none;
+    border-radius: 2px;
+    margin: auto;
+    display: block;
+}
+
+
+/*FIN COMMANDE 1*/
+
+
 
 
 

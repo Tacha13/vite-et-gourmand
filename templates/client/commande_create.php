@@ -1,4 +1,5 @@
 <!-- Page de création de la commande -->
+ 
 <?php
 /** @var array $idClient */
 /** @var array $idMenu */
@@ -36,6 +37,10 @@ require __DIR__ . '/../partials/header.php';
 
             <div class="nombreCommande">
             <label for="nombreCommande">Nombre de Personnes</label>
+            <?php if (isset($_SESSION['erreurMinPersonne'])) { ?>
+	        <p> <?=  htmlspecialchars($_SESSION['erreurMinPersonne']) ?> </p>
+	        <?php unset($_SESSION['erreurMinPersonne']);
+            }?>
             <input id="nombreCommande" name="nombreCommande" type="number" min="<?= $idMenu['nbPersonneMin']?>" required>
             <p class="detail-min">Minimum <?= htmlspecialchars((string) $idMenu['nbPersonneMin']) ?> personnes</p>
             </div>
@@ -72,6 +77,10 @@ require __DIR__ . '/../partials/header.php';
                 <label for="postalLivraison">Code Postal</label>
                 <input id="postalLivraison" name="postalLivraison" type="text" required>
             </div>
+            <?php if (isset($_SESSION['messageHorsLimite'])) { ?>
+	        <p> <?=  htmlspecialchars($_SESSION['messageHorsLimite']) ?> </p>
+	        <?php unset($_SESSION['messageHorsLimite']);
+            }?>
             <div class="commande-inner">
                 <label for="cityLivraison">Ville</label>
                 <input id="cityLivraison" name="cityLivraison" type="text" required>
@@ -80,6 +89,10 @@ require __DIR__ . '/../partials/header.php';
                 <label for="datePrestation">Date de la livraison</label>
                 <input id="datePrestation" name="datePrestation" type="date" min="<?= date('Y-m-d', strtotime('+2DAY'))?>" required>
             </div>
+            <?php if (isset($_SESSION['erreurDateLivraison'])) { ?>
+	        <p> <?=  htmlspecialchars($_SESSION['erreurDateLivraison']) ?> </p>
+	        <?php unset($_SESSION['erreurDateLivraison']);
+            }?>
             <div class="commande-inner">
                 <label for="heurePrestation">Heure de la livraison</label>
                 <input id="heurePrestation" name="heurePrestation" type="time" required>

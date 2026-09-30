@@ -72,9 +72,15 @@ if (isset($_GET['page']) && $_GET['page'] === 'admin_menus') {
     $menuController->showMenus();
 }
 
+
+// Route qui vérifie si le user est connecté et renvoie au formulaire de la commande en GET sinon à la préparation de la commande si POST (vérification, calcul prix)
 if (isset($_GET['page']) && $_GET['page'] === 'commande_create') {
     $controller->checkLogin();
-    $commandeController->showCommandeCreate();
+   if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $commandeController->showCommandeCreate();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $commandeController->prepareCommande();
+    }
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'menus') {

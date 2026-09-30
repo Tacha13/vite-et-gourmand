@@ -106,6 +106,24 @@ class CommandeController
         }
 
         $prixTotalCommande = round(($prixMenu + $frais) - $remise, 2);
+
+        $_SESSION ['commande'] = ([
+            'idMenu' => $idMenu['id'],
+            'nombreCommande' => $nombreCommande,
+            'adressLivraison' => $adressLivraison,
+            'moreAdressLivraison' => $moreAdressLivraison,
+            'postalLivraison' => $postalLivraison,
+            'cityLivraison' => $cityLivraison,
+            'datePrestation' => $datePrestation,
+            'heurePrestation' => $heurePrestation,
+            'prixMenu' => $prixMenu,
+            'frais' => $frais,
+            'remise' => $remise,
+            'prixTotalCommande' => $prixTotalCommande
+        ]);
+
+            header('location:http://localhost:8000/?page=commande_validate');
+            exit;
     }
     
 

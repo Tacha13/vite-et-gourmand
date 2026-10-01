@@ -125,6 +125,22 @@ class CommandeController
             header('location:http://localhost:8000/?page=commande_validate');
             exit;
     }
+
+    //Route qui récupère les infos du panier avec findById et renvoie à la page de validation de la commande   
+    public function showCommandeValidate(): void 
+    {
+        if(!isset($_SESSION ['commande'] )) {
+            header('location:http://localhost:8000/?page=menus');
+            exit;
+        } 
+            $idMenu = $this->menuRepository->findById((int)$_SESSION['commande']['idMenu']);
+
+        if (!$idMenu) {
+            header('location:http://localhost:8000/?page=menus');
+            exit;
+        }
+            require __DIR__ . '/../../templates/client/commande_validate.php';
+    }
     
 
 }

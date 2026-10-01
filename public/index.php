@@ -83,6 +83,16 @@ if (isset($_GET['page']) && $_GET['page'] === 'commande_create') {
     }
 }
 
+// Route qui vérifie si le user est connecté et renvoie au formulaire de validation de la commande en GET sinon enregistre la commande en BDD si POST 
+if (isset($_GET['page']) && $_GET['page'] === 'commande_validate') {
+    $controller->checkLogin();
+   if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $commandeController->showCommandeValidate();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        //$commandeController->createCommande();
+    }
+}
+
 if (isset($_GET['page']) && $_GET['page'] === 'menus') {
     $menuController->showPublicMenus();
 }

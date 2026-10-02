@@ -99,7 +99,7 @@ require __DIR__ . '/../partials/header.php';
             </div>
             
             <div class="commande-next">
-                <button class="btn bouton-next" type="submit">Suivant</button>
+                <button class="bouton-next" type="submit">Suivant</button>
             </div>    
         </div>       
     </div>

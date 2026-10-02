@@ -142,5 +142,4 @@ class CommandeController
             require __DIR__ . '/../../templates/client/commande_validate.php';
     }
     
-
 }

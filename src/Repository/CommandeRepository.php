@@ -2,7 +2,7 @@
 
 namespace Tacha\ViteEtGourmand\Repository;
 
-use DateTime;
+
 use Tacha\ViteEtGourmand\Database;
 use PDO;
 
@@ -15,7 +15,7 @@ class CommandeRepository {
         $this->database = $database;
     }
 
-    public function create(string $numero, string $adresseLivraison, ?string $complementLivraison, string $codePostalLivraison, string $communeLivraison, string $datePrestation, string $heurePrestation, int $nbPersonneCommande, float $prixTotal, float $fraisLivraison, float $montantRemise, int $compte_id,  int $menu_id): void
+    public function create(string $numero, string $adresseLivraison, ?string $complementLivraison, string $codePostalLivraison, string $communeLivraison, string $datePrestation, string $heurePrestation, int $nbPersonneCommande, float $prixTotal, float $fraisLivraison, float $montantRemise, int $compte_id,  int $menu_id): int
     {
         $pdo = $this->database->getConnection();
         $stmt = $pdo->prepare("INSERT INTO commandes (numero, adresseLivraison, complementLivraison, codePostalLivraison, communeLivraison, datePrestation, heurePrestation, nbPersonneCommande, prixTotal, fraisLivraison, montantRemise, menu_id, compte_id) VALUES (:numero, :adresseLivraison, :complementLivraison, :codePostalLivraison, :communeLivraison, :datePrestation, :heurePrestation, :nbPersonneCommande, :prixTotal, :fraisLivraison, :montantRemise, :menu_id, :compte_id);
@@ -36,6 +36,23 @@ class CommandeRepository {
             ':montantRemise' => $montantRemise,
             ':menu_id' => $menu_id,
             ':compte_id' => $compte_id
+        ]
+        );
+
+        $idCommande = $pdo->lastInsertId();
+        return (int)$idCommande();
+    }
+
+    public function createHistoStatut(string $statut,int $commande_id): void
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("INSERT INTO histostatut (statut, commande_id) VALUES (:statut, :commande_id);
+        ");
+
+        $stmt->execute(
+            [
+            ':statut' => $statut,
+            ':commande_id' => $commande_id
         ]
         );
     }

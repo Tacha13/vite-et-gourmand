@@ -1,5 +1,4 @@
 <!-- Page de validation de la commande -->
- 
 <?php
 /** @var array $idMenu */
 ?>
@@ -18,11 +17,14 @@ require __DIR__ . '/../partials/header.php';
 <div>
     <h1 class="title-recap">Etape 2/2 avant validation de la commande</h1>
 </div>
+    
+    <?php if (isset($_SESSION['commandeErreur'])) { ?>
+    <div class="commandeMessage failure">
+    <p> <?=  htmlspecialchars($_SESSION['commandeErreur']) ?> </p>
+    </div>
+    <?php unset($_SESSION['commandeErreur']);
+    }?>
 
-<?php if (isset($_SESSION['commandeErreur'])) { ?>
-	        <p> <?=  htmlspecialchars($_SESSION['commandeErreur']) ?> </p>
-	        <?php unset($_SESSION['commandeErreur']);
-            }?>
 
 <section class="container-fluid">
 <form action="" method="POST">

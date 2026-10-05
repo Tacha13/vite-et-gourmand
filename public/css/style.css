@@ -139,6 +139,22 @@ body {
     margin: 40px;
 }
 
+/*Message de confirmation de commande*/
+.commandeMessage {
+    display: flex;
+    margin: 40px auto;
+    padding: 10px;
+    width: fit-content;
+    font-size: 28px;
+    border-radius: 10px;
+}
+
+.success{
+    border: solid 2px #d3f8dc;
+    background-color: #d3f8dc;
+}
+/*Fin message de confirmation de commande*/
+
 .hero-text {
     font-size: 18px;
     font-weight: 500;
@@ -203,7 +219,7 @@ body {
     height: auto;
 }
 
-/*Fin présnetation*/
+/*Fin présentation*/
 
 /*Début avis*/
 
@@ -253,8 +269,6 @@ select {
     background-color: var(--avis);
     font-size: 20px;
 }
-
-
 
 /*Fin Fitres*/
 
@@ -637,6 +651,14 @@ section.menu {
 /*FIN COMMANDE 1*/
 
 /*DEBUT COMMANDE 2*/
+/*Message d'échec de commande*/
+
+.failure{
+    border: solid 2px #ff855470;
+    background-color: #ff855470;
+    color: #a1232f;
+}
+/*Fin message d'échec de commande*/
 
 /*Le bloc de gauche avec le récapitulatif reprend en majeure partie le css de commande1, ajustement sur le récap de l'adresse*/
 

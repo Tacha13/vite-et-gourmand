@@ -177,7 +177,8 @@ class CommandeController
             $_SESSION['commandeSuccess'] = "La commande est validée";
             header('location:http://localhost:8000/?page=home');
             exit;
-        } catch (PDOException $e) {
+        } 
+        catch (PDOException $e) { 
             $_SESSION['commandeErreur'] = "La commande a échoué";
             header('location:http://localhost:8000/?page=commande_validate');
             exit;

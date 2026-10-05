@@ -77,10 +77,12 @@ require __DIR__ . '/../partials/header.php';
                 <label for="postalLivraison">Code Postal</label>
                 <input id="postalLivraison" name="postalLivraison" type="text" required>
             </div>
+            <div>
             <?php if (isset($_SESSION['messageHorsLimite'])) { ?>
 	        <p> <?=  htmlspecialchars($_SESSION['messageHorsLimite']) ?> </p>
 	        <?php unset($_SESSION['messageHorsLimite']);
             }?>
+            </div>
             <div class="commande-inner">
                 <label for="cityLivraison">Ville</label>
                 <input id="cityLivraison" name="cityLivraison" type="text" required>

@@ -21,10 +21,14 @@
             <p>Menus raffinés pour vos événements</p>
         </div>
 
+        
         <?php if (isset($_SESSION['commandeSuccess'])) { ?>
+        <div class="commandeMessage success">
         <p> <?=  htmlspecialchars($_SESSION['commandeSuccess']) ?> </p>
+        </div>
         <?php unset($_SESSION['commandeSuccess']);
         }?>
+        
 
         <div class="btns">
             <a href="/?page=menus" class="btn-menus">Voir nos menus</a>

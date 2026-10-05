@@ -47,7 +47,7 @@ class CommandeRepository {
     public function createHistoStatut(string $statut,int $commande_id): void
     {
         $pdo = $this->database->getConnection();
-        $stmt = $pdo->prepare("INSERT INTO histostatut (statut, commande_id) VALUES (:statut, :commande_id);
+        $stmt = $pdo->prepare("INSERT INTO histostatuts (statut, commande_id) VALUES (:statut, :commande_id);
         ");
 
         $stmt->execute(

@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS commandes
 (
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 numero VARCHAR (20) UNIQUE NOT NULL,
-statut VARCHAR (50) NOT NULL DEFAULT 'en attente de validation',
+statut VARCHAR (50) NOT NULL DEFAULT 'En attente de validation',
 adresseLivraison VARCHAR (250) NOT NULL,
 complementLivraison VARCHAR (250),
 codePostalLivraison VARCHAR(20) NOT NULL,

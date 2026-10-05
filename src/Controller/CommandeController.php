@@ -2,9 +2,11 @@
 
 namespace Tacha\ViteEtGourmand\Controller;
 
-
+use PDOException;
 use Tacha\ViteEtGourmand\Repository\CompteRepository;
 use Tacha\ViteEtGourmand\Repository\MenuRepository;
+use Tacha\ViteEtGourmand\Repository\CommandeRepository;
+
 
 class CommandeController 
 {
@@ -21,12 +23,14 @@ class CommandeController
     
     private CompteRepository $compteRepository;
     private MenuRepository $menuRepository;
+    private CommandeRepository $commandeRepository;
 
     
-    public function __construct(CompteRepository $compteRepository, MenuRepository $menuRepository)
+    public function __construct(CompteRepository $compteRepository, MenuRepository $menuRepository, CommandeRepository $commandeRepository)
     {
         $this->compteRepository = $compteRepository;
         $this->menuRepository = $menuRepository;
+        $this->commandeRepository = $commandeRepository;
     }
 
     //Route qui récupère les infos d'un client et du menu avec findById et renvoie à la page de commande   
@@ -140,6 +144,45 @@ class CommandeController
             exit;
         }
             require __DIR__ . '/../../templates/client/commande_validate.php';
+    }
+
+
+     //Route qui récupère les infos du panier avec findById et renvoie à la page de validation de la commande   
+    public function createCommande(): void 
+    {
+        if(!isset($_SESSION ['commande'] )) {
+            header('location:http://localhost:8000/?page=menus');
+            exit;
+        } 
+
+        $numero = "CMD-" . date('Y') . "-" . random_int(1000,9999);
+        
+        try {
+        $this->commandeRepository->saveCommande(
+            $numero,
+            $_SESSION ['commande']['adressLivraison'],
+            $_SESSION ['commande']['moreAdressLivraison'] ?: null,
+            $_SESSION ['commande']['postalLivraison'],
+            $_SESSION ['commande']['cityLivraison'],
+            $_SESSION ['commande']['datePrestation'],
+            $_SESSION ['commande']['heurePrestation'],
+            $_SESSION ['commande']['nombreCommande'],
+            $_SESSION ['commande']['prixTotalCommande'],
+            $_SESSION ['commande']['frais'],
+            $_SESSION ['commande']['remise'],
+            $_SESSION['user_id'],
+            $_SESSION ['commande']['idMenu']
+        );
+            unset($_SESSION['commande']);
+            $_SESSION['commandeSuccess'] = "La commande est validée";
+            header('location:http://localhost:8000/?page=home');
+            exit;
+        } catch (PDOException $e) {
+            $_SESSION['commandeErreur'] = "La commande a échoué";
+            header('location:http://localhost:8000/?page=commande_validate');
+            exit;
+        }
+
     }
     
 }

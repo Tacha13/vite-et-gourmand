@@ -17,6 +17,7 @@ use Tacha\ViteEtGourmand\Controller\AllergeneController;
 use Tacha\ViteEtGourmand\Controller\ContactController;
 use Tacha\ViteEtGourmand\Repository\AllergeneRepository;
 use Tacha\ViteEtGourmand\Service\MailService;
+use Tacha\ViteEtGourmand\Repository\CommandeRepository;
 use Tacha\ViteEtGourmand\Controller\CommandeController;
 
 
@@ -38,7 +39,8 @@ $platController = new PlatController($platRepo);
 $allergeneRepo = new AllergeneRepository($data);
 $allergeneController = new AllergeneController($allergeneRepo);
 $contactController = new ContactController($mailService);
-$commandeController = new CommandeController($repo, $menuRepo);
+$commandeRepository = new CommandeRepository($data);
+$commandeController = new CommandeController($repo, $menuRepo, $commandeRepository);
 
 
 
@@ -89,9 +91,10 @@ if (isset($_GET['page']) && $_GET['page'] === 'commande_validate') {
    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $commandeController->showCommandeValidate();
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        //$commandeController->createCommande();
+        $commandeController->createCommande();
     }
 }
+
 
 if (isset($_GET['page']) && $_GET['page'] === 'menus') {
     $menuController->showPublicMenus();

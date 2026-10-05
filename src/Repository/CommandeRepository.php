@@ -5,6 +5,7 @@ namespace Tacha\ViteEtGourmand\Repository;
 
 use Tacha\ViteEtGourmand\Database;
 use PDO;
+use PDOException;
 
 class CommandeRepository {
     
@@ -40,7 +41,7 @@ class CommandeRepository {
         );
 
         $idCommande = $pdo->lastInsertId();
-        return (int)$idCommande();
+        return (int)$idCommande;
     }
 
     public function createHistoStatut(string $statut,int $commande_id): void
@@ -55,5 +56,23 @@ class CommandeRepository {
             ':commande_id' => $commande_id
         ]
         );
+    }
+
+    public function saveCommande (string $numero, string $adresseLivraison, ?string $complementLivraison, string $codePostalLivraison, string $communeLivraison, string $datePrestation, string $heurePrestation, int $nbPersonneCommande, float $prixTotal, float $fraisLivraison, float $montantRemise, int $compte_id,  int $menu_id): void {
+
+    $pdo = $this->database->getConnection();
+    $pdo->beginTransaction();
+
+    try {
+        $idCommandeCreate = $this->create( $numero, $adresseLivraison, $complementLivraison, $codePostalLivraison, $communeLivraison, $datePrestation, $heurePrestation, $nbPersonneCommande, $prixTotal, $fraisLivraison, $montantRemise, $compte_id, $menu_id);
+        $this->createHistoStatut("En attente de validation", $idCommandeCreate);
+        $pdo->commit();
+    } catch (PDOException $e) {
+        $pdo->rollback();
+        throw $e;
+    }
+
+
+
     }
 }

@@ -21,6 +21,11 @@
             <p>Menus raffinés pour vos événements</p>
         </div>
 
+        <?php if (isset($_SESSION['commandeSuccess'])) { ?>
+        <p> <?=  htmlspecialchars($_SESSION['commandeSuccess']) ?> </p>
+        <?php unset($_SESSION['commandeSuccess']);
+        }?>
+
         <div class="btns">
             <a href="/?page=menus" class="btn-menus">Voir nos menus</a>
             <a href="/?page=contact" class="btn-contact">Nous contacter</a>
@@ -44,6 +49,7 @@
         </div>
         </div>
     </section>
+
 
     <section class="review-container">
         <div class="container-fluid">

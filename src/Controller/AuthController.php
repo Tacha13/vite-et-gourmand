@@ -56,6 +56,9 @@ class AuthController
         } else {
             echo "mot de passe différent";
         }
+
+        header('location:http://localhost:8000/?page=home');
+        exit;
     }
 
     public function showLogin(): void {

@@ -140,7 +140,7 @@ body {
 }
 
 /*Message de confirmation de commande*/
-.commandeMessage {
+.flashMessage {
     display: flex;
     margin: 40px auto;
     padding: 10px;
@@ -152,8 +152,18 @@ body {
 .success{
     border: solid 2px #d3f8dc;
     background-color: #d3f8dc;
+    color: var(--primary);
 }
 /*Fin message de confirmation de commande*/
+
+/*Message d'échec de commande*/
+
+.failure{
+    border: solid 2px #ff855470;
+    background-color: #ff855470;
+    color: #a1232f;
+}
+/*Fin message d'échec de commande*/
 
 .hero-text {
     font-size: 18px;

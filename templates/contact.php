@@ -15,6 +15,18 @@
 <div class="title-contact">
     <h1>Contactez-nous</h1>
 </div>
+    <?php if (isset($_SESSION['contactSendSuccess'])) { ?>
+    <div class="flashMessage success">    
+    <p> <?=  htmlspecialchars($_SESSION['contactSendSuccess']) ?> </p>
+    </div>
+    <?php unset($_SESSION['contactSendSuccess']);
+    }?>
+    <?php if (isset($_SESSION['contactSendFailure'])) { ?>
+    <div class="flashMessage failure">    
+    <p> <?=  htmlspecialchars($_SESSION['contactSendFailure']) ?> </p>
+    </div>
+    <?php unset($_SESSION['contactSendFailure']);
+    }?>
 <div class="contact-text">
     <p>Une question, une demande de devis ou besoin d’un renseignement ?</p>
     <p>L’équipe Vite & Gourmand est à votre écoute et vous répondra dans les meilleurs délais.</p>

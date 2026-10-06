@@ -21,7 +21,7 @@ class MailService {
      
     }
 
-    public function sendMail(string $to, string $subject, string $body) {
+    public function sendMail(string $to, string $subject, string $body): bool {
 
    try {
 
@@ -40,17 +40,17 @@ class MailService {
 
 //Sender et body configuration
 
-        $email->setFrom('noreply@vitegourmand.fr', 'From name');
+        $email->setFrom('noreply@vitegourmand.fr', 'Vite & Gouramnd');
         $email->addAddress($to);
         $email->Subject = $subject;
         $email->Body = $body;
         $email->send();
         $email->smtpClose();
 
-        echo "Message envoyé";
+        return true;
 
     } catch (Exception $e) {
-        echo "Erreur de mail : " . $e->getMessage();
+        return false;
     }
     }
 

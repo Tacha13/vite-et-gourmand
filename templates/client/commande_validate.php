@@ -19,7 +19,7 @@ require __DIR__ . '/../partials/header.php';
 </div>
     
     <?php if (isset($_SESSION['commandeErreur'])) { ?>
-    <div class="commandeMessage failure">
+    <div class="flashMessage failure">
     <p> <?=  htmlspecialchars($_SESSION['commandeErreur']) ?> </p>
     </div>
     <?php unset($_SESSION['commandeErreur']);

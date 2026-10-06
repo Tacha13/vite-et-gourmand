@@ -28,7 +28,6 @@
         </div>
         <?php unset($_SESSION['commandeSuccess']);
         }?>
-        
 
         <div class="btns">
             <a href="/?page=menus" class="btn-menus">Voir nos menus</a>

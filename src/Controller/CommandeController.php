@@ -6,6 +6,8 @@ use PDOException;
 use Tacha\ViteEtGourmand\Repository\CompteRepository;
 use Tacha\ViteEtGourmand\Repository\MenuRepository;
 use Tacha\ViteEtGourmand\Repository\CommandeRepository;
+use Tacha\ViteEtGourmand\Service\MailService;
+
 
 
 class CommandeController 
@@ -24,13 +26,15 @@ class CommandeController
     private CompteRepository $compteRepository;
     private MenuRepository $menuRepository;
     private CommandeRepository $commandeRepository;
+    private MailService $mailService;
 
     
-    public function __construct(CompteRepository $compteRepository, MenuRepository $menuRepository, CommandeRepository $commandeRepository)
+    public function __construct(CompteRepository $compteRepository, MenuRepository $menuRepository, CommandeRepository $commandeRepository, MailService $mailservice)
     {
         $this->compteRepository = $compteRepository;
         $this->menuRepository = $menuRepository;
         $this->commandeRepository = $commandeRepository;
+        $this->mailService = $mailservice;
     }
 
     //Route qui récupère les infos d'un client et du menu avec findById et renvoie à la page de commande   
@@ -147,7 +151,7 @@ class CommandeController
     }
 
 
-     //Route qui récupère les infos du panier avec findById et renvoie à la page de validation de la commande   
+     //Fonction qui sauvegarde la commande et envoie au client le message de confirmation ou non  
     public function createCommande(): void 
     {
         if(!isset($_SESSION ['commande'] )) {
@@ -170,11 +174,39 @@ class CommandeController
             $_SESSION ['commande']['prixTotalCommande'],
             $_SESSION ['commande']['frais'],
             $_SESSION ['commande']['remise'],
-            $_SESSION['user_id'],
+            $_SESSION ['user_id'],
             $_SESSION ['commande']['idMenu']
         );
+
+            $menu = $this->menuRepository->findById((int)$_SESSION['commande']['idMenu']);
+            $nameMenu = $menu['nomMenu'];
+
+            $body = "Bonjour " . $_SESSION['user_prenom'] . " " . $_SESSION['user_nom'] . ", Nous vous remercions pour votre commande du " . $nameMenu . ", numéro : " . $numero . "." . "Vous trouverez ci-dessous le détail de votre sélection :" . "\n" . 
+                    "Adresse de livraison : " . "\n" . 
+                    "Adresse : " . $_SESSION ['commande']['adressLivraison'] . "," . "\n" . 
+                    "Complément adresse : " . $_SESSION ['commande']['moreAdressLivraison'] . "," . "\n" .
+                    "Code Postal : " . $_SESSION ['commande']['postalLivraison'] . "," . "\n" .
+                    "Commune : " . $_SESSION ['commande']['cityLivraison'] . "." . "\n" .
+                    "La date de livraison est prévue le : " . "\n" .
+                    $_SESSION ['commande']['datePrestation'] . "," . "\n" .
+                    "à : " . "\n" .
+                    $_SESSION ['commande']['heurePrestation'] . "." . "\n" .
+                    "Le nombre de convives est : " . "\n" .
+                    $_SESSION ['commande']['nombreCommande'] . " personnes." . "\n" .
+                    "Ci-dessous le détail de votre commande : " . "\n" .
+                    "Prix total : " . $_SESSION ['commande']['prixTotalCommande'] . "€" . "," . "\n" .
+                    "Frais de livraison : " . $_SESSION ['commande']['frais'] . "€"  . "," . "\n" .
+                    "Remise : " . $_SESSION ['commande']['remise'] . "€"  . "," . "\n" . "";
+
+            // Renvoie true ou false si le mail est parti ou non
+            $answerCommande = $this->mailService->sendMail($_SESSION['user_email'], 'Confirmation commande, numéro : ' . $numero, $body);
+
+            if ($answerCommande == true) {
+                $_SESSION['commandeSuccess'] = "La commande est validée";
+            } else {
+                $_SESSION['mailCommandeFailure'] = "La commande a bien été prise en compte. Le mail de confirmation n'a pas pu être envoyé. N'hésitez pas à contacter notre équipe si besoin";
+            } 
             unset($_SESSION['commande']);
-            $_SESSION['commandeSuccess'] = "La commande est validée";
             header('location:http://localhost:8000/?page=home');
             exit;
         } 

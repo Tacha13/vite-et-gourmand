@@ -31,6 +31,7 @@ class MailService {
         $email->Host = $this->hostMail;
         $email->Port = $this->portMail;
         $email->SMTPAuth = true;
+        $email->CharSet = 'UTF-8';
 //désactivation forçage tls en develop - à retirer en prod
         $email->SMTPSecure = '';
         $email->SMTPAutoTLS = false;

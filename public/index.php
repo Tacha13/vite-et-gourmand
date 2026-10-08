@@ -40,7 +40,7 @@ $allergeneRepo = new AllergeneRepository($data);
 $allergeneController = new AllergeneController($allergeneRepo);
 $contactController = new ContactController($mailService);
 $commandeRepository = new CommandeRepository($data);
-$commandeController = new CommandeController($repo, $menuRepo, $commandeRepository);
+$commandeController = new CommandeController($repo, $menuRepo, $commandeRepository, $mailService);
 
 
 

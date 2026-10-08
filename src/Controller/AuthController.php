@@ -75,6 +75,8 @@ class AuthController
         if (password_verify($password, $resultMail['mot_de_passe_hash'])) {
             $_SESSION['user_id'] = $resultMail['id'];
             $_SESSION['user_email'] = $resultMail['email'];
+            $_SESSION['user_nom'] = $resultMail['nom'];
+            $_SESSION['user_prenom'] = $resultMail['prenom'];
             $_SESSION['user_role'] = $resultMail['role'];
             if ($_SESSION['user_role'] === 'admin' || $_SESSION['user_role'] === 'employe') {
                 header('location:http://localhost:8000/?page=admin');

@@ -23,12 +23,19 @@
 
         
         <?php if (isset($_SESSION['commandeSuccess'])) { ?>
-        <div class="commandeMessage success">
+        <div class="flashMessage success">
         <p> <?=  htmlspecialchars($_SESSION['commandeSuccess']) ?> </p>
         </div>
         <?php unset($_SESSION['commandeSuccess']);
         }?>
 
+        <?php if (isset($_SESSION['mailCommandeFailure'])) { ?>
+        <div class="flashMessage commandeFailure">
+        <p> <?=  htmlspecialchars($_SESSION['mailCommandeFailure']) ?> </p>
+        </div>
+        <?php unset($_SESSION['mailCommandeFailure']);
+        }?>
+        
         <div class="btns">
             <a href="/?page=menus" class="btn-menus">Voir nos menus</a>
             <a href="/?page=contact" class="btn-contact">Nous contacter</a>

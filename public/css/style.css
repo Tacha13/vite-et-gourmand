@@ -165,6 +165,15 @@ body {
 }
 /*Fin message d'échec de commande*/
 
+/*Message d'échec de commande*/
+
+.commandeFailure{
+    border: solid 2px #efc298;
+    background-color: #efc298;
+    color: var(--primary);
+}
+/*Fin message d'échec de commande*/
+
 .hero-text {
     font-size: 18px;
     font-weight: 500;

@@ -95,6 +95,12 @@ if (isset($_GET['page']) && $_GET['page'] === 'commande_validate') {
     }
 }
 
+//Route pour accéder au compte client
+if (isset($_GET['page']) && $_GET['page'] === 'compte_client') {
+    $commandeController->showAllCommandesClient();
+}
+
+
 
 if (isset($_GET['page']) && $_GET['page'] === 'menus') {
     $menuController->showPublicMenus();
@@ -183,6 +189,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'contact') {
         $contactController->sendContact();
     }
 }
+
 
 
 

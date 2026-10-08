@@ -215,7 +215,18 @@ class CommandeController
             header('location:http://localhost:8000/?page=commande_validate');
             exit;
         }
-
     }
-    
+
+    public function showAllCommandesClient (): void
+    {
+        if(!isset($_SESSION ['user_id'] )) {
+            header('location:http://localhost:8000/?page=login');
+            exit;
+        } 
+
+        $allCommandes = $this->commandeRepository->findCommandesByCompteId($_SESSION['user_id']);
+
+        require __DIR__ . '/../../templates/client/compte_client.php';
+    }
+
 }

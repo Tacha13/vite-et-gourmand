@@ -58,7 +58,8 @@ class CommandeRepository {
         );
     }
 
-    public function saveCommande (string $numero, string $adresseLivraison, ?string $complementLivraison, string $codePostalLivraison, string $communeLivraison, string $datePrestation, string $heurePrestation, int $nbPersonneCommande, float $prixTotal, float $fraisLivraison, float $montantRemise, int $compte_id,  int $menu_id): void {
+    public function saveCommande (string $numero, string $adresseLivraison, ?string $complementLivraison, string $codePostalLivraison, string $communeLivraison, string $datePrestation, string $heurePrestation, int $nbPersonneCommande, float $prixTotal, float $fraisLivraison, float $montantRemise, int $compte_id,  int $menu_id): void 
+    {
 
     $pdo = $this->database->getConnection();
     $pdo->beginTransaction();
@@ -71,8 +72,22 @@ class CommandeRepository {
         $pdo->rollback();
         throw $e;
     }
+    }
+
+    public function findCommandesByCompteId(int $compteId) : array 
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("SELECT c.numero, m.nomMenu,  c.statut, c.adresseLivraison, c.complementLivraison, c.codePostalLivraison, c.communeLivraison, c.datePrestation,  c.heurePrestation, c.nbPersonneCommande, c.prixTotal, c.fraisLivraison,  c.montantRemise, c.motifAnnulation, c.dateCreation, c.id
+        FROM commandes c, menus m  WHERE c.compte_id = :compteId AND  c.menu_id = m.id  ORDER BY c.datePrestation DESC;");
+
+        $stmt->execute(
+            [
+            ':compteId' => $compteId
+            ]);      
 
 
-
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+        
     }
 }

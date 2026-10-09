@@ -100,15 +100,15 @@ class AuthController
     }
 
 
-# Fonction qui redirige vers la page login si le role est non admin    
+# Fonction qui redirige vers la page login si le role est non admin ou non connecté 
     public function checkAdmin(): void {
-        if($_SESSION['user_role'] !== 'admin') {
+        if((!isset($_SESSION ['user_id'])) || $_SESSION['user_role'] !== 'admin') {
             header('location:http://localhost:8000/?page=login');
             exit;
         }
     }
 
-# Fonction qui redirige vers la page login si le role est employe  ou admin 
+# Fonction qui redirige vers la page login si le role est non admin/employe ou non connecté 
     public function checkEmploye(): void {
         if((!isset($_SESSION ['user_id'])) || (($_SESSION ['user_role']) !== 'admin') && (($_SESSION ['user_role']) !== 'employe') ) {
             header('location:http://localhost:8000/?page=login');

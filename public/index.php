@@ -71,6 +71,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'admin') {
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'admin_menus') {
+    $controller->checkEmploye();
     $menuController->showMenus();
 }
 
@@ -107,6 +108,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'menus') {
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'menu_create') {
+    $controller->checkEmploye();
    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $menuController->showMenuCreate();
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -115,19 +117,23 @@ if (isset($_GET['page']) && $_GET['page'] === 'menu_create') {
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'delete_confirm') {
+    $controller->checkEmploye();
     $menuController->showDeleteConfirm();
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'menu_delete') {
+    $controller->checkEmploye();
     $menuController->deleteMenu();
 }
 
 
 if (isset($_GET['page']) && $_GET['page'] === 'plats') {
+    $controller->checkEmploye();
     $platController->showPlat();
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'plat_create') {
+    $controller->checkEmploye();
    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $platController->showPlatCreate();
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -136,14 +142,17 @@ if (isset($_GET['page']) && $_GET['page'] === 'plat_create') {
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'plat_delete') {
+    $controller->checkEmploye();
     $platController->deletePlat();
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'allergenes') {
+    $controller->checkEmploye();
     $allergeneController->showAllergene();
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'allergene_create') {
+    $controller->checkEmploye();
    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $allergeneController->showAllergeneCreate();
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -152,10 +161,12 @@ if (isset($_GET['page']) && $_GET['page'] === 'allergene_create') {
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'allergene_delete') {
+    $controller->checkEmploye();
     $allergeneController->deleteAllergene();
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'employe_create') {
+    $controller->checkAdmin();
    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $controller->showEmployeCreate();
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -164,10 +175,12 @@ if (isset($_GET['page']) && $_GET['page'] === 'employe_create') {
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'employes') {
+    $controller->checkAdmin();
     $controller->showEmploye();
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'toggle_actif') {
+    $controller->checkAdmin();
     $controller->toggleActif();
 }
 

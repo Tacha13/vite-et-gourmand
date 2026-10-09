@@ -20,6 +20,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/?page=login">Connexion</a>
                     </li>
+                    <?php  if((isset($_SESSION ['user_id']) && ($_SESSION ['user_role']) === 'utilisateur')) :?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/?page=compte_client">Compte Client</a>
+                    </li>
+                    <?php endif ?>
                     <li class="nav-item">
                         <a class="nav-link" href="/?page=register">Inscription</a>
                     </li>

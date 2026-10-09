@@ -66,7 +66,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'logout') {
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'admin') {
-    $controller->checkAdmin();
+    $controller->checkEmploye();
     $controller->showDashBoard();
 }
 

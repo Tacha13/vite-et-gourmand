@@ -44,9 +44,6 @@
                 <input id="CityInput" name="city" type="text" required>
             </div>
             <div>
-                <input id="role" name="role" type="hidden" value="utilisateur" required>
-            </div>
-            <div>
                 <label for="PasswordInput">Mot de passe</label>
                 <input id="PasswordInput" name="password" type="password" minlength="10" required>
             </div>

@@ -35,7 +35,8 @@ class AuthController
         $city = htmlspecialchars($_POST['city']);
         $password = $_POST['password'];
         $passwordConfirm = $_POST['passwordConfirm'];
-        $role = $_POST['role'];
+        //Rôle utilisateur mis en dur car à l'inscription on ne peut être que 'utilisateur' > cela empêche une modification via l'inspecteur
+        $role = 'utilisateur';
 
         if ($password === $passwordConfirm) {
             if (
@@ -144,7 +145,8 @@ class AuthController
         $emailEmploye = htmlspecialchars($_POST['emailEmploye']);
         $telEmploye = htmlspecialchars($_POST['telEmploye']);
         $passwordEmploye = $_POST['passwordEmploye'];
-        $roleEmploye = $_POST['roleEmploye'];
+        //Rôle 'employe' mis en dur car à la création par l'admin on ne peut être que 'employe' > cela empêche une modification via l'inspecteur
+        $roleEmploye = 'employe';
 
         $hashedPassword = password_hash($passwordEmploye, PASSWORD_BCRYPT);
         $this->compteRepository->create($emailEmploye, $hashedPassword, $nameEmploye, $prenomEmploye, $telEmploye, $adressEmploye, $complAdressEmploye, $postalEmploye, $communeEmploye, $roleEmploye);

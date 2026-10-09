@@ -32,8 +32,6 @@
                 <input type="text" name="telEmploye" id="telEmploye"><br>
             <label for="passwordEmploye">Mot de passe de l'employé</label>
                 <input type="password" name="passwordEmploye" id="passwordEmploye"><br>
-            <input type="hidden" name="roleEmploye" id="roleEmploye" value="employe"><br>
-            <input type="hidden" name="statusEmploye" id="statusEmploye" value="1"><br>
             <input type="submit" value="Valider">
         </div>
 

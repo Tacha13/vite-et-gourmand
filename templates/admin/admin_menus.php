@@ -14,7 +14,7 @@
 <!-- Section pour les filtres -->
 <section>
     <div>
-
+        <a href="/?page=menu_create">Ajouter un menu</a>
     </div>
 </section>
 

@@ -40,7 +40,7 @@ class MenuController
         $image = htmlspecialchars($_POST['image']);
 
         $this->menuRepository->create($nameMenu,  $description,  $theme,  $persMin,  $price,  $conditions,  $regime,  $stock, $image);
-        header('location:http://localhost:8000/?page=menus');
+        header('location:http://localhost:8000/?page=admin_menus');
         exit;
     }
 
@@ -58,7 +58,7 @@ class MenuController
     public function deleteMenu(): void
     {
         $this->menuRepository->delete($_POST['id']);
-        header('location:http://localhost:8000/?page=menus');
+        header('location:http://localhost:8000/?page=admin_menus');
         exit;
     }
 

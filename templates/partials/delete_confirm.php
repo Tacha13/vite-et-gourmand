@@ -24,7 +24,7 @@ elseif  ($entity === 'menu') : ?>
     <form action="/?page=menu_delete" method="POST">
     <input name="id" type="hidden" value="<?=  $id ?>">
     <input type="submit" value="Supprimer"> <br>
-    <a href="/?page=menus">Annuler</a>
+    <a href="/?page=admin_menus">Annuler</a>
     </form>
 
 <?php 

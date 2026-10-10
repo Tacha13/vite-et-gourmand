@@ -26,7 +26,7 @@ class MenuRepository
         return $result;
     }
 
-    public function create(string $nameMenu, string $description, string $theme, int $persMin, int $price, string $conditions, string $regime, int $stock, string $image): void
+    public function create(string $nameMenu, string $description, string $theme, int $persMin, float $price, string $conditions, string $regime, int $stock, string $image): void
     {
         $pdo = $this->database->getConnection();
         $stmt = $pdo->prepare("INSERT INTO menus (nomMenu, `description`, theme, nbPersonneMin, prix, conditions, regime, stock, `image`) VALUES (:nomMenu, :description, :theme, :nbPersonneMin, :prix, :conditions, :regime, :stock, :image);

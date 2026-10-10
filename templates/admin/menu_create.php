@@ -23,7 +23,7 @@
             <label for="persMin">Nombre de personnes minimum</label>
             <input type="number" name="persMin" id="persMin"><br>
             <label for="price">Price</label>
-            <input type="number" name="price" id="price"><br>
+            <input type="number" name="price" id="price" step="0.01"><br>
             <label for="conditions">Conditions</label>
             <input type="text" name="conditions" id="conditions"><br>
             <label for="regime">Règime</label>

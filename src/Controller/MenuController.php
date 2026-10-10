@@ -33,7 +33,7 @@ class MenuController
         $description = htmlspecialchars($_POST['description']);
         $theme = htmlspecialchars($_POST['theme']);
         $persMin = (int)($_POST['persMin']);
-        $price = (int)($_POST['price']);
+        $price = (float)($_POST['price']);
         $conditions = htmlspecialchars($_POST['conditions']);
         $regime = htmlspecialchars($_POST['regime']);
         $stock = (int)($_POST['stock']);

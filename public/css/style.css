@@ -284,6 +284,21 @@ i.fa-solid {
 
 /*FIN LOGIN*/
 
+/*DEBUT INSCRIPTION*/
+.erreurFormPassword {
+    border: solid 2px #efc298;
+    background-color: #efc298;
+    color: var(--primary);
+}
+
+.erreurDifferentPassword {
+    border: solid 2px #efc298;
+    background-color: #efc298;
+    color: var(--primary);
+}
+
+/*FIN INSCRIPTION*/
+
 /*DEBUT MENUS */
 
 .menu-title {

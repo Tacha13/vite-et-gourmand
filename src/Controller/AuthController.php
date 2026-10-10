@@ -52,10 +52,15 @@ class AuthController
                 $body = "Bonjour $firstname, Merci d'avoir créé votre compte chez Vite & Gourmand ! Nous sommes ravis de vous accompagner dans la préparation de vos futurs événements. Des pièces cocktails raffinées aux buffets conviviaux, notre équipe met tout son savoir-faire en cuisine pour régaler vos convives et faire de vos moments de partage une réussite. Vous pouvez dès à présent composer votre menu et estimer votre budget en ligne.[Découvrir notre carte et nos formules] À très bientôt, L'équipe de Vite & Gourmand";
                 $this->mailService->sendMail($email, "Bienvenue chez Vite et Gourmand", $body);
             } else {
-                echo "Format invalide";
+                $_SESSION['erreurFormPassword'] = "Le mot de passe ne respecte pas le format attendu : Votre mot de passe doit contenir au moins :
+                10 caractères, 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial.";
+                header('location:http://localhost:8000/?page=register');
+                exit;
             }
         } else {
-            echo "mot de passe différent";
+                $_SESSION['erreurDifferentPassword'] = "Le mot de passe ne correspond pas au mot de passe initial saisi, veuillez corriger.";
+                header('location:http://localhost:8000/?page=register');
+                exit;
         }
 
         header('location:http://localhost:8000/?page=home');

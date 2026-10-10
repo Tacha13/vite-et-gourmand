@@ -7,6 +7,18 @@
     <?php
     require __DIR__ . '/../partials/header.php';
     ?>
+    <?php if (isset($_SESSION['erreurFormPassword'])) { ?>
+        <div class="flashMessage erreurFormPassword">
+        <p> <?=  htmlspecialchars($_SESSION['erreurFormPassword']) ?> </p>
+        </div>
+    <?php unset($_SESSION['erreurFormPassword']);
+    }?>
+    <?php if (isset($_SESSION['erreurDifferentPassword'])) { ?>
+        <div class="flashMessage erreurDifferentPassword">
+        <p> <?=  htmlspecialchars($_SESSION['erreurDifferentPassword']) ?> </p>
+        </div>
+    <?php unset($_SESSION['erreurDifferentPassword']);
+    }?>
     <div>
         <form action="" method="POST">
             <fieldset class="inscription">

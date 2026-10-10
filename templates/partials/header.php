@@ -17,17 +17,29 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/?page=contact">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/?page=login">Connexion</a>
-                    </li>
                     <?php  if((isset($_SESSION ['user_id']) && ($_SESSION ['user_role']) === 'utilisateur')) :?>
                     <li class="nav-item">
                         <a class="nav-link" href="/?page=compte_client">Compte Client</a>
                     </li>
                     <?php endif ?>
+                    <?php  if((!isset($_SESSION ['user_id']))) :?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/?page=login">Connexion</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/?page=register">Inscription</a>
                     </li>
+                    <?php endif ?>
+                    <?php  if(isset($_SESSION ['user_id']) && (($_SESSION ['user_role']) === 'admin' || ($_SESSION ['user_role']) === 'employe')) :?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/?page=admin">Administration</a>
+                    </li>
+                    <?php endif ?>
+                    <?php  if((isset($_SESSION ['user_id']))) :?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/?page=logout">Déconnexion</a>
+                    </li>
+                    <?php endif ?>
                 </ul>
             </div>
         </div>

@@ -37,7 +37,7 @@ class CompteRepository
     public function findByEmail(string $email): ?array
     {
         $pdo = $this->database->getConnection();
-        $stmt = $pdo->prepare("SELECT id, email, nom, prenom, mot_de_passe_hash, `role` FROM comptes WHERE email = :email;
+        $stmt = $pdo->prepare("SELECT id, email, nom, prenom, mot_de_passe_hash, `role`, actif FROM comptes WHERE email = :email;
         ");
 
         $stmt->execute([

@@ -74,6 +74,11 @@ class AuthController
 
         if ($resultMail !== null) {
         if (password_verify($password, $resultMail['mot_de_passe_hash'])) {
+            if ($resultMail['actif'] !== 1) {
+                $_SESSION['erreurActif'] = "Vous ne pouvez pas vous connecter, votre compte est inactif.";
+                header('location:http://localhost:8000/?page=login');
+                exit;
+            }
             $_SESSION['user_id'] = $resultMail['id'];
             $_SESSION['user_email'] = $resultMail['email'];
             $_SESSION['user_nom'] = $resultMail['nom'];

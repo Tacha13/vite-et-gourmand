@@ -264,6 +264,18 @@ i.fa-solid {
 /*Fin avis*/
 /*FIN HOME*/
 
+/*DEBUT LOGIN*/
+/*Message d'échec de COMPTE ACTIF*/
+
+.erreurActif{
+    border: solid 2px #efc298;
+    background-color: #efc298;
+    color: var(--primary);
+}
+/*Fin message d'échec de commande*/
+
+/*FIN LOGIN*/
+
 /*DEBUT MENUS */
 
 .menu-title {

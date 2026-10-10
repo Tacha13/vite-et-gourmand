@@ -15,6 +15,14 @@
         <?php unset($_SESSION['erreurActif']);
         }?>
 
+    <?php if (isset($_SESSION['erreurCompte'])) { ?>
+        <div class="flashMessage erreurCompte">
+        <p> <?=  htmlspecialchars($_SESSION['erreurCompte']) ?> </p>
+        </div>
+        <?php unset($_SESSION['erreurCompte']);
+        }?>
+
+
     <div>
         <form action="" method="POST">
             <fieldset class="connexion">

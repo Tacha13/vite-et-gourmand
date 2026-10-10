@@ -265,13 +265,21 @@ i.fa-solid {
 /*FIN HOME*/
 
 /*DEBUT LOGIN*/
-/*Message d'échec de COMPTE ACTIF*/
+/*Message d'échec de compte non actif*/
 
 .erreurActif{
     border: solid 2px #efc298;
     background-color: #efc298;
     color: var(--primary);
 }
+
+/*Message d'échec de compte mail/password*/
+.erreurCompte{
+    border: solid 2px #efc298;
+    background-color: #efc298;
+    color: var(--primary);
+}
+
 /*Fin message d'échec de commande*/
 
 /*FIN LOGIN*/

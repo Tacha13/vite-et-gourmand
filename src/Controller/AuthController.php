@@ -90,10 +90,14 @@ class AuthController
             } header('location:http://localhost:8000/?page=home');
                 exit;
         }else {
-            echo "mauvais mot de passe";
+            $_SESSION['erreurCompte'] = "L'email ou le mot de passe est incorrect, veuillez réessayer ou nous contacter.";
+            header('location:http://localhost:8000/?page=login');
+            exit;
         }
     } else {
-        echo "l'email n'existe pas";
+            $_SESSION['erreurCompte'] = "L'email ou le mot de passe est incorrect, veuillez réessayer ou nous contacter.";
+            header('location:http://localhost:8000/?page=login');
+            exit;
         }
     }
 

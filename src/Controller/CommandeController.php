@@ -159,10 +159,12 @@ class CommandeController
             exit;
         } 
 
-        $numero = "CMD-" . date('Y') . "-" . random_int(1000,9999);
+        //Numéro provisoire en attendant d'insérer l'id de la commande
+        //$numero = "CMD-" . date('Y') . "-" . random_int(1000,9999);
+        $numero = uniqid("TMP");
         
         try {
-        $this->commandeRepository->saveCommande(
+        $numero = $this->commandeRepository->saveCommande(
             $numero,
             $_SESSION ['commande']['adressLivraison'],
             $_SESSION ['commande']['moreAdressLivraison'] ?: null,

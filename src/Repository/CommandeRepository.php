@@ -58,7 +58,7 @@ class CommandeRepository {
         );
     }
 
-    public function saveCommande (string $numero, string $adresseLivraison, ?string $complementLivraison, string $codePostalLivraison, string $communeLivraison, string $datePrestation, string $heurePrestation, int $nbPersonneCommande, float $prixTotal, float $fraisLivraison, float $montantRemise, int $compte_id,  int $menu_id): void 
+    public function saveCommande (string $numero, string $adresseLivraison, ?string $complementLivraison, string $codePostalLivraison, string $communeLivraison, string $datePrestation, string $heurePrestation, int $nbPersonneCommande, float $prixTotal, float $fraisLivraison, float $montantRemise, int $compte_id,  int $menu_id): string 
     {
 
     $pdo = $this->database->getConnection();
@@ -66,8 +66,11 @@ class CommandeRepository {
 
     try {
         $idCommandeCreate = $this->create( $numero, $adresseLivraison, $complementLivraison, $codePostalLivraison, $communeLivraison, $datePrestation, $heurePrestation, $nbPersonneCommande, $prixTotal, $fraisLivraison, $montantRemise, $compte_id, $menu_id);
+        $numeroFinal = "CMD-" . date('Y') . "-" . $idCommandeCreate;
+        $this->updateNumero($idCommandeCreate, $numeroFinal);
         $this->createHistoStatut("En attente de validation", $idCommandeCreate);
         $pdo->commit();
+        return (string)$numeroFinal;
     } catch (PDOException $e) {
         $pdo->rollback();
         throw $e;
@@ -89,5 +92,17 @@ class CommandeRepository {
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
         
+    }
+
+    public function updateNumero (int $id,string $numero): void {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("UPDATE commandes SET numero = :numero WHERE id = :id");
+
+                $stmt->execute(
+            [
+            ':numero' => $numero,
+            ':id' => $id
+        ]
+        );
     }
 }

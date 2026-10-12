@@ -297,6 +297,18 @@ i.fa-solid {
     color: var(--primary);
 }
 
+.erreurEmailRegister {
+    border: solid 2px #efc298;
+    background-color: #efc298;
+    color: var(--primary);
+}
+
+.successRegister{
+    border: solid 2px #d3f8dc;
+    background-color: #d3f8dc;
+    color: var(--primary);
+}
+
 /*FIN INSCRIPTION*/
 
 /*DEBUT MENUS */
@@ -840,16 +852,6 @@ section.menu {
 
 /*FIN DASHBOARD ADMIN*/
 
-/*DEBUT INSCRIPTION*/
-.successRegister{
-    border: solid 2px #d3f8dc;
-    background-color: #d3f8dc;
-    color: var(--primary);
-}
-
-
-
-/*FIN INSCRITPION*/
 
 
 

@@ -19,6 +19,12 @@
         </div>
     <?php unset($_SESSION['erreurDifferentPassword']);
     }?>
+     <?php if (isset($_SESSION['erreurEmailRegister'])) { ?>
+        <div class="flashMessage erreurEmailRegister">
+        <p> <?=  htmlspecialchars($_SESSION['erreurEmailRegister']) ?> </p>
+        </div>
+    <?php unset($_SESSION['erreurEmailRegister']);
+    }?>
     <div>
         <form action="" method="POST">
             <fieldset class="inscription">

@@ -49,6 +49,13 @@ class AuthController
             'city' => $_POST['city'], 
              ];
 
+        $checkEmail = $this->compteRepository->findByEmail($email);
+        if ($checkEmail !== null) {
+            $_SESSION['erreurEmailRegister'] = "Veuillez vérifier l'email saisi.";
+            header('location:http://localhost:8000/?page=register');
+            exit;
+        }
+
         if ($password === $passwordConfirm) {
             if (
                 preg_match('/[A-Z]/', $password)

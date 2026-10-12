@@ -11,6 +11,28 @@
     require __DIR__ . '/../partials/header.php';
 ?>
 
+
+<section>
+    <div>
+        <a href="/?page=allergenes">Ajouter un allergène</a>
+    </div>
+</section>
+
+<!-- Message de succès ou d'erreur de suppression d'un plat -->
+    <?php if (isset($_SESSION['successDeleteAllergene'])) { ?>
+        <div class="flashMessage successDeleteAllergene">
+        <p> <?=  htmlspecialchars($_SESSION['successDeleteAllergene']) ?> </p>
+        </div>
+        <?php unset($_SESSION['successDeleteAllergene']);
+        }?>
+
+    <?php if (isset($_SESSION['erreurDeleteAllergene'])) { ?>
+        <div class="flashMessage erreurDeleteAllergene">
+        <p> <?=  htmlspecialchars($_SESSION['erreurDeleteAllergene']) ?> </p>
+        </div>
+        <?php unset($_SESSION['erreurDeleteAllergene']);
+        }?>
+
 <!-- Section pour les filtres -->
 <section>
     <div>

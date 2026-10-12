@@ -42,9 +42,16 @@ class AllergeneController
 
     public function deleteAllergene(): void
     {
-        $this->allergeneRepository->delete($_POST['id']);
-        header('location:http://localhost:8000/?page=allergenes');
+        try {
+            $this->allergeneRepository->delete($_POST['id']);
+            $_SESSION['successDeleteAllergene'] = "L'allergène a été correctement supprimé.";
+            header('location:http://localhost:8000/?page=allergenes');
         exit;
+        } catch (PDOException $e) { 
+            $_SESSION['erreurDeleteAllergene'] = "L'allergène ne peut être supprimé, il est pris en compte dans un ou plusieurs plats.";
+            header('location:http://localhost:8000/?page=allergenes');
+            exit;
+    }
     }
 
 

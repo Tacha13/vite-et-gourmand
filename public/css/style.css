@@ -822,6 +822,20 @@ section.menu {
     color: #a1232f;
 }
 
+/*Début admin allergenes*/
+
+.successDeleteAllergene {
+    border: solid 2px #d3f8dc;
+    background-color: #d3f8dc;
+    color: var(--primary);
+}
+
+.erreurDeleteAllergene {
+    border: solid 2px #ff855470;
+    background-color: #ff855470;
+    color: #a1232f;
+}
+
 
 
 /*FIN DASHBOARD ADMIN*/

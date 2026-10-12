@@ -1,5 +1,6 @@
     <!--Contenu du head-->
     <?php
+    $title = "Inscritpion Vite & Gourmand";
     require __DIR__ . '/../partials/head.php';
     ?>
 <body>

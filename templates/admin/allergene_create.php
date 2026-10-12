@@ -2,6 +2,7 @@
 
 <!--Contenu du head-->
 <?php
+    $title = "Création allergènes Vite & Gourmand";
     require __DIR__ . '/../partials/head.php';
 ?>
 <body>

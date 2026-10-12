@@ -2,6 +2,7 @@
 
 <!--Contenu du head-->
 <?php
+    $title = "Gestion menus Vite & Gourmand";
     require __DIR__ . '/../partials/head.php';
 ?>
 <body>

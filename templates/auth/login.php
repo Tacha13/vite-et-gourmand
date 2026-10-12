@@ -1,5 +1,6 @@
     <!--Contenu du head-->
     <?php
+    $title = "Connexion Vite & Gourmand";
     require __DIR__ . '/../partials/head.php';
     ?>
 <body>
@@ -51,7 +52,7 @@
                 <button type="submit">Validez</button>
             </div><br>
              <div>
-                <a href="">Pas encore inscrit ? S'inscrire.</a>
+                <a href="/?page=register">Pas encore inscrit ? S'inscrire.</a>
             </div><br>
             </fieldset>
         </form>

@@ -2,6 +2,7 @@
 
 <!--Contenu du head-->
 <?php
+    $title = "Détails des menus Vite & Gourmand";
     require __DIR__ . '/partials/head.php';
 ?>
 <body>
@@ -58,7 +59,7 @@ if (!isset($idMenu) || !is_array($idMenu)) {
     </div>
     <div class="col boutons">
         <a class="btn-command" href="/?page=commande_create&menu_id=<?=  $idMenu['id'] ?>">Commander</a>
-        <a class="btn-menu" href="#">Retour aux menus</a>
+        <a class="btn-menu" href="/?page=menus">Retour aux menus</a>
     </div>
     </div>
 

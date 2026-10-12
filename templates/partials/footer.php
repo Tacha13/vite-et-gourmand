@@ -25,12 +25,12 @@
                 <p>Politique de confidentialité</p>
                 <p>Conditions Générales de Vente</p>
                     <div class="contact">
-                        <a class="contact-link" href="#">Nous contacter</a>
+                        <a class="contact-link" href="/?page=contact">Nous contacter</a>
                     </div>
             </div>
         </div>
     </div>
     <div class="copyright">
-        © 2026 Vite & Gourmand. Tous droits réservés.
+        © 2026 Vite & Gourmand. Tous droits réservés.
     </div>
 </footer>

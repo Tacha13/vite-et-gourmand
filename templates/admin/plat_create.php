@@ -2,6 +2,7 @@
 
 <!--Contenu du head-->
 <?php
+    $title = "Création plats Vite & Gourmand";
     require __DIR__ . '/../partials/head.php';
 ?>
 <body>

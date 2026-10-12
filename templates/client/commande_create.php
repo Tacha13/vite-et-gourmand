@@ -7,6 +7,7 @@
 
 <!--Contenu du head-->
 <?php
+$title = "Création Commande Vite & Gourmand";
 require __DIR__ . '/../partials/head.php';
 ?>
 <body>

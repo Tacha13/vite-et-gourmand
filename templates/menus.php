@@ -29,7 +29,7 @@
     </div>
     <div>
         <select name="filter-regime" id="filter-regime">
-            <option value="">Règime</option>
+            <option value="">Régime</option>
             <option value="vegetarien">Végétarien</option>
             <option value="vegan">Vegan</option>
             <option value="classique">Classique</option>

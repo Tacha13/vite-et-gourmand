@@ -41,7 +41,7 @@ class MailService {
 
 //Sender et body configuration
 
-        $email->setFrom('noreply@vitegourmand.fr', 'Vite & Gouramnd');
+        $email->setFrom('noreply@vitegourmand.fr', 'Vite & Gourmand');
         $email->addAddress($to);
         $email->Subject = $subject;
         $email->Body = $body;

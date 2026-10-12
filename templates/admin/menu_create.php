@@ -26,11 +26,11 @@ $image = htmlspecialchars($_POST['image']);
             <input type="text" name="theme" id="theme"><br>
             <label for="persMin">Nombre de personnes minimum</label>
             <input type="number" name="persMin" id="persMin"><br>
-            <label for="price">Price</label>
+            <label for="price">Prix</label>
             <input type="number" name="price" id="price" step="0.01"><br>
             <label for="conditions">Conditions</label>
             <input type="text" name="conditions" id="conditions"><br>
-            <label for="regime">Règime</label>
+            <label for="regime">Régime</label>
             <input type="text" name="regime" id="regime"><br>
             <label for="stock">Stock</label>
             <input type="number" name="stock" id="stock"><br>

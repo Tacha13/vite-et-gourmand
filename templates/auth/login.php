@@ -8,6 +8,13 @@
     <?php
     require __DIR__ . '/../partials/header.php';
     ?>
+     <?php if (isset($_SESSION['successRegister'])) { ?>
+        <div class="flashMessage successRegister">
+        <p> <?=  htmlspecialchars($_SESSION['successRegister']) ?> </p>
+        </div>
+        <?php unset($_SESSION['successRegister']);
+        }?>
+
     <?php if (isset($_SESSION['erreurActif'])) { ?>
         <div class="flashMessage erreurActif">
         <p> <?=  htmlspecialchars($_SESSION['erreurActif']) ?> </p>
@@ -21,6 +28,7 @@
         </div>
         <?php unset($_SESSION['erreurCompte']);
         }?>
+
 
 
     <div>

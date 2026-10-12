@@ -37,6 +37,17 @@ class AuthController
         $passwordConfirm = $_POST['passwordConfirm'];
         //Rôle utilisateur mis en dur car à l'inscription on ne peut être que 'utilisateur' > cela empêche une modification via l'inspecteur
         $role = 'utilisateur';
+        //Array qui garde les infos saisies en mémoire si le mot d epasse est incorrect > permet de ne pas ressaisir les informations
+        $_SESSION['saveSaisieRegister'] = [
+            'name' => $_POST['name'], 
+            'firstname' => $_POST['firstname'], 
+            'email' => $_POST['email'], 
+            'phone' => $_POST['phone'], 
+            'adress' => $_POST['adress'], 
+            'adressAptInput' => $_POST['adressAptInput'], 
+            'postalCode' => $_POST['postalCode'], 
+            'city' => $_POST['city'], 
+             ];
 
         if ($password === $passwordConfirm) {
             if (
@@ -62,8 +73,8 @@ class AuthController
                 header('location:http://localhost:8000/?page=register');
                 exit;
         }
-
-        header('location:http://localhost:8000/?page=home');
+        $_SESSION['successRegister'] = "Votre compte est créé. Vous pouvez vous identifier ci-dessous.";                
+        header('location:http://localhost:8000/?page=login');
         exit;
     }
 

@@ -25,35 +25,35 @@
                 <legend>Inscription</legend>
             <div>
                 <label for="NameInput">Nom</label>
-                <input id="NameInput" name="name" type="text" required>
+                <input id="NameInput" name="name" type="text" value="<?= htmlspecialchars($_SESSION['saveSaisieRegister']['name'] ?? "") ?>" required>
             </div> 
             <div>
                 <label for="FirstnameInput">Prénom</label>
-                <input id="FirstnameInput" name="firstname" type="text" required>
+                <input id="FirstnameInput" name="firstname" type="text" value="<?= htmlspecialchars($_SESSION['saveSaisieRegister']['firstname'] ?? "") ?>" required>
             </div>
              <div>
                 <label for="EmailInput">Email</label>
-                <input id="EmailInput" name="email" type="email" required>
+                <input id="EmailInput" name="email" type="email" value="<?= htmlspecialchars($_SESSION['saveSaisieRegister']['email'] ?? "") ?>" required>
             </div>
              <div>
                 <label for="PhoneInput">Téléphone</label>
-                <input id="PhoneInput" name="phone" type="tel" required>
+                <input id="PhoneInput" name="phone" type="tel" value="<?= htmlspecialchars($_SESSION['saveSaisieRegister']['phone'] ?? "") ?>" required>
             </div>
             <div>
                 <label for="AdressInput">Adresse</label>
-                <input id="AdressInput" name="adress" type="text" required>
+                <input id="AdressInput" name="adress" type="text" value="<?= htmlspecialchars($_SESSION['saveSaisieRegister']['adress'] ?? "") ?>" required>
             </div>
              <div>
                 <label for="AdressAptInput">Complément adresse</label>
-                <input id="AdressAptInput" name="adressAptInput" type="text">
+                <input id="AdressAptInput" name="adressAptInput" type="text" value="<?= htmlspecialchars($_SESSION['saveSaisieRegister']['adressAptInput'] ?? "") ?>">
             </div>
              <div>
                 <label for="PostalCode">Code Postal</label>
-                <input id="PostalCode" name="postalCode" type="number" required>
+                <input id="PostalCode" name="postalCode" type="number" value="<?= htmlspecialchars($_SESSION['saveSaisieRegister']['postalCode'] ?? "") ?>" required>
             </div>
             <div>
                 <label for="CityInput">Commune</label>
-                <input id="CityInput" name="city" type="text" required>
+                <input id="CityInput" name="city" type="text" value="<?= htmlspecialchars($_SESSION['saveSaisieRegister']['city'] ?? "") ?>" required>
             </div>
             <div>
                 <label for="PasswordInput">Mot de passe</label>
@@ -70,6 +70,7 @@
             <div>
                 <button type="submit">Validez</button>
             </div>
+            <?php unset($_SESSION['saveSaisieRegister']);?>
             </fieldset>
         </form>
     </div>

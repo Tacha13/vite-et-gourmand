@@ -165,7 +165,7 @@ class AuthController
         $hashedPassword = password_hash($passwordEmploye, PASSWORD_BCRYPT);
         $this->compteRepository->create($emailEmploye, $hashedPassword, $nameEmploye, $prenomEmploye, $telEmploye, $adressEmploye, $complAdressEmploye, $postalEmploye, $communeEmploye, $roleEmploye);
         
-        $body = "Bonjour $prenomEmploye $nameEmploye, Votre compte Employé a été créé, Vous trouverez ci-dessous votre identifiant de connexion";
+        $body = "Bonjour $prenomEmploye $nameEmploye, \n Votre compte Employé a été créé. \n Vous trouverez ci-dessous votre identifiant de connexion : \n Votre identifiant : $emailEmploye \n Votre mot de passe vous sera communiqé par l'administrateur. \n Vite & Gourmand";
         $this->mailService->sendMail($emailEmploye, "Bienvenue chez Vite et Gourmand - Création de compte", $body);
 
         header('location:http://localhost:8000/?page=admin');

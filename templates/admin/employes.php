@@ -17,8 +17,13 @@
 
     </div>
 </section>
+<section>
+    <div>
+        <a href="/?page=employe_create">Ajouter un employé</a>
+    </div>
+</section>
 
-<!-- Tableau affichant les informations des allerènes -->
+<!-- Tableau affichant les informations de l'employé -->
 <table>
     <caption>Employes</caption>
     <thead>

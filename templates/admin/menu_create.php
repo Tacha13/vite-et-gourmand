@@ -1,5 +1,4 @@
 <!-- Page tableau de bord administrateur -->
-
 <!--Contenu du head-->
 <?php
     require __DIR__ . '/../partials/head.php';
@@ -11,9 +10,14 @@
     require __DIR__ . '/../partials/header.php';
 ?>
 
+$image = htmlspecialchars($_POST['image']);
+
 <form action="/?page=menu_create" method="POST">
     <fieldset>
         <div>
+            <label for="imageMenu">Nom de l'image</label>
+            <input type="text" name="image" id="imageMenu"><br>
+            <div><img src="/images/" alt="Image du menu"></div>
             <label for="nameMenu">Nom du menu</label>
             <input type="text" name="nameMenu" id="nameMenu"><br>
             <label for="description">Description</label>

@@ -73,6 +73,8 @@ class AuthController
                 header('location:http://localhost:8000/?page=register');
                 exit;
         }
+        unset($_SESSION['saveSaisieRegister']);
+
         $_SESSION['successRegister'] = "Votre compte est créé. Vous pouvez vous identifier ci-dessous.";                
         header('location:http://localhost:8000/?page=login');
         exit;

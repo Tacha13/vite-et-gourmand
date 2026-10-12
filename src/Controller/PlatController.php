@@ -2,6 +2,7 @@
 
 namespace Tacha\ViteEtGourmand\Controller;
 
+use PDOException;
 use Tacha\ViteEtGourmand\Repository\PlatRepository;
 
 class PlatController
@@ -42,9 +43,16 @@ class PlatController
 
     public function deletePlat(): void
     {
-        $this->platRepository->delete($_POST['id']);
-        header('location:http://localhost:8000/?page=plats');
+         try {
+            $this->platRepository->delete($_POST['id']);
+            $_SESSION['successDeletePlat'] = "Le plat a été correctement supprimé.";
+            header('location:http://localhost:8000/?page=plats');
         exit;
+        } catch (PDOException $e) { 
+            $_SESSION['erreurDeletePlat'] = "Le plat ne peut être supprimé, il est pris en compte dans un ou plusieurs menus et/ou allergènes.";
+            header('location:http://localhost:8000/?page=plats');
+            exit;
+    }
     }
 
 

@@ -11,6 +11,28 @@
     require __DIR__ . '/../partials/header.php';
 ?>
 
+<section>
+    <div>
+        <a href="/?page=plat_create">Ajouter un plat</a>
+    </div>
+</section>
+
+<!-- Message de succès ou d'erreur de suppression d'un plat -->
+    <?php if (isset($_SESSION['successDeletePlat'])) { ?>
+        <div class="flashMessage successDeletePlat">
+        <p> <?=  htmlspecialchars($_SESSION['successDeletePlat']) ?> </p>
+        </div>
+        <?php unset($_SESSION['successDeletePlat']);
+        }?>
+
+    <?php if (isset($_SESSION['erreurDeletePlat'])) { ?>
+        <div class="flashMessage erreurDeletePlat">
+        <p> <?=  htmlspecialchars($_SESSION['erreurDeletePlat']) ?> </p>
+        </div>
+        <?php unset($_SESSION['erreurDeletePlat']);
+        }?>
+
+
 <!-- Section pour les filtres -->
 <section>
     <div>

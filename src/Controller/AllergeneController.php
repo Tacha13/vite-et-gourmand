@@ -2,6 +2,7 @@
 
 namespace Tacha\ViteEtGourmand\Controller;
 
+use PDOException;
 use Tacha\ViteEtGourmand\Repository\AllergeneRepository;
 
 class AllergeneController

@@ -2,6 +2,7 @@
 
 namespace Tacha\ViteEtGourmand\Controller;
 
+use PDOException;
 use Tacha\ViteEtGourmand\Repository\MenuRepository;
 
 class MenuController
@@ -57,9 +58,16 @@ class MenuController
 
     public function deleteMenu(): void
     {
-        $this->menuRepository->delete($_POST['id']);
-        header('location:http://localhost:8000/?page=admin_menus');
+        try {
+            $this->menuRepository->delete($_POST['id']);
+            $_SESSION['successDeleteMenu'] = "Le menu a été correctement supprimé.";
+            header('location:http://localhost:8000/?page=admin_menus');
         exit;
+        } catch (PDOException $e) { 
+            $_SESSION['erreurDeleteMenu'] = "Le menu ne peut être supprimé, il est pris en compte dans une ou plusieurs commandes.";
+            header('location:http://localhost:8000/?page=admin_menus');
+            exit;
+    }
     }
 
     //Route qui récupère les infos d'un menu avec findById et renvoie à la page menus détail   

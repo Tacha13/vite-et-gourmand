@@ -10,8 +10,23 @@
 <?php
     require __DIR__ . '/../partials/header.php';
 ?>
+<!-- Message de succès ou d'erreur de suppression d'un menu -->
+    <?php if (isset($_SESSION['successDeleteMenu'])) { ?>
+        <div class="flashMessage successDeleteMenu">
+        <p> <?=  htmlspecialchars($_SESSION['successDeleteMenu']) ?> </p>
+        </div>
+        <?php unset($_SESSION['successDeleteMenu']);
+        }?>
+
+    <?php if (isset($_SESSION['erreurDeleteMenu'])) { ?>
+        <div class="flashMessage erreurDeleteMenu">
+        <p> <?=  htmlspecialchars($_SESSION['erreurDeleteMenu']) ?> </p>
+        </div>
+        <?php unset($_SESSION['erreurDeleteMenu']);
+        }?>
 
 <!-- Section pour les filtres -->
+ 
 <section>
     <div>
         <a href="/?page=menu_create">Ajouter un menu</a>

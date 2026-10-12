@@ -793,6 +793,27 @@ section.menu {
 
 /*FIN COMMANDE 2*/
 
+/*DEBUT DASHBOARD ADMIN*/
+
+/*Début admin_menu*/
+.successDeleteMenu {
+    border: solid 2px #d3f8dc;
+    background-color: #d3f8dc;
+    color: var(--primary);
+}
+
+.erreurDeleteMenu {
+    border: solid 2px #ff855470;
+    background-color: #ff855470;
+    color: #a1232f;
+}
+
+
+
+
+/*FIN DASHBOARD ADMIN*/
+
+
 
 
 

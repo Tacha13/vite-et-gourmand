@@ -31,7 +31,7 @@ if (!isset($idMenu) || !is_array($idMenu)) {
         <div class="col detail-inner">
             <h3 class="detail-title"><?= htmlspecialchars($idMenu['nomMenu']) ?></h3>
             <p class="detail-description"><?= htmlspecialchars($idMenu['description']) ?></p>
-            <p class="detail-price">A partir de <?= htmlspecialchars((string) $idMenu['prix']) ?> € / personne</p>
+            <p class="detail-price">A partir de <?= htmlspecialchars(number_format($idMenu['prix'], 2, ',', ' ')) ?> € / personne</p>
             <p class="detail-min">Minimum <?= htmlspecialchars((string) $idMenu['nbPersonneMin']) ?> personnes</p>
             <p class="detail-condition"><?= htmlspecialchars($idMenu['conditions']) ?></p>
             <p class="detail-theme">Thème : <?= htmlspecialchars($idMenu['theme']) ?></p>

@@ -30,9 +30,9 @@ require __DIR__ . '/../partials/header.php';
                 <p>Date de la livraison : <?= htmlspecialchars($allCommande['datePrestation']) ?></p>    
                 <p>Heure de la livraison : <?= htmlspecialchars($allCommande['heurePrestation']) ?></p>    
                 <p>Nombre de convives : <?= htmlspecialchars((string) $allCommande['nbPersonneCommande']) ?></p>  
-                <p>Prix total de votre commande: <?= htmlspecialchars($allCommande['prixTotal']) ?> €</p>  
-                <p>Frais de livraison : <?= htmlspecialchars($allCommande['fraisLivraison']) ?> €</p>  
-                <p>Montant de la réduction : <?= htmlspecialchars($allCommande['montantRemise']) ?> €</p>
+                <p>Prix total de votre commande: <?= htmlspecialchars(number_format($allCommande['prixTotal'],2, ',', ' ')) ?> €</p>  
+                <p>Frais de livraison : <?= htmlspecialchars(number_format($allCommande['fraisLivraison'],2, ',', ' ')) ?> €</p>  
+                <p>Montant de la réduction : <?= htmlspecialchars(number_format($allCommande['montantRemise'],2, ',', ' ')) ?> €</p>
                 <?php if (isset($allCommande['motifAnnulation'])): ?>
                         <p>Motif d'annulation :  <?= htmlspecialchars($allCommande['motifAnnulation']) ;?> </p>
                 <?php endif ?>

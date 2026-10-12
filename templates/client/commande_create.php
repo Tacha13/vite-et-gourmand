@@ -33,7 +33,7 @@ require __DIR__ . '/../partials/header.php';
         
             <h4 class="detail-title"><?= htmlspecialchars($idMenu['nomMenu']) ?></h4>
             <p class="detail-description"><?= htmlspecialchars($idMenu['description']) ?></p>
-            <p class="detail-price">A partir de <?= htmlspecialchars((string) $idMenu['prix']) ?> € / personne</p>
+            <p class="detail-price">A partir de <?= htmlspecialchars(number_format($idMenu['prix'], 2, ',', ' ')) ?> € / personne</p>
             <img class="img-commande" src="/images/<?=(htmlspecialchars($idMenu['image']))?>" alt="Image du <?= htmlspecialchars($idMenu['nomMenu']) ?>" >
 
             <div class="nombreCommande">

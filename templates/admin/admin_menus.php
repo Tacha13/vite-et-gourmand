@@ -60,7 +60,7 @@ if (!isset($menus) || !is_array($menus)) {
         <td><?= htmlspecialchars($menu['nomMenu']) ?></td>
         <td><?= htmlspecialchars($menu['theme']) ?></td>
         <td><img src="" alt="Image du menu"></td>
-        <td><?= htmlspecialchars((string) $menu['prix']) ?></td>
+        <td><?= htmlspecialchars(number_format($menu['prix'], 2, ',', ' ')) ?></td>
         <td><input type="button" value="Voir"></td>
         <td><input type="button" value="Modifier"></td>
 

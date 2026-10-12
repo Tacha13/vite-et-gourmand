@@ -37,7 +37,7 @@ require __DIR__ . '/../partials/header.php';
             <h3 class="title-commande">Votre commande</h3>
             <h4 class="detail-title"><?= htmlspecialchars($idMenu['nomMenu']) ?></h4>
             <p class="detail-description"><?= htmlspecialchars($idMenu['description']) ?></p>
-            <p class="detail-price">A partir de <?= htmlspecialchars((string) $idMenu['prix']) ?> € / personne</p>
+            <p class="detail-price">A partir de <?= htmlspecialchars(number_format($idMenu['prix'], 2, ',', ' ')) ?> € / personne</p>
             <img class="img-commande" src="/images/<?=(htmlspecialchars($idMenu['image']))?>" alt="Image du <?= htmlspecialchars($idMenu['nomMenu']) ?>" >
 
             <div class="recap-livraison">
@@ -82,19 +82,19 @@ require __DIR__ . '/../partials/header.php';
             <div class="valid-prix">
                 <div class="valid-inner">
                     <p>Sous-Total :</p>
-                    <span><?= $_SESSION['commande']['prixMenu']  ?> €</span>
+                    <span><?= (number_format($_SESSION['commande']['prixMenu'],2, ',', ' '))  ?> €</span>
                 </div>
                 <div class="valid-inner">
                     <p>Frais de livraison :</p>
-                    <span><?= $_SESSION['commande']['frais']  ?> €</span>
+                    <span><?= (number_format($_SESSION['commande']['frais'],2, ',', ' '))  ?> €</span>
                 </div>
                 <div class="valid-inner">
                     <p>Réduction :</p>
-                    <span><?= $_SESSION['commande']['remise']  ?> €</span>
+                    <span><?= (number_format($_SESSION['commande']['remise'],2, ',', ' '))  ?> €</span>
                 </div>
                 <div class="valid-inner">
                     <p class="prix-total">Total :</p>
-                    <span class="prix-total"><?= $_SESSION['commande']['prixTotalCommande']  ?> €</span>
+                    <span class="prix-total"><?= (number_format($_SESSION['commande']['prixTotalCommande'],2, ',', ' '))  ?> €</span>
                 </div>
             </div>
                 <div class="commande-next">

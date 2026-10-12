@@ -89,7 +89,7 @@ if (!isset($menus) || !is_array($menus)) {
                 <h3 class="card-title"><?= htmlspecialchars($menu['nomMenu']) ?></h3>
                 <p><?= htmlspecialchars($menu['theme']) ?></p>    
                 <p><?= htmlspecialchars($menu['description']) ?></p>
-                <p class="card-price">A partir de <?= htmlspecialchars((string) $menu['prix']) ?> € / personne</p>
+                <p class="card-price">A partir de <?= htmlspecialchars(number_format($menu['prix'], 2, ',', ' ')) ?> € / personne</p>
                 <p class="card-min">Minimum <?= htmlspecialchars((string) $menu['nbPersonneMin']) ?> personnes</p>
                 <a href="/?page=menu_details&id=<?= ($menu['id'])?>" class="detail">Voir le détail</a>
             </div>

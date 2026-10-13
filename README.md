@@ -67,7 +67,7 @@ Rechercher port=3306 (sous la zone MySQL clients et The MySQL server) et remplac
 - Importer le fichier .sql :
     1. dans PHPAdmin, sélectionner la base vite_et_gourmand
     2. puis importer
-    3. dans la zone fichier à importer, sélectionner le fichier disponible ```/database/schema.sql```
+    3. dans la zone fichier à importer, sélectionner les fichier disponibles ```/database/schema.sql``` dans un premier temps puis ```/database/donnees.sql```
     
 
 ## Lancer le serveur PHP 
@@ -76,9 +76,9 @@ Rechercher port=3306 (sous la zone MySQL clients et The MySQL server) et remplac
 
 ## Se connecter au site
 
-Dans le navigateur, taper l'url suivante : http://localhost:8000/
+- Dans le navigateur, taper l'url suivante : http://localhost:8000/
 
-Compte administrateur : 
-Compte employé :
-Compte client : 
+- Compte administrateur : gourmandjo@mail.fr / Gourmand_Admin_1
+- Compte employé : gourmand.f@mail.fr / Gourmand_Empl_1
+- Compte client : cduss@mail.fr / Toto1_vaAlaplage
 

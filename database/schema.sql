@@ -1,4 +1,3 @@
-USE vite_et_gourmand;
 
 CREATE TABLE IF NOT EXISTS comptes 
 (
@@ -39,31 +38,6 @@ nomPlat VARCHAR (250) NOT NULL,
 typePlat VARCHAR (250) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS allergenes 
-(
-id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-nomAllergene VARCHAR (250) NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS menu_plat
-(
-menu_id INTEGER NOT NULL,
-plat_id INTEGER NOT NULL,
-PRIMARY KEY (menu_id, plat_id),
-Foreign Key (menu_id) REFERENCES menus(id),
-Foreign Key (plat_id) REFERENCES plats(id)
-);
-
-CREATE TABLE IF NOT EXISTS plat_allergene
-(
-plat_id INTEGER NOT NULL,
-allergene_id INTEGER NOT NULL,
-PRIMARY KEY (plat_id, allergene_id),
-Foreign Key (plat_id) REFERENCES plats(id),
-Foreign Key (allergene_id) REFERENCES allergenes(id)
-);
-
-
 CREATE TABLE IF NOT EXISTS commandes
 (
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -87,6 +61,7 @@ Foreign Key (compte_id) REFERENCES comptes(id),
 Foreign Key (menu_id) REFERENCES menus(id)
 );
 
+
 CREATE TABLE IF NOT EXISTS histostatut
 (
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -94,5 +69,32 @@ statut VARCHAR (50) NOT NULL,
 dateChangement DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 commande_id INTEGER NOT NULL,
 Foreign Key (commande_id) REFERENCES commandes(id)
-
 );
+
+CREATE TABLE IF NOT EXISTS menu_plat
+(
+menu_id INTEGER NOT NULL,
+plat_id INTEGER NOT NULL,
+PRIMARY KEY (menu_id, plat_id),
+Foreign Key (menu_id) REFERENCES menus(id),
+Foreign Key (plat_id) REFERENCES plats(id)
+);
+
+CREATE TABLE IF NOT EXISTS allergenes 
+(
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+nomAllergene VARCHAR (250) NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS plat_allergene
+(
+plat_id INTEGER NOT NULL,
+allergene_id INTEGER NOT NULL,
+PRIMARY KEY (plat_id, allergene_id),
+Foreign Key (plat_id) REFERENCES plats(id),
+Foreign Key (allergene_id) REFERENCES allergenes(id)
+);
+
+
+

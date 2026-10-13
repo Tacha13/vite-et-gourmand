@@ -311,6 +311,121 @@ i.fa-solid {
 
 /*FIN INSCRIPTION*/
 
+/*DEBUT CONNEXION*/
+
+.title-connexion {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+.connexion-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 40px;
+    font-size: 24px;
+    color: var(--primary);
+}
+
+.connexion-espace {
+    padding:40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.espace-inner li {
+    margin: 20px;
+    padding: 10px;
+    font-size: 24px;
+}
+
+.connexion-form {
+    padding: 20px;
+    gap: 15px;
+}
+
+.legend-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    font-size: 28px;
+}
+
+.connexion-inner {
+    background-color: var(--avis);
+    max-width:550px;
+    padding: 40px;
+}
+
+.connexion-form div label {
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.connexion-form div input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+}
+
+.bouton-valider {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-valider {
+    text-decoration: none;
+    font-size: 24px;
+    color: white;
+    background: var(--primary);
+    padding: 12px 70px;
+    margin: 40px;
+    border: none;
+    border-radius: 2px;
+}
+
+.forgotten-password {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.forgotten-password a {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    padding:12px 70px;
+    border: none;
+    border-radius: 2px;
+}
+
+.not-registered {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.not-registered a {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    padding:12px 70px;
+    border: none;
+    border-radius: 2px;
+}
+/*FIN CONNEXION*/
+
+
 /*DEBUT MENUS */
 
 .menu-title {
@@ -347,7 +462,6 @@ section.menu {
 
 .card {
     gap: 40px;
-
     padding: 40px;
     background-color: var(--avis);
 }
@@ -547,6 +661,7 @@ section.menu {
     margin: 10px;
     padding: 40px;
     font-size: 24px;
+    color: var(--primary);
 }
 
 

@@ -36,7 +36,7 @@
     <p>Bienvenue sur la page d'inscription.</p>
     <p>Une fois validée, vous aurez accès à votre espace privilégié et sécurisé.</p>
 </div>
-<section class="container-fluid">
+<section class="container-fluid inscription-section">
     <div class="row row-cols-1 row-cols-lg-2">
         <div class="col inscription-form">
         <form action="" method="POST">
@@ -94,7 +94,7 @@
         </form>
         </div>
         <div class="col inscription-img">
-            <img class="d-none d-lg-block" src="/images/Saumon gourmet aux légumes inscription.png" alt="Image d'un plat au saumon gourmet" >
+            <img src="/images/Saumon gourmet aux légumes inscription.png" alt="Image d'un plat au saumon gourmet" >
         </div>
     </div>
     

@@ -10,7 +10,7 @@
     --primary: #4A7C59;
     --secondary: #C4714A;
     --accent: #D4A853;
-    --avis: #F3E8D2;
+    --avis: rgb(243, 232, 210);
     --bg: #FAF6F0;
     --text: #2C2C2C;
 }
@@ -450,6 +450,8 @@ i.fa-solid {
 }
 
 .inscription-form {
+    position: relative;
+    z-index: 2;
     padding:20px;
     display: flex;
     flex-direction: column;
@@ -459,7 +461,7 @@ i.fa-solid {
 }
 
 .inscription {
-    background-color: var(--avis);
+    background-color: rgba(243, 232, 210, 0.8);
     padding: 40px;
 }
 
@@ -477,6 +479,12 @@ i.fa-solid {
     padding: 10px;
 }
 
+.inscription-section {
+    position: relative;
+    z-index: 2;
+
+}
+
 .inscription-img {
     padding: 10px;
     display: flex;
@@ -484,10 +492,15 @@ i.fa-solid {
     align-items: center;
 }
 
+
 .inscription-img img{
-    padding: 50px;
-    height: 800px;
-    width: 70%;
+    position: absolute;
+    z-index: 1;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
 }
 /*FIN INSCRIPTION*/

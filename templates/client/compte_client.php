@@ -12,9 +12,56 @@ require __DIR__ . '/../partials/head.php';
 <?php
 require __DIR__ . '/../partials/header.php';
 ?>
-<h1 class="compte-title">Compte Client</h1>
+<main> 
+<div>
+    <h1 class="compte-title">Compte Client</h1>
+    <div class="compte-text">
+    <p>Dans cet espace, vous accédez à : </p>
+    <p>- vos informations personnelles.</p>
+    <p>- votre historique de commandes.</p>
+    </div>
+</div>
 
-<?php foreach ($allCommandes as $allCommande): ?>
+<section class="container-fluid">
+    <div class="row row-cols-1 row-cols-lg-2">
+        <div class="col">
+            <h3 class="personal-title">Mes informations personnelles</h3>
+            <div class="bouton-access">
+                <button class="btn-access" type="submit">Accéder à mes informations</button>
+            </div>
+        </div>
+        <div class="col">
+            <div class="col inprogress-commande">
+            <h3 class="personal-title">Commande(s) en cours</h3>
+            <div>
+                <?php $encours = false; ?>
+                
+                <?php foreach ($allCommandes as $allCommande): ?>
+                    <?php if ($allCommande['statut'] !== 'Terminée' && $allCommande['statut'] !== 'Annulée'): ?>
+                        <p>Numéro : <?= htmlspecialchars($allCommande['numero']) ?></p>  
+                        <p>Statut : <?= htmlspecialchars($allCommande['statut']) ?></p>    
+                        <?php $encours = true; ?>
+                    <?php endif ?>
+                <?php endforeach ?>
+                    
+                <?php if ($encours === false) : ?>
+                        <p>Il n'y a pas de commande en cours.</p>  
+                <?php endif ?>
+            </div>
+        </div><div class="col histo-commande">
+            <h3 class="personal-title">Mon historique de commandes</h3>
+            <div class="bouton-access">
+                <button class="btn-access" type="submit">Accéder à l'historique</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+
+
+</main>
+<!--<?php foreach ($allCommandes as $allCommande): ?>
     <div class="col">
         <div class="card h-100">
             <div class="card-inner">
@@ -40,7 +87,7 @@ require __DIR__ . '/../partials/header.php';
             </div>
         </div>
     </div>
-<?php endforeach ?>
+<?php endforeach ?>-->
 
  <!--Contenu du footer-->
 <?php

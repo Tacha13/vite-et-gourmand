@@ -482,7 +482,6 @@ i.fa-solid {
 .inscription-section {
     position: relative;
     z-index: 2;
-
 }
 
 .inscription-img {
@@ -504,6 +503,49 @@ i.fa-solid {
     object-fit: cover;
 }
 /*FIN INSCRIPTION*/
+
+/*DEBUT COMPTE CLIENT*/
+.compte-title {
+    display: flex;
+    justify-content: center;
+}
+
+.compte-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 20px;
+    font-size: 24px;
+    color: var(--primary);
+}
+
+.personal-title {
+    display: flex;
+    justify-content: center;
+}
+
+.bouton-access {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-access {
+    text-decoration: none;
+    font-size: 24px;
+    color: white;
+    background: var(--primary);
+    padding: 12px 70px;
+    margin: 40px;
+    border: none;
+    border-radius: 2px;
+}
+
+
+
+
+/*FIN COMPTE CLIENT*/
+
 
 
 

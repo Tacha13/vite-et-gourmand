@@ -425,6 +425,74 @@ i.fa-solid {
 }
 /*FIN CONNEXION*/
 
+/*DEBUT INSCRIPTION*/
+.title-inscription {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+.inscription-title {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.inscription-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 20px;
+    font-size: 24px;
+    color: var(--primary);
+}
+
+.inscription-form {
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.inscription {
+    background-color: var(--avis);
+    padding: 40px;
+}
+
+.inscription-form div label {
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.inscription-form div input {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+.inscription-img {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inscription-img img{
+    padding: 50px;
+    height: 800px;
+    width: 70%;
+    object-fit: cover;
+}
+/*FIN INSCRIPTION*/
+
+
 
 /*DEBUT MENUS */
 

@@ -25,15 +25,15 @@ require __DIR__ . '/../partials/header.php';
 <section class="container-fluid">
     <div class="row row-cols-1 row-cols-lg-2">
         <div class="col">
-            <h3 class="personal-title">Mes informations personnelles</h3>
+            <h2 class="personal-title">Mes informations personnelles</h2>
             <div class="bouton-access">
-                <button class="btn-access" type="submit">Accéder à mes informations</button>
+                <a class="btn-access" href="">Accéder à mes informations</a>
             </div>
         </div>
         <div class="col">
             <div class="col inprogress-commande">
-            <h3 class="personal-title">Commande(s) en cours</h3>
-            <div>
+            <h2 class="personal-title">Commande(s) en cours</h2>
+            <div class="inprogress-inner">
                 <?php $encours = false; ?>
                 
                 <?php foreach ($allCommandes as $allCommande): ?>
@@ -49,9 +49,9 @@ require __DIR__ . '/../partials/header.php';
                 <?php endif ?>
             </div>
         </div><div class="col histo-commande">
-            <h3 class="personal-title">Mon historique de commandes</h3>
+            <h2 class="personal-title">Mon historique de commandes</h2>
             <div class="bouton-access">
-                <button class="btn-access" type="submit">Accéder à l'historique</button>
+                <a class="btn-access" href="">Accéder à l'historique</a>
             </div>
         </div>
         </div>

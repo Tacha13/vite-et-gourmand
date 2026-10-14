@@ -508,6 +508,8 @@ i.fa-solid {
 .compte-title {
     display: flex;
     justify-content: center;
+    margin: 40px;
+    padding: 20px
 }
 
 .compte-text {
@@ -523,11 +525,15 @@ i.fa-solid {
 .personal-title {
     display: flex;
     justify-content: center;
+    margin: 20px;
+    padding: 20px;
+    font-size: 28px;
 }
 
 .bouton-access {
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .btn-access {
@@ -539,6 +545,19 @@ i.fa-solid {
     margin: 40px;
     border: none;
     border-radius: 2px;
+}
+
+.inprogress-commande {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inprogress-inner {
+    border: solid 2px var(--accent);
+    padding: 20px;
+    margin: 20px;
 }
 
 

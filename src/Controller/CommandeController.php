@@ -231,4 +231,16 @@ class CommandeController
         require __DIR__ . '/../../templates/client/compte_client.php';
     }
 
+        public function showAllHistoCommandesClient (): void
+    {
+        if(!isset($_SESSION ['user_id'] )) {
+            header('location:http://localhost:8000/?page=login');
+            exit;
+        } 
+
+        $allCommandes = $this->commandeRepository->findCommandesByCompteId($_SESSION['user_id']);
+
+        require __DIR__ . '/../../templates/client/histo_commandes.php';
+    }
+
 }

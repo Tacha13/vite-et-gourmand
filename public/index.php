@@ -101,6 +101,12 @@ if (isset($_GET['page']) && $_GET['page'] === 'compte_client') {
     $commandeController->showAllCommandesClient();
 }
 
+//Route pour accéder à l'historique des commandes du client
+if (isset($_GET['page']) && $_GET['page'] === 'histo_commandes') {
+    $commandeController->showAllHistoCommandesClient();
+}
+
+
 
 
 if (isset($_GET['page']) && $_GET['page'] === 'menus') {

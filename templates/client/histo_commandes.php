@@ -13,15 +13,20 @@ require __DIR__ . '/../partials/head.php';
 <?php
 require __DIR__ . '/../partials/header.php';
 ?>
+<main>
+    <div>
+        <h1 class="histo-title">Historique des commandes</h1>
+    </div>
 
-<div>
-    <table class="table">
+<div class="table-responsive histo-tableau">
+    <table class="table align-middle table-striped table-grey table-hover">
         <thead>
             <tr>
             <th scope="col">Numéro</th>
             <th scope="col">Date de livraison</th>
             <th scope="col">Nom du menu</th>
-            <th scope="col">Nombre de convives</th>
+<!-- d-none d-md-table-cell class Bootstrap permete de masquer la cellule (titreinclus avec th) si l'écran est plus petit que lg≥992px-->
+            <th class="d-none d-md-table-cell" scope="col">Nombre de convives</th>
             <th scope="col">Prix total</th>
             <th scope="col">Statut</th>
             </tr>
@@ -32,18 +37,21 @@ require __DIR__ . '/../partials/header.php';
             <td><?=  htmlspecialchars($allCommande['numero']) ?></td>
             <td><?=  htmlspecialchars($allCommande['datePrestation']) ?></td>
             <td><?=  htmlspecialchars($allCommande['nomMenu']) ?></td>
-            <td><?=  htmlspecialchars($allCommande['nbPersonneCommande']) ?></td>
+            <td class="d-none d-md-table-cell"><?=  htmlspecialchars($allCommande['nbPersonneCommande']) ?></td>
             <td><?=  htmlspecialchars($allCommande['prixTotal']) ?></td>
             <td><?=  htmlspecialchars($allCommande['statut']) ?></td>
-
             </tr>
     <?php endforeach ?>
+
+            <div class="bouton-access">
+                <a class="btn-access" href="/?page=compte_client">Retour au compte client</a>
+            </div>
         </tbody>
     
     </table>
 </div>
 
-
+</main>
 
 
 

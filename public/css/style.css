@@ -508,6 +508,7 @@ i.fa-solid {
 .compte-title {
     display: flex;
     justify-content: center;
+    text-align: center;
     margin: 40px;
     padding: 20px
 }
@@ -525,6 +526,7 @@ i.fa-solid {
 .personal-title {
     display: flex;
     justify-content: center;
+    text-align: center;
     margin: 20px;
     padding: 20px;
     font-size: 28px;
@@ -538,11 +540,11 @@ i.fa-solid {
 
 .btn-access {
     text-decoration: none;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
     background: var(--primary);
-    padding: 12px 50px;
-    margin: 40px;
+    padding: 12px 20px;
+    margin: 20px;
     border: none;
     border-radius: 2px;
 }
@@ -564,6 +566,21 @@ i.fa-solid {
 
 
 /*FIN COMPTE CLIENT*/
+/*DEBUT HISTO COMMANDES*/
+.histo-title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 40px;
+    padding: 20px
+}
+
+.histo-tableau {
+    margin: 20PX;
+}
+
+
+/*FIN HISTO COMMANDES*/
 
 
 

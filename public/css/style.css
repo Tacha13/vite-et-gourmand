@@ -389,7 +389,7 @@ i.fa-solid {
     color: white;
     background: var(--primary);
     padding: 12px 70px;
-    margin: 40px;
+    margin: 40px 0;
     border: none;
     border-radius: 2px;
 }
@@ -563,8 +563,6 @@ i.fa-solid {
 }
 
 
-
-
 /*FIN COMPTE CLIENT*/
 /*DEBUT HISTO COMMANDES*/
 .histo-title {
@@ -579,10 +577,24 @@ i.fa-solid {
     margin: 20PX;
 }
 
-
 /*FIN HISTO COMMANDES*/
 
+/*DEBUT INFOS PERSONNELLES*/
 
+.bouton-accessInfo {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.bouton-access a {
+    margin-bottom: 50px;
+}
+
+
+
+/*FIN INFOS PERSONNELLES*/
 
 
 /*DEBUT MENUS */

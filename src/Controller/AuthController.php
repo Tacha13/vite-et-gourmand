@@ -203,8 +203,17 @@ class AuthController
         header('location:http://localhost:8000/?page=employes');
         exit;
     }
+    
+    public function showInfospersonal(): void 
+    {
+        if(!isset($_SESSION['user_id'])) {
+            header('location:http://localhost:8000/?page=login');
+            exit;
+        } 
+        $infoPersonal = $this->compteRepository->findById($_SESSION['user_id']);
 
-
+        require __DIR__ . '/../../templates/client/infos_personnelles.php';
+    }
 
 
 

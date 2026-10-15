@@ -106,7 +106,10 @@ if (isset($_GET['page']) && $_GET['page'] === 'histo_commandes') {
     $commandeController->showAllHistoCommandesClient();
 }
 
-
+//Route pour accéder aux informations personnelles du client
+if (isset($_GET['page']) && $_GET['page'] === 'infos_personnelles') {
+    $controller->showInfospersonal();
+}
 
 
 if (isset($_GET['page']) && $_GET['page'] === 'menus') {

@@ -74,7 +74,7 @@ class CompteRepository
         public function findById(int $id) : ?array 
     {
         $pdo = $this->database->getConnection();
-        $stmt = $pdo->prepare("SELECT id, nom, prenom, email, telephone FROM comptes WHERE id = :id;");
+        $stmt = $pdo->prepare("SELECT id, nom, prenom, email, telephone, adresse, complement_adresse, code_postal, commune  FROM comptes WHERE id = :id;");
 
         $stmt->execute(
             [

@@ -27,7 +27,7 @@ require __DIR__ . '/../partials/header.php';
         <div class="col">
             <h2 class="personal-title">Mes informations personnelles</h2>
             <div class="bouton-access">
-                <a class="btn-access" href="">Accéder à mes informations</a>
+                <a class="btn-access" href="/?page=infos_personnelles">Accéder à mes informations</a>
             </div>
         </div>
         <div class="col">

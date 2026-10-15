@@ -242,5 +242,6 @@ class CommandeController
 
         require __DIR__ . '/../../templates/client/histo_commandes.php';
     }
+    
 
 }

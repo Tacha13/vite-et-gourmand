@@ -71,6 +71,16 @@ commande_id INTEGER NOT NULL,
 Foreign Key (commande_id) REFERENCES commandes(id)
 );
 
+CREATE TABLE IF NOT EXISTS avis 
+(
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+avis VARCHAR (250) NOT NULL,
+note INTEGER NOT NULL CHECK (note BETWEEN 1 AND 5),
+statutAvis VARCHAR (50) NOT NULL DEFAULT 'En attente de validation',
+commande_id INTEGER UNIQUE NOT NULL,
+Foreign Key (commande_id) REFERENCES commandes(id)
+);
+
 CREATE TABLE IF NOT EXISTS menu_plat
 (
 menu_id INTEGER NOT NULL,

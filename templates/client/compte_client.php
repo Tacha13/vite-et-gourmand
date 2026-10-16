@@ -12,6 +12,15 @@ require __DIR__ . '/../partials/head.php';
 <?php
 require __DIR__ . '/../partials/header.php';
 ?>
+<!--Messages flash en cas de succès de saisie-->
+    
+    <?php if (isset($_SESSION['successUpdate'])) { ?>
+        <div class="flashMessage successUpdate">
+        <p> <?=  htmlspecialchars($_SESSION['successUpdate']) ?> </p>
+        </div>
+    <?php unset($_SESSION['successUpdate']);
+    }?>
+
 <main> 
 <div>
     <h1 class="compte-title">Compte Client</h1>

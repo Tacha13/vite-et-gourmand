@@ -158,8 +158,6 @@ class AuthController
         }
     }
 
-
-
     public function showDashBoard(): void {
     require __DIR__ . '/../../templates/admin/dashboard.php';
     }
@@ -215,7 +213,40 @@ class AuthController
         require __DIR__ . '/../../templates/client/infos_personnelles.php';
     }
 
+    public function updateInfosPersonal(): void
+    {
+         if(!isset($_SESSION['user_id'])) {
+            header('location:http://localhost:8000/?page=login');
+            exit;
+        } 
 
+        $name = htmlspecialchars($_POST['name']);
+        $firstname = htmlspecialchars($_POST['firstname']);
+        $email = htmlspecialchars($_POST['email']);
+        $phone = htmlspecialchars($_POST['phone']);
+        $adress = htmlspecialchars($_POST['adress']);
+        $adressAptInput = htmlspecialchars($_POST['adressAptInput']);
+        $postalCode = htmlspecialchars($_POST['postalCode']);
+        $city = htmlspecialchars($_POST['city']);
+        $id = $_SESSION['user_id'];
+
+        $checkEmail = $this->compteRepository->findByEmail($email);
+        if (($checkEmail !== null && $checkEmail['id'] !== $_SESSION['user_id'])) {
+            $_SESSION['erreurEmailRegister'] = "Veuillez vérifier l'email saisi.";
+            header('location:http://localhost:8000/?page=infos_personnelles');
+            exit;
+        }
+
+        $this->compteRepository->update($email, $name, $firstname, $phone, $adress, $adressAptInput, $postalCode, $city, $id);
+
+        $_SESSION['user_nom'] = $name;
+        $_SESSION['user_prenom'] = $firstname;
+        $_SESSION['user_email'] = $email;
+
+        $_SESSION['successUpdate'] = "Les modifications ont bien été prises en compte.";                
+        header('location:http://localhost:8000/?page=compte_client');
+        exit;
+    }
 
 }
 

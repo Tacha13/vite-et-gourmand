@@ -106,9 +106,13 @@ if (isset($_GET['page']) && $_GET['page'] === 'histo_commandes') {
     $commandeController->showAllHistoCommandesClient();
 }
 
-//Route pour accéder aux informations personnelles du client
+//Route pour update des données personnelles
 if (isset($_GET['page']) && $_GET['page'] === 'infos_personnelles') {
-    $controller->showInfospersonal();
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $controller->showInfospersonal();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controller->updateInfosPersonal();
+    }
 }
 
 

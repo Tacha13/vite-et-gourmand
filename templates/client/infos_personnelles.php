@@ -3,7 +3,7 @@
 
 <!--Contenu du head-->
 <?php
-$title = "Validation commande Vite & Gourmand";
+$title = "Informations personnelles commande Vite & Gourmand";
 require __DIR__ . '/../partials/head.php';
 ?>
 <body>
@@ -11,6 +11,15 @@ require __DIR__ . '/../partials/head.php';
 <?php
 require __DIR__ . '/../partials/header.php';
 ?>
+<!--Messages flash en cas d'erreur de saisie-->
+    
+    <?php if (isset($_SESSION['erreurEmailRegister'])) { ?>
+        <div class="flashMessage erreurEmailRegister">
+        <p> <?=  htmlspecialchars($_SESSION['erreurEmailRegister']) ?> </p>
+        </div>
+    <?php unset($_SESSION['erreurEmailRegister']);
+    }?>
+
 <main>
 <div class="title-inscription">
     <h1>Mes informations personnelles</h1>

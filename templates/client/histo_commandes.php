@@ -5,7 +5,7 @@
 
 <!--Contenu du head-->
 <?php
-$title = "Validation commande Vite & Gourmand";
+$title = "Historique Commandes commande Vite & Gourmand";
 require __DIR__ . '/../partials/head.php';
 ?>
 <body>

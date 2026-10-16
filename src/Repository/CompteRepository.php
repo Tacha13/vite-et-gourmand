@@ -86,4 +86,23 @@ class CompteRepository
         return $result ?: null;
         
     }
+//Fonction qui met à jour les infos personnelles du client 
+    public function update(string $email, string $nom, string $prenom, string $telephone, string $adresse, string $complement_adresse, string $code_postal, string $commune, int $id): void
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("UPDATE comptes SET email = :email, nom = :nom, prenom = :prenom, telephone = :telephone, adresse = :adresse, complement_adresse = :complement_adresse, code_postal = :code_postal, commune = :commune WHERE id = :id;
+        ");
+
+        $stmt->execute([
+            ':id' => $id,
+            ':email' => $email,
+            ':nom' => $nom,
+            ':prenom' => $prenom,
+            ':telephone' => $telephone,
+            ':adresse' => $adresse,
+            ':complement_adresse' => $complement_adresse,
+            ':code_postal' => $code_postal,
+            ':commune' => $commune,
+        ]);
+    }
 }

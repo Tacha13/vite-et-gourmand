@@ -8,6 +8,8 @@
     <?php
     require __DIR__ . '/../partials/header.php';
     ?>
+    <!--Messages flash en cas d'erreur de saisie-->
+    
     <?php if (isset($_SESSION['erreurFormPassword'])) { ?>
         <div class="flashMessage erreurFormPassword">
         <p> <?=  htmlspecialchars($_SESSION['erreurFormPassword']) ?> </p>

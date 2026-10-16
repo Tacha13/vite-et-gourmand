@@ -38,6 +38,89 @@ p {
     
 }
 
+/*DEBUT MESSAGES FLASH*/
+/*Message de confirmation de commande*/
+.flashMessage {
+    display: flex;
+    margin: 40px auto;
+    padding: 10px;
+    width: fit-content;
+    font-size: 28px;
+    border-radius: 10px;
+}
+
+.success{
+    border: solid 2px #d3f8dc;
+    background-color: #d3f8dc;
+    color: var(--primary);
+}
+
+/*Message d'échec de commande*/
+
+.failure{
+    border: solid 2px #ff855470;
+    background-color: #ff855470;
+    color: #a1232f;
+}
+
+/*Message d'échec de commande*/
+
+.commandeFailure{
+    border: solid 2px #efc298;
+    background-color: #efc298;
+    color: var(--primary);
+}
+
+/*Message d'échec de compte non actif*/
+
+.erreurActif{
+    border: solid 2px #efc298;
+    background-color: #efc298;
+    color: var(--primary);
+}
+
+/*Message d'échec de compte mail/password*/
+.erreurCompte{
+    border: solid 2px #efc298;
+    background-color: #efc298;
+    color: var(--primary);
+}
+
+/*Messages inscritpion*/
+.erreurFormPassword {
+    border: solid 2px #efc298;
+    background-color: #efc298;
+    color: var(--primary);
+}
+
+.erreurDifferentPassword {
+    border: solid 2px #efc298;
+    background-color: #efc298;
+    color: var(--primary);
+}
+
+.erreurEmailRegister {
+    border: solid 2px #efc298;
+    background-color: #efc298;
+    color: var(--primary);
+}
+
+.successRegister{
+    border: solid 2px #d3f8dc;
+    background-color: #d3f8dc;
+    color: var(--primary);
+}
+
+/*Message succes update info personnelles*/
+.successUpdate{
+    border: solid 2px #d3f8dc;
+    background-color: #d3f8dc;
+    color: var(--primary);
+}
+
+/*FIN MESSAGES FLASH*/
+
+
 /*DEBUT HEADER*/
 
 .navbar {
@@ -139,41 +222,6 @@ body {
     margin: 40px;
 }
 
-/*Message de confirmation de commande*/
-.flashMessage {
-    display: flex;
-    margin: 40px auto;
-    padding: 10px;
-    width: fit-content;
-    font-size: 28px;
-    border-radius: 10px;
-}
-
-.success{
-    border: solid 2px #d3f8dc;
-    background-color: #d3f8dc;
-    color: var(--primary);
-}
-/*Fin message de confirmation de commande*/
-
-/*Message d'échec de commande*/
-
-.failure{
-    border: solid 2px #ff855470;
-    background-color: #ff855470;
-    color: #a1232f;
-}
-/*Fin message d'échec de commande*/
-
-/*Message d'échec de commande*/
-
-.commandeFailure{
-    border: solid 2px #efc298;
-    background-color: #efc298;
-    color: var(--primary);
-}
-/*Fin message d'échec de commande*/
-
 .hero-text {
     font-size: 18px;
     font-weight: 500;
@@ -263,53 +311,6 @@ i.fa-solid {
 
 /*Fin avis*/
 /*FIN HOME*/
-
-/*DEBUT LOGIN*/
-/*Message d'échec de compte non actif*/
-
-.erreurActif{
-    border: solid 2px #efc298;
-    background-color: #efc298;
-    color: var(--primary);
-}
-
-/*Message d'échec de compte mail/password*/
-.erreurCompte{
-    border: solid 2px #efc298;
-    background-color: #efc298;
-    color: var(--primary);
-}
-
-/*Fin message d'échec de commande*/
-
-/*FIN LOGIN*/
-
-/*DEBUT INSCRIPTION*/
-.erreurFormPassword {
-    border: solid 2px #efc298;
-    background-color: #efc298;
-    color: var(--primary);
-}
-
-.erreurDifferentPassword {
-    border: solid 2px #efc298;
-    background-color: #efc298;
-    color: var(--primary);
-}
-
-.erreurEmailRegister {
-    border: solid 2px #efc298;
-    background-color: #efc298;
-    color: var(--primary);
-}
-
-.successRegister{
-    border: solid 2px #d3f8dc;
-    background-color: #d3f8dc;
-    color: var(--primary);
-}
-
-/*FIN INSCRIPTION*/
 
 /*DEBUT CONNEXION*/
 
@@ -564,6 +565,7 @@ i.fa-solid {
 
 
 /*FIN COMPTE CLIENT*/
+
 /*DEBUT HISTO COMMANDES*/
 .histo-title {
     display: flex;

@@ -80,8 +80,8 @@ class CommandeRepository {
     public function findCommandesByCompteId(int $compteId) : array 
     {
         $pdo = $this->database->getConnection();
-        $stmt = $pdo->prepare("SELECT c.numero, m.nomMenu,  c.statut, c.adresseLivraison, c.complementLivraison, c.codePostalLivraison, c.communeLivraison, c.datePrestation,  c.heurePrestation, c.nbPersonneCommande, c.prixTotal, c.fraisLivraison,  c.montantRemise, c.motifAnnulation, c.dateCreation, c.id
-        FROM commandes c, menus m  WHERE c.compte_id = :compteId AND  c.menu_id = m.id  ORDER BY c.datePrestation DESC;");
+        $stmt = $pdo->prepare("SELECT c.numero, m.nomMenu,  c.statut, c.adresseLivraison, c.complementLivraison, c.codePostalLivraison, c.communeLivraison, c.datePrestation,  c.heurePrestation, c.nbPersonneCommande, c.prixTotal, c.fraisLivraison,  c.montantRemise, c.motifAnnulation, c.dateCreation, c.id, a.id AS avis_id
+		FROM commandes c INNER JOIN menus m ON c.menu_id = m.id LEFT JOIN avis a ON a.commande_id =c.id  WHERE c.compte_id = :compteId ORDER BY c.datePrestation DESC;");
 
         $stmt->execute(
             [

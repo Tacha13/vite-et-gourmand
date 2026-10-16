@@ -29,6 +29,8 @@ require __DIR__ . '/../partials/header.php';
             <th class="d-none d-md-table-cell" scope="col">Nombre de convives</th>
             <th scope="col">Prix total</th>
             <th scope="col">Statut</th>
+            <th scope="col">Avis</th>
+            
             </tr>
         </thead>
         <tbody>
@@ -40,6 +42,12 @@ require __DIR__ . '/../partials/header.php';
             <td class="d-none d-md-table-cell"><?=  htmlspecialchars($allCommande['nbPersonneCommande']) ?></td>
             <td><?=  htmlspecialchars($allCommande['prixTotal']) ?></td>
             <td><?=  htmlspecialchars($allCommande['statut']) ?></td>
+            <td>
+            <?php if ($allCommande['statut'] === 'Terminée' && $allCommande['avis_id'] === null): ?>
+
+                    <a class="btn-avis" href="/?page=avis&idCommandeAvis=<?=  $allCommande['id'] ?>">Laisser un avis</a>
+            <?php endif ?>
+            </td>
             </tr>
     <?php endforeach ?>
 

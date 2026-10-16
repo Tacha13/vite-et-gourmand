@@ -44,8 +44,43 @@ require __DIR__ . '/../partials/header.php';
             <td><?=  htmlspecialchars($allCommande['statut']) ?></td>
             <td>
             <?php if ($allCommande['statut'] === 'Terminée' && $allCommande['avis_id'] === null): ?>
+                    <button class="btn-avis" type="button" data-bs-toggle="modal" data-bs-target="#modalAvis<?=  $allCommande['id'] ?>">Laisser un avis</button>
+                    <div class="modal fade" id="modalAvis<?=  $allCommande['id'] ?>" tabindex="-1" aria-labelledby="modalAvisLabel<?=  $allCommande['id'] ?>" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                            
 
-                    <a class="btn-avis" href="/?page=avis&idCommandeAvis=<?=  $allCommande['id'] ?>">Laisser un avis</a>
+                                <h1 class="modal-title fs-5" id="modalAvisLabel<?=  $allCommande['id'] ?>">Avis</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="" method="POST">
+                            <div class="modal-body">
+                               
+                                    <legend class="avis-title">Donnez votre avis</legend>
+                                <div>
+                                    <label for="note">Note</label>
+                                    <input id="note" name="note" type="number" min="1" max="5">
+                                </div> 
+                                <div>
+                                    <label for="avis">Avis</label>
+                                    <textarea id="avis" name="avis"></textarea>
+                                </div>
+                                <div>
+                                    <input id="commandeId" name="commandeId" type="hidden" value="<?=  $allCommande['id'] ?>"  >
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            </div>
+                            </form>
+                            </div>
+                        </div>
+                        </div>
+
             <?php endif ?>
             </td>
             </tr>

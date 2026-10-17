@@ -13,6 +13,16 @@ require __DIR__ . '/../partials/head.php';
 <?php
 require __DIR__ . '/../partials/header.php';
 ?>
+<!--Messages flash en cas de success de création d'un avis-->
+    
+    <?php if (isset($_SESSION['successAvis'])) { ?>
+        <div class="flashMessage successAvis">
+        <p> <?=  htmlspecialchars($_SESSION['successAvis']) ?> </p>
+        </div>
+    <?php unset($_SESSION['successAvis']);
+    }?>
+
+
 <main>
     <div>
         <h1 class="histo-title">Historique des commandes</h1>
@@ -54,7 +64,7 @@ require __DIR__ . '/../partials/header.php';
                                 <h1 class="modal-title fs-5" id="modalAvisLabel<?=  $allCommande['id'] ?>">Avis</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="" method="POST">
+                            <form action="/?page=avis" method="POST">
                             <div class="modal-body">
                                
                                     <legend class="avis-title">Donnez votre avis</legend>

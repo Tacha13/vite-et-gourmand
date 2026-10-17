@@ -39,6 +39,21 @@ p {
 }
 
 /*DEBUT MESSAGES FLASH*/
+/*CSS messages succes */
+
+[class*="success"] {
+    border: solid 2px #d3f8dc;
+    background-color: #d3f8dc;
+    color: var(--primary);
+}
+
+/*CSS messages erreur*/
+[class*="erreur"] {
+    border: solid 2px #efc298;
+    background-color: #efc298;
+    color: var(--primary);
+}
+
 /*Message de confirmation de commande*/
 .flashMessage {
     display: flex;
@@ -47,12 +62,6 @@ p {
     width: fit-content;
     font-size: 28px;
     border-radius: 10px;
-}
-
-.success{
-    border: solid 2px #d3f8dc;
-    background-color: #d3f8dc;
-    color: var(--primary);
 }
 
 /*Message d'échec de commande*/
@@ -71,52 +80,6 @@ p {
     color: var(--primary);
 }
 
-/*Message d'échec de compte non actif*/
-
-.erreurActif{
-    border: solid 2px #efc298;
-    background-color: #efc298;
-    color: var(--primary);
-}
-
-/*Message d'échec de compte mail/password*/
-.erreurCompte{
-    border: solid 2px #efc298;
-    background-color: #efc298;
-    color: var(--primary);
-}
-
-/*Messages inscritpion*/
-.erreurFormPassword {
-    border: solid 2px #efc298;
-    background-color: #efc298;
-    color: var(--primary);
-}
-
-.erreurDifferentPassword {
-    border: solid 2px #efc298;
-    background-color: #efc298;
-    color: var(--primary);
-}
-
-.erreurEmailRegister {
-    border: solid 2px #efc298;
-    background-color: #efc298;
-    color: var(--primary);
-}
-
-.successRegister{
-    border: solid 2px #d3f8dc;
-    background-color: #d3f8dc;
-    color: var(--primary);
-}
-
-/*Message succes update info personnelles*/
-.successUpdate{
-    border: solid 2px #d3f8dc;
-    background-color: #d3f8dc;
-    color: var(--primary);
-}
 
 /*FIN MESSAGES FLASH*/
 

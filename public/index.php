@@ -19,10 +19,8 @@ use Tacha\ViteEtGourmand\Repository\AllergeneRepository;
 use Tacha\ViteEtGourmand\Service\MailService;
 use Tacha\ViteEtGourmand\Repository\CommandeRepository;
 use Tacha\ViteEtGourmand\Controller\CommandeController;
-
-
-
-
+use Tacha\ViteEtGourmand\Repository\AvisRepository;
+use Tacha\ViteEtGourmand\Controller\AvisController;
 
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
@@ -41,6 +39,8 @@ $allergeneController = new AllergeneController($allergeneRepo);
 $contactController = new ContactController($mailService);
 $commandeRepository = new CommandeRepository($data);
 $commandeController = new CommandeController($repo, $menuRepo, $commandeRepository, $mailService);
+$avisRepository = new AvisRepository($data);
+$avisController = new AvisController($avisRepository);
 
 
 
@@ -114,6 +114,15 @@ if (isset($_GET['page']) && $_GET['page'] === 'infos_personnelles') {
         $controller->updateInfosPersonal();
     }
 }
+
+//Route pour la création de l'avis de la commande
+if (isset($_GET['page']) && $_GET['page'] === 'avis') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $avisController->createAvis();
+    }
+}
+
+
 
 
 if (isset($_GET['page']) && $_GET['page'] === 'menus') {

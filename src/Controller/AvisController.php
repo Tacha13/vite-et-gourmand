@@ -26,6 +26,12 @@ class AvisController {
     $noteModal = ((int)$_POST['note']);
     $commandeIdModal = ((int)$_POST['commandeId']);
 
+    if ((empty($avisModal) || empty($noteModal)) || (($noteModal < 1) || ($noteModal > 5))) {
+        $_SESSION['erreurAvis'] = "Votre avis n'a pas été enregistré.";                
+        header('location:http://localhost:8000/?page=histo_commandes');
+        exit;
+    }
+
 
     // 3. Vérifier la commande : à lui, Terminée, pas encore d'avis
     $retourCanCommande = $this->avisRepository->canCommandeReceiveAvis($commandeIdModal,$_SESSION ['user_id']);

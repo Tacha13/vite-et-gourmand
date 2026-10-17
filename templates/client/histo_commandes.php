@@ -21,6 +21,14 @@ require __DIR__ . '/../partials/header.php';
         </div>
     <?php unset($_SESSION['successAvis']);
     }?>
+<!--Messages flash en cas d'erreur de création d'un avis-->
+    
+    <?php if (isset($_SESSION['erreurAvis'])) { ?>
+        <div class="flashMessage erreurAvis">
+        <p> <?=  htmlspecialchars($_SESSION['erreurAvis']) ?> </p>
+        </div>
+    <?php unset($_SESSION['erreurAvis']);
+    }?>
 
 
 <main>
@@ -69,15 +77,15 @@ require __DIR__ . '/../partials/header.php';
                                
                                     <legend class="avis-title">Donnez votre avis</legend>
                                 <div>
-                                    <label for="note">Note</label>
-                                    <input id="note" name="note" type="number" min="1" max="5">
+                                    <label for="note<?=  $allCommande['id'] ?>">Note</label>
+                                    <input id="note<?=  $allCommande['id'] ?>" name="note" type="number" min="1" max="5" required>
                                 </div> 
                                 <div>
-                                    <label for="avis">Avis</label>
-                                    <textarea id="avis" name="avis"></textarea>
+                                    <label for="avis<?=  $allCommande['id'] ?>">Avis</label>
+                                    <textarea id="avis<?=  $allCommande['id'] ?>" name="avis" maxlength="250" required></textarea>
                                 </div>
                                 <div>
-                                    <input id="commandeId" name="commandeId" type="hidden" value="<?=  $allCommande['id'] ?>"  >
+                                    <input id="commandeId<?=  $allCommande['id'] ?>" name="commandeId" type="hidden" value="<?=  $allCommande['id'] ?>"  >
                                 </div>
 
 

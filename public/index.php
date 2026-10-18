@@ -122,7 +122,15 @@ if (isset($_GET['page']) && $_GET['page'] === 'avis') {
     }
 }
 
-
+//Route de validation de l'avis (employé)
+if (isset($_GET['page']) && $_GET['page'] === 'avis_validate') {
+    $controller->checkEmploye();
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $avisController->showAvisEmploye();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $avisController->updateStatutAvis();
+    }
+}
 
 
 if (isset($_GET['page']) && $_GET['page'] === 'menus') {

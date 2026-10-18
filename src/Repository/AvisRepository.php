@@ -43,4 +43,31 @@ class AvisRepository {
     return $result !== false;
 
    }
+
+   public function findAllAvisByStatut (string $statutAvis): array {
+
+    $pdo = $this->database->getConnection();
+    $stmt = $pdo->prepare("SELECT a.avis, a.note, a.statutAvis, a.id, c.numero, m.nomMenu, co.nom, co.prenom FROM avis a, commandes c, menus m, comptes co WHERE a.commande_id = c.id AND c.menu_id = m.id AND c.compte_id = co.id AND a.statutAvis = :statutAvis");
+
+    $stmt->execute([
+        ':statutAvis' => $statutAvis
+    ]);      
+        
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+    }
+
+    public function updateAvis(int $id, string $statutAvis): void
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("UPDATE avis SET statutAvis = :statutAvis WHERE id = :id;
+        ");
+
+        $stmt->execute([
+			':id' => $id,
+            ':statutAvis' => $statutAvis,
+        ]);
+    }
+
+
 }

@@ -251,6 +251,28 @@ class CommandeController
         require __DIR__ . '/../../templates/admin/admin_commandes.php';
     }
 
-    
 
+    //Fonction mettant à jour le statut de la commande et son historique avec messages de succès sinon message d'erreur
+    public function updateStatutCommandeEmploye(): void {
+
+    // 1. lire les 2 infos reçues dans $_POST (id de la commande + statut envoyé)
+    $idCommande = ((int)$_POST['id']);
+    $statutReceived = $_POST['statut'];
+
+    // 2. vérifier que le statut de la commande est bien 'Accepté' ou 'En préparation' ou 'En cours de livraison' ou 'Livrée' ou 'En attente du retour matériel' ou 'Terminée' (sinon : message d'erreur + redirection)
+    if ($statutReceived !== 'Accepté' && $statutReceived !== 'En préparation' && $statutReceived !== 'En cours de livraison' && $statutReceived !== 'Livrée' && $statutReceived !== 'En attente du retour matériel' && $statutReceived !== 'Terminée') {
+        $_SESSION['erreurUpdateStatutCommande'] = "Le statut de la commande n'a pas pu être mis à jour.";
+            header('location:http://localhost:8000/?page=admin_commandes');
+            exit;
+    }
+    // 3. appeler le repository pour modifier le statut de la commande
+    $this->commandeRepository->updateStatutHistoCommande($idCommande, $statutReceived);
+
+
+    // 4. préparer le message de succès
+    $_SESSION['successUpdateStatutCommande'] = "Le statut de la commande a bien été enregistré.";                
+            header('location:http://localhost:8000/?page=admin_commandes');
+            exit;
+  
+    }
 }

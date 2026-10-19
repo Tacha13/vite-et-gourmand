@@ -132,10 +132,14 @@ if (isset($_GET['page']) && $_GET['page'] === 'avis_validate') {
     }
 }
 
-//Route pour afficher la liste des commandes pour l'employé et l'admin
+//Route pour afficher la liste des commandes pour l'employé et l'admin et pour modifier le statut
 if (isset($_GET['page']) && $_GET['page'] === 'admin_commandes') {
     $controller->checkEmploye();
-    $commandeController->showCommandesEmploye();
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $commandeController->showCommandesEmploye();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $commandeController->updateStatutCommandeEmploye();
+    }
 }
 
 

@@ -113,9 +113,40 @@ class CommandeRepository {
         $stmt = $pdo->prepare("SELECT c.id, c.numero, c.dateCreation, c.datePrestation, c.heurePrestation, c.statut, m.nomMenu, co.nom, co.prenom, co.telephone, co.email FROM commandes c, menus m, comptes co WHERE c.menu_id = m.id AND c.compte_id = co.id ORDER BY c.datePrestation, c.heurePrestation;");
 
         $stmt->execute([]);    
-        
+
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
         
     }
+
+    //Fonction mettant à jour le statut de la commande après modification par l'admin ou l'employé, met à jour la table commandes
+    public function updateStatutCommande(int $id, string $statut): void 
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("UPDATE commandes SET statut = :statut WHERE id = :id");
+
+            $stmt->execute(
+            [
+            ':statut' => $statut,
+            ':id' => $id
+        ]
+        ); 
+    }
+
+    //Fonction qui met à jour les statut de la commande dans la commande et l'historique des commandes, si le try n'exécute pas un des appels le catch annule tout avec un rollback et une erreur est envoyée au controller
+    public function updateStatutHistoCommande(int $id, string $statut): void
+    {
+    $pdo = $this->database->getConnection();
+    $pdo->beginTransaction();
+
+    try {
+        $this->updateStatutCommande($id, $statut);
+        $this->createHistoStatut($statut, $id);
+        $pdo->commit();
+    } catch (PDOException $e) {
+        $pdo->rollback();
+        throw $e;
+    }
+    }
+    
 }

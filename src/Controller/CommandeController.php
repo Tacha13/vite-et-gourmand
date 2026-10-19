@@ -251,4 +251,6 @@ class CommandeController
         require __DIR__ . '/../../templates/admin/admin_commandes.php';
     }
 
+    
+
 }

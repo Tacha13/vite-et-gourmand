@@ -132,6 +132,12 @@ if (isset($_GET['page']) && $_GET['page'] === 'avis_validate') {
     }
 }
 
+//Route pour afficher la liste des commandes pour l'employé et l'admin
+if (isset($_GET['page']) && $_GET['page'] === 'admin_commandes') {
+    $controller->checkEmploye();
+    $commandeController->showCommandesEmploye();
+}
+
 
 if (isset($_GET['page']) && $_GET['page'] === 'menus') {
     $menuController->showPublicMenus();

@@ -22,6 +22,11 @@
     <a href="/?page=avis_validate">Les Avis</a>
 </div>
 
+<!-- Lien vers la page de la liste des commandes -->
+<div>
+    <a href="/?page=admin_commandes">Liste des commandes</a>
+</div>
+
 <!-- Lien vers la page des plats -->
 <div>
     <a href="/?page=plats">Les plats</a>

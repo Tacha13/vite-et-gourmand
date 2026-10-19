@@ -231,7 +231,7 @@ class CommandeController
         require __DIR__ . '/../../templates/client/compte_client.php';
     }
 
-        public function showAllHistoCommandesClient (): void
+    public function showAllHistoCommandesClient (): void
     {
         if(!isset($_SESSION ['user_id'] )) {
             header('location:http://localhost:8000/?page=login');
@@ -243,5 +243,12 @@ class CommandeController
         require __DIR__ . '/../../templates/client/histo_commandes.php';
     }
     
+    //Fonction qui renvoie la liste des commandes demandée au repo et à afficher dans le template pour l'employé
+    public function showCommandesEmploye(): void {
+        //1. Demander au repo la liste des commandes
+        $listCommandes = $this->commandeRepository->findAllCommandesEmploye();
+        //2. Chargement du template avec la variable $listCommandes
+        require __DIR__ . '/../../templates/admin/admin_commandes.php';
+    }
 
 }

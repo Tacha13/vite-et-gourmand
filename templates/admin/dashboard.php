@@ -14,7 +14,12 @@
 
 <!-- Lien vers la page des menus -->
 <div>
-    <a href="/?page=admin_menus">les Menus</a>
+    <a href="/?page=admin_menus">Les Menus</a>
+</div>
+
+<!-- Lien vers la page des avis -->
+<div>
+    <a href="/?page=avis_validate">Les Avis</a>
 </div>
 
 <!-- Lien vers la page des plats -->

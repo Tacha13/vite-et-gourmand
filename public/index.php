@@ -216,7 +216,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'toggle_actif') {
 
 //condition d'ouverture de la page d'accueil si aucune page ou si la page est home
 if (!isset($_GET['page']) || $_GET['page'] === 'home') {
-    require __DIR__ . '/../templates/home.php';
+    $avisController->showAvisHome();
 }
 
 //Route pour accéder au détail du menu

@@ -77,4 +77,10 @@ class AvisController {
             exit;
   
     }
+
+    public function showAvisHome(): void {
+         //1. Demander au repo les avis validés pour affichage page home
+        $avisValide = $this->avisRepository->findAllAvisByStatut('Validé');
+        require __DIR__ . '/../../templates/home.php';
+    }
 }

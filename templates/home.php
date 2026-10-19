@@ -1,5 +1,7 @@
 <!-- Page d'accueil -->
-
+<?php
+/** @var array $avisValide */
+?>
 <!--Contenu du head-->
 <?php
     $title = "Accueil Vite & Gourmand";
@@ -65,42 +67,18 @@
     <section class="review-container">
         <div class="container-fluid">
             <div class="row row-cols-md-3 g-4">
+            <?php foreach ($avisValide as $avis): ?>
                 <div class="col review">
                     <div class="review-inner">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <p class="review-bold">Evenement familial</p>
-                    <p>« Un vrai régal ! Les menus étaient délicieux et parfaitement présentés. Toute la famille a apprécié, et l’équipe a été très professionnelle. Nous recommandons sans hésiter ! »</p>
-                    <p class="review-bold">Sophie M. - Bordeaux</p>
+                    <?php for($i = 1; $i <= $avis['note']; $i++): ?>
+                        <i class="fa-solid fa-star"></i>
+                    <?php endfor ?>
+                    <p class="review-bold"><?= htmlspecialchars($avis['nomMenu']) ?></p>
+                    <p><?= htmlspecialchars($avis['avis']) ?></p>
+                    <p class="review-bold"><?= htmlspecialchars($avis['prenom']) ?> <?= htmlspecialchars($avis['nom'][0]) ?>.</p>
                     </div>
                 </div>
-                <div class="col review">
-                    <div class="review-inner">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <p class="review-bold">Evenement professionnel</p>
-                    <p>« Nous avons fait appel à Vite & Gourmand pour un événement professionnel. Les plats étaient raffinés, savoureux et très appréciés de nos invités. Une prestation de qualité ! »</p>
-                    <p class="review-bold">Thomas R. - Bordeaux</p>
-                    </div>
-                </div>
-                <div class="col review">
-                    <div class="review-inner">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <p class="review-bold">Anniversaire</p>
-                    <p>« Une très belle découverte ! Des produits savoureux, des portions généreuses et un service impeccable. Notre anniversaire a été une réussite grâce à Vite & Gourmand. »</p>
-                    <p class="review-bold">Claire D. - Bordeaux</p>
-                    </div>
-                </div>
+            <?php endforeach ?>
             </div>
         </div>
     </section>

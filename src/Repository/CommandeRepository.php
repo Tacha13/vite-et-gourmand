@@ -148,5 +148,38 @@ class CommandeRepository {
         throw $e;
     }
     }
+
+    //Fonction qui enregistre le motif d'annulation de commandes et le mode de contact
+    public function updateMotifAnnulContactCommande(int $id, string $motifAnnulation, string $modeContact): void
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("UPDATE commandes SET motifAnnulation = :motifAnnulation, modeContact = :modeContact WHERE id = :id");
+
+            $stmt->execute(
+            [
+            ':motifAnnulation' => $motifAnnulation,
+            ':modeContact' => $modeContact,
+            ':id' => $id
+        ]
+        ); 
+
+    }
+
+    //Fonction qui met à jour le motif d'annulation  et le mode de contact dans la commande et l'historique, si le try n'exécute pas un des appels le catch annule tout avec un rollback et une erreur est envoyée au controller
+    public function updateMotifContactHistoCommande(int $id, string $statut, string $motifAnnulation, string $modeContact): void 
+    {
+        $pdo = $this->database->getConnection();
+        $pdo->beginTransaction();
+
+        try {
+            $this->updateStatutCommande($id, $statut);
+            $this->createHistoStatut($statut, $id);
+            $this->updateMotifAnnulContactCommande($id, $motifAnnulation, $modeContact);
+            $pdo->commit();
+        } catch (PDOException $e) {
+            $pdo->rollback();
+            throw $e;
+        }
+    }
     
 }

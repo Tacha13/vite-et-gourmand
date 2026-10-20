@@ -253,7 +253,8 @@ class CommandeController
 
 
     //Fonction mettant à jour le statut de la commande et son historique avec messages de succès sinon message d'erreur
-    public function updateStatutCommandeEmploye(): void {
+    public function updateStatutCommandeEmploye(): void 
+    {
 
     // 1. lire les 2 infos reçues dans $_POST (id de la commande + statut envoyé)
     $idCommande = ((int)$_POST['id']);
@@ -275,4 +276,36 @@ class CommandeController
             exit;
   
     }
+
+    //Fonction qui vérifie le mmotif d'annulation, la présence d'un mode de contact, modifie le motif de la commande et renvoie un message si success
+    public function updateMotifContactCommande(): void 
+    {
+    // 1. lire les 3 infos reçues dans $_POST (id de la commande + motif + mode contact)
+    $idCommande = ((int)$_POST['id']);
+    $motifannulation = $_POST['motifAnnulation'];
+    $modeContact = $_POST['modeContact'];
+
+    // 2. vérifier que le motif d'annulation de la commande est bien renseigné (sinon : message d'erreur + redirection)
+    if (empty($motifannulation)){
+        $_SESSION['erreurUpdateMotifCommande'] = "Le motif d'annulation de la commande n'a pas pu être pris en compte.";
+            header('location:http://localhost:8000/?page=admin_commandes');
+            exit;
+    }
+
+    // 3. vérifier que le mode de contact suite à la demande d'annulation de la commande est bien renseigné (sinon : message d'erreur + redirection)
+    if ($modeContact !== 'Appel'  && $modeContact !== 'Email' ){
+        $_SESSION['erreurUpdateContactCommande'] = "Le mode de contact ne correspond pas au mode de contact attendu (appel ou email)";
+            header('location:http://localhost:8000/?page=admin_commandes');
+            exit;
+    }
+    // 4. appeler le repository pour modifier le motif d'annulation de la commande
+    $this->commandeRepository->updateMotifContactHistoCommande($idCommande, 'Annulée', $motifannulation, $modeContact);
+
+    // 5. préparer le message de succès
+    $_SESSION['successUpdateMotifAnnulCommande'] = "Le motif d'annulation de la commande a bien été enregistré.";                
+            header('location:http://localhost:8000/?page=admin_commandes');
+            exit;
+  
+    }
+
 }

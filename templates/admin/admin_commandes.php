@@ -19,21 +19,31 @@
     <h1 class="title-listCommandes">Liste des commandes</h1>
 </div>
 
-<!--Messages flash en cas de success de modification du statut de la commande-->
+<!--Messages flash en cas de success de MAJ de motif d'annulation-->
     
-    <?php if (isset($_SESSION['successUpdateStatutCommande'])) { ?>
-        <div class="flashMessage successUpdateStatutCommande">
-        <p> <?=  htmlspecialchars($_SESSION['successUpdateStatutCommande']) ?> </p>
+    <?php if (isset($_SESSION['successUpdateMotifAnnulCommande'])) { ?>
+        <div class="flashMessage successUpdateMotifAnnulCommande">
+        <p> <?=  htmlspecialchars($_SESSION['successUpdateMotifAnnulCommande']) ?> </p>
         </div>
-    <?php unset($_SESSION['successUpdateStatutCommande']);
+    <?php unset($_SESSION['successUpdateMotifAnnulCommande']);
     }?>
-<!--Messages flash en cas d'erreur lors de la modification du statut de la commande-->
+<!--Messages flash en cas d'erreur sur le motif de la commande-->
     
-    <?php if (isset($_SESSION['erreurUpdateStatutCommande'])) { ?>
-        <div class="flashMessage erreurUpdateStatutCommande">
-        <p> <?=  htmlspecialchars($_SESSION['erreurUpdateStatutCommande']) ?> </p>
+    <?php if (isset($_SESSION['erreurUpdateMotifCommande'])) { ?>
+        <div class="flashMessage erreurUpdateMotifCommande">
+        <p> <?=  htmlspecialchars($_SESSION['erreurUpdateMotifCommande']) ?> </p>
         </div>
-    <?php unset($_SESSION['erreurUpdateStatutCommande']);
+    <?php unset($_SESSION['erreurUpdateMotifCommande']);
+    }?>
+
+<!--Messages flash en cas d'erreur de contact de la commande-->
+
+    
+    <?php if (isset($_SESSION['erreurUpdateContactCommande'])) { ?>
+        <div class="flashMessage erreurUpdateContactCommande">
+        <p> <?=  htmlspecialchars($_SESSION['erreurUpdateContactCommande']) ?> </p>
+        </div>
+    <?php unset($_SESSION['erreurUpdateContactCommande']);
     }?>
 
 
@@ -70,6 +80,7 @@
             <td><?=  htmlspecialchars($listCommande['telephone']) ?></td>
             <td><?=  htmlspecialchars($listCommande['email']) ?></td>
             <td>
+                <?php if ($listCommande['statut'] !== 'Terminée' && $listCommande['statut'] !== 'Annulée'): ?><div aria-hidden="true"></div>
                 <form action="/?page=admin_commandes" method="POST">
                     <input id="modifierCommande<?= $listCommande['id'] ?>" name="id" type="hidden" value="<?= $listCommande['id'] ?>">
                     <div>
@@ -85,7 +96,19 @@
                         <button type="submit">Enregistrer</button>
                         </div>
                 </form>
+                <form action="/?page=annuler_commande" method="POST">
+                    <input id="annulerCommande<?= $listCommande['id'] ?>" name="id" type="hidden" value="<?= $listCommande['id'] ?>">
+                    <textarea name="motifAnnulation" id="motifAnnulation"></textarea>
+                    <div>
+                        <label for="modeContactAppel<?= $listCommande['id'] ?>">Appel</label>
+                        <input type="radio" name="modeContact" id="modeContactAppel<?= $listCommande['id'] ?>" value="Appel">
+                        <label for="modeContactEmail<?= $listCommande['id'] ?>">Email</label>
+                        <input type="radio" name="modeContact" id="modeContactEmail<?= $listCommande['id'] ?>" value="Email">
 
+                        <button type="submit">Enregistrer l'annulation</button>
+                    </div>
+                </form>
+                <?php endif ?>
             </td>
             </tr>
     <?php endforeach ?>

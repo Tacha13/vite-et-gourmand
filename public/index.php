@@ -142,6 +142,17 @@ if (isset($_GET['page']) && $_GET['page'] === 'admin_commandes') {
     }
 }
 
+//Route pour afficher la liste des commandes pour l'employé et l'admin après validation de l'annulation de la commande
+if (isset($_GET['page']) && $_GET['page'] === 'annuler_commande') {
+    $controller->checkEmploye();
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $commandeController->showCommandesEmploye();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $commandeController->updateMotifContactCommande();
+    }
+}
+
+
 
 if (isset($_GET['page']) && $_GET['page'] === 'menus') {
     $menuController->showPublicMenus();

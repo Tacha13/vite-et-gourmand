@@ -13,6 +13,11 @@
 <?php
     require __DIR__ . '/../partials/header.php';
 ?>
+
+<div class="title-avis">
+    <h1>Liste des avis</h1>
+</div>
+
 <!--Messages flash en cas de success de validation ou de refus d'un avis-->
     
     <?php if (isset($_SESSION['successStatutAvis'])) { ?>
@@ -30,9 +35,6 @@
     <?php unset($_SESSION['erreurStatutAvis']);
     }?>
 
-<div class="title-avis">
-    <h1>Liste des avis</h1>
-</div>
 
 <?php foreach ($avisEnAttente as $avis): ?>
     <div class="col">

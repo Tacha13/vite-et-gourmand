@@ -62,7 +62,6 @@
             <option value="En attente du retour de matériel">En attente du retour de matériel</option>
             <option value="Terminée">Terminée</option>
             <option value="Annulée">Annulée</option>
-
         </select>
     </div>
         <div>
@@ -70,6 +69,9 @@
         </div>
         <div>
             <button>Valider</button>
+        </div>
+        <div>
+            <a href="/?page=admin_commandes">Effacer les filtres</a>
         </div>
     </form>
 
@@ -134,6 +136,8 @@
                         <button type="submit">Enregistrer l'annulation</button>
                     </div>
                 </form>
+                <?php else :?>
+                    <p>Aucune action</p>
                 <?php endif ?>
             </td>
             </tr>

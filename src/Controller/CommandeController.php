@@ -282,7 +282,7 @@ class CommandeController
   
     }
 
-    //Fonction qui vérifie le mmotif d'annulation, la présence d'un mode de contact, modifie le motif de la commande et renvoie un message si success
+    //Fonction qui vérifie le motif d'annulation, la présence d'un mode de contact, modifie le motif de la commande et renvoie un message si success
     public function updateMotifContactCommande(): void 
     {
     // 1. lire les 3 infos reçues dans $_POST (id de la commande + motif + mode contact)
@@ -307,7 +307,7 @@ class CommandeController
     $this->commandeRepository->updateMotifContactHistoCommande($idCommande, 'Annulée', $motifannulation, $modeContact);
 
     // 5. préparer le message de succès
-    $_SESSION['successUpdateMotifAnnulCommande'] = "Le motif d'annulation de la commande a bien été enregistré.";                
+    $_SESSION['successUpdateMotifAnnulCommande'] = "La commande a été annulée.";                
             header('location:http://localhost:8000/?page=admin_commandes');
             exit;
   

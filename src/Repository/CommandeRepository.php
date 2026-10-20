@@ -106,13 +106,17 @@ class CommandeRepository {
         );
     }
 
-    //Fonction qui renvoie sous forme de tableau l'ensemble des commandes quel que soit le statut pour l'employé afin de modifier ou annuler une commande, triée par date de prestation et heure de prestation (ASC non nécessaire car par défaut, du plus proche au plus lointain)
-    public function findAllCommandesEmploye(): array 
+    //Fonction qui renvoie sous forme de tableau l'ensemble des commandes sous forme de filtre pour l'employé afin de modifier ou annuler une commande, triée par date de prestation et heure de prestation (ASC non nécessaire car par défaut, du plus proche au plus lointain). 
+    public function findAllCommandesEmploye(string $statut, string $nom): array 
     {
         $pdo = $this->database->getConnection();
-        $stmt = $pdo->prepare("SELECT c.id, c.numero, c.dateCreation, c.datePrestation, c.heurePrestation, c.statut, m.nomMenu, co.nom, co.prenom, co.telephone, co.email FROM commandes c, menus m, comptes co WHERE c.menu_id = m.id AND c.compte_id = co.id ORDER BY c.datePrestation, c.heurePrestation;");
+        $stmt = $pdo->prepare("SELECT c.id, c.numero, c.dateCreation, c.datePrestation, c.heurePrestation, c.statut, m.nomMenu, co.nom, co.prenom, co.telephone, co.email FROM commandes c, menus m, comptes co WHERE c.menu_id = m.id AND c.compte_id = co.id AND (:statut = '' OR c.statut = :statut) AND (co.nom LIKE :nom) ORDER BY c.datePrestation, c.heurePrestation;");
 
-        $stmt->execute([]);    
+        $stmt->execute(
+            [
+                ':statut' => $statut,
+                ':nom' => $nom . '%'
+            ]);    
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;

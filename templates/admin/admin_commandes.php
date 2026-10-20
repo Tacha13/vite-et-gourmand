@@ -19,6 +19,7 @@
     <h1 class="title-listCommandes">Liste des commandes</h1>
 </div>
 
+
 <!--Messages flash en cas de success de MAJ de motif d'annulation-->
     
     <?php if (isset($_SESSION['successUpdateMotifAnnulCommande'])) { ?>
@@ -46,6 +47,31 @@
     <?php unset($_SESSION['erreurUpdateContactCommande']);
     }?>
 
+<!-- Section pour les filtres -->
+<section class="filter-commandes">
+    <form action="/" method="GET">
+        <input type="hidden" name="page" value="admin_commandes">
+    <div>
+        <select name="filter-statut" id="filter-statut">
+            <option value="">Statuts</option>
+            <option value="En attente de validation">En attente de validation</option>
+            <option value="Accepté">Accepté</option>
+            <option value="En préparation">En préparation</option>
+            <option value="En cours de livraison">En cours de livraison</option>
+            <option value="Livrée">Livrée</option>
+            <option value="En attente du retour de matériel">En attente du retour de matériel</option>
+            <option value="Terminée">Terminée</option>
+            <option value="Annulée">Annulée</option>
+
+        </select>
+    </div>
+        <div>
+            <input type="text" name="nomClient"> 
+        </div>
+        <div>
+            <button>Valider</button>
+        </div>
+    </form>
 
 <div class="table-responsive list-commandes">
     <table class="table align-middle table-striped table-grey table-hover">

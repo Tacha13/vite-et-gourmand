@@ -245,9 +245,14 @@ class CommandeController
     
     //Fonction qui renvoie la liste des commandes demandée au repo et à afficher dans le template pour l'employé
     public function showCommandesEmploye(): void {
-        //1. Demander au repo la liste des commandes
-        $listCommandes = $this->commandeRepository->findAllCommandesEmploye();
-        //2. Chargement du template avec la variable $listCommandes
+
+        //1. Lire les filtres reçus du navigateur (vérification s'il GET existe sinon renvoie vide)
+        $filterStatut = $_GET['filter-statut'] ?? '';
+        $filterNomClient = $_GET['nomClient'] ?? '';
+
+        //2. Demander au repo la liste des commandes
+        $listCommandes = $this->commandeRepository->findAllCommandesEmploye($filterStatut, $filterNomClient);
+        //3. Chargement du template avec la variable $listCommandes
         require __DIR__ . '/../../templates/admin/admin_commandes.php';
     }
 

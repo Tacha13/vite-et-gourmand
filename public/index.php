@@ -158,6 +158,11 @@ if (isset($_GET['page']) && $_GET['page'] === 'menus') {
     $menuController->showPublicMenus();
 }
 
+//Route pour accéder au détail du menu
+if (isset($_GET['page']) && $_GET['page'] === 'menu_details') {
+    $menuController->showDetailMenu();
+}
+
 if (isset($_GET['page']) && $_GET['page'] === 'menu_create') {
     $controller->checkEmploye();
    if ($_SERVER['REQUEST_METHOD'] === 'GET') {

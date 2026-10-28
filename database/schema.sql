@@ -107,5 +107,12 @@ Foreign Key (plat_id) REFERENCES plats(id),
 Foreign Key (allergene_id) REFERENCES allergenes(id)
 );
 
-
+CREATE TABLE IF NOT EXISTS horaires 
+(
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+jour VARCHAR (15) NOT NULL,
+heureDebut TIME  NULL,
+heureFin TIME  NULL,
+ouvert BOOLEAN DEFAULT 1
+);
 

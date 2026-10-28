@@ -45,6 +45,7 @@ $avisController = new AvisController($avisRepository);
 
 
 
+
 if (isset($_GET['page']) && $_GET['page'] === 'register') {
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $controller->showRegister();

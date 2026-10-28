@@ -143,3 +143,9 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+-- Mise à jour de la table horaires
+
+INSERT INTO horaires (jour, heureDebut, heureFin, ouvert) 
+VALUES ('Lundi','09:00:00', '18:00:00',1), ('Mardi','09:00:00', '18:00:00',1),('Mercredi','09:00:00', '18:00:00',1),('Jeudi','09:00:00', '18:00:00',1),('Vendredi','09:00:00', '18:00:00',1),('Samedi','09:00:00', '13:00:00',1),('Dimanche',null,null,0);

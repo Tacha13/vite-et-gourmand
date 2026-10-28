@@ -1,3 +1,14 @@
+<?php 
+use Tacha\ViteEtGourmand\Repository\HoraireRepository;
+use Tacha\ViteEtGourmand\Database;
+
+
+$data = new Database();
+$horaireRepo = new HoraireRepository($data);
+
+$horaires = $horaireRepo->findAll();
+?>
+
 <footer class="footer">
     <div class="row row-cols-3 row-cols-md-3 g-4 mon-footer">
         <div class="col">
@@ -12,9 +23,13 @@
         <div class="col">
             <h3 class="footer-title">Horaires</h3>
             <div class="footer-inner">
-                <p>Lundi - Vendredi 9h00 - 18h00</p>
-                <p>Samedi 9h00 - 13h00</p>
-                <p>Dimanche Fermé</p>
+                <?php foreach ($horaires as $horaire): ?>
+                    <?php if($horaire['ouvert'] !== 0) : ?>
+                    <p><?= htmlspecialchars($horaire['jour']) . ' : ' . htmlspecialchars(substr($horaire['heureDebut'],0,5)) . ' - ' . htmlspecialchars(substr($horaire['heureFin'],0,5))?></p>
+                    <?php else :?>
+                    <p><?= htmlspecialchars($horaire['jour']) . ' : ' . 'Fermé'?></p>
+                    <?php endif ?>
+                <?php endforeach ?>
                 <p>Retrait des commandes sur rendez-vous</p>
             </div>
         </div>

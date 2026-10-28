@@ -152,7 +152,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'annuler_commande') {
     }
 }
 
-
+//MENUS
 
 if (isset($_GET['page']) && $_GET['page'] === 'menus') {
     $menuController->showPublicMenus();
@@ -167,9 +167,13 @@ if (isset($_GET['page']) && $_GET['page'] === 'menu_create') {
     }
 }
 
-if (isset($_GET['page']) && $_GET['page'] === 'delete_confirm') {
+if (isset($_GET['page']) && $_GET['page'] === 'menu_update') {
     $controller->checkEmploye();
-    $menuController->showDeleteConfirm();
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $menuController->showMenuUpdate();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $menuController->updateMenu();
+    }
 }
 
 if (isset($_GET['page']) && $_GET['page'] === 'menu_delete') {
@@ -177,6 +181,9 @@ if (isset($_GET['page']) && $_GET['page'] === 'menu_delete') {
     $menuController->deleteMenu();
 }
 
+
+
+//PLATS
 
 if (isset($_GET['page']) && $_GET['page'] === 'plats') {
     $controller->checkEmploye();
@@ -240,10 +247,6 @@ if (!isset($_GET['page']) || $_GET['page'] === 'home') {
     $avisController->showAvisHome();
 }
 
-//Route pour accéder au détail du menu
-if (isset($_GET['page']) && $_GET['page'] === 'menu_details') {
-    $menuController->showDetailMenu();
-}
 
 //Route pour accéder à la page des contacts
 if (isset($_GET['page']) && $_GET['page'] === 'contact') {
@@ -252,6 +255,13 @@ if (isset($_GET['page']) && $_GET['page'] === 'contact') {
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $contactController->sendContact();
     }
+}
+
+//ROUTE DELETE
+
+if (isset($_GET['page']) && $_GET['page'] === 'delete_confirm') {
+    $controller->checkEmploye();
+    $menuController->showDeleteConfirm();
 }
 
 

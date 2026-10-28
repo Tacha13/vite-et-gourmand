@@ -98,7 +98,7 @@ class CommandeRepository {
         $pdo = $this->database->getConnection();
         $stmt = $pdo->prepare("UPDATE commandes SET numero = :numero WHERE id = :id");
 
-                $stmt->execute(
+        $stmt->execute(
             [
             ':numero' => $numero,
             ':id' => $id

@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Tacha\ViteEtGourmand\Controller;
 
 use PDOException;
@@ -81,6 +82,71 @@ class MenuController
             exit;
         }
         
+    }
+
+    //Fonciton qui récupère les infos d'un menu avec findById et rnevoie à la page de modification du menu
+    public function showMenuUpdate(): void 
+    {   
+        //1. Vérification que l'id est bien dans l'adresse sinon retour à la liste des menus
+        if(!isset($_GET ['id'] )) {
+                header('location:http://localhost:8000/?page=admin_menus');
+                exit;
+            } 
+
+        //2. Demander au repo les infos du menu selon l'id
+        $menuModifier = $this->menuRepository->findById((int)$_GET['id']);
+
+        //3. si pas de menu -> retour à la liste de smenus
+        if($menuModifier === null) {
+            header('location:http://localhost:8000/?page=admin_menus');
+            exit;
+        }
+
+        //4. Charge le formulaire
+        require __DIR__ . '/../../templates/admin/menu_update.php';
+
+    }
+
+    //Fonction qui permet de mettre à jour la base en appelant le repo sinon message d'erreur et retour à la liste de modification des menus 
+    public function updateMenu(): void 
+    {
+    //1. LIre l'id et les champs du formulaire en POST
+        $nomMenu = (string)($_POST['nameMenu']);
+        $description = (string)($_POST['description']);
+        $theme = (string)($_POST['theme']);
+        $nbPersonneMin = (int)$_POST['persMin'];
+        $prix = (float)$_POST['price'];
+        $conditions = (string)($_POST['conditions']);
+        $regime = (string)($_POST['regime']);
+        $stock = (int)$_POST['stock'];
+        $image = (string)($_POST['image']);
+        $id = (int)$_POST['id'];
+
+    //2. Vérification des champs obligatoires non vides sinon erreur + retour
+    if(
+    $nomMenu === '' 
+    || $description === '' 
+    || $theme === '' 
+    || $nbPersonneMin <= 0 
+    || $prix <= 0 
+    || $conditions === '' 
+    || $regime === '' 
+    || $stock < 0 
+    || $image === '' 
+    || $id <= 0
+    ) {
+        $_SESSION['erreurUpdateMenu'] = "Les modifications apportées au menu n'ont pas pu être enregistrées.";
+            header('location:http://localhost:8000/?page=menu_update&id=' . $id);
+            exit;
+    }
+
+    //3. Appeler le repo pour MAJ
+    $this->menuRepository->update($id, $nomMenu, $description, $theme, $nbPersonneMin, $prix, $conditions, $regime, $stock, $image);
+
+    //4. Message succes
+     $_SESSION['successUpdateMenu'] = "Les modifications ont été enregistrées.";
+            header('location:http://localhost:8000/?page=admin_menus');
+            exit;
     }
 
 

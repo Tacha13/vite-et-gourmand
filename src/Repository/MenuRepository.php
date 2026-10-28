@@ -17,7 +17,7 @@ class MenuRepository
 #Fonction récupérant les informations de chaque menu même vide    
     public function findAll(): array {
         $pdo = $this->database->getConnection();
-        $menus = $pdo->prepare("SELECT id, nomMenu, theme, prix, `description`, nbPersonneMin, `image` FROM menus ;
+        $menus = $pdo->prepare("SELECT id, nomMenu, theme, prix, `description`, nbPersonneMin, `image`, regime, stock FROM menus ;
         ");
 
         $menus->execute();
@@ -63,7 +63,7 @@ class MenuRepository
     public function findById(int $id) : ?array 
     {
         $pdo = $this->database->getConnection();
-        $idMenu = $pdo->prepare("SELECT id, nomMenu, theme, prix, conditions, `description`, nbPersonneMin, `image`, allergenes FROM menus WHERE id = :id;");
+        $idMenu = $pdo->prepare("SELECT id, nomMenu, theme, prix, conditions, `description`, nbPersonneMin, `image`, allergenes, regime, stock FROM menus WHERE id = :id;");
 
         $idMenu->execute(
             [
@@ -74,6 +74,28 @@ class MenuRepository
         $result = $idMenu->fetch(PDO::FETCH_ASSOC);
         return $result ?: null;
         
+    }
+
+    //Méthode qui permet de mettre à jour les informations des menus suite à modification par l'admin/employé
+    public function update(int $id, string $nomMenu, string $description, string $theme, int $nbPersonneMin, float $prix, string $conditions, string $regime, int $stock, string $image): void
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("UPDATE menus SET nomMenu = :nomMenu, `description` = :description, theme = :theme, nbPersonneMin = :nbPersonneMin, prix = :prix, conditions = :conditions, regime = :regime, stock = :stock, `image` = :image WHERE id = :id");
+
+            $stmt->execute(
+            [
+            ':nomMenu' => $nomMenu,
+            ':description' => $description,
+            ':theme' => $theme,
+            ':nbPersonneMin' => $nbPersonneMin,
+            ':prix' => $prix,
+            ':conditions' => $conditions,
+            ':regime' => $regime,
+            ':stock' => $stock,
+            ':image' => $image,
+            ':id' => $id
+        ]
+        ); 
     }
 
        

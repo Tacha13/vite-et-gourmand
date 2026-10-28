@@ -26,6 +26,16 @@
         <?php unset($_SESSION['erreurDeleteMenu']);
         }?>
 
+<?php if (isset($_SESSION['successUpdateMenu'])) { ?>
+        <div class="flashMessage successUpdateMenu">
+        <p> <?=  htmlspecialchars($_SESSION['successUpdateMenu']) ?> </p>
+        </div>
+        <?php unset($_SESSION['successUpdateMenu']);
+        }?>
+
+    
+
+
 <!-- Section pour les filtres -->
  
 <section>
@@ -62,7 +72,7 @@ if (!isset($menus) || !is_array($menus)) {
         <td><img src="" alt="Image du menu"></td>
         <td><?= htmlspecialchars(number_format($menu['prix'], 2, ',', ' ')) ?></td>
         <td><input type="button" value="Voir"></td>
-        <td><input type="button" value="Modifier"></td>
+        <td><a href="/?page=menu_update&id=<?= ($menu['id'])?>" class="detail">Modifier le menu</a></td>
 
             <td>
                 <form action="/?page=delete_confirm" method="POST">

@@ -209,6 +209,19 @@ if (isset($_GET['page']) && $_GET['page'] === 'plat_delete') {
     $platController->deletePlat();
 }
 
+if (isset($_GET['page']) && $_GET['page'] === 'plat_update') {
+    $controller->checkEmploye();
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $platController->showPlatUpdate();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $platController->updatePlat();
+    }
+}
+
+
+
+//ALLERGENES
+
 if (isset($_GET['page']) && $_GET['page'] === 'allergenes') {
     $controller->checkEmploye();
     $allergeneController->showAllergene();

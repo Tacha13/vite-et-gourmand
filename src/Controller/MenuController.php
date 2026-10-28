@@ -84,7 +84,7 @@ class MenuController
         
     }
 
-    //Fonciton qui récupère les infos d'un menu avec findById et rnevoie à la page de modification du menu
+    //Fonction qui récupère les infos d'un menu avec findById et renvoie à la page de modification du menu
     public function showMenuUpdate(): void 
     {   
         //1. Vérification que l'id est bien dans l'adresse sinon retour à la liste des menus

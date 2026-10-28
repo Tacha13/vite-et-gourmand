@@ -33,6 +33,13 @@
         <?php unset($_SESSION['erreurDeletePlat']);
         }?>
 
+    <?php if (isset($_SESSION['successUpdatePlat'])) { ?>
+        <div class="flashMessage successUpdatePlat">
+        <p> <?=  htmlspecialchars($_SESSION['successUpdatePlat']) ?> </p>
+        </div>
+        <?php unset($_SESSION['successUpdatePlat']);
+        }?>
+
 
 <!-- Section pour les filtres -->
 <section>
@@ -43,7 +50,6 @@
 
 <!-- Tableau affichant les informations des plats -->
 <table>
-    <caption>Plat 1</caption>
     <thead>
         <tr>
             <th>Nom</th>
@@ -66,7 +72,7 @@ if (!isset($plats) || !is_array($plats)) {
         <td><?= htmlspecialchars($plat['typePlat']) ?></td>
         <td><img src="" alt="Image du plat"></td>
         <td><input type="button" value="Voir"></td>
-        <td><input type="button" value="Modifier"></td>
+        <td><a href="/?page=plat_update&id=<?= ($plat['id'])?>" class="detail">Modifier le plat</a></td>
 
             <td>
                 <form action="/?page=delete_confirm" method="POST">
@@ -78,6 +84,9 @@ if (!isset($plats) || !is_array($plats)) {
 
     </tr>
 <?php endforeach ?>
+    <div>
+        <a href="/?page=dashboard">Retour à la page administration</a>
+    </div>
     
 </tbody>
 </table>

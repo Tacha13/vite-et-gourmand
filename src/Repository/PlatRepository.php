@@ -53,9 +53,35 @@ class PlatRepository
         
     }
 
-       
-    
+    public function findById(int $id) : ?array 
+    {
+        $pdo = $this->database->getConnection();
+        $idPlat = $pdo->prepare("SELECT id, nomPlat, typePlat FROM plats WHERE id = :id;");
 
+        $idPlat->execute(
+            [
+            ':id' => $id
+            ]
+        );
+
+        $result = $idPlat->fetch(PDO::FETCH_ASSOC);
+        return $result ?: null;
+    }  
+    
+     //Méthode qui permet de mettre à jour les informations des plats suite à modification par l'admin/employé
+    public function update(int $id, string $nomPlat, string $typePlat): void
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("UPDATE plats SET nomPlat = :nomPlat, typePlat = :typePlat WHERE id = :id");
+
+            $stmt->execute(
+            [
+            ':nomPlat' => $nomPlat,
+            ':typePlat' => $typePlat,
+            ':id' => $id
+        ]
+        ); 
+    }
     
 
 }    

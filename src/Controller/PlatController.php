@@ -55,5 +55,55 @@ class PlatController
     }
     }
 
+    //Fonction qui récupère les infos d'un plat avec findById et renvoie à la page de modification du plat
+    public function showPlatUpdate(): void 
+    {   
+        //1. Vérification que l'id est bien dans l'adresse sinon retour à la liste des plats
+        if(!isset($_GET ['id'] )) {
+                header('location:http://localhost:8000/?page=plats');
+                exit;
+            } 
+
+        //2. Demander au repo les infos du plat selon l'id
+        $platModifier = $this->platRepository->findById((int)$_GET['id']);
+
+        //3. si pas de plat -> retour à la liste des plats
+        if($platModifier === null) {
+            header('location:http://localhost:8000/?page=plats');
+            exit;
+        }
+
+        //4. Charge le formulaire
+        require __DIR__ . '/../../templates/admin/plat_update.php';
+
+    }
+
+    //Fonction qui permet de mettre à jour la base en appelant le repo sinon message d'erreur et retour à la liste de modification des plats 
+    public function updatePlat(): void 
+    {
+    //1. LIre l'id et les champs du formulaire en POST
+        $nomPlat = (string)($_POST['namePlat']);
+        $typePlat = (string)($_POST['typePlat']);
+        $id = (int)$_POST['id'];
+
+    //2. Vérification des champs obligatoires non vides sinon erreur + retour
+    if(
+    $nomPlat === '' 
+    || $typePlat === '' 
+    || $id <= 0
+    ) {
+        $_SESSION['erreurUpdatePlat'] = "Les modifications apportées au plat n'ont pas pu être enregistrées.";
+            header('location:http://localhost:8000/?page=plat_update&id=' . $id);
+            exit;
+    }
+
+    //3. Appeler le repo pour MAJ
+    $this->platRepository->update($id, $nomPlat, $typePlat);
+
+    //4. Message succes
+     $_SESSION['successUpdatePlat'] = "Les modifications ont été enregistrées.";
+            header('location:http://localhost:8000/?page=plats');
+            exit;
+    }
 
 }

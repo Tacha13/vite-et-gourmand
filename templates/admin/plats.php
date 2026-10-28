@@ -85,7 +85,7 @@ if (!isset($plats) || !is_array($plats)) {
     </tr>
 <?php endforeach ?>
     <div>
-        <a href="/?page=dashboard">Retour à la page administration</a>
+        <a href="/?page=admin">Retour à la page administration</a>
     </div>
     
 </tbody>

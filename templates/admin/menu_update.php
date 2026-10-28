@@ -47,7 +47,9 @@
             <input type="number" name="stock" id="stock" value="<?= (int)($menuModifier['stock']) ?>"><br>
             <input type="submit" value="Valider">
         </div>
-
+        <div>
+            <a href="/?page=admin_menus">Retour aux menus</a>
+        </div>
     </fieldset>
 </form>
 

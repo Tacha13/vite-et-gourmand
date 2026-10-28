@@ -84,6 +84,9 @@ if (!isset($menus) || !is_array($menus)) {
 
     </tr>
 <?php endforeach ?>
+    <div>
+        <a href="/?page=admin">Retour à la page administration</a>
+    </div>
     
 </tbody>
 </table>

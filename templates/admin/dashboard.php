@@ -37,6 +37,11 @@
     <a href="/?page=allergenes">Les allergènes</a>
 </div>
 
+<!-- Lien vers la page des horaires -->
+<div>
+    <a href="/?page=admin_horaires">Les horaires</a>
+</div>
+
 <!-- Lien vers la page listing employé visible que par l'admin-->
 <?php  if((isset($_SESSION ['user_id']) && ($_SESSION ['user_role']) === 'admin')) :?>
 <div>

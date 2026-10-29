@@ -21,6 +21,10 @@ use Tacha\ViteEtGourmand\Repository\CommandeRepository;
 use Tacha\ViteEtGourmand\Controller\CommandeController;
 use Tacha\ViteEtGourmand\Repository\AvisRepository;
 use Tacha\ViteEtGourmand\Controller\AvisController;
+use Tacha\ViteEtGourmand\Repository\HoraireRepository;
+use Tacha\ViteEtGourmand\Controller\HoraireController;
+
+
 
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
@@ -41,10 +45,17 @@ $commandeRepository = new CommandeRepository($data);
 $commandeController = new CommandeController($repo, $menuRepo, $commandeRepository, $mailService);
 $avisRepository = new AvisRepository($data);
 $avisController = new AvisController($avisRepository);
+$horaireRepository = new HoraireRepository($data);
+$horaireController = new HoraireController($horaireRepository);
 
 
 
 
+
+//condition d'ouverture de la page d'accueil si aucune page ou si la page est home
+if (!isset($_GET['page']) || $_GET['page'] === 'home') {
+    $avisController->showAvisHome();
+}
 
 if (isset($_GET['page']) && $_GET['page'] === 'register') {
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -71,12 +82,40 @@ if (isset($_GET['page']) && $_GET['page'] === 'admin') {
     $controller->showDashBoard();
 }
 
+//ADMIN/EMPLOYES
+
 if (isset($_GET['page']) && $_GET['page'] === 'admin_menus') {
     $controller->checkEmploye();
     $menuController->showMenus();
 }
 
+if (isset($_GET['page']) && $_GET['page'] === 'employe_create') {
+    $controller->checkAdmin();
+   if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $controller->showEmployeCreate();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controller->createEmploye();
+    }
+}
 
+if (isset($_GET['page']) && $_GET['page'] === 'employes') {
+    $controller->checkAdmin();
+    $controller->showEmploye();
+}
+
+if (isset($_GET['page']) && $_GET['page'] === 'toggle_actif') {
+    $controller->checkAdmin();
+    $controller->toggleActif();
+}
+
+// LES HORAIRES 
+if (isset($_GET['page']) && $_GET['page'] === 'admin_horaires') {
+    $controller->checkEmploye();
+    $horaireController->showHoraires();
+}
+
+
+// COMMANDES
 // Route qui vérifie si le user est connecté et renvoie au formulaire de la commande en GET sinon à la préparation de la commande si POST (vérification, calcul prix)
 if (isset($_GET['page']) && $_GET['page'] === 'commande_create') {
     $controller->checkLogin();
@@ -97,6 +136,28 @@ if (isset($_GET['page']) && $_GET['page'] === 'commande_validate') {
     }
 }
 
+
+//Route pour afficher la liste des commandes pour l'employé et l'admin et pour modifier le statut
+if (isset($_GET['page']) && $_GET['page'] === 'admin_commandes') {
+    $controller->checkEmploye();
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $commandeController->showCommandesEmploye();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $commandeController->updateStatutCommandeEmploye();
+    }
+}
+
+//Route pour afficher la liste des commandes pour l'employé et l'admin après validation de l'annulation de la commande
+if (isset($_GET['page']) && $_GET['page'] === 'annuler_commande') {
+    $controller->checkEmploye();
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $commandeController->showCommandesEmploye();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $commandeController->updateMotifContactCommande();
+    }
+}
+
+//COMPTE CLIENT
 //Route pour accéder au compte client
 if (isset($_GET['page']) && $_GET['page'] === 'compte_client') {
     $commandeController->showAllCommandesClient();
@@ -116,6 +177,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'infos_personnelles') {
     }
 }
 
+//LES AVIS
 //Route pour la création de l'avis de la commande
 if (isset($_GET['page']) && $_GET['page'] === 'avis') {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -130,26 +192,6 @@ if (isset($_GET['page']) && $_GET['page'] === 'avis_validate') {
         $avisController->showAvisEmploye();
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $avisController->updateStatutAvis();
-    }
-}
-
-//Route pour afficher la liste des commandes pour l'employé et l'admin et pour modifier le statut
-if (isset($_GET['page']) && $_GET['page'] === 'admin_commandes') {
-    $controller->checkEmploye();
-    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $commandeController->showCommandesEmploye();
-    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $commandeController->updateStatutCommandeEmploye();
-    }
-}
-
-//Route pour afficher la liste des commandes pour l'employé et l'admin après validation de l'annulation de la commande
-if (isset($_GET['page']) && $_GET['page'] === 'annuler_commande') {
-    $controller->checkEmploye();
-    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $commandeController->showCommandesEmploye();
-    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $commandeController->updateMotifContactCommande();
     }
 }
 
@@ -242,31 +284,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'allergene_delete') {
     $allergeneController->deleteAllergene();
 }
 
-if (isset($_GET['page']) && $_GET['page'] === 'employe_create') {
-    $controller->checkAdmin();
-   if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $controller->showEmployeCreate();
-    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $controller->createEmploye();
-    }
-}
-
-if (isset($_GET['page']) && $_GET['page'] === 'employes') {
-    $controller->checkAdmin();
-    $controller->showEmploye();
-}
-
-if (isset($_GET['page']) && $_GET['page'] === 'toggle_actif') {
-    $controller->checkAdmin();
-    $controller->toggleActif();
-}
-
-//condition d'ouverture de la page d'accueil si aucune page ou si la page est home
-if (!isset($_GET['page']) || $_GET['page'] === 'home') {
-    $avisController->showAvisHome();
-}
-
-
+// CONTACTS
 //Route pour accéder à la page des contacts
 if (isset($_GET['page']) && $_GET['page'] === 'contact') {
    if ($_SERVER['REQUEST_METHOD'] === 'GET') {

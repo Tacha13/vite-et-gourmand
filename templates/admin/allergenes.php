@@ -12,6 +12,13 @@
     require __DIR__ . '/../partials/header.php';
 ?>
 
+<!-- Message de succès ou d'erreur de suppression d'un allergene -->
+    <?php if (isset($_SESSION['successUpdateAllergene'])) { ?>
+        <div class="flashMessage successUpdateAllergene">
+        <p> <?=  htmlspecialchars($_SESSION['successUpdateAllergene']) ?> </p>
+        </div>
+        <?php unset($_SESSION['successUpdateAllergene']);
+        }?>
 
 <section>
     <div>
@@ -27,12 +34,6 @@
         <?php unset($_SESSION['successDeleteAllergene']);
         }?>
 
-    <?php if (isset($_SESSION['erreurDeleteAllergene'])) { ?>
-        <div class="flashMessage erreurDeleteAllergene">
-        <p> <?=  htmlspecialchars($_SESSION['erreurDeleteAllergene']) ?> </p>
-        </div>
-        <?php unset($_SESSION['erreurDeleteAllergene']);
-        }?>
 
 <!-- Section pour les filtres -->
 <section>
@@ -63,8 +64,7 @@ if (!isset($allergenes) || !is_array($allergenes)) {
         <td><?= htmlspecialchars($allergene['nomAllergene']) ?></td>
         <td><img src="" alt="Image de l'allergène"></td>
         <td><input type="button" value="Voir"></td>
-        <td><input type="button" value="Modifier"></td>
-
+        <td><a href="/?page=allergene_update&id=<?= ($allergene['id'])?>" class="detail">Modifier l'allergène</a></td>
             <td>
                 <form action="/?page=delete_confirm" method="POST">
                     <input name="id" type="hidden" value="<?=  $allergene['id'] ?>">
@@ -75,6 +75,9 @@ if (!isset($allergenes) || !is_array($allergenes)) {
 
     </tr>
 <?php endforeach ?>
+    <div>
+        <a href="/?page=admin">Retour à la page administration</a>
+    </div>
     
 </tbody>
 </table>

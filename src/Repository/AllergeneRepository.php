@@ -52,9 +52,33 @@ class AllergeneRepository
         
     }
 
+    #Fonction qui récupère les informations d'un allergène selon son id
+    public function findById(int $id) : ?array 
+    {
+        $pdo = $this->database->getConnection();
+        $idAllergene = $pdo->prepare("SELECT id, nomAllergene FROM allergenes WHERE id = :id;");
+
+        $idAllergene->execute(
+            [
+            ':id' => $id
+            ]
+        );
+
+        $result = $idAllergene->fetch(PDO::FETCH_ASSOC);
+        return $result ?: null;
+    }  
        
-    
+    //Méthode qui permet de mettre à jour les informations des allergènes suite à modification par l'admin/employé
+    public function update(int $id, string $nomAllergene): void
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("UPDATE allergenes SET nomAllergene = :nomAllergene WHERE id = :id");
 
-    
-
+        $stmt->execute(
+        [
+            ':nomAllergene' => $nomAllergene,
+            ':id' => $id
+        ]
+        ); 
+    }
 }    

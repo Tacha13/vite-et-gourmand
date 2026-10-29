@@ -54,5 +54,54 @@ class AllergeneController
     }
     }
 
+    //Fonction qui récupère les infos d'un allergene avec findById et renvoie à la page de modification de l'allergene
+    public function showAllergeneUpdate(): void 
+    {   
+        //1. Vérification que l'id est bien dans l'adresse sinon retour à la liste des allergenes
+        if(!isset($_GET ['id'] )) {
+                header('location:http://localhost:8000/?page=allergenes');
+                exit;
+            } 
+
+        //2. Demander au repo les infos de l'allergene selon l'id
+        $allergeneModifier = $this->allergeneRepository->findById((int)$_GET['id']);
+
+        //3. si pas d'allergenes -> retour à la liste des allergenes
+        if($allergeneModifier === null) {
+            header('location:http://localhost:8000/?page=allergenes');
+            exit;
+        }
+        
+        //4. Charge le formulaire
+        require __DIR__ . '/../../templates/admin/allergene_update.php';
+
+    }
+
+    //Fonction qui permet de mettre à jour la base en appelant le repo sinon message d'erreur et retour à la liste de modification des allergenes 
+    public function updateAllergene(): void 
+    {
+    //1. LIre l'id et les champs du formulaire en POST
+        $nomAllergene = (string)($_POST['nomAllergene']);
+        $id = (int)$_POST['id'];
+
+    //2. Vérification des champs obligatoires non vides sinon erreur + retour
+    if(
+    $nomAllergene === '' 
+    || $id <= 0
+    ) {
+        $_SESSION['erreurUpdateAllergene'] = "Les modifications apportées à l'allergène n'ont pas pu être enregistrées.";
+            header('location:http://localhost:8000/?page=allergene_update&id=' . $id);
+            exit;
+    }
+
+    //3. Appeler le repo pour MAJ
+    $this->allergeneRepository->update($id, $nomAllergene);
+
+    //4. Message succes
+     $_SESSION['successUpdateAllergene'] = "Les modifications ont été enregistrées.";
+            header('location:http://localhost:8000/?page=allergenes');
+            exit;
+    }
+
 
 }

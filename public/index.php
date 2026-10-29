@@ -303,6 +303,16 @@ if (isset($_GET['page']) && $_GET['page'] === 'contact') {
     }
 }
 
+if (isset($_GET['page']) && $_GET['page'] === 'allergene_update') {
+    $controller->checkEmploye();
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $allergeneController->showAllergeneUpdate();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $allergeneController->updateAllergene();
+    }
+}
+
+
 //ROUTE DELETE
 
 if (isset($_GET['page']) && $_GET['page'] === 'delete_confirm') {

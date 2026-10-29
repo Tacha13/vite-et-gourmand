@@ -114,6 +114,15 @@ if (isset($_GET['page']) && $_GET['page'] === 'admin_horaires') {
     $horaireController->showHoraires();
 }
 
+if (isset($_GET['page']) && $_GET['page'] === 'horaire_update') {
+    $controller->checkEmploye();
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $horaireController->showHoraireUpdate();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $horaireController->updateHoraire();
+    }
+}
+
 
 // COMMANDES
 // Route qui vérifie si le user est connecté et renvoie au formulaire de la commande en GET sinon à la préparation de la commande si POST (vérification, calcul prix)

@@ -43,14 +43,14 @@ class CommandeController
 
 
         if(!isset($_GET['menu_id'])) {
-            header('location:http://localhost:8000/?page=menus');
+            header('location:/?page=menus');
             exit;
         } 
             $idMenu = $this->menuRepository->findById((int)$_GET['menu_id']);
             
 
         if (!$idMenu) {
-            header('location:http://localhost:8000/?page=menus');
+            header('location:/?page=menus');
             exit;
         }
             $idClient = $this->compteRepository->findById($_SESSION['user_id']);
@@ -63,13 +63,13 @@ class CommandeController
     public function prepareCommande (): void
     {   
         if(!isset($_GET['menu_id'])) {
-            header('location:http://localhost:8000/?page=menus');
+            header('location:/?page=menus');
             exit;
         } 
         $idMenu = $this->menuRepository->findById((int)$_GET['menu_id']);
 
         if (!$idMenu) {
-            header('location:http://localhost:8000/?page=menus');
+            header('location:/?page=menus');
             exit;
         }
         
@@ -83,13 +83,13 @@ class CommandeController
 
         if ($nombreCommande < $idMenu['nbPersonneMin']) {
             $_SESSION['erreurMinPersonne'] = "Le nombre de convives est insuffisant";
-            header('location:http://localhost:8000/?page=commande_create&menu_id=' . $idMenu['id']);
+            header('location:/?page=commande_create&menu_id=' . $idMenu['id']);
             exit;
         } 
 
         if ($datePrestation < date('Y-m-d', strtotime('+2DAY'))) {
             $_SESSION['erreurDateLivraison'] = "La date de livraison est trop proche, veuillez respecter 2 jours entre la date du jour et la livraison";
-            header('location:http://localhost:8000/?page=commande_create&menu_id=' . $idMenu['id']);
+            header('location:/?page=commande_create&menu_id=' . $idMenu['id']);
             exit;
         } 
 
@@ -109,7 +109,7 @@ class CommandeController
             $frais = self::FRAIS_FIXE + (self::FORFAIT_KM_GIRONDE * self::PRIX_KM);
         } else {
             $_SESSION['messageHorsLimite'] = "Nous ne livrons pas en dehors de la zone de livraison";
-            header('location:http://localhost:8000/?page=commande_create&menu_id=' . $idMenu['id']);
+            header('location:/?page=commande_create&menu_id=' . $idMenu['id']);
             exit;
         }
 
@@ -130,7 +130,7 @@ class CommandeController
             'prixTotalCommande' => $prixTotalCommande
         ]);
 
-            header('location:http://localhost:8000/?page=commande_validate');
+            header('location:/?page=commande_validate');
             exit;
     }
 
@@ -138,13 +138,13 @@ class CommandeController
     public function showCommandeValidate(): void 
     {
         if(!isset($_SESSION ['commande'] )) {
-            header('location:http://localhost:8000/?page=menus');
+            header('location:/?page=menus');
             exit;
         } 
             $idMenu = $this->menuRepository->findById((int)$_SESSION['commande']['idMenu']);
 
         if (!$idMenu) {
-            header('location:http://localhost:8000/?page=menus');
+            header('location:/?page=menus');
             exit;
         }
             require __DIR__ . '/../../templates/client/commande_validate.php';
@@ -155,7 +155,7 @@ class CommandeController
     public function createCommande(): void 
     {
         if(!isset($_SESSION ['commande'] )) {
-            header('location:http://localhost:8000/?page=menus');
+            header('location:/?page=menus');
             exit;
         } 
 
@@ -209,12 +209,12 @@ class CommandeController
                 $_SESSION['mailCommandeFailure'] = "La commande a bien été prise en compte. Le mail de confirmation n'a pas pu être envoyé. N'hésitez pas à contacter notre équipe si besoin";
             } 
             unset($_SESSION['commande']);
-            header('location:http://localhost:8000/?page=home');
+            header('location:/?page=home');
             exit;
         } 
         catch (PDOException $e) { 
             $_SESSION['commandeErreur'] = "La commande a échoué";
-            header('location:http://localhost:8000/?page=commande_validate');
+            header('location:/?page=commande_validate');
             exit;
         }
     }
@@ -222,7 +222,7 @@ class CommandeController
     public function showAllCommandesClient (): void
     {
         if(!isset($_SESSION ['user_id'] )) {
-            header('location:http://localhost:8000/?page=login');
+            header('location:/?page=login');
             exit;
         } 
 
@@ -234,7 +234,7 @@ class CommandeController
     public function showAllHistoCommandesClient (): void
     {
         if(!isset($_SESSION ['user_id'] )) {
-            header('location:http://localhost:8000/?page=login');
+            header('location:/?page=login');
             exit;
         } 
 
@@ -268,7 +268,7 @@ class CommandeController
     // 2. vérifier que le statut de la commande est bien 'Accepté' ou 'En préparation' ou 'En cours de livraison' ou 'Livrée' ou 'En attente du retour matériel' ou 'Terminée' (sinon : message d'erreur + redirection)
     if ($statutReceived !== 'Accepté' && $statutReceived !== 'En préparation' && $statutReceived !== 'En cours de livraison' && $statutReceived !== 'Livrée' && $statutReceived !== 'En attente du retour de matériel' && $statutReceived !== 'Terminée') {
         $_SESSION['erreurUpdateStatutCommande'] = "Le statut de la commande n'a pas pu être mis à jour.";
-            header('location:http://localhost:8000/?page=admin_commandes');
+            header('location:/?page=admin_commandes');
             exit;
     }
     // 3. appeler le repository pour modifier le statut de la commande
@@ -277,7 +277,7 @@ class CommandeController
 
     // 4. préparer le message de succès
     $_SESSION['successUpdateStatutCommande'] = "Le statut de la commande a bien été enregistré.";                
-            header('location:http://localhost:8000/?page=admin_commandes');
+            header('location:/?page=admin_commandes');
             exit;
   
     }
@@ -293,14 +293,14 @@ class CommandeController
     // 2. vérifier que le motif d'annulation de la commande est bien renseigné (sinon : message d'erreur + redirection)
     if (empty($motifannulation)){
         $_SESSION['erreurUpdateMotifCommande'] = "Le motif d'annulation de la commande n'a pas pu être pris en compte.";
-            header('location:http://localhost:8000/?page=admin_commandes');
+            header('location:/?page=admin_commandes');
             exit;
     }
 
     // 3. vérifier que le mode de contact suite à la demande d'annulation de la commande est bien renseigné (sinon : message d'erreur + redirection)
     if ($modeContact !== 'Appel'  && $modeContact !== 'Email' ){
         $_SESSION['erreurUpdateContactCommande'] = "Le mode de contact ne correspond pas au mode de contact attendu (appel ou email)";
-            header('location:http://localhost:8000/?page=admin_commandes');
+            header('location:/?page=admin_commandes');
             exit;
     }
     // 4. appeler le repository pour modifier le motif d'annulation de la commande
@@ -308,7 +308,7 @@ class CommandeController
 
     // 5. préparer le message de succès
     $_SESSION['successUpdateMotifAnnulCommande'] = "La commande a été annulée.";                
-            header('location:http://localhost:8000/?page=admin_commandes');
+            header('location:/?page=admin_commandes');
             exit;
   
     }

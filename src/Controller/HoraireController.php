@@ -25,7 +25,7 @@ class HoraireController
     {   
         //1. Vérification que l'id est bien dans l'adresse sinon retour à la liste des horaires
         if(!isset($_GET ['id'] )) {
-                header('location:http://localhost:8000/?page=admin_horaires');
+                header('location:/?page=admin_horaires');
                 exit;
             } 
 
@@ -34,7 +34,7 @@ class HoraireController
 
         //3. si pas d'horaire -> retour à la liste des horaires
         if($horaireModifier === null) {
-            header('location:http://localhost:8000/?page=admin_horaires');
+            header('location:/?page=admin_horaires');
             exit;
         }
 
@@ -60,7 +60,7 @@ class HoraireController
     || $id <= 0
     ) {
         $_SESSION['erreurUpdateHoraire'] = "Les modifications apportées à l'horaire n'ont pas pu être enregistrées.";
-            header('location:http://localhost:8000/?page=horaire_update&id=' . $id);
+            header('location:/?page=horaire_update&id=' . $id);
             exit;
     }
     if($ouvertHoraire === 0)
@@ -74,7 +74,7 @@ class HoraireController
 
     //4. Message succes
      $_SESSION['successUpdateHoraire'] = "Les modifications ont été enregistrées.";
-            header('location:http://localhost:8000/?page=admin_horaires');
+            header('location:/?page=admin_horaires');
             exit;
     }
 

@@ -42,7 +42,7 @@ class MenuController
         $image = htmlspecialchars($_POST['image']);
 
         $this->menuRepository->create($nameMenu,  $description,  $theme,  $persMin,  $price,  $conditions,  $regime,  $stock, $image);
-        header('location:http://localhost:8000/?page=admin_menus');
+        header('location:/?page=admin_menus');
         exit;
     }
 
@@ -62,11 +62,11 @@ class MenuController
         try {
             $this->menuRepository->delete($_POST['id']);
             $_SESSION['successDeleteMenu'] = "Le menu a été correctement supprimé.";
-            header('location:http://localhost:8000/?page=admin_menus');
+            header('location:/?page=admin_menus');
         exit;
         } catch (PDOException $e) { 
             $_SESSION['erreurDeleteMenu'] = "Le menu ne peut être supprimé, il est pris en compte dans une ou plusieurs commandes.";
-            header('location:http://localhost:8000/?page=admin_menus');
+            header('location:/?page=admin_menus');
             exit;
     }
     }
@@ -78,7 +78,7 @@ class MenuController
             $idMenu = $this->menuRepository->findById((int)$_GET['id']);
             require __DIR__ . '/../../templates/menu_details.php';
         } else {
-            header('location:http://localhost:8000/?page=menus');
+            header('location:/?page=menus');
             exit;
         }
         
@@ -89,7 +89,7 @@ class MenuController
     {   
         //1. Vérification que l'id est bien dans l'adresse sinon retour à la liste des menus
         if(!isset($_GET ['id'] )) {
-                header('location:http://localhost:8000/?page=admin_menus');
+                header('location:/?page=admin_menus');
                 exit;
             } 
 
@@ -98,7 +98,7 @@ class MenuController
 
         //3. si pas de menu -> retour à la liste de smenus
         if($menuModifier === null) {
-            header('location:http://localhost:8000/?page=admin_menus');
+            header('location:/?page=admin_menus');
             exit;
         }
 
@@ -136,7 +136,7 @@ class MenuController
     || $id <= 0
     ) {
         $_SESSION['erreurUpdateMenu'] = "Les modifications apportées au menu n'ont pas pu être enregistrées.";
-            header('location:http://localhost:8000/?page=menu_update&id=' . $id);
+            header('location:/?page=menu_update&id=' . $id);
             exit;
     }
 
@@ -145,7 +145,7 @@ class MenuController
 
     //4. Message succes
      $_SESSION['successUpdateMenu'] = "Les modifications ont été enregistrées.";
-            header('location:http://localhost:8000/?page=admin_menus');
+            header('location:/?page=admin_menus');
             exit;
     }
 

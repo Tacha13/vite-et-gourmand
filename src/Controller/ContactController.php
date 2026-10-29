@@ -40,7 +40,7 @@ class ContactController {
            $_SESSION['contactSendSuccess'] = "Votre demande a été envoyée";
         } else {$_SESSION['contactSendFailure'] = "Votre demande n'a pas pu être envoyée";
         }
-        header('location:http://localhost:8000/?page=contact');
+        header('location:/?page=contact');
         exit;
         
     }

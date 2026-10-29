@@ -26,7 +26,7 @@ class PlatController
         $typePlat = htmlspecialchars($_POST['typePlat']);
         
         $this->platRepository->create($namePlat,  $typePlat);
-        header('location:http://localhost:8000/?page=plats');
+        header('location:/?page=plats');
         exit;
     }
 
@@ -46,11 +46,11 @@ class PlatController
          try {
             $this->platRepository->delete($_POST['id']);
             $_SESSION['successDeletePlat'] = "Le plat a été correctement supprimé.";
-            header('location:http://localhost:8000/?page=plats');
+            header('location:/?page=plats');
         exit;
         } catch (PDOException $e) { 
             $_SESSION['erreurDeletePlat'] = "Le plat ne peut être supprimé, il est pris en compte dans un ou plusieurs menus et/ou allergènes.";
-            header('location:http://localhost:8000/?page=plats');
+            header('location:/?page=plats');
             exit;
     }
     }
@@ -60,7 +60,7 @@ class PlatController
     {   
         //1. Vérification que l'id est bien dans l'adresse sinon retour à la liste des plats
         if(!isset($_GET ['id'] )) {
-                header('location:http://localhost:8000/?page=plats');
+                header('location:/?page=plats');
                 exit;
             } 
 
@@ -69,7 +69,7 @@ class PlatController
 
         //3. si pas de plat -> retour à la liste des plats
         if($platModifier === null) {
-            header('location:http://localhost:8000/?page=plats');
+            header('location:/?page=plats');
             exit;
         }
 
@@ -93,7 +93,7 @@ class PlatController
     || $id <= 0
     ) {
         $_SESSION['erreurUpdatePlat'] = "Les modifications apportées au plat n'ont pas pu être enregistrées.";
-            header('location:http://localhost:8000/?page=plat_update&id=' . $id);
+            header('location:/?page=plat_update&id=' . $id);
             exit;
     }
 
@@ -102,7 +102,7 @@ class PlatController
 
     //4. Message succes
      $_SESSION['successUpdatePlat'] = "Les modifications ont été enregistrées.";
-            header('location:http://localhost:8000/?page=plats');
+            header('location:/?page=plats');
             exit;
     }
 

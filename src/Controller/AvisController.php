@@ -18,7 +18,7 @@ class AvisController {
     {
         // 1. Le client est-il connecté ? Sinon : vers login
         if(!isset($_SESSION ['user_id'] )) {
-                header('location:http://localhost:8000/?page=login');
+                header('location:/?page=login');
                 exit;
             } 
         // 2. Lire note, avis et commandeId dans $_POST
@@ -28,7 +28,7 @@ class AvisController {
 
         if ((empty($avisModal) || empty($noteModal)) || (($noteModal < 1) || ($noteModal > 5))) {
             $_SESSION['erreurAvis'] = "Votre avis n'a pas été enregistré.";                
-            header('location:http://localhost:8000/?page=histo_commandes');
+            header('location:/?page=histo_commandes');
             exit;
         }
 
@@ -37,7 +37,7 @@ class AvisController {
         $retourCanCommande = $this->avisRepository->canCommandeReceiveAvis($commandeIdModal,$_SESSION ['user_id']);
 
         if ($retourCanCommande !== true) {
-            header('location:http://localhost:8000/?page=histo_commandes');
+            header('location:/?page=histo_commandes');
             exit;
         }
         // 4. Appeler create() du repository
@@ -45,7 +45,7 @@ class AvisController {
 
         // 5. Message flash + redirection vers l'historique
         $_SESSION['successAvis'] = "Votre avis a été enregistré.";                
-            header('location:http://localhost:8000/?page=histo_commandes');
+            header('location:/?page=histo_commandes');
             exit;
     }
 
@@ -65,7 +65,7 @@ class AvisController {
     // 2. vérifier que le statut est bien 'Validé' ou 'Refusé' (sinon : message d'erreur + redirection)
     if ($actionValidateRefused !== 'Validé' && $actionValidateRefused !== 'Refusé') {
         $_SESSION['erreurStatutAvis'] = "Le statut ne permet pas de validé ou refusé l'avis.";
-            header('location:http://localhost:8000/?page=avis_validate');
+            header('location:/?page=avis_validate');
             exit;
     }
     // 3. appeler le repository pour modifier l'avis
@@ -73,7 +73,7 @@ class AvisController {
 
     // 4. préparer le message de succès
     $_SESSION['successStatutAvis'] = "Votre validation de l'avis a été enregistrée.";                
-            header('location:http://localhost:8000/?page=avis_validate');
+            header('location:/?page=avis_validate');
             exit;
   
     }

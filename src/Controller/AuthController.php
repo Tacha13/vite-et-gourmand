@@ -52,7 +52,7 @@ class AuthController
         $checkEmail = $this->compteRepository->findByEmail($email);
         if ($checkEmail !== null) {
             $_SESSION['erreurEmailRegister'] = "Veuillez vérifier l'email saisi.";
-            header('location:http://localhost:8000/?page=register');
+            header('location:/?page=register');
             exit;
         }
 
@@ -72,18 +72,18 @@ class AuthController
             } else {
                 $_SESSION['erreurFormPassword'] = "Le mot de passe ne respecte pas le format attendu : Votre mot de passe doit contenir au moins :
                 10 caractères, 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial.";
-                header('location:http://localhost:8000/?page=register');
+                header('location:/?page=register');
                 exit;
             }
         } else {
                 $_SESSION['erreurDifferentPassword'] = "Le mot de passe ne correspond pas au mot de passe initial saisi, veuillez corriger.";
-                header('location:http://localhost:8000/?page=register');
+                header('location:/?page=register');
                 exit;
         }
         unset($_SESSION['saveSaisieRegister']);
 
         $_SESSION['successRegister'] = "Votre compte est créé. Vous pouvez vous identifier ci-dessous.";                
-        header('location:http://localhost:8000/?page=login');
+        header('location:/?page=login');
         exit;
     }
 
@@ -101,7 +101,7 @@ class AuthController
         if (password_verify($password, $resultMail['mot_de_passe_hash'])) {
             if ($resultMail['actif'] !== 1) {
                 $_SESSION['erreurActif'] = "Vous ne pouvez pas vous connecter, votre compte est inactif.";
-                header('location:http://localhost:8000/?page=login');
+                header('location:/?page=login');
                 exit;
             }
             $_SESSION['user_id'] = $resultMail['id'];
@@ -110,18 +110,18 @@ class AuthController
             $_SESSION['user_prenom'] = $resultMail['prenom'];
             $_SESSION['user_role'] = $resultMail['role'];
             if ($_SESSION['user_role'] === 'admin' || $_SESSION['user_role'] === 'employe') {
-                header('location:http://localhost:8000/?page=admin');
+                header('location:/?page=admin');
                 exit;
-            } header('location:http://localhost:8000/?page=home');
+            } header('location:/?page=home');
                 exit;
         }else {
             $_SESSION['erreurCompte'] = "L'email ou le mot de passe est incorrect, veuillez réessayer ou nous contacter.";
-            header('location:http://localhost:8000/?page=login');
+            header('location:/?page=login');
             exit;
         }
     } else {
             $_SESSION['erreurCompte'] = "L'email ou le mot de passe est incorrect, veuillez réessayer ou nous contacter.";
-            header('location:http://localhost:8000/?page=login');
+            header('location:/?page=login');
             exit;
         }
     }
@@ -129,7 +129,7 @@ class AuthController
     public function logout(): void {
         $_SESSION = [];
         session_destroy();
-        header('location:http://localhost:8000/?page=login');
+        header('location:/?page=login');
         exit;
     }
 
@@ -137,7 +137,7 @@ class AuthController
 # Fonction qui redirige vers la page login si le role est non admin ou non connecté 
     public function checkAdmin(): void {
         if((!isset($_SESSION ['user_id'])) || $_SESSION['user_role'] !== 'admin') {
-            header('location:http://localhost:8000/?page=login');
+            header('location:/?page=login');
             exit;
         }
     }
@@ -145,7 +145,7 @@ class AuthController
 # Fonction qui redirige vers la page login si le role est non admin/employe ou non connecté 
     public function checkEmploye(): void {
         if((!isset($_SESSION ['user_id'])) || (($_SESSION ['user_role']) !== 'admin') && (($_SESSION ['user_role']) !== 'employe') ) {
-            header('location:http://localhost:8000/?page=login');
+            header('location:/?page=login');
             exit;
         }
     }
@@ -153,7 +153,7 @@ class AuthController
     # Fonction qui redirige vers la page login si l'utilisateur n'est pas encore connecté    
     public function checkLogin(): void {
         if(!isset($_SESSION['user_id'])) {
-            header('location:http://localhost:8000/?page=login');
+            header('location:/?page=login');
             exit;
         }
     }
@@ -186,7 +186,7 @@ class AuthController
         $body = "Bonjour $prenomEmploye $nameEmploye, \n Votre compte Employé a été créé. \n Vous trouverez ci-dessous votre identifiant de connexion : \n Votre identifiant : $emailEmploye \n Votre mot de passe vous sera communiqé par l'administrateur. \n Vite & Gourmand";
         $this->mailService->sendMail($emailEmploye, "Bienvenue chez Vite et Gourmand - Création de compte", $body);
 
-        header('location:http://localhost:8000/?page=admin');
+        header('location:/?page=admin');
         exit;
     }
 
@@ -198,14 +198,14 @@ class AuthController
     public function toggleActif(): void
     {
         $this->compteRepository->toggleActif($_POST['id']);
-        header('location:http://localhost:8000/?page=employes');
+        header('location:/?page=employes');
         exit;
     }
     
     public function showInfospersonal(): void 
     {
         if(!isset($_SESSION['user_id'])) {
-            header('location:http://localhost:8000/?page=login');
+            header('location:/?page=login');
             exit;
         } 
         $infoPersonal = $this->compteRepository->findById($_SESSION['user_id']);
@@ -216,7 +216,7 @@ class AuthController
     public function updateInfosPersonal(): void
     {
          if(!isset($_SESSION['user_id'])) {
-            header('location:http://localhost:8000/?page=login');
+            header('location:/?page=login');
             exit;
         } 
 
@@ -233,7 +233,7 @@ class AuthController
         $checkEmail = $this->compteRepository->findByEmail($email);
         if (($checkEmail !== null && $checkEmail['id'] !== $_SESSION['user_id'])) {
             $_SESSION['erreurEmailRegister'] = "Veuillez vérifier l'email saisi.";
-            header('location:http://localhost:8000/?page=infos_personnelles');
+            header('location:/?page=infos_personnelles');
             exit;
         }
 
@@ -244,7 +244,7 @@ class AuthController
         $_SESSION['user_email'] = $email;
 
         $_SESSION['successUpdate'] = "Les modifications ont bien été prises en compte.";                
-        header('location:http://localhost:8000/?page=compte_client');
+        header('location:/?page=compte_client');
         exit;
     }
 

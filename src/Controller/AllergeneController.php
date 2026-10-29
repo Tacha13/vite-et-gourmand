@@ -25,7 +25,7 @@ class AllergeneController
         $allergene = htmlspecialchars($_POST['allergene']);
         
         $this->allergeneRepository->create($allergene);
-        header('location:http://localhost:8000/?page=allergenes');
+        header('location:/?page=allergenes');
         exit;
     }
 
@@ -45,11 +45,11 @@ class AllergeneController
         try {
             $this->allergeneRepository->delete($_POST['id']);
             $_SESSION['successDeleteAllergene'] = "L'allergène a été correctement supprimé.";
-            header('location:http://localhost:8000/?page=allergenes');
+            header('location:/?page=allergenes');
         exit;
         } catch (PDOException $e) { 
             $_SESSION['erreurDeleteAllergene'] = "L'allergène ne peut être supprimé, il est pris en compte dans un ou plusieurs plats.";
-            header('location:http://localhost:8000/?page=allergenes');
+            header('location:/?page=allergenes');
             exit;
     }
     }
@@ -59,7 +59,7 @@ class AllergeneController
     {   
         //1. Vérification que l'id est bien dans l'adresse sinon retour à la liste des allergenes
         if(!isset($_GET ['id'] )) {
-                header('location:http://localhost:8000/?page=allergenes');
+                header('location:/?page=allergenes');
                 exit;
             } 
 
@@ -68,7 +68,7 @@ class AllergeneController
 
         //3. si pas d'allergenes -> retour à la liste des allergenes
         if($allergeneModifier === null) {
-            header('location:http://localhost:8000/?page=allergenes');
+            header('location:/?page=allergenes');
             exit;
         }
         
@@ -90,7 +90,7 @@ class AllergeneController
     || $id <= 0
     ) {
         $_SESSION['erreurUpdateAllergene'] = "Les modifications apportées à l'allergène n'ont pas pu être enregistrées.";
-            header('location:http://localhost:8000/?page=allergene_update&id=' . $id);
+            header('location:/?page=allergene_update&id=' . $id);
             exit;
     }
 
@@ -99,7 +99,7 @@ class AllergeneController
 
     //4. Message succes
      $_SESSION['successUpdateAllergene'] = "Les modifications ont été enregistrées.";
-            header('location:http://localhost:8000/?page=allergenes');
+            header('location:/?page=allergenes');
             exit;
     }
 

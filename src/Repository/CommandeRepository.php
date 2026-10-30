@@ -185,5 +185,21 @@ class CommandeRepository {
             throw $e;
         }
     }
+
+    #Fonction qui récupère les informations d'une commande pour création d'une fiche à destination de mongodb
+    public function findCommandeById(int $id) : ?array 
+    {
+        $pdo = $this->database->getConnection();
+        $idCommandeMongo = $pdo->prepare("SELECT c.id, c.numero, c.prixTotal, c.datePrestation, m.nomMenu FROM commandes c, menus m WHERE c.id = :id AND c.menu_id = m.id;");
+
+        $idCommandeMongo->execute(
+            [
+            ':id' => $id,
+            ]
+        );
+
+        $result = $idCommandeMongo->fetch(PDO::FETCH_ASSOC);
+        return $result ?: null;
+    } 
     
 }

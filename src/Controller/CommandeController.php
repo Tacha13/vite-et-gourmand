@@ -274,6 +274,11 @@ class CommandeController
     // 3. appeler le repository pour modifier le statut de la commande
     $this->commandeRepository->updateStatutHistoCommande($idCommande, $statutReceived);
 
+    // On récupère les informations de la commande pour traitement après avec mongodb
+    if($statutReceived === 'Terminée') {
+        $infosCommande = $this->commandeRepository->findCommandeById($idCommande);
+    }
+
 
     // 4. préparer le message de succès
     $_SESSION['successUpdateStatutCommande'] = "Le statut de la commande a bien été enregistré.";                

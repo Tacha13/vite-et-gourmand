@@ -7,6 +7,8 @@ use Tacha\ViteEtGourmand\Repository\CompteRepository;
 use Tacha\ViteEtGourmand\Repository\MenuRepository;
 use Tacha\ViteEtGourmand\Repository\CommandeRepository;
 use Tacha\ViteEtGourmand\Service\MailService;
+use Tacha\ViteEtGourmand\Repository\StatistiqueRepository;
+
 
 
 
@@ -27,17 +29,19 @@ class CommandeController
     private MenuRepository $menuRepository;
     private CommandeRepository $commandeRepository;
     private MailService $mailService;
+    private StatistiqueRepository $statistiqueRepository;
 
     
-    public function __construct(CompteRepository $compteRepository, MenuRepository $menuRepository, CommandeRepository $commandeRepository, MailService $mailservice)
+    public function __construct(CompteRepository $compteRepository, MenuRepository $menuRepository, CommandeRepository $commandeRepository, MailService $mailservice, StatistiqueRepository $statistiqueRepository)
     {
         $this->compteRepository = $compteRepository;
         $this->menuRepository = $menuRepository;
         $this->commandeRepository = $commandeRepository;
         $this->mailService = $mailservice;
+        $this->statistiqueRepository = $statistiqueRepository;
     }
 
-    //Route qui récupère les infos d'un client et du menu avec findById et renvoie à la page de commande   
+//Route qui récupère les infos d'un client et du menu avec findById et renvoie à la page de commande   
     public function showCommandeCreate(): void 
     {
 
@@ -59,7 +63,7 @@ class CommandeController
         
     }
 
-    //Route qui prépare la création de la commande en vérifiant les données
+//Route qui prépare la création de la commande en vérifiant les données
     public function prepareCommande (): void
     {   
         if(!isset($_GET['menu_id'])) {
@@ -134,7 +138,7 @@ class CommandeController
             exit;
     }
 
-    //Route qui récupère les infos du panier avec findById et renvoie à la page de validation de la commande   
+//Route qui récupère les infos du panier avec findById et renvoie à la page de validation de la commande   
     public function showCommandeValidate(): void 
     {
         if(!isset($_SESSION ['commande'] )) {
@@ -151,7 +155,7 @@ class CommandeController
     }
 
 
-     //Fonction qui sauvegarde la commande et envoie au client le message de confirmation ou non  
+//Fonction qui sauvegarde la commande et envoie au client le message de confirmation ou non  
     public function createCommande(): void 
     {
         if(!isset($_SESSION ['commande'] )) {
@@ -243,7 +247,7 @@ class CommandeController
         require __DIR__ . '/../../templates/client/histo_commandes.php';
     }
     
-    //Fonction qui renvoie la liste des commandes demandée au repo et à afficher dans le template pour l'employé
+//Fonction qui renvoie la liste des commandes demandée au repo et à afficher dans le template pour l'employé
     public function showCommandesEmploye(): void {
 
         //1. Lire les filtres reçus du navigateur (vérification s'il GET existe sinon renvoie vide)
@@ -257,7 +261,7 @@ class CommandeController
     }
 
 
-    //Fonction mettant à jour le statut de la commande et son historique avec messages de succès sinon message d'erreur
+//Fonction mettant à jour le statut de la commande et son historique avec messages de succès sinon message d'erreur
     public function updateStatutCommandeEmploye(): void 
     {
 
@@ -277,6 +281,7 @@ class CommandeController
     // On récupère les informations de la commande pour traitement après avec mongodb
     if($statutReceived === 'Terminée') {
         $infosCommande = $this->commandeRepository->findCommandeById($idCommande);
+        $this->statistiqueRepository->createFiche($infosCommande);
     }
 
 

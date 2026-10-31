@@ -7,6 +7,7 @@ session_start();
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Tacha\ViteEtGourmand\Database;
+use Tacha\ViteEtGourmand\MongodbDatabase;
 use Tacha\ViteEtGourmand\Controller\AuthController;
 use Tacha\ViteEtGourmand\Repository\CompteRepository;
 use Tacha\ViteEtGourmand\Controller\MenuController;
@@ -23,7 +24,7 @@ use Tacha\ViteEtGourmand\Repository\AvisRepository;
 use Tacha\ViteEtGourmand\Controller\AvisController;
 use Tacha\ViteEtGourmand\Repository\HoraireRepository;
 use Tacha\ViteEtGourmand\Controller\HoraireController;
-
+use Tacha\ViteEtGourmand\Repository\StatistiqueRepository;
 
 
 
@@ -32,6 +33,7 @@ $dotenv->load();
 
 $data = new Database();
 $repo = new CompteRepository($data);
+$dataMongo = new MongodbDatabase ();
 $mailService = new MailService();
 $controller = new AuthController($repo, $mailService);
 $menuRepo = new MenuRepository($data);
@@ -41,8 +43,9 @@ $platController = new PlatController($platRepo);
 $allergeneRepo = new AllergeneRepository($data);
 $allergeneController = new AllergeneController($allergeneRepo);
 $contactController = new ContactController($mailService);
+$statistiqueRepository = new StatistiqueRepository($dataMongo);
 $commandeRepository = new CommandeRepository($data);
-$commandeController = new CommandeController($repo, $menuRepo, $commandeRepository, $mailService);
+$commandeController = new CommandeController($repo, $menuRepo, $commandeRepository, $mailService, $statistiqueRepository);
 $avisRepository = new AvisRepository($data);
 $avisController = new AvisController($avisRepository);
 $horaireRepository = new HoraireRepository($data);

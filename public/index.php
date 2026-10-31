@@ -24,6 +24,7 @@ use Tacha\ViteEtGourmand\Repository\AvisRepository;
 use Tacha\ViteEtGourmand\Controller\AvisController;
 use Tacha\ViteEtGourmand\Repository\HoraireRepository;
 use Tacha\ViteEtGourmand\Controller\HoraireController;
+use Tacha\ViteEtGourmand\Controller\StatistiqueController;
 use Tacha\ViteEtGourmand\Repository\StatistiqueRepository;
 
 
@@ -44,6 +45,7 @@ $allergeneRepo = new AllergeneRepository($data);
 $allergeneController = new AllergeneController($allergeneRepo);
 $contactController = new ContactController($mailService);
 $statistiqueRepository = new StatistiqueRepository($dataMongo);
+$statistiqueController = new StatistiqueController($statistiqueRepository);
 $commandeRepository = new CommandeRepository($data);
 $commandeController = new CommandeController($repo, $menuRepo, $commandeRepository, $mailService, $statistiqueRepository);
 $avisRepository = new AvisRepository($data);
@@ -85,12 +87,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'admin') {
     $controller->showDashBoard();
 }
 
-//ADMIN/EMPLOYES
-
-if (isset($_GET['page']) && $_GET['page'] === 'admin_menus') {
-    $controller->checkEmploye();
-    $menuController->showMenus();
-}
+//Admin
 
 if (isset($_GET['page']) && $_GET['page'] === 'employe_create') {
     $controller->checkAdmin();
@@ -111,7 +108,20 @@ if (isset($_GET['page']) && $_GET['page'] === 'toggle_actif') {
     $controller->toggleActif();
 }
 
-// LES HORAIRES 
+if (isset($_GET['page']) && $_GET['page'] === 'admin_statistiques') {
+    $controller->checkAdmin();
+    $statistiqueController->showStatCommande();
+}
+
+
+//ADMIN/EMPLOYES MENUS
+
+if (isset($_GET['page']) && $_GET['page'] === 'admin_menus') {
+    $controller->checkEmploye();
+    $menuController->showMenus();
+}
+
+//ADMIN/EMPLOYES LES HORAIRES 
 if (isset($_GET['page']) && $_GET['page'] === 'admin_horaires') {
     $controller->checkEmploye();
     $horaireController->showHoraires();

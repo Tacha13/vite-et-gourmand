@@ -23,7 +23,19 @@ class StatistiqueRepository {
 	        'prixTotal' => (float)$listCommande['prixTotal'],
 	        'datePrestation' => $listCommande['datePrestation']
 	    ]);
+    }
 
-        
+    public function findStatParMenu(): array 
+    {
+        $mongodb = $this->mongoBase->getConnection();
+        $infoFicheCommande = $mongodb->selectCollection('stat_commandes');
+
+        return $infoFicheCommande->aggregate([
+            ['$group' => [
+                '_id' => '$nomMenu',
+                'nbCommandes' => ['$sum' => 1],
+                'chiffreAffaire' => ['$sum' => '$prixTotal']
+            ]]
+        ])->toArray();
     }
 }

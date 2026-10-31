@@ -52,6 +52,11 @@
 <div>
     <a href="/?page=employe_create">Comptes employés</a>
 </div>
+
+<!--Lien vers la page des stats, pour l'admin -->
+<div>
+    <a href="/?page=admin_statistiques">Statistiques</a>
+</div>
 <?php endif ?>
 
 

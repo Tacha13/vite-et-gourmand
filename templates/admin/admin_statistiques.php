@@ -34,6 +34,44 @@
 <?php endforeach ?>
 </tbody>
 </table>
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<?php 
+    $nomMenu = [];
+    $nbCommande = [];
+
+    foreach($statMenus as $statMenu) {
+        $nomMenu[] = $statMenu['_id'];
+        $nbCommande[] = $statMenu['nbCommandes'];
+    }
+?>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: <?=  json_encode($nomMenu) ?>,
+      datasets: [{
+        label: 'Nombre de commandes par menu',
+        data: <?=  json_encode($nbCommande) ?>,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
     <div>
         <a href="/?page=admin">Retour à la page administration</a>
     </div>

@@ -2,6 +2,8 @@
 <?php
 /** @var array $statMenus */
 /** @var array $menusFiltre */
+/** @var array $menu */
+
 
 ?>
 <!--Contenu du head-->
@@ -23,13 +25,13 @@
     <select name="menu" id="menu">
     <option value="">Tous les menus</option>
     <?php foreach ($menusFiltre as $menuFiltre): ?>
-    <option value="<?= htmlspecialchars($menuFiltre['_id']) ?>"><?= htmlspecialchars($menuFiltre['_id']) ?></option>
+    <option value="<?= htmlspecialchars($menuFiltre['_id']) ?>" <?= $menuFiltre['_id'] === $menu ? 'selected' : ''?>><?= htmlspecialchars($menuFiltre['_id']) ?></option>
     <?php endforeach ?>
     </select>
     <label for="dateDebut">Date début</label>
-    <input type="date" name="dateDebut" id="dateDebut">
+    <input type="date" name="dateDebut" id="dateDebut" value="<?= htmlspecialchars($dateDebut ??'') ?>">
     <label for="dateFin">Date Fin</label>
-    <input type="date" name="dateFin" id="dateFin">
+    <input type="date" name="dateFin" id="dateFin" value="<?= htmlspecialchars($dateFin ??'' ) ?>">
 
     <input type="submit" value="Valider">
 </form>

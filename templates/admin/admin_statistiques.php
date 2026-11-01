@@ -47,14 +47,21 @@
         </tr>
     </thead>
     <tbody>
-
-<?php foreach ($statMenus as $statMenu): ?>
+<?php if(!empty($statMenus)) : ?>
+    <?php foreach ($statMenus as $statMenu): ?>
+    
     <tr>
         <td><?= htmlspecialchars($statMenu['_id']) ?></td>
         <td><?= htmlspecialchars(($statMenu['nbCommandes'])) ?></td>
         <td><?= htmlspecialchars(number_format($statMenu['chiffreAffaire'],2,',',' ')) ?> €</td>
     </tr>
-<?php endforeach ?>
+
+    <?php endforeach ?>
+<?php else :?>
+        <tr>
+            <td colspan="3">Aucune statistique disponible</td>
+        </tr>
+<?php endif ?>
 </tbody>
 </table>
 <div class="graph">

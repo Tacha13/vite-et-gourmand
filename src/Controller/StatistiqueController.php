@@ -22,6 +22,8 @@ class StatistiqueController
         
         $statMenus = $this->statistiqueRepository->findStatParMenu($menu, $dateDebut, $dateFin);
 
+        $menusFiltre = $this->statistiqueRepository->findNomMenu();
+
 
         require __DIR__ . '/../../templates/admin/admin_statistiques.php';
     }

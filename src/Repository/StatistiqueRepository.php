@@ -56,8 +56,20 @@ class StatistiqueRepository {
 
         $pipeline[] = ['$sort' => ['_id' => 1]];
 
-        
-
         return $infoFicheCommande->aggregate($pipeline)->toArray();
+    }
+
+    public function findNomMenu(): array 
+    {
+        $mongodb = $this->mongoBase->getConnection();
+        $infoFicheCommande = $mongodb->selectCollection('stat_commandes');
+
+        $listNomsMenus[] = ['$group' => [
+                '_id' => '$nomMenu',
+            ]];
+        
+        $listNomsMenus[] = ['$sort' => ['_id' => 1]];
+
+        return $infoFicheCommande->aggregate($listNomsMenus)->toArray();
     }
 }

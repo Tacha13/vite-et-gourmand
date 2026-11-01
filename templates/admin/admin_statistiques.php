@@ -1,6 +1,8 @@
 <!-- Page tableau de bord statistiques admin -->
 <?php
 /** @var array $statMenus */
+/** @var array $menusFiltre */
+
 ?>
 <!--Contenu du head-->
 <?php
@@ -18,7 +20,12 @@
 <form action="" method="get">
     <input type="hidden" name="page" value="admin_statistiques">
     <label for="menu">Menu</label>
-    <input type="text" name="menu" id="menu">
+    <select name="menu" id="menu">
+    <option value="">Tous les menus</option>
+    <?php foreach ($menusFiltre as $menuFiltre): ?>
+    <option value="<?= htmlspecialchars($menuFiltre['_id']) ?>"><?= htmlspecialchars($menuFiltre['_id']) ?></option>
+    <?php endforeach ?>
+    </select>
     <label for="dateDebut">Date début</label>
     <input type="date" name="dateDebut" id="dateDebut">
     <label for="dateFin">Date Fin</label>

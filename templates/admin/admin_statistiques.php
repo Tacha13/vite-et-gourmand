@@ -34,7 +34,7 @@
 <?php endforeach ?>
 </tbody>
 </table>
-<div>
+<div class="graph">
   <canvas id="myChart"></canvas>
 </div>
 
@@ -66,11 +66,15 @@
     options: {
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+
+            ticks: {
+                stepSize: 1
+            }      
         }
-      }
     }
-  });
+    }
+});
 </script>
     <div>
         <a href="/?page=admin">Retour à la page administration</a>

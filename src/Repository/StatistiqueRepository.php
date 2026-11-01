@@ -35,7 +35,8 @@ class StatistiqueRepository {
                 '_id' => '$nomMenu',
                 'nbCommandes' => ['$sum' => 1],
                 'chiffreAffaire' => ['$sum' => '$prixTotal']
-            ]]
+            ]],
+            ['$sort' => ['_id' => 1]]
         ])->toArray();
     }
 }

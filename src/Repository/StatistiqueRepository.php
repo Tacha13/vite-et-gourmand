@@ -25,18 +25,39 @@ class StatistiqueRepository {
 	    ]);
     }
 
-    public function findStatParMenu(): array 
+    public function findStatParMenu(?string $nomMenu, ?string $dateDebutPrestation, ?string $dateFinPrestation): array 
     {
         $mongodb = $this->mongoBase->getConnection();
         $infoFicheCommande = $mongodb->selectCollection('stat_commandes');
 
-        return $infoFicheCommande->aggregate([
-            ['$group' => [
+        $filtre = [];
+
+        if($nomMenu !== null && $nomMenu !== '') {
+            $filtre['nomMenu'] = $nomMenu;
+        }
+
+        if($dateDebutPrestation !== null && $dateDebutPrestation !== '') {
+            $filtre['datePrestation'] ['$gte'] = $dateDebutPrestation;
+        }
+
+        if($dateFinPrestation !== null && $dateFinPrestation !== '') {
+            $filtre['datePrestation'] ['$lte'] = $dateFinPrestation;
+        }
+
+        $pipeline = [];
+        if(!empty($filtre)) {
+            $pipeline[] = ['$match' => $filtre];
+        }
+        $pipeline[] = ['$group' => [
                 '_id' => '$nomMenu',
                 'nbCommandes' => ['$sum' => 1],
                 'chiffreAffaire' => ['$sum' => '$prixTotal']
-            ]],
-            ['$sort' => ['_id' => 1]]
-        ])->toArray();
+            ]];
+
+        $pipeline[] = ['$sort' => ['_id' => 1]];
+
+        
+
+        return $infoFicheCommande->aggregate($pipeline)->toArray();
     }
 }

@@ -14,6 +14,20 @@
     require __DIR__ . '/../partials/header.php';
 ?>
 
+<!-- Filtres stats -->
+<form action="" method="get">
+    <input type="hidden" name="page" value="admin_statistiques">
+    <label for="menu">Menu</label>
+    <input type="text" name="menu" id="menu">
+    <label for="dateDebut">Date début</label>
+    <input type="date" name="dateDebut" id="dateDebut">
+    <label for="dateFin">Date Fin</label>
+    <input type="date" name="dateFin" id="dateFin">
+
+    <input type="submit" value="Valider">
+</form>
+
+
 <!-- Tableau affichant les informations des commandes pour stats -->
 <table>
     <thead>

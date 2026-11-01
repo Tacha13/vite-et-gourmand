@@ -16,7 +16,13 @@ class StatistiqueController
 
     public function showStatCommande(): void
     {
-        $statMenus = $this->statistiqueRepository->findStatParMenu();
+        $menu = $_GET['menu'] ?? null;
+        $dateDebut = $_GET['dateDebut'] ?? null;
+        $dateFin = $_GET['dateFin'] ?? null;
+        
+        $statMenus = $this->statistiqueRepository->findStatParMenu($menu, $dateDebut, $dateFin);
+
+
         require __DIR__ . '/../../templates/admin/admin_statistiques.php';
     }
 

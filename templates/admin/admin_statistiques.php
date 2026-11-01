@@ -18,7 +18,15 @@
     require __DIR__ . '/../partials/header.php';
 ?>
 
+<main class="container">
+
+<div class="mb-4">
+    <h1 class="title-listCommandesStat">Statistiques des commandes</h1>
+</div>
+
+
 <!-- Filtres stats -->
+<section class="mb-4 filter-commandes">
 <form action="" method="get">
     <input type="hidden" name="page" value="admin_statistiques">
     <label for="menu">Menu</label>
@@ -35,10 +43,11 @@
 
     <input type="submit" value="Valider">
 </form>
-
+</section>
 
 <!-- Tableau affichant les informations des commandes pour stats -->
-<table>
+<div class="mb-4 table-responsive table-stat">
+<table class="table table-striped table-hover ">
     <thead>
         <tr>
             <th>Nom du Menu</th>
@@ -64,6 +73,8 @@
 <?php endif ?>
 </tbody>
 </table>
+</div>
+
 <div class="graph">
   <canvas id="myChart"></canvas>
 </div>
@@ -90,6 +101,7 @@
       datasets: [{
         label: 'Nombre de commandes par menu',
         data: <?=  json_encode($nbCommande) ?>,
+        backgroundColor: '#D4A853',
         borderWidth: 1
       }]
     },
@@ -110,7 +122,7 @@
         <a href="/?page=admin">Retour à la page administration</a>
     </div>
     
-
+</main>
 
  <!--Contenu du footer-->
 <?php

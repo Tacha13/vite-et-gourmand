@@ -13,7 +13,8 @@ class MongodbDatabase {
         $mongoUri = $_ENV['MONGO_URI'];
         $mongoDb = $_ENV['MONGO_DB'];
 
-        $client = new Client($mongoUri);
+        $client = new Client($mongoUri, [], ['disableClientPersistence' => true]);
+        //$client = new Client($mongoUri); remplacé par la ligne du dessus suite au pb de rechargement du locahost, coupure atlas
         $this->mongoBase = $client->selectDatabase($mongoDb);
         
     }

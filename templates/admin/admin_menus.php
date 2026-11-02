@@ -51,6 +51,7 @@
         <tr>
             <th>Nom</th>
             <th>Thème</th>
+            <th>Régime</th>
             <th>Images</th>
             <th>Prix</th>
             <th>Actions</th>
@@ -69,6 +70,7 @@ if (!isset($menus) || !is_array($menus)) {
     <tr>
         <td><?= htmlspecialchars($menu['nomMenu']) ?></td>
         <td><?= htmlspecialchars($menu['theme']) ?></td>
+        <td><?= htmlspecialchars($menu['regime']) ?></td>
         <td><img src="" alt="Image du menu"></td>
         <td><?= htmlspecialchars(number_format($menu['prix'], 2, ',', ' ')) ?></td>
         <td><input type="button" value="Voir"></td>

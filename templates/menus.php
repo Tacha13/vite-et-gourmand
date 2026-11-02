@@ -22,27 +22,22 @@
     <div>
         <select name="filter-theme" id="filter-theme">
             <option value="">Thème</option>
-            <option value="noel">Noël</option>
-            <option value="paques">Pâques</option>
-            <option value="classique">Classique</option>
-            <option value="event">Evenement</option>
+            <option value="Noël">Noël</option>
+            <option value="Pâques">Pâques</option>
+            <option value="Classique">Classique</option>
+            <option value="Evénement">Evénement</option>
         </select>
     </div>
     <div>
         <select name="filter-regime" id="filter-regime">
             <option value="">Régime</option>
-            <option value="vegetarien">Végétarien</option>
-            <option value="vegan">Vegan</option>
-            <option value="classique">Classique</option>
+            <option value="Végétarien">Végétarien</option>
+            <option value="Vegan">Vegan</option>
+            <option value="Classique">Classique</option>
         </select>
     </div>
     <div>
-        <select name="filter-pers" id="filter-pers">
-            <option value="">Nombre de personnes</option>
-            <option value="first-range">2 à 6 personnes</option>
-            <option value="secondary-range">6 à 10 personnes</option>
-            <option value="third-range">10 personnes et +</option>
-        </select>
+        <input type="number" min="1" name="filter-pers" id="filter-pers">
     </div>
     <div>
         <select name="filter-min" id="filter-min">

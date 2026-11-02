@@ -149,5 +149,25 @@ class MenuController
             exit;
     }
 
+    //Fonction qui récupère les infos de filtres demandées par le client, on vérifie si c'est null ou vide (on renvoie null) sinon on conserve l'info du filtre et on alimente les paramètres de findMenusFiltres
+    public function showFiltresMenus(): void
+    {
+        $theme = $_GET['theme'] ?? null;
+        $regime = $_GET['regime'] ?? null;
+        $persNb = $_GET['persNb'] ?? null;
+        $priceMin = $_GET['priceMin'] ?? null;
+        $priceMax = $_GET['priceMax'] ?? null;
+
+        $persNb = ($persNb === null || $persNb ==='') ? null : (int)$persNb;
+        $priceMin = ($priceMin === null || $priceMin ==='') ? null : (float)$priceMin;
+        $priceMax = ($priceMax === null || $priceMax ==='') ? null : (float)$priceMax;
+        
+        $filtresMenus = $this->menuRepository->findMenusFiltres($theme, $regime, $persNb, $priceMin, $priceMax);
+
+        header('Content-Type: application/json');
+        echo json_encode($filtresMenus);
+    }
+
+
 
 }

@@ -98,7 +98,53 @@ class MenuRepository
         ); 
     }
 
-       
+    //Méthode qui permet de trouver les menus en fonction des filtres renseignés
+    public function findMenusFiltres(?string $theme, ?string $regime, ?int $persNb, ?float $priceMin, ?float $priceMax ): array 
+    {
+        $pdo = $this->database->getConnection();
+
+        $sql = "SELECT id, nomMenu, theme, prix, `description`, `image`, nbPersonneMin, regime FROM menus WHERE 1 = 1";
+
+        $params = [];
+
+        if($theme !== null && $theme !== '') 
+            {
+                $sql .= " AND theme = :theme";
+                $params['theme'] = $theme;
+            }
+
+        if($regime !== null && $regime !== '') 
+            {
+                $sql .= " AND regime = :regime";
+                $params['regime'] = $regime;
+            }
+
+        if($persNb !== null && $persNb !== '') 
+            {
+                $sql .= " AND nbPersonneMin <= :persNb";
+                $params['persNb'] = $persNb;
+            }
+
+        if($priceMin !== null && $priceMin !== '') 
+            {
+                $sql .= " AND prix >= :priceMin";
+                $params['priceMin'] = $priceMin;
+            }
+
+        if($priceMax !== null && $priceMax !== '') 
+            {
+                $sql .= " AND prix <= :priceMax";
+                $params['priceMax'] = $priceMax;
+            }
+
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->execute($params);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+
+    }
     
 
     

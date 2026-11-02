@@ -223,6 +223,10 @@ if (isset($_GET['page']) && $_GET['page'] === 'menus') {
     $menuController->showPublicMenus();
 }
 
+if (isset($_GET['page']) && $_GET['page'] === 'menus_filtre') {
+    $menuController->showFiltresMenus();
+}
+
 //Route pour accéder au détail du menu
 if (isset($_GET['page']) && $_GET['page'] === 'menu_details') {
     $menuController->showDetailMenu();
@@ -250,6 +254,8 @@ if (isset($_GET['page']) && $_GET['page'] === 'menu_delete') {
     $controller->checkEmploye();
     $menuController->deleteMenu();
 }
+
+
 
 
 

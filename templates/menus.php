@@ -66,7 +66,7 @@
 
 <section class="menu">
     <div class="container-fluid">
-    <div class="row row-cols-3 row-cols-md-3 g-5 menus">
+    <div class="row row-cols-3 row-cols-md-3 g-5 menus" id="menus-list">
 
 <!--Boucle permettant d'alimenter dynamiquement la page des menus enregistrés en BDD -->      
 <?php
@@ -80,10 +80,10 @@ if (!isset($menus) || !is_array($menus)) {
     <div class="col">
         <div class="card h-100">
             <div class="card-inner">
-                <div><img src="/images/<?=($menu['image'])?>" alt="Image du <?= htmlspecialchars($menu['nomMenu']) ?>"></div>
+                <div class="card-image"><img class="card-img" src="/images/<?=($menu['image'])?>" alt="Image du <?= htmlspecialchars($menu['nomMenu']) ?>"></div>
                 <h3 class="card-title"><?= htmlspecialchars($menu['nomMenu']) ?></h3>
-                <p><?= htmlspecialchars($menu['theme']) ?></p>    
-                <p><?= htmlspecialchars($menu['description']) ?></p>
+                <p class="card-theme"><?= htmlspecialchars($menu['theme']) ?></p>    
+                <p class="card-description"><?= htmlspecialchars($menu['description']) ?></p>
                 <p class="card-price">A partir de <?= htmlspecialchars(number_format($menu['prix'], 2, ',', ' ')) ?> € / personne</p>
                 <p class="card-min">Minimum <?= htmlspecialchars((string) $menu['nbPersonneMin']) ?> personnes</p>
                 <a href="/?page=menu_details&id=<?= ($menu['id'])?>" class="detail">Voir le détail</a>

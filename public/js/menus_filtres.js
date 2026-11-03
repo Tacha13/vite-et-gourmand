@@ -22,9 +22,15 @@ async function changeFilter ()
 
     menuList.replaceChildren()
 
-
-
     const menus = await reponse.json()
+
+    if(menus.length === 0) 
+    {
+        const listeVide = document.createElement('p')
+        listeVide.className = 'liste-vide'
+        listeVide.textContent = 'Aucun menu ne correspond à votre recherche.'
+        menuList.append(listeVide)
+    }
     
 
     console.log(menus)

@@ -56,7 +56,7 @@
         </select>
     </div>
     <div>
-        <a href="#">Effacer les filtres</a>
+        <a href="/?page=menus">Effacer les filtres</a>
     </div>
     
 </section>

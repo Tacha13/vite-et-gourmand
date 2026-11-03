@@ -324,7 +324,7 @@ class CommandeController
     }
 
     //Fonction qui récupère les id commandes et clients pour traitement dans le repo findHistoCommandeId()
-    public function showAllHistoStatuts (): void
+    public function showAllHistoStatuts(): void
     {
         if(!isset($_SESSION ['user_id'] )) {
             header('location:/?page=login');

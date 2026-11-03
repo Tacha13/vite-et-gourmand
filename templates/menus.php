@@ -105,5 +105,7 @@ if (!isset($menus) || !is_array($menus)) {
 <?php
     require __DIR__ . '/partials/footer.php';
 ?>
+
+<script src="./js/menus_filtres.js"></script>
 </body>
 </html>

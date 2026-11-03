@@ -85,7 +85,7 @@ async function changeFilter ()
 
 theme.addEventListener('change', changeFilter);
 regime.addEventListener('change', changeFilter);
-persNb.addEventListener('change', changeFilter);
+persNb.addEventListener('input', changeFilter);
 prixMin.addEventListener('change', changeFilter);
 prixMax.addEventListener('change', changeFilter);
 

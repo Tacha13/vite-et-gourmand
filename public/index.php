@@ -190,6 +190,11 @@ if (isset($_GET['page']) && $_GET['page'] === 'histo_commandes') {
     $commandeController->showAllHistoCommandesClient();
 }
 
+//Route pour accéder à l'historique des statuts
+if (isset($_GET['page']) && $_GET['page'] === 'suivi_commandes') {
+    $commandeController->showAllHistoStatuts();
+}
+
 //Route pour update des données personnelles
 if (isset($_GET['page']) && $_GET['page'] === 'infos_personnelles') {
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -254,9 +259,6 @@ if (isset($_GET['page']) && $_GET['page'] === 'menu_delete') {
     $controller->checkEmploye();
     $menuController->deleteMenu();
 }
-
-
-
 
 
 //PLATS

@@ -202,4 +202,23 @@ class CommandeRepository {
         return $result ?: null;
     } 
     
+    //Fonction qui renvoie la liste des statuts des commandes selon l'id client et l'id de la commande
+    public function findHistoCommandeId(int $commandeId, int $compteId) : array 
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("SELECT h.statut, h.dateChangement, h.commande_id, c.numero FROM histostatut h, commandes c WHERE h.commande_id = c.id AND c.id = :id AND  c.compte_id = :compte_id ORDER BY h.dateChangement ASC;");
+
+        $stmt->execute(
+            [
+            ':id' => $commandeId,
+            ':compte_id' => $compteId
+
+            ]);      
+
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+        
+    }
+
 }

@@ -323,4 +323,19 @@ class CommandeController
   
     }
 
+    //Fonction qui récupère les id commandes et clients pour traitement dans le repo findHistoCommandeId()
+    public function showAllHistoStatuts (): void
+    {
+        if(!isset($_SESSION ['user_id'] )) {
+            header('location:/?page=login');
+            exit;
+        } 
+
+        $id_commande = (int) ($_GET['id'] ?? '');
+
+        $allStatuts = $this->commandeRepository->findHistoCommandeId($id_commande, $_SESSION['user_id']);
+
+        require __DIR__ . '/../../templates/client/suivi_commandes.php';
+    }
+
 }

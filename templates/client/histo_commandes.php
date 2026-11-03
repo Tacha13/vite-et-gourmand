@@ -47,8 +47,8 @@ require __DIR__ . '/../partials/header.php';
             <th class="d-none d-md-table-cell" scope="col">Nombre de convives</th>
             <th scope="col">Prix total</th>
             <th scope="col">Statut</th>
+            <th scope="col">Suivi</th>          
             <th scope="col">Avis</th>
-            
             </tr>
         </thead>
         <tbody>
@@ -60,6 +60,9 @@ require __DIR__ . '/../partials/header.php';
             <td class="d-none d-md-table-cell"><?=  htmlspecialchars($allCommande['nbPersonneCommande']) ?></td>
             <td><?=  htmlspecialchars($allCommande['prixTotal']) ?></td>
             <td><?=  htmlspecialchars($allCommande['statut']) ?></td>
+            <td>
+                <a href="/?page=suivi_commandes&id=<?= ($allCommande['id'])?>" class="suivi">Voir le suivi de la commande</a>
+            </td>
             <td>
             <?php if ($allCommande['statut'] === 'Terminée' && $allCommande['avis_id'] === null): ?>
                     <button class="btn-avis" type="button" data-bs-toggle="modal" data-bs-target="#modalAvis<?=  $allCommande['id'] ?>">Laisser un avis</button>

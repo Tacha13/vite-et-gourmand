@@ -31,37 +31,13 @@
             <p class="detail-min">Minimum <?= htmlspecialchars((string) $idMenu['nbPersonneMin']) ?> personnes</p>
             <p class="detail-condition"><?= htmlspecialchars($idMenu['conditions']) ?></p>
             <p class="detail-theme">Thème : <?= htmlspecialchars($idMenu['theme']) ?></p>
-
-            <h3 class="detail-typePlat">Entrées : </h3>
-        <?php foreach ($plats as $plat): ?>
-            <?php if ($plat['typePlat'] === 'Entrée'): ?>
-            <p class="detail-nomPlat"><?= htmlspecialchars($plat['nomPlat']) ?></p>
-            <p class="detail-nomPlat"><?= htmlspecialchars($plat['description'] ?? '') ?></p>
-            <?php endif ?>
-        <?php endforeach ?>
-            <h3 class="detail-typePlat">Plat principal : </h3>
-        <?php foreach ($plats as $plat): ?>
-            <?php if ($plat['typePlat'] === 'Plat principal'): ?>
-            <p class="detail-nomPlat"><?= htmlspecialchars($plat['nomPlat']) ?></p>
-            <p class="detail-nomPlat"><?= htmlspecialchars($plat['description'] ?? '') ?></p>
-            <?php endif ?>
-        <?php endforeach ?>
-            <h3 class="detail-typePlat">Desserts : </h3>
-        <?php foreach ($plats as $plat): ?>
-            <?php if ($plat['typePlat'] === 'Dessert'): ?>
-            <p class="detail-nomPlat"><?= htmlspecialchars($plat['nomPlat']) ?></p>
-            <p class="detail-nomPlat"><?= htmlspecialchars($plat['description'] ?? '') ?></p>
-            <?php endif ?>
-        <?php endforeach ?>
-
             <p class="detail-allergene"><?= htmlspecialchars($idMenu['allergenes']) ?></p>
         </div>
-
                 <div class="col">
         <div class="main-img">
             <img src="/images/<?=($idMenu['image'])?>" alt="Image du <?= htmlspecialchars($idMenu['nomMenu']) ?>" >
         </div>
-        <div class="row row-cols-2 row-cols-md-2 detail-img">
+        <div class="row row-cols-2 row-cols-md-3 detail-img">
             <div class="col">
             <img src="/images/Menu saveurs de saison 1.jpg" alt="Menu saveurs de saison 1.jpg">
             </div>
@@ -73,8 +49,36 @@
             </div>            
         </div>
         </div>
-    
     </div>
+    <div class="row row-cols-1 row-cols-md-3 detail-plat">
+        <div class="col detail-bloc">
+            <h3 class="detail-typePlat">Entrées : </h3>
+            <?php foreach ($plats as $plat): ?>
+                <?php if ($plat['typePlat'] === 'Entrée'): ?>
+                <p class="detail-nomPlat"><?= htmlspecialchars($plat['nomPlat']) ?></p>
+                <p class="detail-descriptionPlat"><?= htmlspecialchars($plat['description'] ?? '') ?></p>
+                <?php endif ?>
+            <?php endforeach ?>
+        </div>
+        <div class="col detail-bloc">
+                <h3 class="detail-typePlat">Plat principal : </h3>
+            <?php foreach ($plats as $plat): ?>
+                <?php if ($plat['typePlat'] === 'Plat principal'): ?>
+                <p class="detail-nomPlat"><?= htmlspecialchars($plat['nomPlat']) ?></p>
+                <p class="detail-descriptionPlat"><?= htmlspecialchars($plat['description'] ?? '') ?></p>
+                <?php endif ?>
+            <?php endforeach ?>
+        </div>
+        <div class="col detail-bloc">
+                <h3 class="detail-typePlat">Desserts : </h3>
+            <?php foreach ($plats as $plat): ?>
+                <?php if ($plat['typePlat'] === 'Dessert'): ?>
+                <p class="detail-nomPlat"><?= htmlspecialchars($plat['nomPlat']) ?></p>
+                <p class="detail-descriptionPlat"><?= htmlspecialchars($plat['description'] ?? '') ?></p>
+                <?php endif ?>
+            <?php endforeach ?>
+        </div>
+        </div>
     <div class="col boutons">
         <a class="btn-command" href="/?page=commande_create&menu_id=<?=  $idMenu['id'] ?>">Commander</a>
         <a class="btn-menu" href="/?page=menus">Retour aux menus</a>

@@ -71,12 +71,14 @@ class MenuController
     }
     }
 
-    //Route qui récupère les infos d'un menu avec findById et renvoie à la page menus détail   
+    //Route qui récupère les infos d'un menu avec findById et celui des plats avec findAllPlatsByIdMenu et renvoie à la page menus détail   
     public function showDetailMenu(): void 
     {
         if (isset($_GET['id'])) {
             $idMenu = $this->menuRepository->findById((int)$_GET['id']);
+            $plats = $this->menuRepository->findAllPlatsByIdMenu((int)$_GET['id']);
             require __DIR__ . '/../../templates/menu_details.php';
+
         } else {
             header('location:/?page=menus');
             exit;

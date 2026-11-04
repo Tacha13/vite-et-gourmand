@@ -147,6 +147,22 @@ class MenuRepository
     }
     
 
+    //Fonction qui renvoie la liste des plats d'un menu selon l'id du menu
+    public function findAllPlatsByIdMenu(int $id) : array 
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("SELECT p.nomPlat, p.typePlat, p.description FROM plats p, menu_plat m WHERE m.plat_id = p.id AND m.menu_id = :id;");
+
+        $stmt->execute(
+            [
+            ':id' => $id
+            ]
+        );
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+        
+    }
     
 
 }    

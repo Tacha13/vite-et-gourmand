@@ -1,5 +1,9 @@
 <!-- Page Détails du Menu -->
+<?php
+/** @var array $plats */
+/** @var array $idMenu */
 
+?>
 <!--Contenu du head-->
 <?php
     $title = "Détails des menus Vite & Gourmand";
@@ -10,14 +14,6 @@
 <!--Contenu du header-->
 <?php
     require __DIR__ . '/partials/header.php';
-?>
-
-<!--Boucle permettant d'alimenter dynamiquement la page des menus enregistrés en BDD -->      
-<?php
-// $menus est injecté via require dans MenuController::showMenusPublic() — isset() évite l'avertissement VSCode sur la variable non déclarée
-if (!isset($idMenu) || !is_array($idMenu)) {
-    $idMenu = [];
-}
 ?>
 
 <main>
@@ -35,7 +31,29 @@ if (!isset($idMenu) || !is_array($idMenu)) {
             <p class="detail-min">Minimum <?= htmlspecialchars((string) $idMenu['nbPersonneMin']) ?> personnes</p>
             <p class="detail-condition"><?= htmlspecialchars($idMenu['conditions']) ?></p>
             <p class="detail-theme">Thème : <?= htmlspecialchars($idMenu['theme']) ?></p>
-            <p class="detail-plat">A remplir avec les données de la table plats</p>
+
+            <h3 class="detail-typePlat">Entrées : </h3>
+        <?php foreach ($plats as $plat): ?>
+            <?php if ($plat['typePlat'] === 'Entrée'): ?>
+            <p class="detail-nomPlat"><?= htmlspecialchars($plat['nomPlat']) ?></p>
+            <p class="detail-nomPlat"><?= htmlspecialchars($plat['description'] ?? '') ?></p>
+            <?php endif ?>
+        <?php endforeach ?>
+            <h3 class="detail-typePlat">Plat principal : </h3>
+        <?php foreach ($plats as $plat): ?>
+            <?php if ($plat['typePlat'] === 'Plat principal'): ?>
+            <p class="detail-nomPlat"><?= htmlspecialchars($plat['nomPlat']) ?></p>
+            <p class="detail-nomPlat"><?= htmlspecialchars($plat['description'] ?? '') ?></p>
+            <?php endif ?>
+        <?php endforeach ?>
+            <h3 class="detail-typePlat">Desserts : </h3>
+        <?php foreach ($plats as $plat): ?>
+            <?php if ($plat['typePlat'] === 'Dessert'): ?>
+            <p class="detail-nomPlat"><?= htmlspecialchars($plat['nomPlat']) ?></p>
+            <p class="detail-nomPlat"><?= htmlspecialchars($plat['description'] ?? '') ?></p>
+            <?php endif ?>
+        <?php endforeach ?>
+
             <p class="detail-allergene"><?= htmlspecialchars($idMenu['allergenes']) ?></p>
         </div>
 

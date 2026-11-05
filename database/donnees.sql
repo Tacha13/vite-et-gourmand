@@ -248,21 +248,63 @@ INSERT INTO `menu_plat` (`menu_id`, `plat_id`) VALUES
 
 INSERT INTO `allergenes` (`id`, `nomAllergene`) VALUES
 (2, 'Fruits à coque'),
-(3, 'Crustacés '),
-(5, 'Lait '),
+(3, 'Crustacés'),
+(5, 'Lait'),
 (6, 'Céréales contenant du gluten'),
-(7, 'Mollusques '),
-(8, 'Arachides '),
+(7, 'Mollusques'),
+(8, 'Arachides'),
 (10, 'Moutarde'),
 (11, 'Graines de sésame');
+(12, 'Œuf');
+(13, 'Poisson');
+
 
 --
 -- Déchargement des données de la table `plat_allergene`
 --
 
-INSERT INTO `plat_allergene` (`plat_id`, `allergene_id`) VALUES
-(3, 10),
-(4, 11);
+INSERT INTO `plat_allergene` (`plat_id`, `allergene_id`) VALUES (3, 10),
+INSERT INTO `plat_allergene` (`plat_id`, `allergene_id`) VALUES (4, 11);
+insert into plat_allergene (plat_id, allergene_id) values (3,2);
+insert into plat_allergene (plat_id, allergene_id) values (3,5);
+insert into plat_allergene (plat_id, allergene_id) values (6,5);
+insert into plat_allergene (plat_id, allergene_id) values (7,6);
+insert into plat_allergene (plat_id, allergene_id) values (9,5);
+insert into plat_allergene (plat_id, allergene_id) values (10,5);
+insert into plat_allergene (plat_id, allergene_id) values (11,5);
+insert into plat_allergene (plat_id, allergene_id) values (11,6);
+insert into plat_allergene (plat_id, allergene_id) values (12,5);
+insert into plat_allergene (plat_id, allergene_id) values (13,5);
+insert into plat_allergene (plat_id, allergene_id) values (13,12);
+insert into plat_allergene (plat_id, allergene_id) values (14,12);
+insert into plat_allergene (plat_id, allergene_id) values (15,5);
+insert into plat_allergene (plat_id, allergene_id) values (15,12);
+insert into plat_allergene (plat_id, allergene_id) values (16,5);
+insert into plat_allergene (plat_id, allergene_id) values (16,6);
+insert into plat_allergene (plat_id, allergene_id) values (18,5);
+insert into plat_allergene (plat_id, allergene_id) values (20,2);
+insert into plat_allergene (plat_id, allergene_id) values (20,5);
+insert into plat_allergene (plat_id, allergene_id) values (20,12);
+insert into plat_allergene (plat_id, allergene_id) values (21,5);
+insert into plat_allergene (plat_id, allergene_id) values (21,6);
+insert into plat_allergene (plat_id, allergene_id) values (21,12);
+insert into plat_allergene (plat_id, allergene_id) values (22,5);
+insert into plat_allergene (plat_id, allergene_id) values (22,6);
+insert into plat_allergene (plat_id, allergene_id) values (22,12);
+insert into plat_allergene (plat_id, allergene_id) values (23,5);
+insert into plat_allergene (plat_id, allergene_id) values (23,6);
+insert into plat_allergene (plat_id, allergene_id) values (23,12);
+insert into plat_allergene (plat_id, allergene_id) values (24,2);
+insert into plat_allergene (plat_id, allergene_id) values (24,5);
+insert into plat_allergene (plat_id, allergene_id) values (24,6);
+insert into plat_allergene (plat_id, allergene_id) values (25,5);
+insert into plat_allergene (plat_id, allergene_id) values (25,7);
+insert into plat_allergene (plat_id, allergene_id) values (26,5);
+insert into plat_allergene (plat_id, allergene_id) values (29,2);
+insert into plat_allergene (plat_id, allergene_id) values (29,5);
+insert into plat_allergene (plat_id, allergene_id) values (29,6);
+insert into plat_allergene (plat_id, allergene_id) values (29,12);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

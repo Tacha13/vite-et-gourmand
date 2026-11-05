@@ -1224,7 +1224,7 @@ section.menu {
     .connexion-espace {
         padding: 10px;
     }
-    
+
     .connexion-espace h3{
         font-size: 22px;
     }
@@ -1239,6 +1239,11 @@ section.menu {
 
     .btn-valider {
         padding: 20px;
+    }
+
+    /*Inscription*/
+    .inscription-form div {
+        margin-bottom: 10px;
     }
 
     /*menus*/

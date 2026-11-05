@@ -1201,6 +1201,20 @@ section.menu {
         max-width: 90%;
     }
 
+    /*Contact*/
+    .contact-text {
+        padding: 20px;
+        font-size: 20px
+    }
+
+    .contact-form {
+        align-items: stretch;
+    }
+    
+    .contact-form div {
+        width: 100%;
+    }
+
     /*menus*/
     .btn-command, .btn-menu {
         width: 70%;

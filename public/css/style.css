@@ -1247,6 +1247,10 @@ section.menu {
     }
 
     /*menus*/
+    .boutons {
+        justify-content: center;
+    }
+
     .btn-command, .btn-menu {
         width: 70%;
         margin: 5px;
@@ -1266,6 +1270,47 @@ section.menu {
         padding: 10px;
     }
 
+    /*Commandes*/
+    .detail-title {
+        margin: 10px;
+    }
+
+    .img-commande {
+        max-width: 90%;
+    }
+
+    .nombreCommande {
+        margin: 5px;
+    }
+
+    .commande-inner {
+        flex-direction: column;
+    }
+
+    .commande-inner input {
+        width: 100%;
+    }
+
+    .commande-inner label {
+        width: 100%;
+    }
+
+    .recap-presta {
+        gap: 5px;
+    }
+
+    .recap-presta p, .recap-presta span {
+        width: 100%;
+    }
+
+    .valid-prix {
+        gap: 5px;
+        padding: 2px;
+    }
+
+    .valid-inner p, .valid-inner span {
+        width: 100%;
+    }
 
 }
 

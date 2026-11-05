@@ -1210,9 +1210,35 @@ section.menu {
     .contact-form {
         align-items: stretch;
     }
-    
+
     .contact-form div {
         width: 100%;
+    }
+
+    /*Connexion*/
+    .connexion-text {
+        padding: 20px;
+        font-size: 20px
+    }
+
+    .connexion-espace {
+        padding: 10px;
+    }
+    
+    .connexion-espace h3{
+        font-size: 22px;
+    }
+
+    .connexion-espace li{
+        font-size: 20px;
+    }
+
+    .forgotten-password a, .not-registered a {
+        padding: 10px;
+    }
+
+    .btn-valider {
+        padding: 20px;
     }
 
     /*menus*/

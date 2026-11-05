@@ -740,16 +740,6 @@ section.menu {
     
 }
 
-.detail-allergene {
-    color: var(--text);
-    font-size: 14px;
-    background-color: var(--bg);
-    border: 1px solid;
-    border-radius: 15px;
-    border-color: var(--text);
-    margin-top: 15px;
-}
-
 .boutons {
     display: flex;
     justify-content: space-between;

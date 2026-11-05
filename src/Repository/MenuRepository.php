@@ -151,7 +151,7 @@ class MenuRepository
     public function findAllPlatsByIdMenu(int $id) : array 
     {
         $pdo = $this->database->getConnection();
-        $stmt = $pdo->prepare("SELECT p.nomPlat, p.typePlat, p.description FROM plats p, menu_plat m WHERE m.plat_id = p.id AND m.menu_id = :id;");
+        $stmt = $pdo->prepare("SELECT p.nomPlat, p.typePlat, p.description, (SELECT GROUP_CONCAT(a.nomAllergene SEPARATOR ', ') FROM allergenes a, plat_allergene pa WHERE a.id = pa.allergene_id AND p.id = pa.plat_id) AS allergenes FROM plats p, menu_plat m WHERE m.plat_id = p.id AND m.menu_id = :id;");
 
         $stmt->execute(
             [

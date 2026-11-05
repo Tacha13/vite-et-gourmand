@@ -31,7 +31,6 @@
             <p class="detail-min">Minimum <?= htmlspecialchars((string) $idMenu['nbPersonneMin']) ?> personnes</p>
             <p class="detail-condition"><?= htmlspecialchars($idMenu['conditions']) ?></p>
             <p class="detail-theme">Thème : <?= htmlspecialchars($idMenu['theme']) ?></p>
-            <p class="detail-allergene"><?= htmlspecialchars($idMenu['allergenes']) ?></p>
         </div>
         <div class="col">
             <div class="main-img">
@@ -57,6 +56,7 @@
                 <?php if ($plat['typePlat'] === 'Entrée'): ?>
                 <p class="detail-nomPlat"><?= htmlspecialchars($plat['nomPlat']) ?></p>
                 <p class="detail-descriptionPlat"><?= htmlspecialchars($plat['description'] ?? '') ?></p>
+                <p class="detail-allergenePlat"><?= htmlspecialchars($plat['allergenes'] ?? '') ?></p>
                 <?php endif ?>
             <?php endforeach ?>
         </div>
@@ -66,6 +66,7 @@
                 <?php if ($plat['typePlat'] === 'Plat principal'): ?>
                 <p class="detail-nomPlat"><?= htmlspecialchars($plat['nomPlat']) ?></p>
                 <p class="detail-descriptionPlat"><?= htmlspecialchars($plat['description'] ?? '') ?></p>
+                <p class="detail-allergenePlat"><?= htmlspecialchars($plat['allergenes'] ?? '') ?></p>
                 <?php endif ?>
             <?php endforeach ?>
         </div>
@@ -75,6 +76,7 @@
                 <?php if ($plat['typePlat'] === 'Dessert'): ?>
                 <p class="detail-nomPlat"><?= htmlspecialchars($plat['nomPlat']) ?></p>
                 <p class="detail-descriptionPlat"><?= htmlspecialchars($plat['description'] ?? '') ?></p>
+                <p class="detail-allergenePlat"><?= htmlspecialchars($plat['allergenes'] ?? '') ?></p>
                 <?php endif ?>
             <?php endforeach ?>
         </div>

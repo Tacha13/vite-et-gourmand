@@ -241,11 +241,13 @@ body {
 .img-pres {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 30px;
 }
 
 .img-pres img {
-    max-width: 50%;
+    border-radius: 15px;
+    max-width: 80%;
     height: auto;
 }
 
@@ -878,7 +880,7 @@ section.menu {
     height: 250px;
 }
 
-.btn-contact {
+.btn-envoyer {
     text-decoration: none;
     font-size: 20px;
     color: white;
@@ -1167,28 +1169,43 @@ section.menu {
 /*MEDIA QUERIES*/
 @media (max-width: 768px)
 {
+
+    /*footer*/
     .footer-inner {
         font-size: 14px;
     }
 
+    /*header*/
     .nav-link {
     font-size: 18px;
     padding: 10px 8px;
-}
+    }
 
     ul.navbar-nav {
     gap: 10px;
-}
+    }
 
-    .boutons {
+    /*home*/
+     .btns {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
+    .btn-menus, .btn-contact {
+        padding:12px 20px;
+        margin: 10px;
+    }
+
+    .img-pres img {
+        max-width: 90%;
+    }
+
+    /*menus*/
     .btn-command, .btn-menu {
         width: 70%;
         margin: 5px;
+        text-align: center;
     }
 
     .detail-description, .detail-condition {
@@ -1203,6 +1220,8 @@ section.menu {
     .card {
         padding: 10px;
     }
+
+
 }
 
 

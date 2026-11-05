@@ -662,7 +662,7 @@ section.menu {
 
 
 .main-detail {
-    margin: 40px;
+    margin: 10px;
     background-color: var(--avis);
 
 }
@@ -752,9 +752,9 @@ section.menu {
 
 .boutons {
     display: flex;
-    justify-content: flex-end;
-    gap: 40%;
-    padding: 40px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px;
 }
 
 .btn-command {
@@ -762,7 +762,7 @@ section.menu {
     font-size: 20px;
     color: white;
     background: var(--primary);
-    padding:12px 70px;
+    padding:12px 20px;
     border: none;
     border-radius: 2px;
 }
@@ -772,7 +772,7 @@ section.menu {
     font-size: 20px;
     color: white;
     background: var(--secondary);
-    padding:12px 70px;
+    padding:12px 20px;
     border: none;
     border-radius: 2px;
 }
@@ -782,22 +782,21 @@ section.menu {
 
 
 .main-img {
-    padding: 40px;
     display: flex;
     justify-content: center;
-}
-
-.detail-img {
-    width: 100%;
-    padding: 20px;
+    padding: 15px;
 }
 
 .main-img img{
-    width: 70%;
-    padding: 40px;
+    width:100%;
     max-height: 300px;
     object-fit: cover;
 }
+
+.detail-img {
+    padding: 20px;
+}
+
 
 .detail-img img {
     width: 100%;
@@ -1153,7 +1152,24 @@ section.menu {
 
 /*FIN ADMIN STATS*/
 
+/*MEDIA QUERIES*/
+@media (max-width: 768px)
+{
+    .boutons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .btn-command, .btn-menu {
+        width: 70%;
+        margin: 5px;
+    }
+
+    .detail-description, .detail-condition {
+        width: 100%;
+    }
+}
 
 
 

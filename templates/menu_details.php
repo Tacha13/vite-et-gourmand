@@ -23,7 +23,7 @@
     </div>
     <section class="container-fluid">
     <div class="main-detail">
-    <div class="row row-cols-2 row-cols-md-2 g-4 container-detail">
+    <div class="row row-cols-1 row-cols-md-2 g-4 container-detail">
         <div class="col detail-inner">
             <h3 class="detail-title"><?= htmlspecialchars($idMenu['nomMenu']) ?></h3>
             <p class="detail-description"><?= htmlspecialchars($idMenu['description']) ?></p>
@@ -33,19 +33,19 @@
             <p class="detail-theme">Thème : <?= htmlspecialchars($idMenu['theme']) ?></p>
             <p class="detail-allergene"><?= htmlspecialchars($idMenu['allergenes']) ?></p>
         </div>
+        <div class="col">
+            <div class="main-img">
+                <img src="/images/<?=($idMenu['image'])?>" alt="Image du <?= htmlspecialchars($idMenu['nomMenu']) ?>" >
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 detail-img">
                 <div class="col">
-        <div class="main-img">
-            <img src="/images/<?=($idMenu['image'])?>" alt="Image du <?= htmlspecialchars($idMenu['nomMenu']) ?>" >
-        </div>
-        <div class="row row-cols-2 row-cols-md-3 detail-img">
-            <div class="col">
-            <img src="/images/Menu saveurs de saison 1.jpg" alt="Menu saveurs de saison 1.jpg">
-            </div>
-            <div class="col">
-            <img src="/images/Menu saveurs de saison 2.jpg" alt="Menu saveurs de saison 2.jpg">
-            </div>
-            <div class="col">
-            <img src="/images/Menu saveurs de saison 3.jpg" alt="Menu saveurs de saison 3.jpg">
+                <img src="/images/Menu saveurs de saison 1.jpg" alt="Menu saveurs de saison 1.jpg">
+                </div>
+                <div class="col">
+                <img src="/images/Menu saveurs de saison 2.jpg" alt="Menu saveurs de saison 2.jpg">
+                </div>
+                <div class="col">
+                <img src="/images/Menu saveurs de saison 3.jpg" alt="Menu saveurs de saison 3.jpg">
             </div>            
         </div>
         </div>

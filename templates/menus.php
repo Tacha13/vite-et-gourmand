@@ -17,7 +17,8 @@
 </div>
 
 <!-- Section pour les filtres -->
-<section class="filter">
+<button class="d-md-none toggler" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-controls="filter" aria-expanded="false">Filtrer les menus</button>
+<section class="d-md-flex filter collapse" id="filter">
     
     <div>
         <select name="filter-theme" id="filter-theme">
@@ -37,6 +38,7 @@
         </select>
     </div>
     <div>
+        <label for="filter-pers">Nombre de Personnes : </label>
         <input type="number" min="1" name="filter-pers" id="filter-pers">
     </div>
     <div>
@@ -56,7 +58,7 @@
         </select>
     </div>
     <div>
-        <a href="/?page=menus">Effacer les filtres</a>
+        <a href="/?page=menus" class="delete-filter">Effacer les filtres</a>
     </div>
     
 </section>
@@ -66,7 +68,7 @@
 
 <section class="menu">
     <div class="container-fluid">
-    <div class="row row-cols-3 row-cols-md-3 g-5 menus" id="menus-list">
+    <div class="row row-cols-1 row-cols-md-3 g-md-3 g-4 menus" id="menus-list">
 
 <!--Boucle permettant d'alimenter dynamiquement la page des menus enregistrés en BDD -->      
 <?php

@@ -580,11 +580,33 @@ i.fa-solid {
     background-color: var(--avis);
 }
 
+.toggler {
+    display: block;
+    margin: 0px auto;
+    text-decoration: none;
+    align-self: center;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    background-color: var(--primary);
+    padding: 10px;
+}
+
 select {
     border: none;
     outline: none;
     background-color: var(--avis);
-    font-size: 20px;
+    font-size: 16px;
+}
+
+.delete-filter {
+    text-decoration: none;
+    align-self: center;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    background-color: var(--primary);
+    padding: 10px;
 }
 
 /*Fin Fitres*/
@@ -1145,6 +1167,19 @@ section.menu {
 /*MEDIA QUERIES*/
 @media (max-width: 768px)
 {
+    .footer-inner {
+        font-size: 14px;
+    }
+
+    .nav-link {
+    font-size: 18px;
+    padding: 10px 8px;
+}
+
+    ul.navbar-nav {
+    gap: 10px;
+}
+
     .boutons {
         display: flex;
         flex-direction: column;
@@ -1158,6 +1193,15 @@ section.menu {
 
     .detail-description, .detail-condition {
         width: 100%;
+    }
+
+    .filter {
+        flex-flow: column;
+        gap: 10px;
+    }
+
+    .card {
+        padding: 10px;
     }
 }
 

@@ -10,7 +10,7 @@ $horaires = $horaireRepo->findAll();
 ?>
 
 <footer class="footer">
-    <div class="row row-cols-3 row-cols-md-3 g-4 mon-footer">
+    <div class="row row-cols-1 row-cols-md-3 g-4 mon-footer">
         <div class="col">
             <h3 class="footer-title">Contact</h3>
             <div class="footer-inner">

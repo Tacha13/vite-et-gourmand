@@ -154,6 +154,9 @@
         </tbody>
     </table>
 </div>
+    <div class="return-admin">
+        <a href="/?page=admin" class="returnAdmin">Retour à la page administration</a>
+    </div>
 
 
 </main>

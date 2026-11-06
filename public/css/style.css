@@ -1460,6 +1460,14 @@ text-align: center;
     padding: 5px 15px;
     border-radius: 2px;
 }
+
+/*Admin création menu*/
+.title-createMenu {
+    text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
+
 /*DEBUT ADMIN STATS*/
 
 .graph {

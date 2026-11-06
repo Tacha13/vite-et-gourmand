@@ -1128,6 +1128,27 @@ section.menu {
 /*FIN COMMANDE 2*/
 
 /*DEBUT DASHBOARD ADMIN*/
+.title-dashboard {
+    text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+.link-dashboard {
+    text-decoration: none;
+    border: 1px solid;
+    border-color: var(--accent);
+    border-radius: 5px;
+    color: var(--text);
+    padding: 15px;
+}
+
+.bloc-dashboard {
+    display: flex;
+    justify-content: space-around;
+    padding: 15 px;
+    margin: 30px 0px;
+}
 
 /*Début admin_menu*/
 .successDeleteMenu {

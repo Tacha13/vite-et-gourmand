@@ -545,6 +545,16 @@ i.fa-solid {
     margin: 20PX;
 }
 
+.btn-avis {
+    text-decoration: none;
+    border: 1px solid;
+    border-color: var(--accent);
+    border-radius: 5px;
+    color: var(--text);
+    padding: 5px;
+    display: inline-block;
+}
+
 /*FIN HISTO COMMANDES*/
 
 /*DEBUT SUIVI COMMANDE*/
@@ -1367,7 +1377,7 @@ text-align: center;
     display: inline-block;
 }
 
-/*Admin Hot=raires*/
+/*Admin Horaires*/
 
 .title-adminHoraires {
     text-align: center;
@@ -1384,6 +1394,30 @@ text-align: center;
     padding: 5px;
     display: inline-block;
 }
+
+/*admin avis*/
+.title-adminAvis {
+    text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+.card-inner-avis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.admin-action-avis {
+    text-decoration: none;
+    border: 1px solid;
+    border-color: var(--accent);
+    border-radius: 5px;
+    color: var(--text);
+    padding: 5px;
+    display: inline-block;
+}
+
 
 /*DEBUT ADMIN STATS*/
 
@@ -1405,7 +1439,6 @@ text-align: center;
     margin: 40px;
     padding: 20px;
 }
-
 
 .addAllergene {
     margin-left: 15px;

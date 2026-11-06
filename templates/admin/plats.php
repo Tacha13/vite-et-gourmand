@@ -73,7 +73,7 @@
             <td><?= htmlspecialchars($plat['typePlat']) ?></td>
             <td><a href="/?page=plat_update&id=<?= ($plat['id'])?>" class="admin-action-plat">Modifier le plat</a></td>
 
-                <td class="admin-delete-menu">
+                <td class="admin-delete-plat">
                     <form action="/?page=delete_confirm" method="POST">
                         <input name="id" type="hidden" value="<?=  $plat['id'] ?>">
                         <input name="entity" type="hidden" value="plat">

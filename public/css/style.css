@@ -1329,7 +1329,6 @@ text-align: center;
     padding: 20px;
 }
 
-
 .addPlat {
     margin-left: 15px;
     margin-top: 5px;
@@ -1354,7 +1353,18 @@ text-align: center;
     border-radius: 5px;
     color: var(--text);
     padding: 5px;
-    display: block;
+    display: inline-block;
+}
+
+.admin-delete-plat input{
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--secondary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+    display: inline-block;
 }
 
 /*DEBUT ADMIN STATS*/
@@ -1369,6 +1379,52 @@ text-align: center;
     text-align: center;
     margin: 40px;
     padding: 20px;
+}
+
+/*Admin allergènes*/
+.title-adminAllergenes {
+    text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+
+.addAllergene {
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--primary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+}
+
+.add-allergene, .return-admin {
+    margin-bottom: 20px;
+}
+
+.admin-action-allergene {
+    text-decoration: none;
+    border: 1px solid;
+    border-color: var(--accent);
+    border-radius: 5px;
+    color: var(--text);
+    padding: 5px;
+    display: inline-block;
+}
+
+.admin-delete-allergene input{
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--secondary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+    display: block;
 }
 
 /*FIN ADMIN STATS*/

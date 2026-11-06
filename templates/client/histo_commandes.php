@@ -33,7 +33,7 @@ require __DIR__ . '/../partials/header.php';
 
 <main>
     <div>
-        <h1 class="histo-title">Historique des commandes</h1>
+        <h1 class="histo-titleCommande">Historique des commandes</h1>
     </div>
 
 <div class="table-responsive histo-tableau">

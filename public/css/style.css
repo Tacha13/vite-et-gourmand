@@ -409,6 +409,7 @@ i.fa-solid {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     margin: 10px;
     padding: 20px;
     font-size: 24px;
@@ -501,7 +502,7 @@ i.fa-solid {
 .bouton-access {
     display: flex;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .btn-access {
@@ -532,7 +533,7 @@ i.fa-solid {
 /*FIN COMPTE CLIENT*/
 
 /*DEBUT HISTO COMMANDES*/
-.histo-title {
+.histo-titleCommande {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -545,6 +546,29 @@ i.fa-solid {
 }
 
 /*FIN HISTO COMMANDES*/
+
+/*DEBUT SUIVI COMMANDE*/
+.statut-title {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    padding: 20px
+}
+
+.bouton-access-commande a {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    background: var(--primary);
+    padding: 12px 20px;
+    margin: 20px;
+    border: none;
+    border-radius: 2px;
+}
+
+
+/*FIN SUIVI COMMANDE*/
+
 
 /*DEBUT INFOS PERSONNELLES*/
 
@@ -1311,6 +1335,18 @@ section.menu {
     .valid-inner p, .valid-inner span {
         width: 100%;
     }
+
+    /*Suivi commandes*/
+    .bouton-access a {
+        margin: 15px 20px;
+        text-align: center;
+    }
+
+    /*Mes informations*/
+    .title-inscription h1 {
+        text-align: center;
+    }
+
 
 }
 

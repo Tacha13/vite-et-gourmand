@@ -12,20 +12,27 @@
     require __DIR__ . '/../partials/header.php';
 ?>
 
-<form action="/?page=allergene_create" method="POST">
-    <fieldset>
-        <div>
-            <label for="nameAllergene">Nom de l'allergène</label>
-            <input type="text" name="allergene" id="nameAllergene"><br>
-            <input type="submit" value="Valider">
+
+<main class="container">
+
+<div>
+    <h1 class="title-createAllergene">Création d'un allergène</h1>
+</div>
+
+
+<form action="/?page=allergene_create" method="POST" class="row row-cols-1 row-cols-md-2 mb-3 gy-3 align-items-end">
+        <div class="col">
+            <label class="form-label" for="nameAllergene">Nom de l'allergène</label>
+            <input class="form-control" type="text" name="allergene" id="nameAllergene"><br>
         </div>
-
-    </fieldset>
-   
-
+        <div class="boutons-adminEmploye">
+            <button>Valider</button>
+        </div>
 </form>
-
-
+    <div class="return-admin">
+        <a href="/?page=admin" class="returnAdmin">Retour à la page administration</a>
+    </div>
+</main>
  <!--Contenu du footer-->
 <?php
     require __DIR__ . '/../partials/footer.php';

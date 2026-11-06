@@ -28,7 +28,7 @@
 
     <section>
         <div class="add-allergene">
-            <a href="/?page=allergenes" class="addAllergene">Ajouter un allergène</a>
+            <a href="/?page=allergene_create" class="addAllergene">Ajouter un allergène</a>
         </div>
     </section>
 

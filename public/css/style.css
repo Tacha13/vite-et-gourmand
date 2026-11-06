@@ -1260,6 +1260,66 @@ section.menu {
     border-radius: 2px;
 }
 
+/*Admin menus*/
+.title-adminMenus {
+    text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+.admin-action-menu {
+    text-decoration: none;
+    border: 1px solid;
+    border-color: var(--accent);
+    border-radius: 5px;
+    color: var(--text);
+    padding: 5px;
+}
+
+.admin-img {
+    width: 150px;
+}
+
+.admin-delete-menu input{
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--secondary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+}
+
+.add-menu, .return-admin {
+    margin-bottom: 20px;
+}
+
+.addMenu {
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--primary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+}
+
+.returnAdmin {
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--secondary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+}
+
 
 /*DEBUT ADMIN STATS*/
 

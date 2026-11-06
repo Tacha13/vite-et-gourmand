@@ -119,7 +119,7 @@
 });
 </script>
     <div>
-        <a href="/?page=admin">Retour à la page administration</a>
+        <a class="returnAdmin" href="/?page=admin">Retour à la page administration</a>
     </div>
     
 </main>

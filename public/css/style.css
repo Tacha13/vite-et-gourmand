@@ -1274,6 +1274,7 @@ section.menu {
     border-radius: 5px;
     color: var(--text);
     padding: 5px;
+    display: block;
 }
 
 .admin-img {
@@ -1288,6 +1289,7 @@ section.menu {
     border: none;
     padding: 5px 15px;
     border-radius: 2px;
+    display: block;
 }
 
 .add-menu, .return-admin {
@@ -1320,6 +1322,40 @@ section.menu {
     border-radius: 2px;
 }
 
+/*Admin Plats*/
+.title-adminPlats {
+text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+
+.addPlat {
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--primary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+}
+
+.add-plat, .return-admin {
+    margin-bottom: 20px;
+}
+
+.admin-action-plat {
+    text-decoration: none;
+    border: 1px solid;
+    border-color: var(--accent);
+    border-radius: 5px;
+    color: var(--text);
+    padding: 5px;
+    display: block;
+}
 
 /*DEBUT ADMIN STATS*/
 

@@ -1195,6 +1195,72 @@ section.menu {
 
 /*FIN DASHBOARD ADMIN*/
 
+/*Liste commandes*/
+.title-listCommandes {
+    text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+.boutons-adminCommandes {
+    display: flex;
+    align-items: end;
+    gap: 5px;
+}
+
+.boutons-adminCommandes button {
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--primary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+}
+
+.boutons-adminCommandes a {
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--secondary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+}
+
+.boutons-adminCommandes a, button {
+    margin-left: 15px;
+}
+
+.btn-enregistrer {
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--primary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+}
+
+.btn-annuler {
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--secondary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+}
+
+
 /*DEBUT ADMIN STATS*/
 
 .graph {

@@ -15,6 +15,8 @@
     require __DIR__ . '/../partials/header.php';
 ?>
 
+<main class="container">
+
 <div>
     <h1 class="title-listCommandes">Liste des commandes</h1>
 </div>
@@ -49,31 +51,32 @@
 
 <!-- Section pour les filtres -->
 <section class="filter-commandes">
-    <form action="/" method="GET">
+    <form action="/" method="GET" class="row row-cols-1 row-cols-md-3 mb-4 gy-3">
         <input type="hidden" name="page" value="admin_commandes">
-    <div>
-        <select name="filter-statut" id="filter-statut">
-            <option value="">Statuts</option>
-            <option value="En attente de validation">En attente de validation</option>
-            <option value="Accepté">Accepté</option>
-            <option value="En préparation">En préparation</option>
-            <option value="En cours de livraison">En cours de livraison</option>
-            <option value="Livrée">Livrée</option>
-            <option value="En attente du retour de matériel">En attente du retour de matériel</option>
-            <option value="Terminée">Terminée</option>
-            <option value="Annulée">Annulée</option>
-        </select>
-    </div>
-        <div>
-            <input type="text" name="nomClient"> 
+        <div class="col ">
+            <label for="filter-statut" class="form-label">Statut</label>
+            <select class="form-select" name="filter-statut" id="filter-statut">
+                <option value="">Statut</option>
+                <option value="En attente de validation">En attente de validation</option>
+                <option value="Accepté">Accepté</option>
+                <option value="En préparation">En préparation</option>
+                <option value="En cours de livraison">En cours de livraison</option>
+                <option value="Livrée">Livrée</option>
+                <option value="En attente du retour de matériel">En attente du retour de matériel</option>
+                <option value="Terminée">Terminée</option>
+                <option value="Annulée">Annulée</option>
+            </select>
         </div>
-        <div>
+        <div class="col">
+            <label for="nomClient" class="form-label">Nom du client</label>
+            <input type="text" name="nomClient" id="nomClient" class="form-control"> 
+        </div>
+        <div class="col boutons-adminCommandes">
             <button>Valider</button>
-        </div>
-        <div>
             <a href="/?page=admin_commandes">Effacer les filtres</a>
         </div>
     </form>
+
 
 <div class="table-responsive list-commandes">
     <table class="table align-middle table-striped table-grey table-hover">
@@ -112,7 +115,8 @@
                 <form action="/?page=admin_commandes" method="POST">
                     <input id="modifierCommande<?= $listCommande['id'] ?>" name="id" type="hidden" value="<?= $listCommande['id'] ?>">
                     <div>
-                        <select id="actionStatut" name="statut">
+                        <label for="actionStatut<?= $listCommande['id'] ?>" class="form-label">Nouveau statut</label>
+                        <select id="actionStatut<?= $listCommande['id'] ?>" name="statut" class="form-select">
                             <option value="">Modifier</option>
                             <option value="Accepté">Accepté</option>
                             <option value="En préparation">En préparation</option>
@@ -121,19 +125,24 @@
                             <option value="En attente du retour de matériel">En attente du retour de matériel</option>
                             <option value="Terminée">Terminée</option>
                         </select>
-                        <button type="submit">Enregistrer</button>
+                        <button type="submit" class="btn-enregistrer">Enregistrer</button>
                         </div>
                 </form>
                 <form action="/?page=annuler_commande" method="POST">
                     <input id="annulerCommande<?= $listCommande['id'] ?>" name="id" type="hidden" value="<?= $listCommande['id'] ?>">
-                    <textarea name="motifAnnulation" id="motifAnnulation"></textarea>
+                    <label for="motifAnnulation<?= $listCommande['id'] ?>">Motif d'annulation</label>
+                    <textarea name="motifAnnulation" id="motifAnnulation<?= $listCommande['id'] ?>" class="form-control"></textarea>
                     <div>
-                        <label for="modeContactAppel<?= $listCommande['id'] ?>">Appel</label>
-                        <input type="radio" name="modeContact" id="modeContactAppel<?= $listCommande['id'] ?>" value="Appel">
-                        <label for="modeContactEmail<?= $listCommande['id'] ?>">Email</label>
-                        <input type="radio" name="modeContact" id="modeContactEmail<?= $listCommande['id'] ?>" value="Email">
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="modeContact" id="modeContactAppel<?= $listCommande['id'] ?>" value="Appel" class="form-check-input">
+                            <label for="modeContactAppel<?= $listCommande['id'] ?>" class="form-check-label">Appel</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="modeContact" id="modeContactEmail<?= $listCommande['id'] ?>" value="Email"  class="form-check-input">
+                            <label for="modeContactEmail<?= $listCommande['id'] ?>" class="form-check-label">Email</label>
+                        </div>
 
-                        <button type="submit">Enregistrer l'annulation</button>
+                        <button type="submit" class="btn-annuler">Enregistrer l'annulation</button>
                     </div>
                 </form>
                 <?php else :?>
@@ -147,11 +156,7 @@
 </div>
 
 
-
-
-
-
-
+</main>
 
  <!--Contenu du footer-->
 <?php

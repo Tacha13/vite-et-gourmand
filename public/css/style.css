@@ -1475,6 +1475,18 @@ text-align: center;
     padding: 20px;
 }
 
+.returnList {
+    display: inline-block;
+    margin: 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--accent);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+}
+
 /*Admin création plat*/
 .title-createPlat {
     text-align: center;
@@ -1482,6 +1494,12 @@ text-align: center;
     padding: 20px;
 }
 
+/*Admin MAJ plat*/
+.title-updatePlat {
+    text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
 /*DEBUT ADMIN STATS*/
 
 .graph {

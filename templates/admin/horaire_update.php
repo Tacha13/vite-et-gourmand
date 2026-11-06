@@ -40,13 +40,15 @@
            
             <input type="submit" value="Valider">
         </div>
-        <div>
-            <a href="/?page=admin_horaires">Retour aux horaires</a>
+        <div class="return-list">
+            <a class="returnList" href="/?page=admin_horaires">Retour aux horaires</a>
         </div>
 
     </fieldset>
 </form>
-
+    <div class="return-admin">
+        <a href="/?page=admin" class="returnAdmin">Retour à la page administration</a>
+    </div>
 
  <!--Contenu du footer-->
 <?php

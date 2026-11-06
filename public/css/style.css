@@ -1475,6 +1475,13 @@ text-align: center;
     padding: 20px;
 }
 
+/*Admin création plat*/
+.title-createPlat {
+    text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
+
 /*DEBUT ADMIN STATS*/
 
 .graph {

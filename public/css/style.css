@@ -1367,6 +1367,24 @@ text-align: center;
     display: inline-block;
 }
 
+/*Admin Hot=raires*/
+
+.title-adminHoraires {
+    text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+.admin-action-horaire {
+    text-decoration: none;
+    border: 1px solid;
+    border-color: var(--accent);
+    border-radius: 5px;
+    color: var(--text);
+    padding: 5px;
+    display: inline-block;
+}
+
 /*DEBUT ADMIN STATS*/
 
 .graph {

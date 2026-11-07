@@ -36,7 +36,9 @@ $horaires = $horaireRepo->findAll();
         <div class="col">
             <h3 class="footer-title">Informations légales</h3>
             <div class="footer-inner">
-                <p>Mentions légales</p>
+                <div class="contact">
+                        <a class="mentions-link" href="/?page=mentions_legales">Mentions légales</a>
+                </div>
                 <p>Politique de confidentialité</p>
                 <p>Conditions Générales de Vente</p>
                     <div class="contact">

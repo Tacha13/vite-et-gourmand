@@ -26,6 +26,7 @@ use Tacha\ViteEtGourmand\Repository\HoraireRepository;
 use Tacha\ViteEtGourmand\Controller\HoraireController;
 use Tacha\ViteEtGourmand\Controller\StatistiqueController;
 use Tacha\ViteEtGourmand\Repository\StatistiqueRepository;
+use Tacha\ViteEtGourmand\Controller\PageLegaleController;
 
 
 
@@ -52,6 +53,8 @@ $avisRepository = new AvisRepository($data);
 $avisController = new AvisController($avisRepository);
 $horaireRepository = new HoraireRepository($data);
 $horaireController = new HoraireController($horaireRepository);
+$pageLegaleController = new PageLegaleController();
+
 
 
 
@@ -332,6 +335,12 @@ if (isset($_GET['page']) && $_GET['page'] === 'allergene_update') {
         $allergeneController->updateAllergene();
     }
 }
+// MENTIONS LEGALES CGV
+//Route pour accéder à la page des mentions légales
+if (isset($_GET['page']) && $_GET['page'] === 'mentions_legales') {
+    $pageLegaleController->showMentionsLegales();
+}
+
 
 
 //ROUTE DELETE

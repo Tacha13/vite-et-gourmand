@@ -152,7 +152,7 @@ body {
     color: white;
 }
 
-.contact-link {
+.contact-link, .mentions-link {
     color: white;
     text-decoration: none;
     font-size: 16px;
@@ -276,6 +276,23 @@ i.fa-solid {
 
 /*Fin avis*/
 /*FIN HOME*/
+
+/*DEBUT MENTIONS LEGALES CGV*/
+/*Mentions légales*/
+.title-mentions-legales {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 40px;
+    padding: 20px
+}
+
+.mention-inner h2 {
+    color: var(--primary);
+}
+
+
+/*FIN MENTIONS LEGALES CGV*/
 
 /*DEBUT CONNEXION*/
 
@@ -940,7 +957,7 @@ section.menu {
     padding: 20px;
 }
 
-.link-contact {
+.link-contact, .mentions-link {
     display: flex;
     justify-content: center;
     padding: 15px;
@@ -1617,6 +1634,8 @@ text-align: center;
     padding: 5px 15px;
     border-radius: 2px;
 } 
+
+
 
 
 /*MEDIA QUERIES*/

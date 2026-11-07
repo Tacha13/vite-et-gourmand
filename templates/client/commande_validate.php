@@ -43,31 +43,31 @@ require __DIR__ . '/../partials/header.php';
             <div class="recap-livraison">
                 <div class="recap-presta">
                 <p>Nombre de personnes :</p>
-                <span><?= $_SESSION['commande']['nombreCommande']  ?></span>
+                <span><?= htmlspecialchars($_SESSION['commande']['nombreCommande'])  ?></span>
                 </div> 
                 <div class="recap-presta">
                 <p>Adresse :</p>
-                <span><?= $_SESSION['commande']['adressLivraison']  ?></span>
+                <span><?= htmlspecialchars($_SESSION['commande']['adressLivraison'])  ?></span>
                 </div> 
                 <div class="recap-presta">
                 <p>Complément adresse :</p>
-                <span><?= $_SESSION['commande']['moreAdressLivraison']?></span>
+                <span><?= htmlspecialchars($_SESSION['commande']['moreAdressLivraison'] ?? '')?></span>
                 </div> 
                 <div class="recap-presta">
                 <p>Code postal :</p>
-                <span><?= $_SESSION['commande']['postalLivraison']  ?></span> 
+                <span><?= htmlspecialchars($_SESSION['commande']['postalLivraison'])  ?></span> 
                 </div> 
                 <div class="recap-presta">
                 <p>Ville :</p>
-                <span><?= $_SESSION['commande']['cityLivraison']  ?></span>  
+                <span><?= htmlspecialchars($_SESSION['commande']['cityLivraison'])  ?></span>  
                 </div> 
                 <div class="recap-presta">
                 <p>Date de livraison :</p>
-                <span><?= $_SESSION['commande']['datePrestation']  ?></span>
+                <span><?= htmlspecialchars($_SESSION['commande']['datePrestation'])  ?></span>
                 </div> 
                 <div class="recap-presta">
                 <p>Heure de livraison :</p>
-                <span><?= $_SESSION['commande']['heurePrestation']  ?></span> 
+                <span><?= htmlspecialchars($_SESSION['commande']['heurePrestation'])  ?></span> 
                 </div> 
             </div>
             </div>

@@ -22,7 +22,7 @@ class AllergeneController
 
     public function createAllergene(): void
     {
-        $allergene = htmlspecialchars($_POST['allergene']);
+        $allergene = $_POST['allergene'];
         
         $this->allergeneRepository->create($allergene);
         header('location:/?page=allergenes');

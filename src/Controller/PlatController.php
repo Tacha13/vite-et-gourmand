@@ -22,8 +22,8 @@ class PlatController
 
     public function createPlat(): void
     {
-        $namePlat = htmlspecialchars($_POST['namePlat']);
-        $typePlat = htmlspecialchars($_POST['typePlat']);
+        $namePlat = $_POST['namePlat'];
+        $typePlat = $_POST['typePlat'];
         
         $this->platRepository->create($namePlat,  $typePlat);
         header('location:/?page=plats');

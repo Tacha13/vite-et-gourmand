@@ -19,12 +19,12 @@ class ContactController {
 
     public function sendContact(): void
     {
-        $nomContact = htmlspecialchars($_POST['nomContact']);
-        $prenomContact = htmlspecialchars($_POST['prenomContact']);
-        $emailContact = htmlspecialchars($_POST['emailContact']);
-        $phoneContact = htmlspecialchars($_POST['phoneContact']);
-        $subjectContact = htmlspecialchars($_POST['subjectContact']);
-        $messageContact = htmlspecialchars($_POST['messageContact']);
+        $nomContact = $_POST['nomContact'];
+        $prenomContact = $_POST['prenomContact'];
+        $emailContact = $_POST['emailContact'];
+        $phoneContact = $_POST['phoneContact'];
+        $subjectContact = $_POST['subjectContact'];
+        $messageContact = $_POST['messageContact'];
 
         $body = "Bonjour Vite et Gourmand. Vous avez reçu un message de $prenomContact $nomContact. Voici le sujet : $subjectContact et le contenu : $messageContact. ";
         $responseContact = $this->mailService->sendMail('contact@vitegourmand.fr', $subjectContact, $body);

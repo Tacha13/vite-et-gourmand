@@ -31,15 +31,15 @@ class MenuController
 
     public function createMenu(): void
     {
-        $nameMenu = htmlspecialchars($_POST['nameMenu']);
-        $description = htmlspecialchars($_POST['description']);
-        $theme = htmlspecialchars($_POST['theme']);
+        $nameMenu = $_POST['nameMenu'];
+        $description = $_POST['description'];
+        $theme = $_POST['theme'];
         $persMin = (int)($_POST['persMin']);
         $price = (float)($_POST['price']);
-        $conditions = htmlspecialchars($_POST['conditions']);
-        $regime = htmlspecialchars($_POST['regime']);
+        $conditions = $_POST['conditions'];
+        $regime = $_POST['regime'];
         $stock = (int)($_POST['stock']);
-        $image = htmlspecialchars($_POST['image']);
+        $image = $_POST['image'];
 
         $this->menuRepository->create($nameMenu,  $description,  $theme,  $persMin,  $price,  $conditions,  $regime,  $stock, $image);
         header('location:/?page=admin_menus');

@@ -78,12 +78,12 @@ class CommandeController
         }
         
         $nombreCommande = ((int)$_POST['nombreCommande']);
-        $adressLivraison = htmlspecialchars($_POST['adressLivraison']);
-        $moreAdressLivraison = htmlspecialchars($_POST['moreAdressLivraison']);
-        $postalLivraison = htmlspecialchars($_POST['postalLivraison']);
-        $cityLivraison = htmlspecialchars($_POST['cityLivraison']);
-        $datePrestation = htmlspecialchars($_POST['datePrestation']);
-        $heurePrestation = htmlspecialchars($_POST['heurePrestation']);
+        $adressLivraison = $_POST['adressLivraison'];
+        $moreAdressLivraison = $_POST['moreAdressLivraison'];
+        $postalLivraison = $_POST['postalLivraison'];
+        $cityLivraison = $_POST['cityLivraison'];
+        $datePrestation = $_POST['datePrestation'];
+        $heurePrestation = $_POST['heurePrestation'];
 
         if ($nombreCommande < $idMenu['nbPersonneMin']) {
             $_SESSION['erreurMinPersonne'] = "Le nombre de convives est insuffisant";

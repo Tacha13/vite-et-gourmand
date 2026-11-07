@@ -76,7 +76,7 @@
             <td><?= htmlspecialchars($menu['regime']) ?></td>
             <td><img class="admin-img" src="/images/<?=($menu['image'])?>" alt="Image du <?= htmlspecialchars($menu['nomMenu']) ?>"></td>
             <td><?= htmlspecialchars(number_format($menu['prix'], 2, ',', ' ')) ?></td>
-            <td><a href="/?page=menus&id=<?= ($menu['id'])?>" class="admin-action-menu">Voir le menu</a></td>
+            <td><a href="/?page=menu_details&id=<?= ($menu['id'])?>" class="admin-action-menu">Voir le menu</a></td>
             <td><a href="/?page=menu_update&id=<?= ($menu['id'])?>" class="admin-action-menu">Modifier le menu</a></td>
                 <td class="admin-delete-menu">
                     <form action="/?page=delete_confirm" method="POST">

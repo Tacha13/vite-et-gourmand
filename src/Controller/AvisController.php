@@ -22,7 +22,7 @@ class AvisController {
                 exit;
             } 
         // 2. Lire note, avis et commandeId dans $_POST
-        $avisModal = htmlspecialchars($_POST['avis']);
+        $avisModal = $_POST['avis'];
         $noteModal = ((int)$_POST['note']);
         $commandeIdModal = ((int)$_POST['commandeId']);
 

@@ -25,14 +25,14 @@ class AuthController
 
     public function register(): void
     {
-        $name = htmlspecialchars($_POST['name']);
-        $firstname = htmlspecialchars($_POST['firstname']);
-        $email = htmlspecialchars($_POST['email']);
-        $phone = htmlspecialchars($_POST['phone']);
-        $adress = htmlspecialchars($_POST['adress']);
-        $adressAptInput = htmlspecialchars($_POST['adressAptInput']);
-        $postalCode = htmlspecialchars($_POST['postalCode']);
-        $city = htmlspecialchars($_POST['city']);
+        $name = $_POST['name'];
+        $firstname = $_POST['firstname'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $adress = $_POST['adress'];
+        $adressAptInput = $_POST['adressAptInput'];
+        $postalCode = $_POST['postalCode'];
+        $city = $_POST['city'];
         $password = $_POST['password'];
         $passwordConfirm = $_POST['passwordConfirm'];
         //Rôle utilisateur mis en dur car à l'inscription on ne peut être que 'utilisateur' > cela empêche une modification via l'inspecteur
@@ -93,7 +93,7 @@ class AuthController
 
     public function login(): void
     {
-        $email = htmlspecialchars($_POST['email']);
+        $email = $_POST['email'];
         $password = $_POST['password'];
         $resultMail = $this->compteRepository->findByEmail($email);
 
@@ -168,14 +168,14 @@ class AuthController
     }
 
     public function createEmploye () {
-        $nameEmploye = htmlspecialchars($_POST['nameEmploye']);
-        $prenomEmploye = htmlspecialchars($_POST['prenomEmploye']);
-        $adressEmploye = htmlspecialchars($_POST['adressEmploye']);
-        $complAdressEmploye = htmlspecialchars($_POST['complAdressEmploye']);
-        $postalEmploye = htmlspecialchars($_POST['postalEmploye']);
-        $communeEmploye = htmlspecialchars($_POST['communeEmploye']);
-        $emailEmploye = htmlspecialchars($_POST['emailEmploye']);
-        $telEmploye = htmlspecialchars($_POST['telEmploye']);
+        $nameEmploye = $_POST['nameEmploye'];
+        $prenomEmploye = $_POST['prenomEmploye'];
+        $adressEmploye = $_POST['adressEmploye'];
+        $complAdressEmploye = $_POST['complAdressEmploye'];
+        $postalEmploye = $_POST['postalEmploye'];
+        $communeEmploye = $_POST['communeEmploye'];
+        $emailEmploye = $_POST['emailEmploye'];
+        $telEmploye = $_POST['telEmploye'];
         $passwordEmploye = $_POST['passwordEmploye'];
         //Rôle 'employe' mis en dur car à la création par l'admin on ne peut être que 'employe' > cela empêche une modification via l'inspecteur
         $roleEmploye = 'employe';
@@ -220,14 +220,14 @@ class AuthController
             exit;
         } 
 
-        $name = htmlspecialchars($_POST['name']);
-        $firstname = htmlspecialchars($_POST['firstname']);
-        $email = htmlspecialchars($_POST['email']);
-        $phone = htmlspecialchars($_POST['phone']);
-        $adress = htmlspecialchars($_POST['adress']);
-        $adressAptInput = htmlspecialchars($_POST['adressAptInput']);
-        $postalCode = htmlspecialchars($_POST['postalCode']);
-        $city = htmlspecialchars($_POST['city']);
+        $name = $_POST['name'];
+        $firstname = $_POST['firstname'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $adress = $_POST['adress'];
+        $adressAptInput = $_POST['adressAptInput'];
+        $postalCode = $_POST['postalCode'];
+        $city = $_POST['city'];
         $id = $_SESSION['user_id'];
 
         $checkEmail = $this->compteRepository->findByEmail($email);

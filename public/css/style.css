@@ -1580,7 +1580,44 @@ text-align: center;
     padding: 20px;
 }
 
-/*FIN ADMIN STATS*/
+/*Page de confirmation suppression*/
+.title-delete {
+    text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+.text-delete {
+    font-size: 24px;
+    text-align: center;
+}
+
+.delete-global {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--secondary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.annule {
+    margin: 20px;
+}
+
+.annule a{
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background: var(--secondary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+} 
+
 
 /*MEDIA QUERIES*/
 @media (max-width: 768px)

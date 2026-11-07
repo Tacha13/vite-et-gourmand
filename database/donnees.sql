@@ -58,13 +58,12 @@ INSERT INTO `menus` (`id`, `nomMenu`, `description`, `theme`, `nbPersonneMin`, `
 --
 
 INSERT INTO `plats` (`id`, `nomPlat`, `typePlat`) VALUES
-(3, 'L\'Éclat des saisons', 'Entrée'),
-(4, 'Gourmandise des saisons', 'Filet de volaille rôti, légumes de saison et jus aux herbes');
+(3, 'L\'Éclat des saisons', 'Entrée');
 
 -- Mise à jour table plats avec ajout colonne description et données (fichier excel MAJ BDD)
 ALTER TABLE plats ADD description VARCHAR(250) AFTER typePlat;
 
---Mise à jour des descriptions dans plats
+-- Mise à jour des descriptions dans plats
 insert into plats (id, nomPlat, typePlat,description) values (5,'Fraîcheur du potager','Entrée','Salade de chèvre chaud, noix et légumes croquants.');
 insert into plats (id, nomPlat, typePlat,description) values (6,'Velouté du jardin','Entrée','Velouté de légumes de saison, crème légère et herbes fraîches.');
 insert into plats (id, nomPlat, typePlat,description) values (7,'Feuilleté gourmand','Entrée','Feuilleté aux champignons et fondue de poireaux.');
@@ -126,7 +125,7 @@ insert into plats (id, nomPlat, typePlat,description) values (57,'Douceur vanill
 insert into plats (id, nomPlat, typePlat,description) values (58,'Tendre gourmandise','Dessert','Tiramisu traditionnel au café et cacao.');
 
 
---Mise à jour du lien plats menu_plat (fichier excel MAJ BDD)
+-- Mise à jour du lien plats menu_plat (fichier excel MAJ BDD)
 insert into menu_plat (menu_id, plat_id) values (3,3);
 insert into menu_plat (menu_id, plat_id) values (3,4);
 insert into menu_plat (menu_id, plat_id) values (3,5);

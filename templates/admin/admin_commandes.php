@@ -39,6 +39,23 @@
     <?php unset($_SESSION['erreurUpdateMotifCommande']);
     }?>
 
+<!--Messages flash en cas de success de MAJ du statut de la commande-->
+    
+    <?php if (isset($_SESSION['successUpdateStatutCommande'])) { ?>
+        <div class="flashMessage successUpdateStatutCommande">
+        <p> <?=  htmlspecialchars($_SESSION['successUpdateStatutCommande']) ?> </p>
+        </div>
+    <?php unset($_SESSION['successUpdateStatutCommande']);
+    }?>
+<!--Messages flash en cas d'erreur sur le statut de la commande-->
+    
+    <?php if (isset($_SESSION['erreurUpdateStatutCommande'])) { ?>
+        <div class="flashMessage erreurUpdateStatutCommande">
+        <p> <?=  htmlspecialchars($_SESSION['erreurUpdateStatutCommande']) ?> </p>
+        </div>
+    <?php unset($_SESSION['erreurUpdateStatutCommande']);
+    }?>
+
 <!--Messages flash en cas d'erreur de contact de la commande-->
 
     

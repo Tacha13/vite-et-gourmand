@@ -281,7 +281,13 @@ class CommandeController
     // On récupère les informations de la commande pour traitement après avec mongodb
     if($statutReceived === 'Terminée') {
         $infosCommande = $this->commandeRepository->findCommandeById($idCommande);
-        $this->statistiqueRepository->createFiche($infosCommande);
+        try {
+            $this->statistiqueRepository->createFiche($infosCommande);
+        } catch (\Exception $e) {
+            $_SESSION['erreurUpdateStatutCommande'] = "Statut enregistré, mais les statistiques n’ont pas pu être mises à jour.";
+            header('location:/?page=admin_commandes');
+            exit;
+        }
     }
 
 

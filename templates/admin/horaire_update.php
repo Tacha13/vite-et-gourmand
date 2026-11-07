@@ -15,6 +15,13 @@
     require __DIR__ . '/../partials/header.php';
 ?>
 
+<main class="container">
+
+<div>
+    <h1 class="title-updateHoraire">Modification de l'horaire du <?= htmlspecialchars($horaireModifier['jour']) ?></h1>
+</div>
+
+
 <!--Message d'erreur de la mise à jour des horaires-->
 <?php if (isset($_SESSION['erreurUpdateHoraire'])) { ?>
         <div class="flashMessage erreurUpdateHoraire">
@@ -23,33 +30,28 @@
         <?php unset($_SESSION['erreurUpdateHoraire']);
         }?>
 
-<form action="/?page=horaire_update" method="POST">
+<form action="/?page=horaire_update" method="POST" class="row row-cols-1 row-cols-md-2 mb-3 gy-3">
     <input id="modifierHoraire<?= $horaireModifier['id'] ?>" name="id" type="hidden" value="<?= $horaireModifier['id'] ?>">
-
-    <fieldset>
-        <div>
-            <h3>Horaires du <?= htmlspecialchars($horaireModifier['jour']) ?></h3>
-            <label for="heureDebut">Heure de début</label>
-            <input type="time" name="heureDebut" id="heureDebut" value="<?= htmlspecialchars(substr($horaireModifier['heureDebut'] ?? "",0,5) ) ?>"><br>
-            <label for="heureFin">Heure de fin</label>
-            <input type="time" name="heureFin" id="heureFin" value="<?= htmlspecialchars(substr($horaireModifier['heureFin'] ?? "",0,5) ) ?>"><br>
-            <select name="open" id="open">          
+        <div class="col">
+            <label class="form-label" for="heureDebut">Heure de début</label>
+            <input class="form-control" type="time" name="heureDebut" id="heureDebut" value="<?= htmlspecialchars(substr($horaireModifier['heureDebut'] ?? "",0,5) ) ?>">
+        </div>
+        <div class="col">
+            <label class="form-label" for="heureFin">Heure de fin</label>
+            <input class="form-control" type="time" name="heureFin" id="heureFin" value="<?= htmlspecialchars(substr($horaireModifier['heureFin'] ?? "",0,5) ) ?>">
+        </div>
+            <label for="filter-statut" class="form-label">Statut</label>
+            <select name="open" id="open" class="form-select">          
             <option value="1" <?php if($horaireModifier['ouvert'] === 1): ?> selected <?php endif ?>>Ouvert</option>
             <option value="0" <?php if ($horaireModifier['ouvert'] === 0): ?> selected  <?php endif ?>>Fermé</option>
             </select>
-           
-            <input type="submit" value="Valider">
-        </div>
+           <div class="boutons-adminEmploye align-self-end">
+            <button>Valider</button>
         <div class="return-list">
             <a class="returnList" href="/?page=admin_horaires">Retour aux horaires</a>
         </div>
-
-    </fieldset>
 </form>
-    <div class="return-admin">
-        <a href="/?page=admin" class="returnAdmin">Retour à la page administration</a>
-    </div>
-
+</main>
  <!--Contenu du footer-->
 <?php
     require __DIR__ . '/../partials/footer.php';

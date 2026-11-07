@@ -1395,6 +1395,13 @@ text-align: center;
     display: inline-block;
 }
 
+/*MAJ horaires*/
+.title-updateHoraire {
+    text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
+
 /*admin avis*/
 .title-adminAvis {
     text-align: center;
@@ -1561,6 +1568,13 @@ text-align: center;
 
 /*Admin création allergène*/
 .title-createAllergene {
+    text-align: center;
+    margin: 40px;
+    padding: 20px;
+}
+
+/*MAJ allergène*/
+.title-updateAllergene {
     text-align: center;
     margin: 40px;
     padding: 20px;

@@ -21,6 +21,7 @@
 <section class="d-md-flex filter collapse" id="filter">
     
     <div>
+        <label for="filter-theme" class="visually-hidden">Thème</label>
         <select name="filter-theme" id="filter-theme">
             <option value="">Thème</option>
             <option value="Noël">Noël</option>
@@ -30,6 +31,7 @@
         </select>
     </div>
     <div>
+        <label for="filter-regime" class="visually-hidden">Régime</label>
         <select name="filter-regime" id="filter-regime">
             <option value="">Régime</option>
             <option value="Végétarien">Végétarien</option>
@@ -42,6 +44,7 @@
         <input type="number" min="1" name="filter-pers" id="filter-pers">
     </div>
     <div>
+        <label for="filter-min" class="visually-hidden">Prix min (€/pers)</label>
         <select name="filter-min" id="filter-min">
             <option value="">Prix min (€/pers)</option>
             <option value="35">35€</option>
@@ -50,6 +53,7 @@
         </select>
     </div>
     <div class="filter-inner">
+        <label for="filter-max" class="visually-hidden">Prix max (€/pers)</label>
         <select name="filter-max" id="filter-max">
             <option value="">Prix max (€/pers)</option>
             <option value="35">35€</option>

@@ -41,7 +41,7 @@
             <input class="form-control" type="time" name="heureFin" id="heureFin" value="<?= htmlspecialchars(substr($horaireModifier['heureFin'] ?? "",0,5) ) ?>">
         </div>
         <div class="col">
-            <label for="filter-statut" class="form-label">Statut</label>
+            <label for="open" class="form-label">Statut</label>
             <select name="open" id="open" class="form-select">          
             <option value="1" <?php if($horaireModifier['ouvert'] === 1): ?> selected <?php endif ?>>Ouvert</option>
             <option value="0" <?php if ($horaireModifier['ouvert'] === 0): ?> selected  <?php endif ?>>Fermé</option>

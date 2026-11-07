@@ -152,10 +152,14 @@ body {
     color: white;
 }
 
-.contact-link, .mentions-link {
+.contact-link, .mentions-link, .confidential-link {
     color: white;
     text-decoration: none;
     font-size: 16px;
+}
+
+.contact, .mentions, .confidential{
+    padding: 10px;
 }
 
 .copyright {
@@ -957,7 +961,7 @@ section.menu {
     padding: 20px;
 }
 
-.link-contact, .mentions-link {
+.link-contact {
     display: flex;
     justify-content: center;
     padding: 15px;

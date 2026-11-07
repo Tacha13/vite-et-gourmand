@@ -341,6 +341,11 @@ if (isset($_GET['page']) && $_GET['page'] === 'mentions_legales') {
     $pageLegaleController->showMentionsLegales();
 }
 
+//Route pour accéder à la page des CGV
+if (isset($_GET['page']) && $_GET['page'] === 'cgv') {
+    $pageLegaleController->showCgv();
+}
+
 
 
 //ROUTE DELETE

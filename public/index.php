@@ -81,6 +81,14 @@ if (isset($_GET['page']) && $_GET['page'] === 'login') {
     }
 }
 
+if (isset($_GET['page']) && $_GET['page'] === 'password_forget') {
+   if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $controller->showPasswordForget();
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controller->login();
+    }
+}
+
 if (isset($_GET['page']) && $_GET['page'] === 'logout') {
    $controller->logout();
 }

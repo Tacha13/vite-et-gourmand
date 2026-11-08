@@ -248,6 +248,12 @@ class AuthController
         exit;
     }
 
+    public function showPasswordForget(): void 
+    {
+        require __DIR__ . '/../../templates/auth/password_forget.php';
+        
+    }
+
 }
 
 

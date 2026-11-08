@@ -55,7 +55,7 @@
     <div class="col connexion-form">
         <form action="" method="POST">
             <div class="connexion-inner">
-            <legend class="legend-title">Connexion</legend>
+                <legend class="legend-title">Connexion</legend>
                 <div>
                 <div>
                     <label for="EmailInput">Email</label>
@@ -66,7 +66,7 @@
                     <input id="PasswordInput" name="password" type="password" minlength="10" required>
                 </div><br>
                 <div class="forgotten-password">
-                    <a class="forgotten-password-link" href="">Mot de passe oublié ?</a>
+                    <a class="forgotten-password-link" href="/?page=password_forget">Mot de passe oublié ?</a>
                 </div><br>
                 <div class="bouton-valider">
                     <button class="btn-valider" type="submit">Se connecter</button>

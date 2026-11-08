@@ -10,12 +10,19 @@
     require __DIR__ . '/../partials/header.php';
     ?>
 
-     <?php if (isset($_SESSION['successPasswordForget'])) { ?>
+    <?php if (isset($_SESSION['successPasswordForget'])) { ?>
         <div class="flashMessage successPasswordForget">
         <p> <?=  htmlspecialchars($_SESSION['successPasswordForget']) ?> </p>
         </div>
         <?php unset($_SESSION['successPasswordForget']);
         }?>
+
+    <?php if (isset($_SESSION['erreurPasswordReset'])) { ?>
+    <div class="flashMessage erreurPasswordReset">
+    <p> <?=  htmlspecialchars($_SESSION['erreurPasswordReset']) ?> </p>
+    </div>
+    <?php unset($_SESSION['erreurPasswordReset']);
+    }?>
 
 <main>
 <div class="title-passwordForget">

@@ -105,4 +105,16 @@ class CompteRepository
             ':commune' => $commune,
         ]);
     }
+
+    public function updatePassword(string $hashedPassword, int $id): void 
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("UPDATE comptes SET mot_de_passe_hash = :hashedPassword WHERE id = :id;
+        ");
+
+        $stmt->execute([
+            ':id' => $id,
+            ':hashedPassword' => $hashedPassword
+        ]); 
+    }
 }

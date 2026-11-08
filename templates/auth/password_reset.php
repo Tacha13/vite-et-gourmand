@@ -10,6 +10,22 @@
     require __DIR__ . '/../partials/header.php';
     ?>
 
+    <!--Flash messages -->
+    
+    <?php if (isset($_SESSION['erreurFormResetPassword'])) { ?>
+    <div class="flashMessage erreurFormResetPassword">
+    <p> <?=  htmlspecialchars($_SESSION['erreurFormResetPassword']) ?> </p>
+    </div>
+    <?php unset($_SESSION['erreurFormResetPassword']);
+    }?>
+
+    <?php if (isset($_SESSION['erreurDifferentResetPassword'])) { ?>
+    <div class="flashMessage erreurDifferentResetPassword">
+    <p> <?=  htmlspecialchars($_SESSION['erreurDifferentResetPassword']) ?> </p>
+    </div>
+    <?php unset($_SESSION['erreurDifferentResetPassword']);
+    }?>
+
 <main>
 <div class="title-passwordReset">
     <h1>Réinitialisation du mot de passe</h1>

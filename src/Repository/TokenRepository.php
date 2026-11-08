@@ -39,4 +39,18 @@ class TokenRepository {
         ]);
 
     }
+
+    public function findByToken(string $token): ?array
+    {
+        $pdo = $this->database->getConnection();
+        $stmt = $pdo->prepare("SELECT compte_id FROM token_mdp WHERE token = :token AND NOW() BETWEEN  date_creation AND date_expiration;");
+
+        $stmt->execute([
+            ':token' => $token
+        ]);
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ?: null;
+    }
+    
 }

@@ -97,7 +97,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'password_reset') {
    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $controller->showPasswordReset();
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $controller->passwordForget();
+        $controller->passwordReset();
     }
 }
 

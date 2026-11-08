@@ -29,6 +29,14 @@
         </div>
         <?php unset($_SESSION['erreurCompte']);
         }?>
+
+    <?php if (isset($_SESSION['successUpdatePassword'])) { ?>
+    <div class="flashMessage successUpdatePassword">
+    <p> <?=  htmlspecialchars($_SESSION['successUpdatePassword']) ?> </p>
+    </div>
+    <?php unset($_SESSION['successUpdatePassword']);
+    }?>
+
 <main>
 <div class="title-connexion">
     <h1>Connexion</h1>

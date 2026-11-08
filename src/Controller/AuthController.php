@@ -282,10 +282,71 @@ class AuthController
 
     public function showPasswordReset() 
     {
+        $token = $_GET['token'] ?? '';
+        $tokenValide = $this->tokenRepository->findByToken($token);
+
+        if($tokenValide === null)
+            {
+            $_SESSION['erreurPasswordReset'] = "Ce lien n’est plus valide. Veuillez refaire une demande.";                
+            header('location:/?page=password_forget');
+            exit;  
+            }
+
         require __DIR__ . '/../../templates/auth/password_reset.php';
 
     }
+
+    public function passwordReset() 
+    {
+        $token = $_GET['token'] ?? '';
+        $password = $_POST['password'];
+        $passwordConfirm = $_POST['passwordConfirm'];
         
+
+        $tokenValide = $this->tokenRepository->findByToken($token);
+        if($tokenValide === null)
+            {
+            $_SESSION['erreurPasswordReset'] = "Ce lien n’est plus valide. Veuillez refaire une demande.";                
+            header('location:/?page=password_forget');
+            exit;  
+            }
+            $compte_id = $tokenValide['compte_id'];
+            $compte = $this->compteRepository->findById($compte_id);
+            $prenom = $compte['prenom'];
+            $email = $compte['email'];
+
+        if ($password === $passwordConfirm) {
+            if (
+                preg_match('/[A-Z]/', $password)
+                && preg_match('/[a-z]/', $password)
+                && preg_match('/[0-9]/', $password)
+                && preg_match('/[^a-zA-Z0-9]/', $password)
+                && strlen($password) >= 10
+            ) {
+                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+                $this->compteRepository->updatePassword($hashedPassword, $compte_id );
+
+                $this->tokenRepository->deleteToken($compte_id);
+                                
+                $body = "Bonjour $prenom,\n Votre mot de passe a été modifié.\n  À très bientôt, L'équipe de Vite & Gourmand";
+                $this->mailService->sendMail($email, "Réinitialisation de votre mot de passe", $body);
+                $_SESSION['successUpdatePassword'] = "Votre mot de passe a correctement été modifié"; 
+                header('location:/?page=login');
+                exit;
+
+            } else {
+                $_SESSION['erreurFormResetPassword'] = "Le mot de passe ne respecte pas le format attendu : Votre mot de passe doit contenir au moins :
+                10 caractères, 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial.";
+                header('location:/?page=password_reset&token=' . $token);
+                exit;
+            }
+        } else {
+                $_SESSION['erreurDifferentResetPassword'] = "Le mot de passe ne correspond pas au mot de passe initial saisi, veuillez corriger.";
+                header('location:/?page=password_reset&token=' . $token);
+                exit;
+        }
+    }
+
 
 }
 

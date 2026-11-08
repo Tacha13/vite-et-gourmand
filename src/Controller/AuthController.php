@@ -267,6 +267,12 @@ class AuthController
             $newToken = bin2hex(random_bytes(32));
             $this->tokenRepository->deleteToken($checkEmail['id']);
             $this->tokenRepository->create($newToken, $checkEmail['id']);
+            $linkReinit = $_ENV['APP_URL'] . '/?page=password_reset&token=' . $newToken;
+            $nom = $checkEmail['nom'];
+            $prenom = $checkEmail['prenom'];
+
+            $body = "Bonjour $prenom $nom, \nVous avez demandé à réinitialiser votre mot de passe Vite & Gourmand. \nCliquez sur le lien ci-dessous pour en choisir un nouveau : $linkReinit \nCe lien est valable 1 heure. \nSi vous n’êtes pas à l’origine de cette demande, ignorez simplement ce message, votre mot de passe actuel reste inchangé. \nVite & Gourmand";
+            $this->mailService->sendMail($email, "Vite et Gourmand - Réinitialisation mot de passe", $body);
 
         }    
         $_SESSION['successPasswordForget'] = "Un message a été envoyé à l'adresse indiquée, si votre adresse correspond à un compte.";                

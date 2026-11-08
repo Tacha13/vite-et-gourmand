@@ -39,6 +39,7 @@ p {
 }
 
 /*DEBUT MESSAGES FLASH*/
+
 /*CSS messages succes */
 
 [class*="success"] {
@@ -79,6 +80,8 @@ p {
     background-color: #efc298;
     color: var(--primary);
 }
+
+
 
 
 /*FIN MESSAGES FLASH*/

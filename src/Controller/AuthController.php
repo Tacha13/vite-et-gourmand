@@ -3,18 +3,22 @@
 namespace Tacha\ViteEtGourmand\Controller;
 
 use Tacha\ViteEtGourmand\Repository\CompteRepository;
+use Tacha\ViteEtGourmand\Repository\TokenRepository;
 use Tacha\ViteEtGourmand\Service\MailService;
+
 
 class AuthController
 {
     private CompteRepository $compteRepository;
     private MailService $mailService;
+    private TokenRepository $tokenRepository;
 
 
-    public function __construct(CompteRepository $compteRepository, MailService $mailService)
+    public function __construct(CompteRepository $compteRepository, MailService $mailService, TokenRepository $tokenRepository)
     {
         $this->compteRepository = $compteRepository;
         $this->mailService = $mailService;
+        $this->tokenRepository = $tokenRepository;
     }
 
 
@@ -253,6 +257,23 @@ class AuthController
         require __DIR__ . '/../../templates/auth/password_forget.php';
         
     }
+
+    public function passwordForget() 
+    {
+        $email = $_POST['email'];
+        $checkEmail = $this->compteRepository->findByEmail($email);
+        
+        if ($checkEmail !== null) {
+            $newToken = bin2hex(random_bytes(32));
+            $this->tokenRepository->deleteToken($checkEmail['id']);
+            $this->tokenRepository->create($newToken, $checkEmail['id']);
+
+        }    
+        $_SESSION['successPasswordForget'] = "Un message a été envoyé à l'adresse indiquée, si votre adresse correspond à un compte.";                
+        header('location:/?page=password_forget');
+        exit;      
+    }
+        
 
 }
 

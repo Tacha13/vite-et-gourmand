@@ -27,6 +27,7 @@ use Tacha\ViteEtGourmand\Controller\HoraireController;
 use Tacha\ViteEtGourmand\Controller\StatistiqueController;
 use Tacha\ViteEtGourmand\Repository\StatistiqueRepository;
 use Tacha\ViteEtGourmand\Controller\PageLegaleController;
+use Tacha\ViteEtGourmand\Repository\TokenRepository;
 
 
 
@@ -37,7 +38,8 @@ $data = new Database();
 $repo = new CompteRepository($data);
 $dataMongo = new MongodbDatabase ();
 $mailService = new MailService();
-$controller = new AuthController($repo, $mailService);
+$tokenRepository = new TokenRepository($data);
+$controller = new AuthController($repo, $mailService, $tokenRepository);
 $menuRepo = new MenuRepository($data);
 $menuController = new MenuController($menuRepo);
 $platRepo = new PlatRepository($data);
@@ -54,6 +56,8 @@ $avisController = new AvisController($avisRepository);
 $horaireRepository = new HoraireRepository($data);
 $horaireController = new HoraireController($horaireRepository);
 $pageLegaleController = new PageLegaleController();
+
+
 
 
 
@@ -85,7 +89,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'password_forget') {
    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $controller->showPasswordForget();
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $controller->login();
+        $controller->passwordForget();
     }
 }
 

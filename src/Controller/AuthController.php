@@ -279,6 +279,12 @@ class AuthController
         header('location:/?page=password_forget');
         exit;      
     }
+
+    public function showPasswordReset() 
+    {
+        require __DIR__ . '/../../templates/auth/password_reset.php';
+
+    }
         
 
 }

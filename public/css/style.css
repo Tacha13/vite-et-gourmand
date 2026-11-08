@@ -429,14 +429,14 @@ i.fa-solid {
 
 /*Début mot de passe oublié */
 
-.title-passwordForget {
+.title-passwordForget,  .title-passwordReset{
     display: flex;
     justify-content: center;
     text-align: center;
     margin: 40px;
     padding: 20px;
 }
-.passwordForget-text {
+.passwordForget-text, .passwordReset-text  {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -447,7 +447,7 @@ i.fa-solid {
     text-align: center;
 }
 
-.passwordForget-form {
+.passwordForget-form, .passwordReset-form {
     padding: 20px;
     gap: 15px;
     display: flex;
@@ -455,20 +455,20 @@ i.fa-solid {
 
 }
 
-.passwordForget-inner {
+.passwordForget-inner, .passwordReset-inner {
     background-color: var(--avis);
     max-width:550px;
     padding: 40px;
 }
 
-.passwordForget-form div label {
+.passwordForget-form div label, .passwordReset-form div label {
     display: block;
     width: 100%;
     font-size: 20px;
     margin-bottom: 5px;
 }
 
-.passwordForget-form div input {
+.passwordForget-form div input, .passwordReset-form div input {
     display: block;
     width: 100%;
     padding: 10px;

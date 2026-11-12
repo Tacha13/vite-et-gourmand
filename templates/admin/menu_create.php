@@ -58,8 +58,8 @@
             <button>Valider</button>
         </div>
 </form>
-    <div class="return-admin">
-        <a href="/?page=admin" class="returnAdmin">Retour à la page administration</a>
+    <div class="return-list">
+        <a class="returnList" href="/?page=admin_menus">Retour aux menus</a>
     </div>
 </main>
  <!--Contenu du footer-->

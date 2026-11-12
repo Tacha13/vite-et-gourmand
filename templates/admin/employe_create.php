@@ -61,8 +61,8 @@
         </div>
 
 </form>
-    <div class="return-admin">
-        <a href="/?page=admin" class="returnAdmin">Retour à la page administration</a>
+    <div class="return-list">
+        <a class="returnList" href="/?page=employes">Retour à la liste des employés</a>
     </div>
 </main>
 

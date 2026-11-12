@@ -39,7 +39,7 @@ require __DIR__ . '/../partials/header.php';
             <div class="nombreCommande">
             <label for="nombreCommande">Nombre de Personnes</label>
             <?php if (isset($_SESSION['erreurMinPersonne'])) { ?>
-	        <p> <?=  htmlspecialchars($_SESSION['erreurMinPersonne']) ?> </p>
+	        <p class="erreurChamp"> <?=  htmlspecialchars($_SESSION['erreurMinPersonne']) ?> </p>
 	        <?php unset($_SESSION['erreurMinPersonne']);
             }?>
             <input id="nombreCommande" name="nombreCommande" type="number" min="<?= $idMenu['nbPersonneMin']?>" required>
@@ -80,7 +80,7 @@ require __DIR__ . '/../partials/header.php';
             </div>
             <div>
             <?php if (isset($_SESSION['messageHorsLimite'])) { ?>
-	        <p> <?=  htmlspecialchars($_SESSION['messageHorsLimite']) ?> </p>
+	        <p class="erreurChamp"> <?=  htmlspecialchars($_SESSION['messageHorsLimite']) ?> </p>
 	        <?php unset($_SESSION['messageHorsLimite']);
             }?>
             </div>
@@ -93,7 +93,7 @@ require __DIR__ . '/../partials/header.php';
                 <input id="datePrestation" name="datePrestation" type="date" min="<?= date('Y-m-d', strtotime('+2DAY'))?>" required>
             </div>
             <?php if (isset($_SESSION['erreurDateLivraison'])) { ?>
-	        <p> <?=  htmlspecialchars($_SESSION['erreurDateLivraison']) ?> </p>
+	        <p class="erreurChamp"> <?=  htmlspecialchars($_SESSION['erreurDateLivraison']) ?> </p>
 	        <?php unset($_SESSION['erreurDateLivraison']);
             }?>
             <div class="commande-inner">

@@ -344,4 +344,12 @@ class CommandeController
         require __DIR__ . '/../../templates/client/suivi_commandes.php';
     }
 
+    //Fonction qui permet de supprimer les infos de commandes suite à l'annulation
+    public function deleteInfosCommande(): void
+    {
+        unset($_SESSION['commande']);
+        header('location:/?page=menus');
+        exit;
+    }
+
 }

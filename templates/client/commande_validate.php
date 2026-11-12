@@ -100,11 +100,13 @@ require __DIR__ . '/../partials/header.php';
                 <div class="commande-next">
                     <button class="bouton-next" type="submit">Valider</button>
                 </div>
+                    <div class="annule-commande">
+                        <a class="btn-annuleCommande" href="/?page=commande_annule">Annuler</a>
+                    </div>
             </div>    
         </div>       
     </div>
 </form>
-    
 
 </section>
 

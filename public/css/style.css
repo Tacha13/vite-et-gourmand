@@ -1157,6 +1157,22 @@ section.menu {
     background-color: #ff855470;
     color: #a1232f;
 }
+
+.annule-commande {
+    margin: 30px;
+}
+
+.btn-annuleCommande {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    background: var(--secondary);
+    padding:12px 65px;
+    border: none;
+    border-radius: 2px;
+    margin: auto;
+    display: block;
+}
 /*Fin message d'échec de commande*/
 
 /*Le bloc de gauche avec le récapitulatif reprend en majeure partie le css de commande1, ajustement sur le récap de l'adresse*/

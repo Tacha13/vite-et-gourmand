@@ -202,6 +202,11 @@ if (isset($_GET['page']) && $_GET['page'] === 'annuler_commande') {
     }
 }
 
+//Route qui renvoie aux menus quand on annule la commande en étape 2
+if (isset($_GET['page']) && $_GET['page'] === 'commande_annule') {
+    $commandeController->deleteInfosCommande();
+}
+
 //COMPTE CLIENT
 //Route pour accéder au compte client
 if (isset($_GET['page']) && $_GET['page'] === 'compte_client') {

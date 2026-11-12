@@ -38,14 +38,14 @@
             </div>
             <div class="row row-cols-1 row-cols-md-3 detail-img">
                 <div class="col">
-                <img src="/images/Menu saveurs de saison 1.jpg" alt="Menu saveurs de saison 1.jpg">
+                <img src="/images/menu-<?=($idMenu['id'])?>-1.jpg" alt="Image 1 du <?= htmlspecialchars($idMenu['nomMenu']) ?>">
                 </div>
                 <div class="col">
-                <img src="/images/Menu saveurs de saison 2.jpg" alt="Menu saveurs de saison 2.jpg">
+                <img src="/images/menu-<?=($idMenu['id'])?>-2.jpg" alt="Image 1 du <?= htmlspecialchars($idMenu['nomMenu']) ?>">
                 </div>
                 <div class="col">
-                <img src="/images/Menu saveurs de saison 3.jpg" alt="Menu saveurs de saison 3.jpg">
-            </div>            
+                <img src="/images/menu-<?=($idMenu['id'])?>-3.jpg" alt="Image 1 du <?= htmlspecialchars($idMenu['nomMenu']) ?>">
+                </div>            
         </div>
         </div>
     </div>

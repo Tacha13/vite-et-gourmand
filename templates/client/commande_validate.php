@@ -63,7 +63,7 @@ require __DIR__ . '/../partials/header.php';
                 </div> 
                 <div class="recap-presta">
                 <p>Date de livraison :</p>
-                <span><?= htmlspecialchars($_SESSION['commande']['datePrestation'])  ?></span>
+                <span><?= htmlspecialchars(date('d/m/Y', strtotime($_SESSION['commande']['datePrestation'])))   ?></span>
                 </div> 
                 <div class="recap-presta">
                 <p>Heure de livraison :</p>

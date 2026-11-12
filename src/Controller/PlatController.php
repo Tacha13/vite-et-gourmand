@@ -14,12 +14,14 @@ class PlatController
         $this->platRepository = $platRepository;
     }
 
+//Fonction qui récupère les plats et les affiche dans le template des plats
     public function showPlat(): void
     {
         $plats = $this->platRepository->findAll();
         require __DIR__ . '/../../templates/admin/plats.php';
     }
 
+//Fonction qui récupère le plat demandé dans le formulaire pour traitement dans la fonction create des plats et redirige vers la liste des plats
     public function createPlat(): void
     {
         $namePlat = $_POST['namePlat'];
@@ -30,17 +32,20 @@ class PlatController
         exit;
     }
 
+//Fonction qui affiche le template de création des plats
     public function showPlatCreate(): void 
     {
         require __DIR__ . '/../../templates/admin/plat_create.php';
     }
 
+//Fonction qui récupère l'ID et le type d'élément à supprimer et l'affiche dans le template commun de confirmation de suppression 
     public function showDeleteConfirm(): void {
         $id = ($_POST['id']);
         $entity = ($_POST['entity']);
         require __DIR__ . '/../../templates/partials/delete_confirm.php';
     }
 
+//Fonction qui récupère l'ID du plat à supprimer, le try essaie de supprimer si aucune contrainte détectée sinon renvoie une erreur dans le catch
     public function deletePlat(): void
     {
          try {
@@ -55,38 +60,34 @@ class PlatController
     }
     }
 
-    //Fonction qui récupère les infos d'un plat avec findById et renvoie à la page de modification du plat
+//Fonction qui récupère les infos d'un plat avec findById et renvoie à la page de modification du plat
     public function showPlatUpdate(): void 
     {   
-        //1. Vérification que l'id est bien dans l'adresse sinon retour à la liste des plats
+        //Vérification que l'id est bien dans l'adresse sinon retour à la liste des plats
         if(!isset($_GET ['id'] )) {
                 header('location:/?page=plats');
                 exit;
             } 
 
-        //2. Demander au repo les infos du plat selon l'id
         $platModifier = $this->platRepository->findById((int)$_GET['id']);
 
-        //3. si pas de plat -> retour à la liste des plats
+        //si pas de plat -> retour à la liste des plats
         if($platModifier === null) {
             header('location:/?page=plats');
             exit;
         }
-
-        //4. Charge le formulaire
         require __DIR__ . '/../../templates/admin/plat_update.php';
 
     }
 
-    //Fonction qui permet de mettre à jour la base en appelant le repo sinon message d'erreur et retour à la liste de modification des plats 
+//Fonction qui récupère les infos du plat et permet de mettre à jour la base en appelant le repo sinon message d'erreur et retour à la liste de modification des plats, si ok à la liste de splats 
     public function updatePlat(): void 
     {
-    //1. LIre l'id et les champs du formulaire en POST
         $nomPlat = (string)($_POST['namePlat']);
         $typePlat = (string)($_POST['typePlat']);
         $id = (int)$_POST['id'];
 
-    //2. Vérification des champs obligatoires non vides sinon erreur + retour
+    //Vérification des champs obligatoires non vides sinon erreur + retour
     if(
     $nomPlat === '' 
     || $typePlat === '' 
@@ -97,10 +98,9 @@ class PlatController
             exit;
     }
 
-    //3. Appeler le repo pour MAJ
+    //Maj en base
     $this->platRepository->update($id, $nomPlat, $typePlat);
 
-    //4. Message succes
      $_SESSION['successUpdatePlat'] = "Les modifications ont été enregistrées.";
             header('location:/?page=plats');
             exit;

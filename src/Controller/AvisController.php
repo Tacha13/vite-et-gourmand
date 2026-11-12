@@ -14,14 +14,15 @@ class AvisController {
         $this->avisRepository = $avisRepository;
     }
 
+//Fonction qui vérifie si l'utilisateur est connecté et crée l'avis du client
     public function createAvis(): void
     {
-        // 1. Le client est-il connecté ? Sinon : vers login
+        
         if(!isset($_SESSION ['user_id'] )) {
                 header('location:/?page=login');
                 exit;
             } 
-        // 2. Lire note, avis et commandeId dans $_POST
+        //Lire note, avis et commandeId dans $_POST
         $avisModal = $_POST['avis'];
         $noteModal = ((int)$_POST['note']);
         $commandeIdModal = ((int)$_POST['commandeId']);
@@ -33,51 +34,47 @@ class AvisController {
         }
 
 
-        // 3. Vérifier la commande : à lui, Terminée, pas encore d'avis
+        //Vérification de la commande, si elle terminée et pas encore d'avis, dans ce cas on crée l'avis avec message de succés
         $retourCanCommande = $this->avisRepository->canCommandeReceiveAvis($commandeIdModal,$_SESSION ['user_id']);
 
         if ($retourCanCommande !== true) {
             header('location:/?page=histo_commandes');
             exit;
         }
-        // 4. Appeler create() du repository
         $this->avisRepository->create($avisModal, $noteModal, $commandeIdModal);
 
-        // 5. Message flash + redirection vers l'historique
         $_SESSION['successAvis'] = "Votre avis a été enregistré.";                
             header('location:/?page=histo_commandes');
             exit;
     }
 
+//Fonction qui affiche les avis en attente de validation dans avis de l'espace employé
     public function showAvisEmploye(): void {
-        //1. Demander au repo les avis en attente de validation
         $avisEnAttente = $this->avisRepository->findAllAvisByStatut('En attente de validation');
         require __DIR__ . '/../../templates/admin/avis_validate.php';
 
     }
 
+//Fonction qui récupère l'avis reçues l'action de validation ou non de l'employé en POST et met à jour la base + messages
     public function updateStatutAvis(): void {
 
-    // 1. lire les 2 infos reçues dans $_POST (id de l'avis + statut choisi)
     $idAvis = ((int)$_POST['idAvis']);
     $actionValidateRefused = $_POST['actionValidateRefused'];
 
-    // 2. vérifier que le statut est bien 'Validé' ou 'Refusé' (sinon : message d'erreur + redirection)
     if ($actionValidateRefused !== 'Validé' && $actionValidateRefused !== 'Refusé') {
         $_SESSION['erreurStatutAvis'] = "Le statut ne permet pas de validé ou refusé l'avis.";
             header('location:/?page=avis_validate');
             exit;
     }
-    // 3. appeler le repository pour modifier l'avis
     $this->avisRepository->updateAvis($idAvis, $actionValidateRefused);
 
-    // 4. préparer le message de succès
     $_SESSION['successStatutAvis'] = "Votre validation de l'avis a été enregistrée.";                
             header('location:/?page=avis_validate');
             exit;
   
     }
 
+//Fonction qui récupère les avis validés pour affichage sur la page d'accueil
     public function showAvisHome(): void {
          //1. Demander au repo les avis validés pour affichage page home
         $avisValide = $this->avisRepository->findAllAvisByStatut('Validé');

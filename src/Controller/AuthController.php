@@ -21,12 +21,13 @@ class AuthController
         $this->tokenRepository = $tokenRepository;
     }
 
-
+//Fonction qui affiche le template de création de compte
     public function showRegister(): void
     {
         require __DIR__ . '/../../templates/auth/register.php';
     }
 
+//Fonction qui récupère les informations demandées dans le formulaire pour traitement dans la fonction create de compte utilisateur et redirige vers la page de connexion
     public function register(): void
     {
         $name = $_POST['name'];
@@ -41,7 +42,7 @@ class AuthController
         $passwordConfirm = $_POST['passwordConfirm'];
         //Rôle utilisateur mis en dur car à l'inscription on ne peut être que 'utilisateur' > cela empêche une modification via l'inspecteur
         $role = 'utilisateur';
-        //Array qui garde les infos saisies en mémoire si le mot d epasse est incorrect > permet de ne pas ressaisir les informations
+        //Array qui garde les infos saisies en mémoire si le mot de passe est incorrect > permet de ne pas ressaisir les informations
         $_SESSION['saveSaisieRegister'] = [
             'name' => $_POST['name'], 
             'firstname' => $_POST['firstname'], 
@@ -53,6 +54,7 @@ class AuthController
             'city' => $_POST['city'], 
              ];
 
+        //Vérification de l'existence du mail - envoi d'un message "neutre" s'il existe en baseour au formulaire
         $checkEmail = $this->compteRepository->findByEmail($email);
         if ($checkEmail !== null) {
             $_SESSION['erreurEmailRegister'] = "Veuillez vérifier l'email saisi.";
@@ -60,6 +62,7 @@ class AuthController
             exit;
         }
 
+        //Vérification du format du mot de passe si les deux saisies sont identiques puis le format et enfin le hash, si ok création du compte + envoi d'un mail de bienvenue et redirerection vers login, si non message pour chaque vérification
         if ($password === $passwordConfirm) {
             if (
                 preg_match('/[A-Z]/', $password)
@@ -84,6 +87,7 @@ class AuthController
                 header('location:/?page=register');
                 exit;
         }
+        //supression des champs saisis
         unset($_SESSION['saveSaisieRegister']);
 
         $_SESSION['successRegister'] = "Votre compte est créé. Vous pouvez vous identifier ci-dessous.";                
@@ -91,10 +95,12 @@ class AuthController
         exit;
     }
 
+//Fonction qui affiche le template de connexion au compte
     public function showLogin(): void {
         require __DIR__ . '/../../templates/auth/login.php';
     }
 
+//Fonction qui récupère les informations de connexion saisies, contrôle sur le mail si null ou pas, si le mot de passe hashé correspond au mot de passe saisi avec verify et si le compte est actif ou non et redirection selon le rôle du compte
     public function login(): void
     {
         $email = $_POST['email'];
@@ -108,6 +114,7 @@ class AuthController
                 header('location:/?page=login');
                 exit;
             }
+            //Enregistrement des infos trouvées en base dans $_SESSION
             $_SESSION['user_id'] = $resultMail['id'];
             $_SESSION['user_email'] = $resultMail['email'];
             $_SESSION['user_nom'] = $resultMail['nom'];
@@ -130,6 +137,7 @@ class AuthController
         }
     }
 
+//Fonction qui vide les infos de $_SESSION et la détruit pour déconnexion et renvoie sur la page de connexion
     public function logout(): void {
         $_SESSION = [];
         session_destroy();
@@ -138,7 +146,7 @@ class AuthController
     }
 
 
-# Fonction qui redirige vers la page login si le role est non admin ou non connecté 
+//Fonction qui redirige vers la page login si le role est non admin ou non connecté 
     public function checkAdmin(): void {
         if((!isset($_SESSION ['user_id'])) || $_SESSION['user_role'] !== 'admin') {
             header('location:/?page=login');
@@ -146,7 +154,7 @@ class AuthController
         }
     }
 
-# Fonction qui redirige vers la page login si le role est non admin/employe ou non connecté 
+//Fonction qui redirige vers la page login si le role est non admin/employe ou non connecté 
     public function checkEmploye(): void {
         if((!isset($_SESSION ['user_id'])) || (($_SESSION ['user_role']) !== 'admin') && (($_SESSION ['user_role']) !== 'employe') ) {
             header('location:/?page=login');
@@ -154,7 +162,7 @@ class AuthController
         }
     }
 
-    # Fonction qui redirige vers la page login si l'utilisateur n'est pas encore connecté    
+//Fonction qui redirige vers la page login si l'utilisateur n'est pas encore connecté    
     public function checkLogin(): void {
         if(!isset($_SESSION['user_id'])) {
             header('location:/?page=login');
@@ -162,15 +170,18 @@ class AuthController
         }
     }
 
+//Fonction qui affiche le tableau de bord administrateur/employé
     public function showDashBoard(): void {
     require __DIR__ . '/../../templates/admin/dashboard.php';
     }
 
+//Fonction qui affiche le template de création d'un compte employé
     public function showEmployeCreate(): void
     {
         require __DIR__ . '/../../templates/admin/employe_create.php';
     }
 
+//Fonction qui récupère les informations demandées dans le formulaire de création d'employé, création d'un mot d epasse hashé, envoi d'un mail de bienvenue à l'employé et redirection vers le tableau de bord admin
     public function createEmploye () {
         $nameEmploye = $_POST['nameEmploye'];
         $prenomEmploye = $_POST['prenomEmploye'];
@@ -194,11 +205,13 @@ class AuthController
         exit;
     }
 
+//Fonction qui récupère la liste des employés auprès du repo puis l'affiche dans le template employes 
     public function showEmploye(): void {
         $employes = $this->compteRepository->findAllEmploye();
         require __DIR__ . '/../../templates/admin/employes.php';
     }
 
+//Fonction qui récupère la liste employés actifs auprès du repo puis l'affiche dans le template employes 
     public function toggleActif(): void
     {
         $this->compteRepository->toggleActif($_POST['id']);
@@ -206,6 +219,7 @@ class AuthController
         exit;
     }
     
+//Fonction qui vérifie l'utilisateur est connecté sinon retour à la page de connexion, récupère l'id du compte auprès du repo puis l'affiche dans le template infos personnelles 
     public function showInfospersonal(): void 
     {
         if(!isset($_SESSION['user_id'])) {
@@ -217,6 +231,7 @@ class AuthController
         require __DIR__ . '/../../templates/client/infos_personnelles.php';
     }
 
+//Fonction qui vérifie l'utilisateur est connecté sinon retour à la page de connexion, récupère les infos saisies dans le formulaire, vérifie le nouvel email si non déjà utilisé,  met à jour le nom, prénom et le mail en base puis dans $_SESSION , envoie un message de succès et renvoi à l'espace client
     public function updateInfosPersonal(): void
     {
          if(!isset($_SESSION['user_id'])) {
@@ -252,13 +267,15 @@ class AuthController
         exit;
     }
 
+//Fonction qui affiche la page de saisie du mail pour réinitialisation du mot de passe
     public function showPasswordForget(): void 
     {
         require __DIR__ . '/../../templates/auth/password_forget.php';
         
     }
 
-    public function passwordForget() 
+//Fonction qui récupère le mail saisi et vérifie s'il existe, si oui, suppression de l'ancien token puis affecte un nouveau token aléatoire au compte, envoie un mail à l'adresse avec le lien contenant le token. Un message neutre s'affiche que le compte existe ou pas
+    public function passwordForget(): void 
     {
         $email = $_POST['email'];
         $checkEmail = $this->compteRepository->findByEmail($email);
@@ -280,7 +297,8 @@ class AuthController
         exit;      
     }
 
-    public function showPasswordReset() 
+//Fonction qui récupère le token de l'adresse du lien, s'il n'est pas trouvé en base ou obsolète, un message affiche qu'il n'est plus valide et s'il est valide : affiche la page de saisie du nouveau mot de passe
+    public function showPasswordReset(): void 
     {
         $token = $_GET['token'] ?? '';
         $tokenValide = $this->tokenRepository->findByToken($token);
@@ -296,7 +314,8 @@ class AuthController
 
     }
 
-    public function passwordReset() 
+//Fonction qui récupère le token de l'adresse du lien, le nouveau mot de passe, contrôle sur la validité du token + message si non, vérification de la double saisie du mot de passe + format, hashage du mot de passe, MAJ en base, suppression du token utilisé, envoie d'un mail de confirmation.
+    public function passwordReset(): void 
     {
         $token = $_GET['token'] ?? '';
         $password = $_POST['password'];

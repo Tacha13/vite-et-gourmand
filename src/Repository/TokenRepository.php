@@ -13,6 +13,7 @@ class TokenRepository {
         $this->database = $database;
     }
 
+//DELETE qui supprime le token du mot de passe
     public function deleteToken(int $compte_id): void
     {
         $pdo = $this->database->getConnection();
@@ -26,7 +27,7 @@ class TokenRepository {
         
     }
 
-    
+ //INSERT du token avec sa date d'expiration dans la table token_mdp   
     public function create(string $token, int $compte_id): void
     {
         $pdo = $this->database->getConnection();
@@ -40,6 +41,7 @@ class TokenRepository {
 
     }
 
+//SELECT qui renvoie l'id du compte lié au token s'il n'est pas expiré sinon null
     public function findByToken(string $token): ?array
     {
         $pdo = $this->database->getConnection();

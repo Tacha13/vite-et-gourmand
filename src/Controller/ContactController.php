@@ -12,11 +12,13 @@ class ContactController {
         $this->mailService = $mailService;
     }
 
+//Fonction qui affiche le template de contact
     public function showContact(): void
     {
         require __DIR__ . '/../../templates/contact.php';
     }
 
+//Fonction qui récupère les informations saisies dans le formulaire pour envoi à l'entreprise + message de succés et redirection vers la page contact et envoie une confirmation au client
     public function sendContact(): void
     {
         $nomContact = $_POST['nomContact'];

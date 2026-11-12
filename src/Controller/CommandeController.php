@@ -14,13 +14,16 @@ use Tacha\ViteEtGourmand\Repository\StatistiqueRepository;
 
 class CommandeController 
 {
+    // constantes pour calcul du prix TTC
     const TAUX_REMISE = 0.10;
     const PRIX_KM = 0.59;
     const FRAIS_FIXE = 5;
 
+    //codes postaux pour la ville de Bordeaux et pour la métropole
     const CODES_POSTAUX_BORDEAUX = ['33000', '33100', '33200', '33300', '33800'];
     const CODES_POSTAUX_METROPOLE = ['33440', '33810', '33370', '33530', '33130','33290', '33270', '33110', '33520', '33560','33150', '33320', '33170', '33185', '33310','33127', '33700', '33600', '33160', '33400', '33140'];
 
+    //constantes des forfaits appliqués selon la zone
     const FORFAIT_KM_METROPOLE = 10;
     const FORFAIT_KM_GIRONDE = 40;
 
@@ -41,11 +44,9 @@ class CommandeController
         $this->statistiqueRepository = $statistiqueRepository;
     }
 
-//Route qui récupère les infos d'un client et du menu avec findById et renvoie à la page de commande   
+//Fonction récupère les infos d'un client et du menu avec findById et renvoie à la page de commande   
     public function showCommandeCreate(): void 
     {
-
-
         if(!isset($_GET['menu_id'])) {
             header('location:/?page=menus');
             exit;
@@ -63,7 +64,7 @@ class CommandeController
         
     }
 
-//Route qui prépare la création de la commande en vérifiant les données
+//Fonction qui prépare la création de la commande en vérifiant les données
     public function prepareCommande (): void
     {   
         if(!isset($_GET['menu_id'])) {
@@ -97,6 +98,7 @@ class CommandeController
             exit;
         } 
 
+        //calcul de la commande
         $prixMenu =  $idMenu['prix'] * $nombreCommande;
 
         if ($nombreCommande >= ($idMenu['nbPersonneMin'] +5) ) {
@@ -119,6 +121,7 @@ class CommandeController
 
         $prixTotalCommande = round(($prixMenu + $frais) - $remise, 2);
 
+        //save du panier
         $_SESSION ['commande'] = ([
             'idMenu' => $idMenu['id'],
             'nombreCommande' => $nombreCommande,
@@ -138,7 +141,7 @@ class CommandeController
             exit;
     }
 
-//Route qui récupère les infos du panier avec findById et renvoie à la page de validation de la commande   
+//Fonction qui récupère le panier en session et le menu avec findById, puis renvoie à la page de validation   
     public function showCommandeValidate(): void 
     {
         if(!isset($_SESSION ['commande'] )) {
@@ -223,6 +226,7 @@ class CommandeController
         }
     }
 
+//Fonction qui vérifie si le client est connecté et affiche la liste de ses commandes dans l'espace client 
     public function showAllCommandesClient (): void
     {
         if(!isset($_SESSION ['user_id'] )) {
@@ -235,6 +239,7 @@ class CommandeController
         require __DIR__ . '/../../templates/client/compte_client.php';
     }
 
+//Fonction qui vérifie si le client est connecté et affiche la liste de ses commandes historisées dans l'historique des commandes de l'espace client 
     public function showAllHistoCommandesClient (): void
     {
         if(!isset($_SESSION ['user_id'] )) {
@@ -250,13 +255,13 @@ class CommandeController
 //Fonction qui renvoie la liste des commandes demandée au repo et à afficher dans le template pour l'employé
     public function showCommandesEmploye(): void {
 
-        //1. Lire les filtres reçus du navigateur (vérification s'il GET existe sinon renvoie vide)
+        //filtres reçus du navigateur (vérification s'il GET existe sinon renvoie vide)
         $filterStatut = $_GET['filter-statut'] ?? '';
         $filterNomClient = $_GET['nomClient'] ?? '';
 
-        //2. Demander au repo la liste des commandes
+        //liste des commandes selon filtres
         $listCommandes = $this->commandeRepository->findAllCommandesEmploye($filterStatut, $filterNomClient);
-        //3. Chargement du template avec la variable $listCommandes
+        
         require __DIR__ . '/../../templates/admin/admin_commandes.php';
     }
 
@@ -265,20 +270,20 @@ class CommandeController
     public function updateStatutCommandeEmploye(): void 
     {
 
-    // 1. lire les 2 infos reçues dans $_POST (id de la commande + statut envoyé)
     $idCommande = ((int)$_POST['id']);
     $statutReceived = $_POST['statut'];
 
-    // 2. vérifier que le statut de la commande est bien 'Acceptée' ou 'En préparation' ou 'En cours de livraison' ou 'Livrée' ou 'En attente du retour matériel' ou 'Terminée' (sinon : message d'erreur + redirection)
+    //vérification que le statut de la commande est bien 'Acceptée' ou 'En préparation' ou 'En cours de livraison' ou 'Livrée' ou 'En attente du retour matériel' ou 'Terminée' (sinon : message d'erreur + redirection)
     if ($statutReceived !== 'Acceptée' && $statutReceived !== 'En préparation' && $statutReceived !== 'En cours de livraison' && $statutReceived !== 'Livrée' && $statutReceived !== 'En attente du retour de matériel' && $statutReceived !== 'Terminée') {
         $_SESSION['erreurUpdateStatutCommande'] = "Le statut de la commande n'a pas pu être mis à jour.";
             header('location:/?page=admin_commandes');
             exit;
     }
-    // 3. appeler le repository pour modifier le statut de la commande
+
+    //MAJ des statuts
     $this->commandeRepository->updateStatutHistoCommande($idCommande, $statutReceived);
 
-    // On récupère les informations de la commande pour traitement après avec mongodb
+    // récupération des informations de la commande pour traitement après avec mongodb
     if($statutReceived === 'Terminée') {
         $infosCommande = $this->commandeRepository->findCommandeById($idCommande);
         try {
@@ -290,46 +295,43 @@ class CommandeController
         }
     }
 
-
-    // 4. préparer le message de succès
     $_SESSION['successUpdateStatutCommande'] = "Le statut de la commande a bien été enregistré.";                
             header('location:/?page=admin_commandes');
             exit;
   
     }
 
-    //Fonction qui vérifie le motif d'annulation, la présence d'un mode de contact, modifie le motif de la commande et renvoie un message si success
+//Fonction qui vérifie le motif d'annulation, la présence d'un mode de contact, modifie le motif de la commande et renvoie un message si success
     public function updateMotifContactCommande(): void 
     {
-    // 1. lire les 3 infos reçues dans $_POST (id de la commande + motif + mode contact)
+
     $idCommande = ((int)$_POST['id']);
     $motifannulation = $_POST['motifAnnulation'];
     $modeContact = $_POST['modeContact'];
 
-    // 2. vérifier que le motif d'annulation de la commande est bien renseigné (sinon : message d'erreur + redirection)
+    // vérification que le motif d'annulation de la commande est bien renseigné (sinon : message d'erreur + redirection)
     if (empty($motifannulation)){
         $_SESSION['erreurUpdateMotifCommande'] = "Le motif d'annulation de la commande n'a pas pu être pris en compte.";
             header('location:/?page=admin_commandes');
             exit;
     }
 
-    // 3. vérifier que le mode de contact suite à la demande d'annulation de la commande est bien renseigné (sinon : message d'erreur + redirection)
+    // vérification que le mode de contact suite à la demande d'annulation de la commande est bien renseigné (sinon : message d'erreur + redirection)
     if ($modeContact !== 'Appel'  && $modeContact !== 'Email' ){
         $_SESSION['erreurUpdateContactCommande'] = "Le mode de contact ne correspond pas au mode de contact attendu (appel ou email)";
             header('location:/?page=admin_commandes');
             exit;
     }
-    // 4. appeler le repository pour modifier le motif d'annulation de la commande
+    // MAJ du motif d'annulation de la commande
     $this->commandeRepository->updateMotifContactHistoCommande($idCommande, 'Annulée', $motifannulation, $modeContact);
 
-    // 5. préparer le message de succès
     $_SESSION['successUpdateMotifAnnulCommande'] = "La commande a été annulée.";                
             header('location:/?page=admin_commandes');
             exit;
   
     }
 
-    //Fonction qui récupère les id commandes et clients pour traitement dans le repo findHistoCommandeId()
+//Fonction qui récupère les id commandes et clients pour traitement dans le repo findHistoCommandeId()
     public function showAllHistoStatuts(): void
     {
         if(!isset($_SESSION ['user_id'] )) {
@@ -344,7 +346,7 @@ class CommandeController
         require __DIR__ . '/../../templates/client/suivi_commandes.php';
     }
 
-    //Fonction qui permet de supprimer les infos de commandes suite à l'annulation
+//Fonction qui permet de supprimer les infos de commandes suite à l'annulation
     public function deleteInfosCommande(): void
     {
         unset($_SESSION['commande']);

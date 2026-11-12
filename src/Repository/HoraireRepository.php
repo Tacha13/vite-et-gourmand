@@ -14,7 +14,7 @@ class HoraireRepository
         $this->database = $database;
     }
 
-    #Fonction récupérant les informations des horaires même vide    
+//SELECT récupérant les informations des horaires 
     public function findAll(): array {
         $pdo = $this->database->getConnection();
         $horaires = $pdo->prepare("SELECT id, jour, heureDebut, heureFin, ouvert FROM horaires ORDER BY id;
@@ -26,7 +26,7 @@ class HoraireRepository
         return $result;
     }
 
-    #Fonction qui récupère les informations d'un horaire selon son id
+//SELECT qui récupère les informations d'un horaire selon son id
     public function findById(int $id) : ?array 
     {
         $pdo = $this->database->getConnection();
@@ -42,7 +42,7 @@ class HoraireRepository
         return $result ?: null;
     } 
 
-    //Méthode qui permet de mettre à jour les informations des horaires suite à modification par l'admin/employé
+//UPUDATE qui permet de mettre à jour les informations des horaires suite à modification par l'admin/employé
     public function update(int $id, ?string $heureDebut, ?string $heureFin, int $ouvert): void
     {
         $pdo = $this->database->getConnection();

@@ -13,6 +13,7 @@ class StatistiqueRepository {
         $this->mongoBase = $mongoBase;
     }
 
+//Fonction qui crée une fiche MongoDB
      public function createFiche(array $listCommande): void
     {
         $mongodb = $this->mongoBase->getConnection();
@@ -25,6 +26,7 @@ class StatistiqueRepository {
 	    ]);
     }
 
+//Fonction qui regroupe toutes les fiches par menu, compte les commandes et additionne le CA avec les filtres
     public function findStatParMenu(?string $nomMenu, ?string $dateDebutPrestation, ?string $dateFinPrestation): array 
     {
         $mongodb = $this->mongoBase->getConnection();
@@ -59,6 +61,7 @@ class StatistiqueRepository {
         return $infoFicheCommande->aggregate($pipeline)->toArray();
     }
 
+//Fonction qui récupère la liste des noms de menus
     public function findNomMenu(): array 
     {
         $mongodb = $this->mongoBase->getConnection();

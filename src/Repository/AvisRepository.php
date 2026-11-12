@@ -13,6 +13,7 @@ class AvisRepository {
         $this->database = $database;
     }
 
+//INSERT des infos de l'avis dans la table avis
    public function create (string $avis, int $note, int $commande_id): void {
 
     $pdo = $this->database->getConnection();
@@ -27,6 +28,7 @@ class AvisRepository {
         );
    }
 
+//SELECT de la commande du client, au statut Terminée et sans avis, et renvoie vrai si un avis peut être laissé, sinon faux
    public function canCommandeReceiveAvis (int $commandeId, int $compteId): bool {
     
    $pdo = $this->database->getConnection();
@@ -44,6 +46,7 @@ class AvisRepository {
 
    }
 
+//SELECT de l'avis, du nom du menu, son numéro et le nom/prénom du client en fonction du statut demandé, renvoie tous les avis selon le statut
    public function findAllAvisByStatut (string $statutAvis): array {
 
     $pdo = $this->database->getConnection();
@@ -57,6 +60,7 @@ class AvisRepository {
     return $result;
     }
 
+//UPDATE du statut de l'avis correspondant à l'id de l'avis
     public function updateAvis(int $id, string $statutAvis): void
     {
         $pdo = $this->database->getConnection();

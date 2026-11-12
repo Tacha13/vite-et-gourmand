@@ -15,20 +15,21 @@ class MenuController
         $this->menuRepository = $menuRepository;
     }
 
- //Route qui récupère les finfos des menus avec findAll et renvoie à la page menus admin   
+//Fonction qui récupère les infos des menus avec findAll et renvoie à la page menus admin   
     public function showMenus(): void
     {
         $menus = $this->menuRepository->findAll();
         require __DIR__ . '/../../templates/admin/admin_menus.php';
     }
  
-    //Route qui récupère les infos des menus avec findAll et renvoie à la page menus public   
+//Fonction qui récupère les infos des menus avec findAll et les affiche dans la page menus public   
     public function showPublicMenus(): void 
     {
         $menus = $this->menuRepository->findAll();
         require __DIR__ . '/../../templates/menus.php';
     }
 
+//Fonction qui récupère les infos saisies dans le formulaire de création du menu en POST avec create et renvoie à la page de gestion des menus
     public function createMenu(): void
     {
         $nameMenu = $_POST['nameMenu'];
@@ -46,17 +47,20 @@ class MenuController
         exit;
     }
 
+//Fonction qui renvoie à la page de création de menu   
     public function showMenuCreate(): void 
     {
         require __DIR__ . '/../../templates/admin/menu_create.php';
     }
 
+//Fonction qui récupère l'ID et le type d'élément à supprimer et l'affiche dans le template commun de confirmation de suppression 
     public function showDeleteConfirm(): void {
         $id = ($_POST['id']);
         $entity = ($_POST['entity']);
         require __DIR__ . '/../../templates/partials/delete_confirm.php';
     }
 
+//Fonction qui récupère l'ID du menu à supprimer, le try essaie de supprimer si aucune contrainte détectée sinon renvoie une erreur dans le catch
     public function deleteMenu(): void
     {
         try {
@@ -71,7 +75,7 @@ class MenuController
     }
     }
 
-    //Route qui récupère les infos d'un menu avec findById et celui des plats avec findAllPlatsByIdMenu et renvoie à la page menus détail   
+//Fonction qui récupère les infos d'un menu avec findById et celui des plats avec findAllPlatsByIdMenu et renvoie à la page menus détail   
     public function showDetailMenu(): void 
     {
         if (isset($_GET['id'])) {
@@ -86,30 +90,28 @@ class MenuController
         
     }
 
-    //Fonction qui récupère les infos d'un menu avec findById et renvoie à la page de modification du menu
+//Fonction qui récupère les infos d'un menu avec findById et renvoie à la page de modification du menu si erreur sinon sur la liste des menus
     public function showMenuUpdate(): void 
     {   
-        //1. Vérification que l'id est bien dans l'adresse sinon retour à la liste des menus
+        //Vérification que l'id est bien dans l'adresse sinon retour à la liste des menus
         if(!isset($_GET ['id'] )) {
                 header('location:/?page=admin_menus');
                 exit;
             } 
 
-        //2. Demander au repo les infos du menu selon l'id
+        //récupération des infos du menu selon l'id
         $menuModifier = $this->menuRepository->findById((int)$_GET['id']);
 
-        //3. si pas de menu -> retour à la liste de smenus
+        //si pas de menu -> retour à la liste des menus
         if($menuModifier === null) {
             header('location:/?page=admin_menus');
             exit;
         }
-
-        //4. Charge le formulaire
         require __DIR__ . '/../../templates/admin/menu_update.php';
 
     }
 
-    //Fonction qui permet de mettre à jour la base en appelant le repo sinon message d'erreur et retour à la liste de modification des menus 
+//Fonction qui permet de mettre à jour la base en appelant le repo sinon message d'erreur et retour à la liste de modification des menus 
     public function updateMenu(): void 
     {
     //1. LIre l'id et les champs du formulaire en POST
@@ -124,7 +126,7 @@ class MenuController
         $image = (string)($_POST['image']);
         $id = (int)$_POST['id'];
 
-    //2. Vérification des champs obligatoires non vides sinon erreur + retour
+    //Vérification des champs obligatoires non vides sinon erreur + retour
     if(
     $nomMenu === '' 
     || $description === '' 
@@ -142,16 +144,15 @@ class MenuController
             exit;
     }
 
-    //3. Appeler le repo pour MAJ
+    //MAJ en base
     $this->menuRepository->update($id, $nomMenu, $description, $theme, $nbPersonneMin, $prix, $conditions, $regime, $stock, $image);
 
-    //4. Message succes
      $_SESSION['successUpdateMenu'] = "Les modifications ont été enregistrées.";
             header('location:/?page=admin_menus');
             exit;
     }
 
-    //Fonction qui récupère les infos de filtres demandées par le client, on vérifie si c'est null ou vide (on renvoie null) sinon on conserve l'info du filtre et on alimente les paramètres de findMenusFiltres
+//Fonction qui récupère les infos de filtres demandées par le client, on vérifie si c'est null ou vide (on renvoie null) sinon on conserve l'info du filtre et on alimente les paramètres de findMenusFiltres
     public function showFiltresMenus(): void
     {
         $theme = $_GET['theme'] ?? null;
@@ -166,6 +167,7 @@ class MenuController
         
         $filtresMenus = $this->menuRepository->findMenusFiltres($theme, $regime, $persNb, $priceMin, $priceMax);
 
+        //envoi du résultat en JSON au JavaScript
         header('Content-Type: application/json');
         echo json_encode($filtresMenus);
     }

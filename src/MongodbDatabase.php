@@ -8,6 +8,7 @@ class MongodbDatabase {
     
     private \MongoDB\Database $mongoBase;
 
+//Fonction qui permet de se connecter à la base MongoDB Atlas avec les infos renseignées dans le fichier .env
     public function __construct()
     {
         $mongoUri = $_ENV['MONGO_URI'];
@@ -19,6 +20,7 @@ class MongodbDatabase {
         
     }
 
+//Fonction qui renvoie la connexion créé
     public function getConnection(): \MongoDB\Database {
         return $this->mongoBase;
     }

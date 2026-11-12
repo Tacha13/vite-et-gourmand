@@ -14,6 +14,7 @@ class CompteRepository
         $this->database = $database;
     }
 
+//INSERT dans la table comptes des informations d'inscritpion
     public function create(string $email, string $mot_de_passe_hash, string $nom, string $prenom, string $telephone, string $adresse, string $complement_adresse, string $code_postal, string $commune, string $role): void
     {
         $pdo = $this->database->getConnection();
@@ -34,6 +35,7 @@ class CompteRepository
         ]);
     }
 
+//SELECT qui renvoie les infos d'un utilisateur selon la correspondance d'email
     public function findByEmail(string $email): ?array
     {
         $pdo = $this->database->getConnection();
@@ -49,6 +51,7 @@ class CompteRepository
     }
 
 
+//SELECT qui renvoie les infos de tous les comptes qui ont un rôle employé
     public function findAllEmploye(): array
     {
         $pdo = $this->database->getConnection();
@@ -60,7 +63,7 @@ class CompteRepository
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-
+//UPDATE dans comptes du champ actif
     public function toggleActif(int $id): void {
         $pdo = $this->database->getConnection();
         $stmt = $pdo->prepare("UPDATE comptes SET actif = NOT actif WHERE id = :id;
@@ -71,6 +74,7 @@ class CompteRepository
         ]); 
     }
 
+//SELECT qui renvoie les infos d'un comptes selon l'id
         public function findById(int $id) : ?array 
     {
         $pdo = $this->database->getConnection();
@@ -86,7 +90,7 @@ class CompteRepository
         return $result ?: null;
         
     }
-//Fonction qui met à jour les infos personnelles du client 
+//UPDATE qui met à jour les infos personnelles du client 
     public function update(string $email, string $nom, string $prenom, string $telephone, string $adresse, string $complement_adresse, string $code_postal, string $commune, int $id): void
     {
         $pdo = $this->database->getConnection();
@@ -106,6 +110,7 @@ class CompteRepository
         ]);
     }
 
+//UPDATE du mot de passe d'un compte selon l'id
     public function updatePassword(string $hashedPassword, int $id): void 
     {
         $pdo = $this->database->getConnection();

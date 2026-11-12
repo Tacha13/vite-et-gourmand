@@ -14,7 +14,7 @@ class AllergeneRepository
         $this->database = $database;
     }
 
-#Fonction récupérant les informations de chaque allergène même vide    
+//SELECT des allergènes dans la table allergenes, et renvoie tous les allergènes
     public function findAll(): array {
         $pdo = $this->database->getConnection();
         $allergenes = $pdo->prepare("SELECT id, nomAllergene FROM allergenes ;
@@ -26,6 +26,7 @@ class AllergeneRepository
         return $result;
     }
 
+//INSERT du nom de l'allergène dans la table allergenes
     public function create(string $nameAllergene): void
     {
         $pdo = $this->database->getConnection();
@@ -39,6 +40,7 @@ class AllergeneRepository
         );
     }
 
+//DELETE de l'allergène
     public function delete(int $id): void 
     {
         $pdo = $this->database->getConnection();
@@ -52,7 +54,7 @@ class AllergeneRepository
         
     }
 
-    #Fonction qui récupère les informations d'un allergène selon son id
+//SELECT de l'allergène et son id dans la table allergenes en fon ction de son id, et renvoie l'allergène ou null si introuvable
     public function findById(int $id) : ?array 
     {
         $pdo = $this->database->getConnection();
@@ -68,7 +70,7 @@ class AllergeneRepository
         return $result ?: null;
     }  
        
-    //Méthode qui permet de mettre à jour les informations des allergènes suite à modification par l'admin/employé
+//UPDATE du nom de l'allergène correspond à l'id
     public function update(int $id, string $nomAllergene): void
     {
         $pdo = $this->database->getConnection();

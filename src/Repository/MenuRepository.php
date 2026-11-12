@@ -14,7 +14,7 @@ class MenuRepository
         $this->database = $database;
     }
 
-#Fonction récupérant les informations de chaque menu même vide    
+//SELECT récupérant les informations de chaque menu 
     public function findAll(): array {
         $pdo = $this->database->getConnection();
         $menus = $pdo->prepare("SELECT id, nomMenu, theme, prix, `description`, nbPersonneMin, `image`, regime, stock FROM menus ;
@@ -26,6 +26,7 @@ class MenuRepository
         return $result;
     }
 
+//INSERT dans la table menus des infos renseignées dans le frmulaire
     public function create(string $nameMenu, string $description, string $theme, int $persMin, float $price, string $conditions, string $regime, int $stock, string $image): void
     {
         $pdo = $this->database->getConnection();
@@ -47,6 +48,7 @@ class MenuRepository
         );
     }
 
+//DELETE du menu
     public function delete(int $id): void 
     {
         $pdo = $this->database->getConnection();
@@ -60,6 +62,7 @@ class MenuRepository
         
     }
 
+//SELECT qui renvoie les infos d'un menu selon son id ou null
     public function findById(int $id) : ?array 
     {
         $pdo = $this->database->getConnection();
@@ -76,7 +79,7 @@ class MenuRepository
         
     }
 
-    //Méthode qui permet de mettre à jour les informations des menus suite à modification par l'admin/employé
+//UPDATE qui permet de mettre à jour les informations des menus suite à modification par l'admin/employé
     public function update(int $id, string $nomMenu, string $description, string $theme, int $nbPersonneMin, float $prix, string $conditions, string $regime, int $stock, string $image): void
     {
         $pdo = $this->database->getConnection();
@@ -98,7 +101,7 @@ class MenuRepository
         ); 
     }
 
-    //Méthode qui permet de trouver les menus en fonction des filtres renseignés
+//SELECT qui permet de trouver les menus en fonction des filtres renseignés
     public function findMenusFiltres(?string $theme, ?string $regime, ?int $persNb, ?float $priceMin, ?float $priceMax ): array 
     {
         $pdo = $this->database->getConnection();
@@ -147,7 +150,7 @@ class MenuRepository
     }
     
 
-    //Fonction qui renvoie la liste des plats d'un menu selon l'id du menu
+//SELECT qui renvoie la liste des plats d'un menu selon l'id du menu
     public function findAllPlatsByIdMenu(int $id) : array 
     {
         $pdo = $this->database->getConnection();

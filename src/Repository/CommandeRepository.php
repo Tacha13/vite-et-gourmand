@@ -16,6 +16,7 @@ class CommandeRepository {
         $this->database = $database;
     }
 
+//INSERT des infos de la commande dans la table commandes
     public function create(string $numero, string $adresseLivraison, ?string $complementLivraison, string $codePostalLivraison, string $communeLivraison, string $datePrestation, string $heurePrestation, int $nbPersonneCommande, float $prixTotal, float $fraisLivraison, float $montantRemise, int $compte_id,  int $menu_id): int
     {
         $pdo = $this->database->getConnection();
@@ -44,6 +45,7 @@ class CommandeRepository {
         return (int)$idCommande;
     }
 
+//INSERT du statut de la commande dans la table histostatut
     public function createHistoStatut(string $statut,int $commande_id): void
     {
         $pdo = $this->database->getConnection();
@@ -58,6 +60,7 @@ class CommandeRepository {
         );
     }
 
+//Transaction qui crée la commande, son numéro final et son premier statut dans l’historique. Si une étape échoue, le rollback annule tout. Renvoie le numéro de commande.
     public function saveCommande (string $numero, string $adresseLivraison, ?string $complementLivraison, string $codePostalLivraison, string $communeLivraison, string $datePrestation, string $heurePrestation, int $nbPersonneCommande, float $prixTotal, float $fraisLivraison, float $montantRemise, int $compte_id,  int $menu_id): string 
     {
 
@@ -77,6 +80,7 @@ class CommandeRepository {
     }
     }
 
+//SELECT des informations des commandes d'un client, renvoie la liste des commandes triée par date de prestation du plus récent au plus ancien
     public function findCommandesByCompteId(int $compteId) : array 
     {
         $pdo = $this->database->getConnection();
@@ -94,6 +98,7 @@ class CommandeRepository {
         
     }
 
+//UPDATE du numero de commande
     public function updateNumero (int $id,string $numero): void {
         $pdo = $this->database->getConnection();
         $stmt = $pdo->prepare("UPDATE commandes SET numero = :numero WHERE id = :id");
@@ -106,7 +111,7 @@ class CommandeRepository {
         );
     }
 
-    //Fonction qui renvoie sous forme de tableau l'ensemble des commandes sous forme de filtre pour l'employé afin de modifier ou annuler une commande, triée par date de prestation et heure de prestation (ASC non nécessaire car par défaut, du plus proche au plus lointain). 
+//SELECT qui renvoie sous forme de tableau l'ensemble des commandes sous forme de filtre pour l'employé afin de modifier ou annuler une commande, triée par date de prestation et heure de prestation (ASC non nécessaire car par défaut, du plus proche au plus lointain). 
     public function findAllCommandesEmploye(string $statut, string $nom): array 
     {
         $pdo = $this->database->getConnection();
@@ -123,7 +128,7 @@ class CommandeRepository {
         
     }
 
-    //Fonction mettant à jour le statut de la commande après modification par l'admin ou l'employé, met à jour la table commandes
+//UPDATE mettant à jour le statut de la commande après modification par l'admin ou l'employé, met à jour la table commandes
     public function updateStatutCommande(int $id, string $statut): void 
     {
         $pdo = $this->database->getConnection();
@@ -137,7 +142,7 @@ class CommandeRepository {
         ); 
     }
 
-    //Fonction qui met à jour les statut de la commande dans la commande et l'historique des commandes, si le try n'exécute pas un des appels le catch annule tout avec un rollback et une erreur est envoyée au controller
+//Fonction qui met à jour les statut de la commande dans la commande et l'historique des commandes, si le try n'exécute pas un des appels le catch annule tout avec un rollback et une erreur est envoyée au controller
     public function updateStatutHistoCommande(int $id, string $statut): void
     {
     $pdo = $this->database->getConnection();
@@ -153,7 +158,7 @@ class CommandeRepository {
     }
     }
 
-    //Fonction qui enregistre le motif d'annulation de commandes et le mode de contact
+//UPDATE qui enregistre le motif d'annulation de commandes et le mode de contact
     public function updateMotifAnnulContactCommande(int $id, string $motifAnnulation, string $modeContact): void
     {
         $pdo = $this->database->getConnection();
@@ -169,7 +174,7 @@ class CommandeRepository {
 
     }
 
-    //Fonction qui met à jour le motif d'annulation  et le mode de contact dans la commande et l'historique, si le try n'exécute pas un des appels le catch annule tout avec un rollback et une erreur est envoyée au controller
+//Fonction qui met à jour le motif d'annulation  et le mode de contact dans la commande et l'historique, si le try n'exécute pas un des appels le catch annule tout avec un rollback et une erreur est envoyée au controller
     public function updateMotifContactHistoCommande(int $id, string $statut, string $motifAnnulation, string $modeContact): void 
     {
         $pdo = $this->database->getConnection();
@@ -186,7 +191,7 @@ class CommandeRepository {
         }
     }
 
-    #Fonction qui récupère les informations d'une commande pour création d'une fiche à destination de mongodb
+//SELECT qui récupère les informations d'une commande pour création d'une fiche à destination de mongodb
     public function findCommandeById(int $id) : ?array 
     {
         $pdo = $this->database->getConnection();
@@ -202,7 +207,7 @@ class CommandeRepository {
         return $result ?: null;
     } 
     
-    //Fonction qui renvoie la liste des statuts des commandes selon l'id client et l'id de la commande
+//SELECT qui renvoie la liste des statuts des commandes selon l'id client et l'id de la commande
     public function findHistoCommandeId(int $commandeId, int $compteId) : array 
     {
         $pdo = $this->database->getConnection();

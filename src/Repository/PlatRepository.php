@@ -14,7 +14,7 @@ class PlatRepository
         $this->database = $database;
     }
 
-#Fonction récupérant les informations de chaque plat même vide    
+//SELECT récupérant les informations de chaque plat même vide    
     public function findAll(): array {
         $pdo = $this->database->getConnection();
         $plats = $pdo->prepare("SELECT id, nomPlat, typePlat FROM plats ;
@@ -26,6 +26,7 @@ class PlatRepository
         return $result;
     }
 
+//INSERT dans la table plats des infos du plat
     public function create(string $namePlat, string $typePlat): void
     {
         $pdo = $this->database->getConnection();
@@ -40,6 +41,7 @@ class PlatRepository
         );
     }
 
+//DELETE du plat
     public function delete(int $id): void 
     {
         $pdo = $this->database->getConnection();
@@ -52,7 +54,7 @@ class PlatRepository
         );
         
     }
-
+//SELECT qui renvoie les infos d'un plat selon son id ou null
     public function findById(int $id) : ?array 
     {
         $pdo = $this->database->getConnection();
@@ -68,7 +70,7 @@ class PlatRepository
         return $result ?: null;
     }  
     
-     //Méthode qui permet de mettre à jour les informations des plats suite à modification par l'admin/employé
+//UPDATE qui permet de mettre à jour les informations des plats suite à modification par l'admin/employé
     public function update(int $id, string $nomPlat, string $typePlat): void
     {
         $pdo = $this->database->getConnection();

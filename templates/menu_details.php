@@ -82,8 +82,8 @@
         </div>
         </div>
     <div class="col boutons">
-        <a class="btn-command" href="/?page=commande_create&menu_id=<?=  $idMenu['id'] ?>">Commander</a>
         <a class="btn-menu" href="/?page=menus">Retour aux menus</a>
+        <a class="btn-command" href="/?page=commande_create&menu_id=<?=  $idMenu['id'] ?>">Commander</a>
     </div>
     </div>
 

@@ -1804,7 +1804,9 @@ text-align: center;
 
     /*menus*/
     .boutons {
-        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+
     }
 
     .btn-command, .btn-menu {

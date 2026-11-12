@@ -24,6 +24,13 @@
     <h1 class="title-listCommandesStat">Statistiques des commandes</h1>
 </div>
 
+    <?php if (isset($_SESSION['erreurStats'])) { ?>
+    <div class="flashMessage erreurStats">    
+    <p> <?=  htmlspecialchars($_SESSION['erreurStats']) ?> </p>
+    </div>
+    <?php unset($_SESSION['erreurStats']);
+    }?>
+
 
 <!-- Filtres stats -->
 <section class="mb-4 filter-commandes">

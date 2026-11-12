@@ -75,7 +75,7 @@
             <select class="form-select" name="filter-statut" id="filter-statut">
                 <option value="">Statut</option>
                 <option value="En attente de validation">En attente de validation</option>
-                <option value="Accepté">Accepté</option>
+                <option value="Acceptée">Acceptée</option>
                 <option value="En préparation">En préparation</option>
                 <option value="En cours de livraison">En cours de livraison</option>
                 <option value="Livrée">Livrée</option>
@@ -135,7 +135,7 @@
                         <label for="actionStatut<?= $listCommande['id'] ?>" class="form-label">Nouveau statut</label>
                         <select id="actionStatut<?= $listCommande['id'] ?>" name="statut" class="form-select">
                             <option value="">Modifier</option>
-                            <option value="Accepté">Accepté</option>
+                            <option value="Acceptée">Acceptée</option>
                             <option value="En préparation">En préparation</option>
                             <option value="En cours de livraison">En cours de livraison</option>
                             <option value="Livrée">Livrée</option>

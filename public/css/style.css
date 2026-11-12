@@ -654,7 +654,7 @@ i.fa-solid {
     margin: 20PX;
 }
 
-.btn-avis {
+.btn-avis, .suivi {
     text-decoration: none;
     border: 1px solid;
     border-color: var(--accent);
@@ -673,6 +673,7 @@ i.fa-solid {
     margin: 20px;
     padding: 20px
 }
+
 
 .bouton-access-commande a {
     text-decoration: none;

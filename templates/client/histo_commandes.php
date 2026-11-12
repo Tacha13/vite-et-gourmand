@@ -55,13 +55,13 @@ require __DIR__ . '/../partials/header.php';
     <?php foreach ($allCommandes as $allCommande): ?>
             <tr>
             <td><?=  htmlspecialchars($allCommande['numero']) ?></td>
-            <td><?=  htmlspecialchars($allCommande['datePrestation']) ?></td>
+            <td><?=  htmlspecialchars(date('d/m/Y', strtotime($allCommande['datePrestation']))) ?></td>
             <td><?=  htmlspecialchars($allCommande['nomMenu']) ?></td>
             <td class="d-none d-md-table-cell"><?=  htmlspecialchars($allCommande['nbPersonneCommande']) ?></td>
-            <td><?=  htmlspecialchars($allCommande['prixTotal']) ?></td>
+            <td><?=  htmlspecialchars(number_format($allCommande['prixTotal'], 2, ',', ' ')) ?> €</td>
             <td><?=  htmlspecialchars($allCommande['statut']) ?></td>
             <td>
-                <a href="/?page=suivi_commandes&id=<?= ($allCommande['id'])?>" class="suivi">Voir le suivi de la commande</a>
+                <a href="/?page=suivi_commandes&id=<?= ($allCommande['id'])?>" class="suivi">Voir le suivi</a>
             </td>
             <td>
             <?php if ($allCommande['statut'] === 'Terminée' && $allCommande['avis_id'] === null): ?>

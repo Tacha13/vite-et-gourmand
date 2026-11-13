@@ -56,7 +56,7 @@
                 Que ce soit pour un repas en famille, un anniversaire, une réception ou un événement professionnel, Vite & Gourmand vous accompagne pour faire de chaque occasion un moment savoureux et convivial.</p>
             </div>
             <div class="img-pres">
-                <img src="/images/Couple traiteur.png" alt="Photo du couple Julie et José">
+                <img src="/images/Couple traiteur.jpg" alt="Photo du couple Julie et José">
             </div>
 
         </div>
@@ -65,11 +65,14 @@
 
 
     <section class="review-container">
+        <div class="avis-title">
+            <h3 class="avisTitle">Ce que disent les clients</h3>
+        </div>
         <div class="container-fluid">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="row row-cols-1 row-cols-md-3 g-4 card-avis">
             <?php foreach ($avisValide as $avis): ?>
                 <div class="col review">
-                    <div class="review-inner">
+                    <div class="review-inner h-100">
                     <?php for($i = 1; $i <= $avis['note']; $i++): ?>
                         <i class="fa-solid fa-star"></i>
                     <?php endfor ?>

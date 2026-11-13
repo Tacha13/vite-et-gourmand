@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand">
                 <img class="logo" src="/images/Logo vite et gourmand 2.png" alt="Logo traiteur Vite et Gourmand" width="75" height="75">

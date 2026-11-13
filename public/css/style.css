@@ -350,8 +350,7 @@ i.fa-solid {
 .title-connexion {
     display: flex;
     justify-content: center;
-    margin: 40px;
-    padding: 20px;
+    padding: 60px;
 }
 
 .connexion-text {
@@ -392,6 +391,12 @@ i.fa-solid {
     padding: 20px;
     font-size: 28px;
     text-align: center;
+}
+
+.connexion  {
+    background-image: linear-gradient(rgba(249, 246, 240, 0.55), rgba(249, 246, 240, 0.85)), url('/images/connexion.jpg') ;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .connexion-inner {
@@ -457,16 +462,22 @@ i.fa-solid {
     padding:12px 70px;
     border: none;
     border-radius: 2px;
+    text-align: center;
 }
 
 /*Début mot de passe oublié */
+
+.passwordForget-img, .passwordReset-img {
+    background-image: linear-gradient(rgba(249, 246, 240, 0.55), rgba(249, 246, 240, 0.85)), url('/images/mdp1.jpg') ;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 .title-passwordForget,  .title-passwordReset{
     display: flex;
     justify-content: center;
     text-align: center;
-    margin: 40px;
-    padding: 20px;
+    padding: 60px;
 }
 .passwordForget-text, .passwordReset-text  {
     display: flex;
@@ -565,6 +576,10 @@ i.fa-solid {
     padding: 40px;
 }
 
+.inscription-form div {
+    margin-bottom: 16px;
+}
+
 .inscription-form div label {
     display: block;
     width: 100%;
@@ -601,6 +616,8 @@ i.fa-solid {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    opacity: 0.4;
+
 }
 /*FIN INSCRIPTION*/
 
@@ -609,8 +626,7 @@ i.fa-solid {
     display: flex;
     justify-content: center;
     text-align: center;
-    margin: 40px;
-    padding: 20px
+    padding: 60px
 }
 
 .compte-text {
@@ -621,6 +637,12 @@ i.fa-solid {
     padding: 20px;
     font-size: 24px;
     color: var(--primary);
+}
+
+.compte-personnel {
+    background-image: linear-gradient(rgba(249, 246, 240, 0.55), rgba(249, 246, 240, 0.85)), url('/images/compte-client.jpg') ;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .personal-title {
@@ -1015,6 +1037,11 @@ section.menu {
     color: var(--primary);
 }
 
+.card-contact {
+    background-image: linear-gradient(rgba(249, 246, 240, 0.55), rgba(249, 246, 240, 0.55)), url('/images/hero-table.jpg') ;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 .contact-form {
     padding: 20px;
@@ -1825,6 +1852,9 @@ text-align: center;
     }
 
     /*Connexion*/
+    .connexion {
+        background-position: center;
+    }
     .connexion-text {
         padding: 20px;
         font-size: 20px
@@ -1853,6 +1883,12 @@ text-align: center;
     /*Inscription*/
     .inscription-form div {
         margin-bottom: 10px;
+    }
+
+    /*Compte client*/
+
+    .compte-personnel {
+        background-position: center;
     }
 
     /*menus*/
@@ -1932,6 +1968,11 @@ text-align: center;
     /*Mes informations*/
     .title-inscription h1 {
         text-align: center;
+    }
+
+    /*mot de passe oublié*/
+    .passwordForget-img, .passwordReset-img {
+        background-position: center;
     }
 
 

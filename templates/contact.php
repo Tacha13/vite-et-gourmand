@@ -13,6 +13,7 @@
 ?>
 
 <main>
+
 <div class="title-contact">
     <h1>Contactez-nous</h1>
 </div>
@@ -33,7 +34,7 @@
     <p>L’équipe Vite & Gourmand est à votre écoute et vous répondra dans les meilleurs délais.</p>
 </div>
 
-<section class="container-fluid">
+<section class="container-fluid card-contact">
 <div class="row row-cols-1 row-cols-md-2">
     
     <div class="col contact-form">
@@ -78,15 +79,7 @@
                     <p>Contact : contact@vitegourmand.fr</p>
                 </div>
             </div>
-            <div>
-                <h3 class="contact-title">Horaires</h3>
-                <div class="contact-inner">
-                    <p>Lundi - Vendredi 9h00 - 18h00</p>
-                    <p>Samedi 9h00 - 13h00</p>
-                    <p>Dimanche Fermé</p>
-                    <p>Retrait des commandes sur rendez-vous</p>
-                </div>
-            </div>
+            
             <div>
                 <h3 class="contact-title">Informations légales</h3>
                 <div class="contact-inner">

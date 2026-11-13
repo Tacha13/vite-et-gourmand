@@ -5,7 +5,10 @@
     ?>
 <body>
     
-    <!--Contenu du header-->
+   
+<main>
+    <section class="passwordForget-img">
+     <!--Contenu du header-->
     <?php
     require __DIR__ . '/../partials/header.php';
     ?>
@@ -24,7 +27,6 @@
     <?php unset($_SESSION['erreurPasswordReset']);
     }?>
 
-<main>
 <div class="title-passwordForget">
     <h1>Mot de passe oublié - demande réinitialisation</h1>
 </div>
@@ -55,6 +57,7 @@
             </div> 
         </form>
     </div>
+</section>
 </section>
 </main>
 

@@ -12,7 +12,10 @@ require __DIR__ . '/../partials/head.php';
 <?php
 require __DIR__ . '/../partials/header.php';
 ?>
-<!--Messages flash en cas de succès de saisie-->
+
+
+<main> 
+    <!--Messages flash en cas de succès de saisie-->
     
     <?php if (isset($_SESSION['successUpdate'])) { ?>
         <div class="flashMessage successUpdate">
@@ -20,8 +23,7 @@ require __DIR__ . '/../partials/header.php';
         </div>
     <?php unset($_SESSION['successUpdate']);
     }?>
-
-<main> 
+<section class="compte-personnel">
 <div>
     <h1 class="compte-title">Compte Client</h1>
     <div class="compte-text">
@@ -66,6 +68,7 @@ require __DIR__ . '/../partials/header.php';
         </div>
         
     </div>
+</section>
 </section>
 </main>
 

@@ -9,6 +9,9 @@
     <?php
     require __DIR__ . '/../partials/header.php';
     ?>
+<main>
+    <section class="connexion">
+
      <?php if (isset($_SESSION['successRegister'])) { ?>
         <div class="flashMessage successRegister">
         <p> <?=  htmlspecialchars($_SESSION['successRegister']) ?> </p>
@@ -37,7 +40,6 @@
     <?php unset($_SESSION['successUpdatePassword']);
     }?>
 
-<main>
 <div class="title-connexion">
     <h1>Connexion</h1>
 </div>
@@ -72,19 +74,20 @@
                 <div>
                     <label for="PasswordInput">Mot de passe</label>
                     <input id="PasswordInput" name="password" type="password" minlength="10" required>
-                </div><br>
+                </div>
                 <div class="forgotten-password">
                     <a class="forgotten-password-link" href="/?page=password_forget">Mot de passe oublié ?</a>
-                </div><br>
+                </div>
                 <div class="bouton-valider">
                     <button class="btn-valider" type="submit">Se connecter</button>
-                </div><br>
+                </div>
                 <div class="not-registered">
                     <a href="/?page=register">Pas encore inscrit ? S'inscrire.</a>
-                </div><br>
+                </div>
             </div> 
         </form>
     </div>
+</section>
 </section>
 </main>
 

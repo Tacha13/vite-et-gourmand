@@ -10,6 +10,8 @@
     require __DIR__ . '/../partials/header.php';
     ?>
 
+<main>
+    <section class="passwordReset-img">
     <!--Flash messages -->
     
     <?php if (isset($_SESSION['erreurFormResetPassword'])) { ?>
@@ -26,7 +28,7 @@
     <?php unset($_SESSION['erreurDifferentResetPassword']);
     }?>
 
-<main>
+
 <div class="title-passwordReset">
     <h1>Réinitialisation du mot de passe</h1>
 </div>
@@ -60,6 +62,7 @@
             </div>
         </form>
     </div>
+</section>
 </section>
 </main>
 

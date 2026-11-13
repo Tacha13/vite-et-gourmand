@@ -195,7 +195,7 @@ class CommandeRepository {
     public function findCommandeById(int $id) : ?array 
     {
         $pdo = $this->database->getConnection();
-        $idCommandeMongo = $pdo->prepare("SELECT c.id, c.numero, c.prixTotal, c.datePrestation, m.nomMenu FROM commandes c, menus m WHERE c.id = :id AND c.menu_id = m.id;");
+        $idCommandeMongo = $pdo->prepare("SELECT c.id, c.numero, c.prixTotal, c.datePrestation, c.statut, m.nomMenu FROM commandes c, menus m WHERE c.id = :id AND c.menu_id = m.id;");
 
         $idCommandeMongo->execute(
             [

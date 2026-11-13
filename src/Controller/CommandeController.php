@@ -272,6 +272,8 @@ class CommandeController
 
     $idCommande = ((int)$_POST['id']);
     $statutReceived = $_POST['statut'];
+    $statutAvant = $this->commandeRepository->findCommandeById($idCommande);
+
 
     //vérification que le statut de la commande est bien 'Acceptée' ou 'En préparation' ou 'En cours de livraison' ou 'Livrée' ou 'En attente du retour matériel' ou 'Terminée' (sinon : message d'erreur + redirection)
     if ($statutReceived !== 'Acceptée' && $statutReceived !== 'En préparation' && $statutReceived !== 'En cours de livraison' && $statutReceived !== 'Livrée' && $statutReceived !== 'En attente du retour de matériel' && $statutReceived !== 'Terminée') {
@@ -284,10 +286,11 @@ class CommandeController
     $this->commandeRepository->updateStatutHistoCommande($idCommande, $statutReceived);
 
     // récupération des informations de la commande pour traitement après avec mongodb
-    if($statutReceived === 'Terminée') {
+    if($statutReceived === 'Terminée' && $statutAvant !== 'Terminée') {
         $infosCommande = $this->commandeRepository->findCommandeById($idCommande);
         try {
             $this->statistiqueRepository->createFiche($infosCommande);
+            
         } catch (\Exception $e) {
             $_SESSION['erreurUpdateStatutCommande'] = "Statut enregistré, mais les statistiques n’ont pas pu être mises à jour.";
             header('location:/?page=admin_commandes');

@@ -81,11 +81,6 @@
 </tbody>
 </table>
 </div>
-
-<div class="graph">
-  <canvas id="myChart"></canvas>
-</div>
-
 <?php 
     $nomMenu = [];
     $nbCommande = [];
@@ -95,36 +90,16 @@
         $nbCommande[] = $statMenu['nbCommandes'];
     }
 ?>
+<div class="graph">
+  <canvas id="myChart" data-nom-menu="<?= htmlspecialchars(json_encode($nomMenu)) ?>" data-nb-commande="<?=  htmlspecialchars(json_encode($nbCommande)) ?>"></canvas>
+</div>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
-  const ctx = document.getElementById('myChart');
+<script src="./js/statistiques.js"></script>
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: <?=  json_encode($nomMenu) ?>,
-      datasets: [{
-        label: 'Nombre de commandes par menu',
-        data: <?=  json_encode($nbCommande) ?>,
-        backgroundColor: '#D4A853',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-
-            ticks: {
-                stepSize: 1
-            }      
-        }
-    }
-    }
-});
-</script>
     <div>
         <a class="returnAdmin" href="/?page=admin">Retour à la page administration</a>
     </div>

@@ -41,7 +41,7 @@
 <section class="container-fluid inscription-section">
     <div class="row row-cols-1 row-cols-lg-2">
         <div class="col inscription-form">
-        <form action="" method="POST">
+        <form action="" method="POST" id="formulaire">
             <fieldset class="inscription">
                 <legend class="inscription-title">Inscription</legend>
             <div>
@@ -88,6 +88,9 @@
                 <label for="ValidatePasswordInput">Validez votre mot de passe</label>
                 <input id="ValidatePasswordInput" name="passwordConfirm" type="password" required>
             </div>
+            <div id="erreurMotDePasse" class="text-danger">
+
+            </div>
             <div class="bouton-valider">
                 <button class="btn-valider" type="submit">Validez</button>
             </div>
@@ -106,6 +109,9 @@
     <?php
     require __DIR__ . '/../partials/footer.php';
     ?>  
+
+<script src="./js/register.js"></script>
+
 </body>
 </html>
 

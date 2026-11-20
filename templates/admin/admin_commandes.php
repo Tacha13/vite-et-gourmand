@@ -130,6 +130,11 @@
             <td>
                 <?php if ($listCommande['statut'] !== 'Terminée' && $listCommande['statut'] !== 'Annulée'): ?><div aria-hidden="true"></div>
                 <form action="/?page=admin_commandes" method="POST">
+                <!--Récupération du token de session-->
+                <?php
+                require __DIR__ . '/../partials/csrf.php';
+                ?>
+
                     <input id="modifierCommande<?= $listCommande['id'] ?>" name="id" type="hidden" value="<?= $listCommande['id'] ?>">
                     <div>
                         <label for="actionStatut<?= $listCommande['id'] ?>" class="form-label">Nouveau statut</label>
@@ -146,6 +151,10 @@
                         </div>
                 </form>
                 <form action="/?page=annuler_commande" method="POST">
+                <!--Récupération du token de session-->
+                <?php
+                require __DIR__ . '/../partials/csrf.php';
+                ?>
                     <input id="annulerCommande<?= $listCommande['id'] ?>" name="id" type="hidden" value="<?= $listCommande['id'] ?>">
                     <label for="motifAnnulation<?= $listCommande['id'] ?>">Motif d'annulation</label>
                     <textarea name="motifAnnulation" id="motifAnnulation<?= $listCommande['id'] ?>" class="form-control"></textarea>

@@ -48,7 +48,7 @@ INSERT INTO `avis` (`id`, `avis`, `note`, `statutAvis`, `commande_id`) VALUES
 (3, 'Moment convivial sublimé par le menu. Merci à vous', 4, 'Refusé', 11),
 (4, 'Repas délicieux et plein de saveurs.', 5, 'En attente de validation', 13),
 (5, 'Une vraie belle découverte ! Le menu commandé était non seulement exquis et frais, mais en plus très facile à organiser grâce aux instructions claires laissées sur chaque contenant. Nos invités se sont régalés de l\'entrée au dessert.', 5, 'Validé', 3),
-(6, 'Prestation parfaite pour notre dîner d\'anniversaire ! Le repas était savoureux, les saveurs bien équilibrées et la présentation très soignée. L&#039;écoute, la gentillesse et la ponctualité ont été très appréciées par tous nos convives. Une expé', 5, 'En attente de validation', 4),
+(6, 'Prestation parfaite pour notre dîner d\'anniversaire ! Le repas était savoureux, les saveurs bien équilibrées et la présentation très soignée. L\'écoute, la gentillesse et la ponctualité ont été très appréciées par tous nos convives. Une expé', 5, 'En attente de validation', 4),
 (7, ' On ressent tout le savoir-faire et l’amour des bons produits marins dans ce menu. Les saveurs et les textures sont au rendez-vous, avec des spécialités locales préparées avec justesse. Le rapport qualité-prix est au top et l\'équipe est très accueill', 5, 'En attente de validation', 24);
 
 --

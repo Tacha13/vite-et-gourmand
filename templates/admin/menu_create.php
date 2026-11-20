@@ -18,6 +18,11 @@
 
 
 <form action="/?page=menu_create" method="POST" class="row row-cols-1 row-cols-md-2 mb-3 gy-3 align-items-end">
+<!--Récupération du token de session-->
+<?php
+require __DIR__ . '/../partials/csrf.php';
+?>
+
         <div class="col">
             <label class="form-label" for="imageMenu">Nom de l'image</label>
             <input class="form-control" type="text" name="image" id="imageMenu">

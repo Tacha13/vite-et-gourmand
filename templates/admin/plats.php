@@ -75,6 +75,10 @@
 
                 <td class="admin-delete-plat">
                     <form action="/?page=delete_confirm" method="POST">
+                    <!--Récupération du token de session-->
+                    <?php
+                    require __DIR__ . '/../partials/csrf.php';
+                    ?>
                         <input name="id" type="hidden" value="<?=  $plat['id'] ?>">
                         <input name="entity" type="hidden" value="plat">
                         <input type="submit" value="Supprimer">

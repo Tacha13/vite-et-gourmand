@@ -39,6 +39,10 @@
     
     <div class="col contact-form">
         <form action="" method="POST">
+        <!--Récupération du token de session-->
+        <?php
+        require __DIR__ . '/partials/csrf.php';
+        ?>
             <div>
                 <label for="nomContact">Nom</label>
                 <input id="nomContact" name="nomContact" type="text" required>

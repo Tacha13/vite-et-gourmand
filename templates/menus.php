@@ -86,7 +86,7 @@ if (!isset($menus) || !is_array($menus)) {
     <div class="col">
         <div class="card h-100">
             <div class="card-inner">
-                <div class="card-image"><img class="card-img" src="/images/<?=($menu['image'])?>" alt="Image du <?= htmlspecialchars($menu['nomMenu']) ?>"></div>
+                <div class="card-image"><img class="card-img" src="/images/<?=htmlspecialchars($menu['image'])?>" alt="Image du <?= htmlspecialchars($menu['nomMenu']) ?>"></div>
                 <h3 class="card-title"><?= htmlspecialchars($menu['nomMenu']) ?></h3>
                 <p class="card-theme"><?= htmlspecialchars($menu['theme']) ?></p>    
                 <p class="card-description"><?= htmlspecialchars($menu['description']) ?></p>

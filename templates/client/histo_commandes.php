@@ -76,6 +76,11 @@ require __DIR__ . '/../partials/header.php';
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <form action="/?page=avis" method="POST">
+                            <!--Récupération du token de session-->
+                            <?php
+                            require __DIR__ . '/../partials/csrf.php';
+                            ?>
+
                             <div class="modal-body">
                                
                                     <legend class="avis-title">Donnez votre avis</legend>

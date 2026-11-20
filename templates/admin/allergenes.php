@@ -66,6 +66,10 @@
             <td><a href="/?page=allergene_update&id=<?= ($allergene['id'])?>" class="admin-action-allergene">Modifier l'allergène</a></td>
                 <td class="admin-delete-allergene">
                     <form action="/?page=delete_confirm" method="POST">
+                        <!--Récupération du token de session-->
+                        <?php
+                        require __DIR__ . '/../partials/csrf.php';
+                        ?>
                         <input name="id" type="hidden" value="<?=  $allergene['id'] ?>">
                         <input name="entity" type="hidden" value="allergene">
                         <input type="submit" value="Supprimer">

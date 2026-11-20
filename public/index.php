@@ -4,6 +4,16 @@
 session_start();
 
 
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !hash_equals($_POST['csrf_token'] ?? '',$_SESSION['csrf_token'])) {
+    http_response_code(403);
+    echo ('Demande refusée, veuillez recharger la page.');
+    exit;
+}
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Tacha\ViteEtGourmand\Database;

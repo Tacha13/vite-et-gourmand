@@ -36,6 +36,11 @@ require __DIR__ . '/../partials/header.php';
     <div class="row row-cols-1 row-cols-lg-2">
         <div class="col inscription-form">
         <form action="" method="POST">
+        <!--Récupération du token de session-->
+        <?php
+        require __DIR__ . '/../partials/csrf.php';
+        ?>
+
             <fieldset class="inscription">
                 <legend class="inscription-title">Informations</legend>
             <div>

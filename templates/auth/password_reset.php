@@ -42,6 +42,11 @@
 
     <div class="col passwordReset-form">
         <form action="" method="POST">
+        <!--Récupération du token de session-->
+        <?php
+        require __DIR__ . '/../partials/csrf.php';
+        ?>
+
             <div class="passwordReset-inner">
             <legend class="legend-title">Renseignez votre nouveau mot de passe</legend>
                 <div>

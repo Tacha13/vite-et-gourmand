@@ -40,7 +40,7 @@ class PlatController
 
 //Fonction qui récupère l'ID et le type d'élément à supprimer et l'affiche dans le template commun de confirmation de suppression 
     public function showDeleteConfirm(): void {
-        $id = ($_POST['id']);
+        $id = (int)($_POST['id']);
         $entity = ($_POST['entity']);
         require __DIR__ . '/../../templates/partials/delete_confirm.php';
     }

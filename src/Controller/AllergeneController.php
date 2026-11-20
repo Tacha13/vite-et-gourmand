@@ -39,7 +39,7 @@ class AllergeneController
 
 //Fonction qui récupère l'ID et le type d'élément à supprimer et l'affiche dans le template commun de confirmation de suppression 
     public function showDeleteConfirm(): void {
-        $id = ($_POST['id']);
+        $id = (int)($_POST['id']);
         $entity = ($_POST['entity']);//entity permet de savoir s'il s'agit d'un plat, allergène, menu
         require __DIR__ . '/../../templates/partials/delete_confirm.php';
     }

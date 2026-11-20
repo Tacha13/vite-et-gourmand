@@ -65,6 +65,11 @@ if (!isset($employes) || !is_array($employes)) {
 
         <td class="admin-delete-menu">
             <form action="/?page=toggle_actif" method="POST">
+            <!--Récupération du token de session-->
+            <?php
+            require __DIR__ . '/../partials/csrf.php';
+            ?>
+
                 <input name="id" type="hidden" value="<?=  $employe['id'] ?>">
                 <input type="submit" value="<?= $employe['actif'] === 0 ? "Activer" : "Désactiver" ?>">
             </form>

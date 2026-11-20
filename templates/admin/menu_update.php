@@ -29,6 +29,11 @@
         }?>
 
 <form action="/?page=menu_update" method="POST" class="row row-cols-1 row-cols-md-2 mb-3 gy-3">
+<!--Récupération du token de session-->
+<?php
+require __DIR__ . '/../partials/csrf.php';
+?>
+
     <input id="modifierMenu<?= $menuModifier['id'] ?>" name="id" type="hidden" value="<?= $menuModifier['id'] ?>">
 
         <div class="col">

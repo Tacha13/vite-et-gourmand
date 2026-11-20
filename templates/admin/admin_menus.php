@@ -80,6 +80,10 @@
             <td><a href="/?page=menu_update&id=<?= ($menu['id'])?>" class="admin-action-menu">Modifier le menu</a></td>
                 <td class="admin-delete-menu">
                     <form action="/?page=delete_confirm" method="POST">
+                    <!--Récupération du token de session-->
+                    <?php
+                    require __DIR__ . '/../partials/csrf.php';
+                    ?>
                         <input name="id" type="hidden" value="<?=  $menu['id'] ?>">
                         <input name="entity" type="hidden" value="menu">
                         <input type="submit" value="Supprimer">

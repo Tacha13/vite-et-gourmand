@@ -25,6 +25,11 @@ require __DIR__ . '/../partials/header.php';
 
 <section class="container-fluid">
 <form action="" method="POST">
+    <!--Récupération du token de session-->
+    <?php
+    require __DIR__ . '/../partials/csrf.php';
+    ?>
+
     <div class="row row-cols-1 row-cols-md-2">
         <div class="col recap-commande">
             <h3 class="title-commande">Votre commande</h3>

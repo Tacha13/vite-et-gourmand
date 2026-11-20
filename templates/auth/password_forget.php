@@ -40,6 +40,11 @@
 
     <div class="col passwordForget-form">
         <form action="" method="POST">
+        <!--Récupération du token de session-->
+        <?php
+        require __DIR__ . '/../partials/csrf.php';
+        ?>
+
             <div class="passwordForget-inner">
             <legend class="legend-title">Renseignez votre email</legend>
                 <div>

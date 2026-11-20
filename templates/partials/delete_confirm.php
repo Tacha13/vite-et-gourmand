@@ -34,6 +34,10 @@ if (!isset($entity)) {
 <?php 
 if ($entity === 'plat') : ?>
     <form action="/?page=plat_delete" method="POST" class="text-center">
+    <!--Récupération du token de session-->
+    <?php
+    require __DIR__ . '/../partials/csrf.php';
+    ?>
     <input name="id" type="hidden" value="<?=  $id ?>">
     <input class="delete-global" type="submit" value="Supprimer"> <br>
     </form>
@@ -43,6 +47,10 @@ if ($entity === 'plat') : ?>
 <?php
 elseif  ($entity === 'menu') : ?>
     <form action="/?page=menu_delete" method="POST" class="text-center">
+    <!--Récupération du token de session-->
+    <?php
+    require __DIR__ . '/../partials/csrf.php';
+    ?>
     <input name="id" type="hidden" value="<?=  $id ?>">
     <input class="delete-global" type="submit" value="Supprimer"> <br>
     </form>
@@ -53,6 +61,10 @@ elseif  ($entity === 'menu') : ?>
 <?php 
 elseif ($entity === 'allergene'): ?>
     <form action="/?page=allergene_delete" method="POST" class="text-center">
+    <!--Récupération du token de session-->
+    <?php
+    require __DIR__ . '/../partials/csrf.php';
+    ?>
     <input name="id" type="hidden" value="<?=  $id ?>">
     <input class="delete-global" type="submit" value="Supprimer"> <br>
     </form>

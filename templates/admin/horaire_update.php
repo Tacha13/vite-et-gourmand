@@ -31,6 +31,11 @@
         }?>
 
 <form action="/?page=horaire_update" method="POST" class="row row-cols-1 row-cols-md-2 mb-3 gy-3">
+<!--Récupération du token de session-->
+<?php
+require __DIR__ . '/../partials/csrf.php';
+?>
+
     <input id="modifierHoraire<?= $horaireModifier['id'] ?>" name="id" type="hidden" value="<?= $horaireModifier['id'] ?>">
         <div class="col">
             <label class="form-label" for="heureDebut">Heure de début</label>

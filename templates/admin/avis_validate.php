@@ -51,6 +51,10 @@
                 <p><strong>Prénom du client : </strong><?= htmlspecialchars($avis['prenom']) ?></p>
                 
                 <form action="/?page=avis_validate" method="POST" class="row row-cols-1 row-cols-md-2">
+                <!--Récupération du token de session-->
+                <?php
+                require __DIR__ . '/../partials/csrf.php';
+                ?>
                     <div>
                         <input id="idAvis<?= $avis['id'] ?>" name="idAvis" type="hidden" value="<?= $avis['id'] ?>">
                         <div>

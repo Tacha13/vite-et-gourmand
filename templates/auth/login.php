@@ -64,6 +64,10 @@
     
     <div class="col connexion-form">
         <form action="" method="POST">
+        <!--Récupération du token de session-->
+        <?php
+        require __DIR__ . '/../partials/csrf.php';
+        ?>
             <div class="connexion-inner">
                 <legend class="legend-title">Connexion</legend>
                 <div>

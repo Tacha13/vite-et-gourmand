@@ -114,6 +114,8 @@ class AuthController
                 header('location:/?page=login');
                 exit;
             }
+            //nouveau numéro de session quand la personne se connecte
+            session_regenerate_id(true);
             //Enregistrement des infos trouvées en base dans $_SESSION
             $_SESSION['user_id'] = $resultMail['id'];
             $_SESSION['user_email'] = $resultMail['email'];

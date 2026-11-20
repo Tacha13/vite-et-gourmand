@@ -66,7 +66,7 @@ class CompteRepository
 //UPDATE dans comptes du champ actif
     public function toggleActif(int $id): void {
         $pdo = $this->database->getConnection();
-        $stmt = $pdo->prepare("UPDATE comptes SET actif = NOT actif WHERE id = :id;
+        $stmt = $pdo->prepare("UPDATE comptes SET actif = NOT actif WHERE id = :id AND role = 'employe';
         ");
 
         $stmt->execute([
